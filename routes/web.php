@@ -12,9 +12,7 @@ Route::get('/', function () {
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
     ]);
-});
-
-//Route::get('/', [IndexController::class, 'index'])->name('home');
+})->name('Welcome');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -25,8 +23,20 @@ Route::get('/lawyers', function () {
 })->name('lawyers');
 
 
-Route::get('/articles', [ArticleController::class, 'index'])
-    ->name('articles');
+
+
+    Route::get('/articles/add', function () {
+        return Inertia::render('Articles/Add');
+    })->name('articles/add');
+    Route::controller(ArticleController::class)->group(function () {
+        Route::get('/articles', 'index')->name('articles');
+        Route::post('/articles/create', 'create')->name('articles/create');   
+        Route::get('/articles/{id}', 'articleId')->name('articles/article');
+        //Route::post('/tasks/{id}/edit', 'editTaskById')->name('editTaskById');
+        //Route::get('/tasks/{id}/delete', 'TaskDelete')->name('TaskDelete');
+      });
+
+   // Route::post('/articles/create', [ArticleController::class, 'create'])->name('articles/create');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

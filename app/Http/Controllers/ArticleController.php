@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -15,28 +16,20 @@ class ArticleController extends Controller{
 
     public function index(){
         //dd(Article::paginate(3)->toArray());
-        return Inertia::render('Articles', [
+        return Inertia::render('Articles/Articles', [
             'articles' => Article::paginate(3),
         ]); 
     }
 
-    /*public function index(){
-        $article = Article::find(1);        
-        return Inertia::render('Article', [
-            'article' => $article,
-        ]); 
-    }*/
-
-    public function create(Request $request)
-    {
+    public function create(Request $request){
         $article = new Article;
-        $article->username = $request->user;
+        $article->username = Auth::user()->id;
+        $article->userid = Auth::user()->name;
         $article->header = $request->header;
         $article->body = $request->body;
         $article->save();
-        return response()->json([
-            'message' => 'New post created'
-        ]);
+        $id = $article->id;        
+        return redirect() -> route('articles/article', $id);
     }
 
     public function edit(Article $article)
@@ -50,26 +43,15 @@ class ArticleController extends Controller{
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreArticleRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreArticleRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Article $article)
-    {
-        //
+    public function articleId($id){
+        return Inertia::render('Articles/Article', [
+            'article' => Article::find($id),
+        ]); 
     }
 
     /**

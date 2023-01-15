@@ -1,5 +1,6 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
+import MainHeader from '@/Layouts/MainHeader.vue';
 
 defineProps({
     canLogin: Boolean,
@@ -10,44 +11,19 @@ defineProps({
 <template>
     <Head title="Главная" />
 
-    <div
-        class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"
-    >   
+        <MainHeader>
+        <template #header>
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Приветствие</h2>
+        </template>
+    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">   
 
-        <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-            <Link                
-                :href="route('articles')"
-                class="text-sm text-gray-700 dark:text-gray-500 underline mr-4"
-                >Статьи</Link
-            >
-
-            <Link                
-                :href="route('lawyers')"
-                class="text-sm text-gray-700 dark:text-gray-500 underline mr-8"
-                >Юристы</Link
-            >
-
-            <Link
-                v-if="$page.props.auth.user"
-                :href="route('dashboard')"
-                class="text-sm text-gray-700 dark:text-gray-500 underline"
-                >Профиль</Link
-            >
-
-            <template v-else>
-                <Link :href="route('login')" class="text-sm text-gray-700 dark:text-gray-500 underline">Войти</Link>
-
-                <Link
-                    v-if="canRegister"
-                    :href="route('register')"
-                    class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline"
-                    >Регистрация</Link
-                >
-            </template>
-        </div>
+       
 
         <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
             Вам больше не надо искать юриста. Все здесь.
         </div>
     </div>
+    </MainHeader>
+
+
 </template>
