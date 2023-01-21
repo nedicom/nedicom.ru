@@ -17,14 +17,14 @@ class ArticleController extends Controller{
     public function index(){
         //dd(Article::paginate(3)->toArray());
         return Inertia::render('Articles/Articles', [
-            'articles' => Article::paginate(3),
+            'articles' => Article::paginate(9),
         ]); 
     }
 
     public function create(Request $request){
         $article = new Article;
-        $article->username = Auth::user()->id;
-        $article->userid = Auth::user()->name;
+        $article->userid = Auth::user()->id;
+        $article->username = Auth::user()->name;
         $article->header = $request->header;
         $article->body = $request->body;
         $article->save();

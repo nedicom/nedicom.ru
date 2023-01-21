@@ -1,29 +1,28 @@
 <script setup>
-import Header from '@/Components/Header.vue';
-import { Head, Link } from '@inertiajs/inertia-vue3';
-import MainHeader from '@/Layouts/MainHeader.vue';
+import { ref } from "vue";
+import MainHeader from "@/Layouts/MainHeader.vue";
+import Header from "@/Layouts/Header.vue";
+import Body from "@/Layouts/Body.vue";
+import MainFooter from "@/Layouts/MainFooter.vue";
 
-
+const title = ref("Юристы");
 </script>
 
 <template>
-    <Head title="Lawyers" />
+  <Head title="Lawyers" />
 
-    <MainHeader>
-        <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Юристы</h2>
-        </template>
+  <MainHeader />
 
-        <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                    
-   222
+  <Header :ttl="title" />
 
-                </div>
-            </div>
-        </div>
-    </MainHeader>
-    ntcn
+  <Body>
+    <div class="bg-white py-12">
+      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">222</div>
+      </div>
+    </div>
+  </Body>
+
+  <MainFooter />
 </template>
 
