@@ -8,10 +8,9 @@ import { Head, Link } from '@inertiajs/inertia-vue3';
 import { Inertia } from '@inertiajs/inertia';
 import { reactive } from 'vue';
 
-
 let form = reactive({
     header: '',
-    body: ''
+    body: '',   
 });
 
 let submit = () => {
@@ -42,7 +41,6 @@ let title = ref('Добавить статью')
                         <textarea v-model="form.header" @input="onInputheader" maxlength="55"
                         class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none "
                             id=""
-                            name="header"
                             rows="2"
                             placeholder="Заголовок"
                         ></textarea>
@@ -59,6 +57,8 @@ let title = ref('Добавить статью')
                             rows="8"
                             placeholder="Ваша идеальная статья начинается здесь..."
                         ></textarea>
+
+                        <!--<input name="url" v-model="form.url" :placeholder="form.url"> -->            
 
                             <!-- <div id="ckeditorwrap">
                             <ckeditor tag-name="textarea" 
@@ -77,13 +77,13 @@ let title = ref('Добавить статью')
                                 <h3 class="text-2xl font-bold p-3">Яндекс</h3>
                                 <div class=" rounded-lg shadow-lg bg-white p-5 mx-5">                                    
                                     <h5 class="text-blue-800 text-xl line-clamp-2 leading-tight font-medium hover:text-red-400">{{yaheader}}</h5>
-                                    <a href="#!" class="text-green-700 hover:text-red-400 transition duration-300 ease-in-out mb-4">https://nedicom.ru/<span>Success link</span></a>
+                                    <a href="#!" class="text-green-700 hover:text-red-400 transition duration-300 ease-in-out mb-4">https://nedicom.ru/статьи/<span>{{url}}</span></a>
                                         <p class="text-gray-700 line-clamp-3 text-base text-ellipsis"> {{yabody}}</p>
                                                                         
                                 </div>
                                 <h3 class="text-2xl font-bold p-3 mt-5">Google</h3>
                                 <div class=" rounded-lg shadow-lg bg-white p-5 mx-5">
-                                    <a href="#!" class=" transition duration-300 ease-in-out">https://nedicom.ru/<span>Success link</span></a>
+                                    <a href="#!" class=" transition duration-300 ease-in-out">https://nedicom.ru/статьи/<span>{{url}}</span></a>
                                     <h5 class="text-blue-700 no-underline line-clamp-2 hover:underline text-xl leading-tight font-medium my-1">{{gooheader}}</h5>                                    
                                     <p class="text-gray-700 text-base line-clamp-3 text-ellipsis overflow-hidden ...">{{goobody}}</p>
                                                                         
@@ -111,20 +111,22 @@ let title = ref('Добавить статью')
                 goobody: 'Описание идеальной статьи в Google. Google любит краткое описание до  50 символов',
                 progresswidth: 0,
                 wordscounter: 0,
-                titletext: 'sometest'
+                titletext: 'sometest',
             }
         },
         methods: {
             onInputheader(e) {//event, what is e
-            this.yaheader = e.target.value, //this keyword refers to an object, yaheader - method
-            this.gooheader = e.target.value,
-            this.wordscounter = this.yaheader.length
-                if (this.yaheader.length <= 50) {
-                    this.progresswidth = this.yaheader.length * 2;       
+                this.yaheader = this.gooheader = e.target.value, //this keyword refers to an object, yaheader - method
+                this.wordscounter = this.yaheader.length
+                    if (this.yaheader.length <= 50) {
+                        this.progresswidth = this.yaheader.length * 2;       
+                    }
+                if (e.target.value.length < 20) {
+                    this.url = e.target.value;
                 }
-
-            
+                
             },
+            
             onInputbody(e) {
             this.yabody = e.target.value,   
             this.goobody = e.target.value
