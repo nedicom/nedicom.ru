@@ -36,7 +36,27 @@ defineProps({
         </div>
       </div>
       <div class="xl:w-2/6 sm:px-6 lg:px-4">
-        <button class="py-12">Найти юриста по этой теме</button>
+      <button
+                  type="submit"
+                  class="
+                    my-5
+                    flex justify-start
+                    px-5
+                    py-12
+                    text-sm
+                    font-medium
+                    text-center text-white
+                    bg-blue-700
+                    rounded-lg
+                    focus:ring-4 focus:ring-blue-200
+                    dark:focus:ring-blue-900
+                    hover:bg-blue-800
+                  "
+                >
+                  Юрист в Вашем городе
+                </button>
+
+        
         <div class="py-12">Спросить онлайн по этой теме</div>
       </div>
     </div>

@@ -13,6 +13,7 @@
         "laravel/socialite": "^5.5",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
+        "maatwebsite/excel": "*",
         "tightenco/ziggy": "^1.0"
     },
     "require-dev": {

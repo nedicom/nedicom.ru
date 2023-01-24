@@ -16,30 +16,17 @@ let title = ref("Главная");
 <template>
   <Head title="Добавить статью" />
 
-<div class="h-screen">
-  <MainHeader />
+  <div class="min-h-screen">
+    <MainHeader />
 
-  <Header :ttl="title" />
+    <Header :ttl="title" />
 
-  <Body>
-    <div
-      class="
-        relative
-        flex
-        items-top
-        justify-center
-        h-full
-        bg-gray-100
-        dark:bg-gray-900
-        sm:items-center sm:pt-0
-      "
-    >
+    <Body>
       <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
         Вам больше не надо искать юриста. Все здесь.
       </div>
-    </div>
-  </Body>
+    </Body>
 
-  <MainFooter />
+    <MainFooter />
   </div>
 </template>

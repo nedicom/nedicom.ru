@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
@@ -35,6 +36,10 @@ Route::get('/lawyers', function () {
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
         //Route::post('/tasks/{id}/edit', 'editTaskById')->name('editTaskById');
         //Route::get('/tasks/{id}/delete', 'TaskDelete')->name('TaskDelete');
+      });
+
+      Route::controller(QuestionsController::class)->group(function () {
+        Route::get('/questions', 'index')->name('questions');
       });
 
    // Route::post('/articles/create', [ArticleController::class, 'create'])->name('articles/create');
