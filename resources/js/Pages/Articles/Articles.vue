@@ -56,7 +56,7 @@ let title = ref("Статьи");
                   {{ articles.body }}
                 </p>
                 <a
-                  :href="'articles/' + articles.id"
+                  :href="'articles/' + articles.url"
                   class="
                     text-blue-500
                     underline

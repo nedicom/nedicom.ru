@@ -31,7 +31,8 @@ Route::get('/lawyers', function () {
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/articles', 'index')->name('articles');
         Route::post('/articles/create', 'create')->name('articles/create');   
-        Route::get('/articles/{id}', 'articleId')->name('articles/article');
+        //Route::get('/articles/{id}', 'articleId')->name('articles/article'); for SEO the HFU were created
+        Route::get('/articles/{url}', 'articleURL')->name('articles/url');
         //Route::post('/tasks/{id}/edit', 'editTaskById')->name('editTaskById');
         //Route::get('/tasks/{id}/delete', 'TaskDelete')->name('TaskDelete');
       });

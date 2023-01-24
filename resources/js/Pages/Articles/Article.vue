@@ -6,13 +6,17 @@ import MainFooter from "@/Layouts/MainFooter.vue";
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 
+
 defineProps({
   article: "$string",
 });
 </script>
 
 <template>
-  <Head title="article.header" />
+  <Head>
+    <title>{{article.header}}</title>
+    <meta name="description" :content="article.body" />
+  </Head>
 
   <MainHeader />
 

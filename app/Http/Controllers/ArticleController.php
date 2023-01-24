@@ -23,12 +23,12 @@ class ArticleController extends Controller
         ]);
     }
 
-    public function create(Request $request)
-    {
+    public function create(Request $request){
         $article = new Article;
         $article->userid = Auth::user()->id;
         $article->username = Auth::user()->name;
         $article->header = $request->header;
+        $article->description = $request->description;
         $article->body = $request->body;
         
         function translit_sef($value){        
@@ -60,7 +60,7 @@ class ArticleController extends Controller
         $article->url =  $url;
         $article->save();
         $id = $article->id;
-        return redirect()->route('articles/article', $id);
+        return redirect()->route('articles/url', $url);
     }
 
     public function edit(Article $article)
@@ -79,20 +79,18 @@ class ArticleController extends Controller
         //
     }
 
-    public function articleId($id)
-    {
+    /*public function articleId($id){ //for SEO the HFU were created
         return Inertia::render('Articles/Article', [
             'article' => Article::find($id),
         ]);
+    }*/
+
+    public function articleURL($url){ 
+        return Inertia::render('Articles/Article', [
+            'article' => Article::where('url', '=', $url)->first(),
+        ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateArticleRequest  $request
-     * @param  \App\Models\Article  $article
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateArticleRequest $request, Article $article)
     {
         //

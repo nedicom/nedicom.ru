@@ -29,6 +29,7 @@
         "@heroicons/vue": "^2.0.13",
         "@tiptap/starter-kit": "^2.0.0-beta.209",
         "@tiptap/vue-3": "^2.0.0-beta.209",
-        "nodemon": "^2.0.20"
+        "nodemon": "^2.0.20",
+        "vue-meta": "^2.4.0"
     }
 }
