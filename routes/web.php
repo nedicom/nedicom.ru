@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionsController;
+use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ImportController;
 use Illuminate\Support\Facades\Route;
@@ -16,14 +17,17 @@ Route::get('/', function () {
     ]);
 })->name('Welcome');
 
+Route::get('/yurist-po-krymenergo', function () {
+    return Inertia::render('Welcome', [
+    ]);
+})->name('Welcome');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/lawyers', function () {
-    return Inertia::render('Lawyers');
-})->name('lawyers');
-
+Route::get('/lawyers', [LawyerController::class, 'index'])
+    ->name('lawyers');
 
 
     Route::get('/articles/add', function () {

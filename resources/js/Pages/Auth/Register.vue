@@ -4,6 +4,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import Checkbox from '@/Components/Checkbox.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 const form = useForm({
@@ -11,6 +12,7 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    lawyer: false,
     terms: false,
 });
 
@@ -26,6 +28,14 @@ const submit = () => {
         <Head title="Register" />
 
         <form @submit.prevent="submit">
+
+            <div class="block mt-4">
+                <label class="flex items-center">
+                    <Checkbox name="lawyer" v-model:checked="form.lawyer" />
+                    <span class="ml-2 text-sm text-gray-600">Хочу быть юристом проекта</span>
+                </label>
+            </div>
+
             <div>
                 <InputLabel for="name" value="Имя" />
 
@@ -86,6 +96,8 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
+
+ 
 
             <div class="flex items-center justify-end mt-4">
                 <Link
