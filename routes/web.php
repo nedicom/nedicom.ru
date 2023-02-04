@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ImportController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
 use Inertia\Inertia;
@@ -25,7 +26,6 @@ Route::get('/lawyers', function () {
 
 
 
-
     Route::get('/articles/add', function () {
         return Inertia::render('Articles/Add');
     })->name('articles/add');
@@ -38,8 +38,13 @@ Route::get('/lawyers', function () {
         //Route::get('/tasks/{id}/delete', 'TaskDelete')->name('TaskDelete');
       });
 
+    Route::get('/questions/add', function () {
+        return Inertia::render('Questions/Add');
+    })->name('questions/add');
       Route::controller(QuestionsController::class)->group(function () {
         Route::get('/questions', 'index')->name('questions');
+        Route::post('/questions/post', 'post')->name('articles/post');
+        Route::get('/questions/{url}', 'questionsURL')->name('questions/url');
       });
 
    // Route::post('/articles/create', [ArticleController::class, 'create'])->name('articles/create');
@@ -49,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+//import
+Route::get('import/', [ImportController::class, 'import']);
 
 //Route::resource('article', ArticleController::class);
 

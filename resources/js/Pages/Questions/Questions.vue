@@ -60,7 +60,7 @@ let title = ref("Вопросы");
                   {{ questions.body }}
                 </p>
                 <a
-                  :href="'articles/' + questions.url"
+                  :href="'questions/' + questions.url"
                   class="
                     text-blue-500
                     underline

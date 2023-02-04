@@ -115,6 +115,9 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('articles/add')">
                         Добавить статью
                       </DropdownLink>
+                       <DropdownLink :href="route('questions/add')">
+                        Задать вопрос
+                      </DropdownLink>
                       <DropdownLink
                         :href="route('logout')"
                         method="post"
