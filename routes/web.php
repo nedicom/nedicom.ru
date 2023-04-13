@@ -20,7 +20,12 @@ Route::get('/', function () {
 Route::get('/yurist-po-krymenergo', function () {
     return Inertia::render('Welcome', [
     ]);
-})->name('Welcome');
+})->name('krymenergo');
+
+Route::get('/yurist-po-nasledstvu', function () {
+    return Inertia::render('Nasledstvo', [
+    ]);
+})->name('Nasledstvo');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -28,6 +33,8 @@ Route::get('/dashboard', function () {
 
 Route::get('/lawyers', [LawyerController::class, 'index'])
     ->name('lawyers');
+Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
+    ->name('lawyer');
 
 
     Route::get('/articles/add', function () {

@@ -18,12 +18,10 @@ class LawyerController extends Controller
         ]);
     }
 
-    
-
-   /* public function articleURL($url){ 
-        return Inertia::render('Articles/Article', [
-            'article' => Article::where('url', '=', $url)->first(),
+     public function lawyer($url){ 
+        return Inertia::render('Lawyers/Lawyer', [
+            'lawyer' => User::where('id', '=', $url)->first(),
         ]);
-    }*/
+    }
 
 }

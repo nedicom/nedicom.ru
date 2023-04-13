@@ -60,7 +60,7 @@ let title = ref("Юристы");
                   nothing
                 </p>
                 <a
-                  :href="'lawyers/' + lawyers.url"
+                  :href="'lawyers/' + lawyers.id"
                   class="
                     text-blue-500
                     underline
