@@ -24,7 +24,7 @@ let title = ref("Главная");
     <Body>
       <div class="h-max">
         <div class="max-w-6xl mx-auto my-9 sm:px-6 lg:px-8 text-center">
-          Вам больше не надо искать юриста. Все здесь.
+          Вам больше не надо искать юриста. Все здесь!
         </div>
         <button
                     type="submit"
