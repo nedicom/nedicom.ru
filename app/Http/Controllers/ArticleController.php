@@ -12,13 +12,17 @@ use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Helpers\Translate;
+use Illuminate\Support\Facades\Storage;
+
 
 class ArticleController extends Controller
 {
 
     public function index()
-    {
-        //dd(Article::paginate(3)->toArray());
+    {        
+
+        //$url = Storage::url('storage/app/public/images/landing/nasledstvo/mainpc.jpg');
+        //echo asset($url);
         return Inertia::render('Articles/Articles', [
             'articles' => Article::paginate(9),
         ]);

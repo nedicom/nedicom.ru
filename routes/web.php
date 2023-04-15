@@ -97,4 +97,7 @@ Route::get('article/{article}/edit', [ArticleController::class, 'edit'])
 
 Route::post('article', [ArticleController::class, 'create']);
 
+/*Route::get('test', [TestController::class, 'test'])
+    ->name('test');*/
+
 require __DIR__.'/auth.php';
