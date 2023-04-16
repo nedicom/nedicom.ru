@@ -22,16 +22,14 @@ let title = ref("Главная");
     <Header :ttl="title" />
 
     <Body>
-      <div class="h-max">
-        <div class="max-w-6xl mx-auto my-9 sm:px-6 lg:px-8 text-center">
-          Вам больше не надо искать юриста. Все здесь!
-        </div>
-        <button
-                    type="submit"
+      <div class="flex h-96">
+        <div class="m-auto">
+          Платформа для поиска юристов, категорий дел, статей и ответов.
+          <a
+                    href="/yurist-po-nasledstvu"
                     class="
                       m-auto
-                      mt-12
-                      w-1/4
+                      mt-12                      
                       flex justify-center
                       px-5
                       py-6
@@ -45,31 +43,10 @@ let title = ref("Главная");
                       hover:bg-blue-800
                     "
                   >
-                    Юрист в Вашем городе
-                  </button>
-
+                    Юрист по нследству
+      </a>
+        </div>
         
-              <button
-                  type="submit"
-                  class="
-                    m-auto
-                    my-9
-                    w-1/4
-                    flex justify-center
-                    px-5
-                    py-6
-                    text-sm
-                    font-medium
-                    text-center text-white
-                    bg-blue-700
-                    rounded-lg
-                    focus:ring-4 focus:ring-blue-200
-                    dark:focus:ring-blue-900
-                    hover:bg-blue-800
-                  "
-                >
-                  Юрист онлайн  
-                </button>
       </div>
     </Body>
 

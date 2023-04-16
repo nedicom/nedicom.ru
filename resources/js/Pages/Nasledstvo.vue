@@ -3,13 +3,22 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Sidebaraction from "@/Layouts/Sidebaraction.vue";
 import Modalbutton from '@/Components/Modalbutton.vue';
 import Modalformback from '@/Components/Modalformback.vue';
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Inertia } from "@inertiajs/inertia";
+import { reactive } from "vue";
 
 let title = ref("Юрист по наследству");
+
+let form = reactive({
+  phone: "",
+});
+
+let submit = () => {
+  Inertia.post("/phone/send", form);
+}
 </script>
 
 <template>
@@ -26,11 +35,12 @@ let title = ref("Юрист по наследству");
 
       <!-- main banner -->
         <div
-          class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center"
+          class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center mb-9"
           style="background-image: url('/storage/images/landing/nasledstvo/mainpc.jpg'); height: 600px">
           <div
             class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
             style="background-color: rgba(0, 0, 0, 0.6)">
+
             <div class="h-full w-1/2 float-right">
               <div class="flex h-full items-center justify-center">            
                 <div class="text-white">
@@ -39,10 +49,10 @@ let title = ref("Юрист по наследству");
 
                   <div class="">
                     <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white"> Ваш номер телефона для связи</h3>
-                    <form class="space-y-6" action="/formsucces">
+                    <form @submit.prevent="submit" class="space-y-6">
                         <div>
                             <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">запись на консультацию</label>
-                            <input type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
+                            <input v-model="form.phone" type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
                         </div>
                         <div class="flex justify-between">
                             <div class="flex items-start">
@@ -64,7 +74,10 @@ let title = ref("Юрист по наследству");
         </div>
       <!-- main banner -->
 
-    
+       <!-- case card -->   
+      <h1 class="text-4xl font-semibold text-grey text-center py-10">
+        Берусь за дело, только если его можно выиграть
+      </h1>
 
       <div class="max-w-6xl mx-auto my-9 sm:px-6 lg:px-8 text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-9">
@@ -153,12 +166,15 @@ let title = ref("Юрист по наследству");
             <!-- card -->
         </div>
       </div>
-
+       <!-- case card -->  
 
 
             <!-- secondary banner -->
+            <h1 class="text-4xl font-semibold text-grey text-center py-10">
+              В работе адвоката главное - репутация
+            </h1>
             <div
-              class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center"
+              class="relative overflow-hidden bg-cover bg-no-repeat my-9 p-12 text-center"
               style="background-image: url('/storage/images/landing/nasledstvo/testimonials.jpg'); height: 966px">
               <div
                 class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
@@ -177,31 +193,31 @@ let title = ref("Юрист по наследству");
 
           <!-- practice -->   
 
-          <h1 class="my-6 py-6 text-4xl font-semibold text-grey text-center">Мои успехи</h1>
+          <h1 class="my-6 py-6 text-4xl font-semibold text-grey text-center">Мои успехи говорят за себя</h1>
 
 
 <div id="custom-controls-gallery" class="relative w-full" data-carousel="slide">
     <!-- Carousel wrapper -->
-    <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
+    <div class="relative h-96 overflow-hidden rounded-lg md:h-screen">
          <!-- Item 1 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="/storage/images/landing/nasledstvo/testimonials.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+            <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
         </div>
         <!-- Item 2 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-2.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+            <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
         </div>
         <!-- Item 3 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-3.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+            <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
         </div>
         <!-- Item 4 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-4.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+            <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
         </div>
         <!-- Item 5 -->
         <div class="hidden duration-700 ease-in-out" data-carousel-item>
-            <img src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image-5.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+            <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
         </div>
     </div>
     <div class="flex justify-center items-center pt-4">
@@ -229,3 +245,7 @@ let title = ref("Юрист по наследству");
   <MainFooter />
   
 </template>
+
+<script>
+
+</script>

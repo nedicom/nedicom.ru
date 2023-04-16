@@ -6,6 +6,7 @@ use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\LawyerController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\ImportController;
+use App\Http\Controllers\PostphoneController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Article;
 use Inertia\Inertia;
@@ -17,10 +18,13 @@ Route::get('/', function () {
     ]);
 })->name('Welcome');
 
+Route::post('/phone/send', [PostphoneController::class, 'postphone']);
+
 Route::get('/yurist-po-krymenergo', function () {
     return Inertia::render('Welcome', [
     ]);
 })->name('krymenergo');
+
 
 Route::get('/yurist-po-nasledstvu', function () {
     return Inertia::render('Nasledstvo', [
@@ -36,17 +40,17 @@ Route::get('/lawyers', [LawyerController::class, 'index'])
 Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
     ->name('lawyer');
 
+      
+
 
     Route::get('/articles/add', function () {
         return Inertia::render('Articles/Add');
     })->name('articles/add');
+
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/articles', 'index')->name('articles');
         Route::post('/articles/create', 'create')->name('articles/create');   
-        //Route::get('/articles/{id}', 'articleId')->name('articles/article'); for SEO the HFU were created
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
-        //Route::post('/tasks/{id}/edit', 'editTaskById')->name('editTaskById');
-        //Route::get('/tasks/{id}/delete', 'TaskDelete')->name('TaskDelete');
       });
 
     Route::get('/questions/add', function () {
@@ -58,8 +62,6 @@ Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
         Route::get('/questions/{url}', 'questionsURL')->name('questions/url');
       });
 
-   // Route::post('/articles/create', [ArticleController::class, 'create'])->name('articles/create');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -69,33 +71,6 @@ Route::middleware('auth')->group(function () {
 //import
 Route::get('import/', [ImportController::class, 'import']);
 
-//Route::resource('article', ArticleController::class);
-
-//Route::inertia('/article', 'AboutComponent');
-
-/*
-Route::get('/article', function () {
-    return Inertia('Article', [
-        'name' => '22',
-        'article' => Article::find(1),
-        //[ArticleController::class, 'index'],
-    ]);
-})->name('article');
-
-Route::get('/article/{article:id}', function (Article $article) {
-    return Inertia::render('Show', [
-        'article' => $article
-    ]);
-})->name('article.show');
-*/
-
-Route::get('article', [ArticleController::class, 'index'])
-    ->name('article');
-
-Route::get('article/{article}/edit', [ArticleController::class, 'edit'])
-    ->name('article.edit');
-
-Route::post('article', [ArticleController::class, 'create']);
 
 /*Route::get('test', [TestController::class, 'test'])
     ->name('test');*/
