@@ -18,7 +18,7 @@ Route::get('/', function () {
     ]);
 })->name('Welcome');
 
-Route::post('/phone/send', [PostphoneController::class, 'postphone'])->name('phone/send');
+Route::post('/yurist-po-krymenergo/send', [PostphoneController::class, 'postphone'])->name('yurist-po-krymenergo/send');
 
 Route::get('/yurist-po-krymenergo', function () {
     return Inertia::render('Welcome', [
@@ -56,7 +56,7 @@ Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
     Route::get('/questions/add', function () {
         return Inertia::render('Questions/Add');
     })->name('questions/add');
-      Route::controller(QuestionsController::class)->group(function () {
+    Route::controller(QuestionsController::class)->group(function () {
         Route::get('/questions', 'index')->name('questions');
         Route::post('/questions/post', 'post')->name('articles/post');
         Route::get('/questions/{url}', 'questionsURL')->name('questions/url');
