@@ -18,7 +18,7 @@ Route::get('/', function () {
     ]);
 })->name('Welcome');
 
-Route::post('/yurist-po-krymenergo/send', [PostphoneController::class, 'postphone'])->name('yurist-po-krymenergo/send');
+Route::post('/phone/send', [PostphoneController::class, 'postphone'])->name('phone/send');
 
 Route::get('/yurist-po-krymenergo', function () {
     return Inertia::render('Welcome', [

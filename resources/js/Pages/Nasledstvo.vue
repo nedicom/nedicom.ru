@@ -17,7 +17,7 @@ let form = reactive({
 });
 
 let submit = () => {
-  Inertia.post("/yurist-po-krymenergo/send", form);
+  Inertia.post("/phone/send", form);
 }
 </script>
 
