@@ -11,9 +11,14 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 
 
 defineProps({
-  article: "$string",
+  article: String,
 });
 </script>
+<style>
+.article h3{
+  font-size: 2rem;
+}
+</style>
 
 <template>
   <Head>
@@ -35,7 +40,7 @@ defineProps({
           <div class="py-12">
             <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="px-6 text-gray-900">{{ article.body }}</div>
+                <div class="px-6 text-gray-900 article" v-html="article.body"></div>
               </div>
             </div>
           </div>

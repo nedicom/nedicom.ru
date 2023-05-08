@@ -1,29 +1,16 @@
 <template> 
-    <div v-if="editor">
-        <div @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }">
-        bold
+    <div v-if="editor" class="flex gap-9 py-3">
+        <div @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }" class="py-1 px-2  text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
+        жирный
         </div>
-        <div @click="editor.chain().focus().toggleHeading({ level: 3 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }">
-        h3
-        </div>
-        <div @click="editor.chain().focus().toggleHeading({ level: 4 })" :class="{ 'is-active': editor.isActive('heading', { level: 4 }) }">
-        h4
-        </div>
-        <div @click="editor.chain().focus().toggleHeading({ level: 5 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 5 }) }">
-        h5
-        </div>
-        <div @click="editor.chain().focus().toggleHeading({ level: 6 }).run()" :class="{ 'is-active': editor.isActive('heading', { level: 6 }) }">
-        h6
+        <div @click="editor.chain().focus().toggleHeading({ level: 3 }).updateAttributes('heading', { color: 'pink'}).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class="py-1 px-2 text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
+        подзаголовок
         </div>
     </div>
 
     <editor-content :editor="editor" 
     class="
-                    form-control
-                    block
-                    w-full
-                    px-3
-                    py-1.5
+                    
                     text-base
                     font-normal
                     text-gray-700
@@ -36,18 +23,14 @@
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
-                    focus:outline-none
-                    
+                    focus:outline-none                    
                   "
+                  placeholder="Здесь Ваше интересное описание"
                   name="body"
-                  id=""
-                  rows="8"
                   />
 </template>
   
   <script>
-  
-
   import StarterKit from '@tiptap/starter-kit'
   import { Editor, EditorContent } from '@tiptap/vue-3'
   
@@ -113,8 +96,12 @@
 /* Basic editor styles */
 
 .ProseMirror {
+  min-height: 300px;
+  padding: 10px;  
+  
   > * + * {
-    margin-top: 0.75em;
+   // margin-top: 0.75em;
+    
   }
 
   ul,
@@ -122,13 +109,9 @@
     padding: 0 1rem;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    line-height: 1.1;
+  h3{
+    line-height: 2;
+    font-size: 2rem;
   }
 
   code {
