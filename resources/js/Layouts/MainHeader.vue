@@ -5,7 +5,7 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
 
 const showingNavigationDropdown = ref(false);
 </script>
@@ -60,8 +60,8 @@ const showingNavigationDropdown = ref(false);
                   Юристы
                 </NavLink>
                 <NavLink
-                  :href="route('lawyers')"
-                  :active="route().current('lawyers')"
+                  :href="route('uslugi')"
+                  :active="route().current('uslugi')"
                 >
                   Услуги
                 </NavLink>

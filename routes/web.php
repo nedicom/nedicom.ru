@@ -40,9 +40,11 @@ Route::get('/lawyers', [LawyerController::class, 'index'])
 Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
     ->name('lawyer');
 
+    Route::get('/uslugi', function () {
+        return Inertia::render('Uslugi', [
+        ]);
+    })->name('uslugi');
       
-
-
     Route::get('/articles/add', function () {
         return Inertia::render('Articles/Add');
     })->name('articles/add');

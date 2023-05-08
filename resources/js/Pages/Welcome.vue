@@ -40,10 +40,9 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
 
   <div class="min-h-screen">
     
-
-    <Header :ttl="title" />
-
     <MainHeader />
+
+    <Header :ttl="title" />    
 
     <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" />
 
@@ -56,37 +55,6 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
     <Address />
 
     <Practice />
-
-  
-
-    <Body>
-      <div class="flex h-96">
-        <div class="m-auto">
-          Платформа для поиска юристов, категорий дел, статей и ответов.
-          <a
-                    href="/yurist-po-nasledstvu"
-                    class="
-                      m-auto
-                      mt-12                      
-                      flex justify-center
-                      px-5
-                      py-6
-                      text-sm
-                      font-medium
-                      text-center text-white
-                      bg-blue-700
-                      rounded-lg
-                      focus:ring-4 focus:ring-blue-200
-                      dark:focus:ring-blue-900
-                      hover:bg-blue-800
-                    "
-                  >
-                    Юрист по нследству
-      </a>
-        </div>
-        
-      </div>
-    </Body>
 
     <MainFooter />
   </div>

@@ -251,7 +251,3 @@ let submit = () => {
   <MainFooter />
   
 </template>
-
-<script>
-
-</script>
