@@ -3,6 +3,7 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import Editor from '@/Components/Tiptap.vue'
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
@@ -113,35 +114,7 @@ let title = ref("Добавить статью");
                   placeholder="Здесь Ваше интересное описание, которое расскажет о чем статья. Его отображают поисковики, поэтому не забудьте парочку ключевых слов."
                 ></textarea>
 
-                <textarea
-                  v-model="form.body"
-                  class="
-                    h-50
-                    form-control
-                    mt-3
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700
-                    focus:bg-white
-                    focus:border-blue-600
-                    focus:outline-none
-                  "
-                  id=""
-                  name="body"
-                  rows="8"
-                  placeholder="Ваша идеальная статья начинается здесь..."
-                ></textarea>
+                <editor v-model="form.body"/>
 
                 <!--<input name="url" v-model="form.url" :placeholder="form.url"> -->
 

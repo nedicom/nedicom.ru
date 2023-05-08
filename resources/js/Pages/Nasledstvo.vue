@@ -41,14 +41,14 @@ let submit = () => {
             class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
             style="background-color: rgba(0, 0, 0, 0.6)">
 
-            <div class="h-full w-1/2 float-right">
+            <div class="h-full md:w-1/2 md:float-right">
               <div class="flex h-full items-center justify-center">            
                 <div class="text-white">
-                  <h2 class="mb-4 text-4xl font-semibold">Запись</h2>
-                  <h4 class="mb-6 text-xl font-semibold">на консультацию</h4>
-
+                  <h2 class="mb-4 text-4xl font-semibold">Адвокат</h2>
+                  <h4 class="mb-12 text-2xl font-semibold">Денисова <br>Екатерина Александровна</h4>
+                  <h2 class="mt-12 text-3xl font-semibold">Запись</h2>
+                  <h4 class="text-xl font-semibold">на консультацию</h4>
                   <div class="">
-                    <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white"> Ваш номер телефона для связи</h3>
                     <form @submit.prevent="submit" class="space-y-6">
                         <div>
                             <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">запись на консультацию</label>
@@ -79,16 +79,16 @@ let submit = () => {
         Берусь за дело, только если его можно выиграть
       </h1>
 
-      <div class="max-w-6xl mx-auto my-9 sm:px-6 lg:px-8 text-center">
+      <div class="max-w-6xl mx-auto md:my-9 sm:px-6 lg:px-8 text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-9">
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
-                  оспаривание наследства
+                  Оспаривание наследства
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  Оспаривание завещаний, дарственных, других договоров по мотивам заблуждения завещателя, нарушения процедуры, болезни и т.д.
+                  Оспаривание завещаний, дарственных, других договоров по различным мотивам
                 </p>
                 <Modalbutton />
               </div>
@@ -96,13 +96,13 @@ let submit = () => {
             <!-- card -->
 
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
-                  оформление недвижимости
+                  Оформление недвижимости
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  Если умерший не успел оформить самострой, потерял документы или не оформил аправа при жизни
+                  Если умерший не успел оформить самострой, потерял документы или не оформил права при жизни
                 </p>
                 <Modalbutton />
               </div>
@@ -110,13 +110,13 @@ let submit = () => {
             <!-- card -->
 
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
-                  установление родства
+                  Установление родства
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  Подтверждение факта родственных отношений для оформления наследства независимо от дальности родства
+                  Установление факта родственных отношений для оформления наследства
                 </p>
                 <Modalbutton />
               </div>
@@ -124,13 +124,13 @@ let submit = () => {
             <!-- card -->
 
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
                   Оформление отношений
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  При жизни 
+                  Рекомендации и документы для гарантий при оформлении имущества еще при жизни 
                 </p>
                 <Modalbutton />
               </div>
@@ -138,13 +138,13 @@ let submit = () => {
             <!-- card -->
 
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
-                  оспаривание завещания
+                  Ведение наследства
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  По мотивам заблуждения завещателя, нарушения процедуры, болезни и т.д.
+                  Сопровождение оформления у нотариуса, если у Вы находитесь далеко или у Вас нет времени
                 </p>
                 <Modalbutton />
               </div>
@@ -152,13 +152,13 @@ let submit = () => {
             <!-- card -->
 
             <!-- card -->
-            <div class="flex justify-center">
+            <div class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
-                  оспаривание завещания
+                  Иные случаи
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  По мотивам заблуждения завещателя, нарушения процедуры, болезни и т.д.
+                  Экзотические случаи вроде оформлени акций, соц. найма, криптовалюты и прочее
                 </p>
                 <Modalbutton />
               </div>
@@ -174,14 +174,14 @@ let submit = () => {
               В работе адвоката главное - репутация
             </h1>
             <div
-              class="relative overflow-hidden bg-cover bg-no-repeat my-9 p-12 text-center"
-              style="background-image: url('/storage/images/landing/nasledstvo/testimonials.jpg'); height: 966px">
+              class="relative overflow-hidden bg-cover bg-no-repeat my-9 p-12 text-center h-96"
+              style="background-image: url('/storage/images/landing/nasledstvo/testimonials.jpg');">
               <div
                 class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
                 style="background-color: rgba(0, 0, 0, 0.6)">
-                  <div class="flex h-full items-center flex justify-around">            
-                      <h2 class="mb-4 text-4xl font-semibold text-white">Яндекс карты</h2>
-                      <h2 class="mb-4 text-4xl font-semibold text-white">Авито</h2>                        
+                  <div class="flex h-full items-center flex justify-around grid grid-cols-1 md:grid-cols-2 gap-9">            
+                      <h2 class="m-4 text-4xl font-semibold text-white">Яндекс карты <p class="mt-4">4.6</p></h2>
+                      <h2 class="m-4 text-4xl font-semibold text-white">Авито <p class="mt-4"> 5.0</p></h2>                        
 
                     </div>
               </div>            
@@ -237,6 +237,13 @@ let submit = () => {
 </div>
 <!-- practice -->   
 
+          <!-- practice -->   
+
+          <h2 class="my-6 py-6 text-3xl font-semibold text-grey text-center">+7 978 8838 978</h2>
+          <div class="flex items-center justify-center"><p><svg class="svg-icon block h-9 w-auto fill-current text-gray-800" viewBox="0 0 20 20"><path d="M17.659,3.681H8.468c-0.211,0-0.383,0.172-0.383,0.383v2.681H2.341c-0.21,0-0.383,0.172-0.383,0.383v6.126c0,0.211,0.172,0.383,0.383,0.383h1.532v2.298c0,0.566,0.554,0.368,0.653,0.27l2.569-2.567h4.437c0.21,0,0.383-0.172,0.383-0.383v-2.681h1.013l2.546,2.567c0.242,0.249,0.652,0.065,0.652-0.27v-2.298h1.533c0.211,0,0.383-0.172,0.383-0.382V4.063C18.042,3.853,17.87,3.681,17.659,3.681 M11.148,12.87H6.937c-0.102,0-0.199,0.04-0.27,0.113l-2.028,2.025v-1.756c0-0.211-0.172-0.383-0.383-0.383H2.724V7.51h5.361v2.68c0,0.21,0.172,0.382,0.383,0.382h2.68V12.87z M17.276,9.807h-1.533c-0.211,0-0.383,0.172-0.383,0.383v1.755L13.356,9.92c-0.07-0.073-0.169-0.113-0.27-0.113H8.851v-5.36h8.425V9.807z"></path></svg></p></div>
+          <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">Симферополь, улица Долгоруковская, 7</h5>
+          <div class="flex items-center justify-center"><p><svg class="svg-icon block h-9 w-auto fill-current text-gray-800" viewBox="0 0 20 20"><path d="M17.659,3.681H8.468c-0.211,0-0.383,0.172-0.383,0.383v2.681H2.341c-0.21,0-0.383,0.172-0.383,0.383v6.126c0,0.211,0.172,0.383,0.383,0.383h1.532v2.298c0,0.566,0.554,0.368,0.653,0.27l2.569-2.567h4.437c0.21,0,0.383-0.172,0.383-0.383v-2.681h1.013l2.546,2.567c0.242,0.249,0.652,0.065,0.652-0.27v-2.298h1.533c0.211,0,0.383-0.172,0.383-0.382V4.063C18.042,3.853,17.87,3.681,17.659,3.681 M11.148,12.87H6.937c-0.102,0-0.199,0.04-0.27,0.113l-2.028,2.025v-1.756c0-0.211-0.172-0.383-0.383-0.383H2.724V7.51h5.361v2.68c0,0.21,0.172,0.382,0.383,0.382h2.68V12.87z M17.276,9.807h-1.533c-0.211,0-0.383,0.172-0.383,0.383v1.755L13.356,9.92c-0.07-0.073-0.169-0.113-0.27-0.113H8.851v-5.36h8.425V9.807z"></path></svg></p></div>
+          <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">Консультирование ведется только по предварительной записи</h5>
 
     </Body>
   

@@ -2,6 +2,7 @@
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
+import Mainbanner from "@/Layouts/Mainbanner.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import { ref } from "vue";
 
@@ -11,15 +12,23 @@ import { ref } from "vue";
 });*/
 
 let title = ref("Главная");
+
+let statusonimage = ref("Адвокатский кабинет");
+let nameonimage = ref("Мина Марк Анатольевич");
+
 </script>
 
 <template>
   <Head title="Добавить статью" />
 
   <div class="min-h-screen">
-    <MainHeader />
+    
 
     <Header :ttl="title" />
+
+    <MainHeader />
+
+    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" />
 
     <Body>
       <div class="flex h-96">
