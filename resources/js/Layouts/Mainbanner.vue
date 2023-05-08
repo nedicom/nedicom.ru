@@ -16,7 +16,7 @@ let submit = () => {
 }
 </script>
 
-<template >
+<template>
 <!-- main banner -->
     <div
     class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center mb-9 mt-3"

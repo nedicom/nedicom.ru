@@ -59,6 +59,12 @@ const showingNavigationDropdown = ref(false);
                 >
                   Юристы
                 </NavLink>
+                <NavLink
+                  :href="route('lawyers')"
+                  :active="route().current('lawyers')"
+                >
+                  Услуги
+                </NavLink>
               </div>
             </div>
 
