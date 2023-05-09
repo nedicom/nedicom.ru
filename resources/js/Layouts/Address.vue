@@ -1,9 +1,29 @@
 <template>
     <!-- address -->
-        <h2 class="my-6 py-6 text-3xl font-semibold text-grey text-center">+7 978 8838 978</h2>
-        <div class="flex items-center justify-center"><p><svg class="svg-icon block h-9 w-auto fill-current text-gray-800" viewBox="0 0 20 20"><path d="M17.659,3.681H8.468c-0.211,0-0.383,0.172-0.383,0.383v2.681H2.341c-0.21,0-0.383,0.172-0.383,0.383v6.126c0,0.211,0.172,0.383,0.383,0.383h1.532v2.298c0,0.566,0.554,0.368,0.653,0.27l2.569-2.567h4.437c0.21,0,0.383-0.172,0.383-0.383v-2.681h1.013l2.546,2.567c0.242,0.249,0.652,0.065,0.652-0.27v-2.298h1.533c0.211,0,0.383-0.172,0.383-0.382V4.063C18.042,3.853,17.87,3.681,17.659,3.681 M11.148,12.87H6.937c-0.102,0-0.199,0.04-0.27,0.113l-2.028,2.025v-1.756c0-0.211-0.172-0.383-0.383-0.383H2.724V7.51h5.361v2.68c0,0.21,0.172,0.382,0.383,0.382h2.68V12.87z M17.276,9.807h-1.533c-0.211,0-0.383,0.172-0.383,0.383v1.755L13.356,9.92c-0.07-0.073-0.169-0.113-0.27-0.113H8.851v-5.36h8.425V9.807z"></path></svg></p></div>
-        <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">Симферополь, улица Долгоруковская, 7</h5>
-        <div class="flex items-center justify-center"><p><svg class="svg-icon block h-9 w-auto fill-current text-gray-800" viewBox="0 0 20 20"><path d="M17.659,3.681H8.468c-0.211,0-0.383,0.172-0.383,0.383v2.681H2.341c-0.21,0-0.383,0.172-0.383,0.383v6.126c0,0.211,0.172,0.383,0.383,0.383h1.532v2.298c0,0.566,0.554,0.368,0.653,0.27l2.569-2.567h4.437c0.21,0,0.383-0.172,0.383-0.383v-2.681h1.013l2.546,2.567c0.242,0.249,0.652,0.065,0.652-0.27v-2.298h1.533c0.211,0,0.383-0.172,0.383-0.382V4.063C18.042,3.853,17.87,3.681,17.659,3.681 M11.148,12.87H6.937c-0.102,0-0.199,0.04-0.27,0.113l-2.028,2.025v-1.756c0-0.211-0.172-0.383-0.383-0.383H2.724V7.51h5.361v2.68c0,0.21,0.172,0.382,0.383,0.382h2.68V12.87z M17.276,9.807h-1.533c-0.211,0-0.383,0.172-0.383,0.383v1.755L13.356,9.92c-0.07-0.073-0.169-0.113-0.27-0.113H8.851v-5.36h8.425V9.807z"></path></svg></p></div>
-        <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">Консультирование ведется только по предварительной записи</h5>
+        <h2 class="my-6 py-6 text-3xl font-semibold text-grey text-center" id="address"><a href="tel:+79788838978">+7 978 8838 978</a></h2>
+        <div class="flex items-center justify-center">
+            <p>
+                <a href="tel:+79788838978">
+                    <img src="/storage/images/landing/main/icons8-iphone-se.gif">
+                </a>
+              </p>
+        </div>        
+        <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">Консультирование ведется только по предварительной записи</h5> 
+        <div class="flex items-center justify-center">
+            <p>
+                <a href="https://yandex.ru/maps/-/CCUkY0bIwD">  
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="48" height="48" viewBox="0 0 48 48">
+                        <linearGradient id="iu22Zjf0u3e5Ts0QLZZhJa_uzeKRJIGwbBY_gr1" x1="11.274" x2="36.726" y1="9.271" y2="34.723" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#d43a02"></stop><stop offset="1" stop-color="#b9360c"></stop></linearGradient><path fill="url(#iu22Zjf0u3e5Ts0QLZZhJa_uzeKRJIGwbBY_gr1)" d="M36.902,34.536C40.052,31.294,42,26.877,42,22c0-9.94-8.06-18-18-18S6,12.06,6,22	c0,4.877,1.948,9.294,5.098,12.536c0.018,0.019,0.03,0.04,0.048,0.059l0.059,0.059c0.047,0.048,0.094,0.095,0.142,0.142	l11.239,11.239c0.781,0.781,2.047,0.781,2.828,0l11.239-11.239c0.048-0.047,0.095-0.094,0.142-0.142l0.059-0.059	C36.873,34.576,36.885,34.554,36.902,34.536z"></path><radialGradient id="iu22Zjf0u3e5Ts0QLZZhJb" cx="24" cy="22.5" r="9.5" gradientUnits="userSpaceOnUse"><stop offset=".177"></stop><stop offset="1" stop-opacity="0"></stop></radialGradient><circle cx="24" cy="22.5" r="9.5" fill="url(#undefined)"></circle><circle cx="24" cy="22" r="8" fill="#f9f9f9"></circle><radialGradient id="iu22Zjf0u3e5Ts0QLZZhJc" cx="23.842" cy="43.905" r="13.637" gradientUnits="userSpaceOnUse"><stop offset=".177"></stop><stop offset="1" stop-opacity="0"></stop></radialGradient><path fill="url(#undefined)" d="M24,30c-4.747,0-8.935,2.368-11.467,5.982l10.052,10.052c0.781,0.781,2.047,0.781,2.828,0	l10.052-10.052C32.935,32.368,28.747,30,24,30z"></path><path fill="#de490d" d="M24,32c-4.196,0-7.884,2.157-10.029,5.42l8.615,8.615c0.781,0.781,2.047,0.781,2.828,0l8.615-8.615	C31.884,34.157,28.196,32,24,32z"></path>
+                    </svg>
+                </a>
+            </p>
+        </div>
+        <h5 class="my-6 py-6 text-2xl font-semibold text-grey text-center">
+            <a href="https://yandex.ru/maps/-/CCUkY0bIwD"> 
+                Респ. Крым, г. Симферополь, ул. Долгоруковская, 7                
+            </a>
+        </h5>
+ 
+    <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af656829d54430f3c7f23ae0313146d2525f75dfbaffa3e083f51d06d98a33614&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
     <!-- address -->
 </template>

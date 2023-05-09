@@ -44,6 +44,11 @@ Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
         return Inertia::render('Uslugi', [
         ]);
     })->name('uslugi');
+
+    Route::get('/policy', function () {
+        return Inertia::render('Policy', [
+        ]);
+    })->name('policy');
       
     Route::get('/articles/add', function () {
         return Inertia::render('Articles/Add');

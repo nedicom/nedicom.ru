@@ -15,11 +15,27 @@ import { ref } from "vue";
   canLogin: Boolean,
   canRegister: Boolean,
 });*/
+let screen = window.innerWidth;
+
+let mainbannerimg;
+  if (screen>1919){
+    mainbannerimg = ref("/storage/images/landing/main/all1920on600.jpg");
+    }
+    else if(screen>600){
+      mainbannerimg = ref("/storage/images/landing/main/all1280on800.jpg");
+    }
+    else{
+      mainbannerimg = ref("/storage/images/landing/main/all1600on900.jpg");
+    };
+
 
 let title = ref("Главная");
 
 let statusonimage = ref("Адвокатский кабинет");
 let nameonimage = ref("Мина Марк Анатольевич");
+
+
+
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
 let secondcardheader = ref("Семейные споры");
@@ -32,7 +48,6 @@ let fifthcardheader = ref("Имущественные споры");
 let fifthcardbody = ref("Сносы, сохранение в реконструированном виде, установление границ участков, перераспредление участков, признание прав");
 let sixthcardheader = ref("Все остальные");
 let sixthcardbody = ref("Если Вашего дела нет в списке, это не значит, что мы таким не занимаемся. Мы поможем в большинстве случаев");
-
 </script>
 
 <template>
@@ -42,17 +57,17 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
     
     <MainHeader />
 
-    <Header :ttl="title" />    
+    <Header :ttl="title" />  
 
-    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" />
+    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
+
+    <Address />
+
+    <Testimonials />
 
     <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
-
-    <Testimonials />
-
-    <Address />
 
     <Practice />
 

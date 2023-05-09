@@ -8,7 +8,7 @@ import { ref } from 'vue';
         </span>
         <ul class="flex flex-wrap items-center mt-3 text-sm text-gray-500 dark:text-gray-400 sm:mt-0">
             <li>
-                <a href="#" class="hover:underline">Юридическая информация</a>
+                <a href="/policy" class="hover:underline">Юридическая информация</a>
             </li>
         </ul>
     </footer>

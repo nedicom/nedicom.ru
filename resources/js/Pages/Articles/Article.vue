@@ -24,8 +24,6 @@ defineProps({
   <Head>
     <title>{{article.header}}</title>
     <meta name="description" :content="article.body" />
-    
-
   </Head>
 
   <MainHeader />
