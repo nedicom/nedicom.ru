@@ -21,7 +21,7 @@ let submit = () => {
 <!-- main banner -->
     <div
     class="relative overflow-hidden bg-cover bg-no-repeat p-12 text-center mb-9"
-    :style="{ backgroundImage: `url(${mainbannerimg})` , height: '600px'}"
+    :style="{ backgroundImage: `url({mainbannerimg})` , height: '600px'}"
     >
     <div
     class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
