@@ -2,30 +2,51 @@
     <!-- practice -->
         <h1 class="my-6 md:py-12 py-6 text-4xl font-semibold text-grey text-center">Делюсь успехами с Вами</h1>
 
-        <div id="custom-controls-gallery" class="relative w-full" data-carousel="slide">
+        <div id="indicators-carousel" class="relative w-full" data-carousel="slide">
             <!-- Carousel wrapper -->
-            <div class="relative h-96 overflow-hidden rounded-lg md:h-screen">
+            <div class="relative h-auto overflow-hidden rounded-lg h-screen">
                 <!-- Item 1 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+                    <div class="flex h-full md:flex-row flex-col">
+                        <div class="md:basis-1/2 h-full">
+                            <img src="/storage/images/landing/main/dec1.jpg" class="h-auto" alt="">
+                        </div>
+                        <div class="md:basis-1/2 h-full flex flex-wrap items-center justify-center">
+                            <div>                            
+                                <h3 class="text-3xl w-full p-5">Признали право на пенсию</h3>
+                                <p class="w-full p-5">Пенсионный Фонд нередко отказывает в назначении пенсии при достижении возраста. 
+                                    Как правило, причинами становится отсуствие стажа или необходимых документов. 
+                                В суде мы можем доказать не только наличие или отсуствие стажа, но установить принадлежность документов.
+                                Примечательно, что по нашим искам, суд назначает пенсию с момента обращения.
+                            </p>
+                            </div>  
+                        </div>
+                    </div> 
                 </div>
+
                 <!-- Item 2 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
-                    <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
-                </div>
-                <!-- Item 3 -->
                 <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
+                    <div class="flex h-full md:flex-row flex-col">
+                        <div class="md:basis-1/2 h-full">
+                            <img src="/storage/images/landing/main/dec1.jpg" class="h-auto" alt="">
+                        </div>
+                        <div class="md:basis-1/2 h-full flex flex-wrap items-center justify-center">
+                            <div>                            
+                                <h3 class="text-3xl w-full p-5">Признали право на пенсию</h3>
+                                <p class="w-full p-5">Пенсионный Фонд нередко отказывает в назначении пенсии при достижении возраста. 
+                                    Как правило, причинами становится отсуствие стажа или необходимых документов. 
+                                В суде мы можем доказать не только наличие или отсуствие стажа, но установить принадлежность документов.
+                                Примечательно, что по нашим искам, суд назначает пенсию с момента обращения.
+                            </p>
+                            </div>  
+                        </div>
+                    </div> 
                 </div>
-                <!-- Item 4 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
-                </div>
-                <!-- Item 5 -->
-                <div class="hidden duration-700 ease-in-out" data-carousel-item>
-                    <img src="/storage/images/landing/nasledstvo/court1.jpg" class="absolute block max-w-full h-auto -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="">
-                </div>
+               
             </div>
+
+
+
             <div class="flex justify-center items-center pt-4">
                 <button type="button" class="flex justify-center items-center mr-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev>
                     <span class="text-gray-400 hover:text-gray-900 dark:hover:text-white group-focus:text-gray-900 dark:group-focus:text-white">

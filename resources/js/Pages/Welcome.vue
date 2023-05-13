@@ -72,5 +72,6 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
     <Practice />
 
     <MainFooter />
+    
   </div>
 </template>
