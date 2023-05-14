@@ -4,11 +4,10 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\LawyerController;
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PostphoneController;
 use Illuminate\Support\Facades\Route;
-use App\Models\Article;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -31,9 +30,10 @@ Route::get('/yurist-po-nasledstvu', function () {
     ]);
 })->name('Nasledstvo');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard');
+    });
+
 
 Route::get('/lawyers', [LawyerController::class, 'index'])
     ->name('lawyers');
@@ -58,6 +58,7 @@ Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
         Route::get('/articles', 'index')->name('articles');
         Route::post('/articles/create', 'create')->name('articles/create');   
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
+        Route::get('/articles/{id}/delete', 'delete')->name('article.delete');
       });
 
     Route::get('/questions/add', function () {

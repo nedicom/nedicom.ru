@@ -80,9 +80,10 @@ class ArticleController extends Controller
      * @param  \App\Models\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Article $article)
+    public function delete(int $id)
     {
-        //
+        Article::find($id)->delete();
+        return redirect()->back()->with('success', 'Все в порядке, статья удалена');
     }
 
     //import
