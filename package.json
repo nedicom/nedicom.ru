@@ -34,6 +34,7 @@
         "@tiptap/vue-3": "^2.0.3",
         "flowbite": "^1.6.3",
         "nodemon": "^2.0.20",
-        "vue-meta": "^2.4.0"
+        "vue-meta": "^2.4.0",
+        "vue-yandex-metrika": "^1.8.3"
     }
 }
