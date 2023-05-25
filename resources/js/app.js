@@ -8,7 +8,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import 'flowbite';
-import VueYandexMetrika from 'vue-yandex-metrika'  
+import VueYandexMetrika from 'vue-yandex-metrika'
 
 createInertiaApp({
     title: (title) => `${title}`,
@@ -18,14 +18,36 @@ createInertiaApp({
             .use(plugin)
             .use(CKEditor)
             .use(ZiggyVue, Ziggy)
-            .mount(el)
             .use(VueYandexMetrika, {
                 id: 24900584,
-                router: router,
                 env: process.env.NODE_ENV
-                // other options
-            });
+            })
+            .mount(el);
     },
 });
 
 InertiaProgress.init({ color: '#4B5563'});
+
+export default {
+    mounted() {
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () {
+                (m[i].a = m[i].a || []).push(arguments);
+            };
+            m[i].l = 1 * new Date();
+            for (var j = 0; j < document.scripts.length; j++) {
+                if (document.scripts[j].src === r) {
+                    return;
+                }
+            }
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(24900584, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    },
+}
