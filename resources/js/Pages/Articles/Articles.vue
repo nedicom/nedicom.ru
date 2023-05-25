@@ -55,7 +55,7 @@ let title = ref("Статьи");
                   {{ articles.header }}
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  {{ articles.body }}
+                  {{ articles.description }}
                 </p>
                 <a
                   :href="'articles/' + articles.url"
