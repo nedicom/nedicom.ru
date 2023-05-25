@@ -19,7 +19,6 @@ let submit = () => {
   Inertia.post("/articles/create", form);
 };
 
-//import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 let title = ref("Добавить статью");
 </script>
 
@@ -40,6 +39,7 @@ let title = ref("Добавить статью");
                 <textarea
                   v-model="form.header"
                   @input="onInputheader"
+                  spellcheck="true"
                   maxlength="55"
                   class="
                     form-control
@@ -86,6 +86,7 @@ let title = ref("Добавить статью");
                 <textarea
                   v-model="form.description"
                   @input="onInputdesc"
+                  spellcheck="true"
                   class="
                     h-20
                     form-control
@@ -115,13 +116,6 @@ let title = ref("Добавить статью");
                 ></textarea>
 
                 <editor v-model="form.body"/>
-
-                <!--<input name="url" v-model="form.url" :placeholder="form.url"> -->
-
-                <!-- <div id="ckeditorwrap">
-                            <ckeditor tag-name="textarea" 
-                            :editor="editor" name="body" v-model="form.body" :config="editorConfig"></ckeditor>
-                        </div>-->
 
                 <button
                   type="submit"
