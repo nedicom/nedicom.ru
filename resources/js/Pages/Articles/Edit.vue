@@ -138,7 +138,7 @@ let title = ref("Редактировать статью");
                     hover:bg-blue-800
                   "
                 >
-                  Опубликовать
+                  Обновить
                 </button>
               </form>
             </div>

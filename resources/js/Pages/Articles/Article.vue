@@ -21,6 +21,7 @@ defineProps({
 .article ul,
   ol {
     padding: 0 1rem;
+    margin-left: 1rem;
     list-style-type: square;
   }
 </style>
