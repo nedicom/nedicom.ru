@@ -18,6 +18,11 @@ defineProps({
 .article h3{
   font-size: 2rem;
 }
+.article ul,
+  ol {
+    padding: 0 1rem;
+    list-style-type: square;
+  }
 </style>
 
 <template>

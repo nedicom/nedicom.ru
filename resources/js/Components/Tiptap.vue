@@ -1,10 +1,13 @@
 <template> 
     <div v-if="editor" class="flex gap-9 py-3">
         <div @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }" class="py-1 px-2  text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
-        жирный
+          жирный
         </div>
-        <div @click="editor.chain().focus().toggleHeading({ level: 3 }).updateAttributes('heading', { color: 'pink'}).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class="py-1 px-2 text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
-        подзаголовок
+        <div @click="editor.chain().focus().toggleHeading({ level: 3 }).updateAttributes('heading', { color: 'pink'}).run()" :class="{ 'is-active': editor.isActive('heading', { level: 3 }) }" class="py-1 px-2 text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+          подзаголовок
+        </div>
+        <div @click="editor.chain().focus().toggleBulletList().run()" :class="{ 'is-active': editor.isActive('bulletList') }" class="py-1 px-2  text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+          список
         </div>
     </div>
 
@@ -107,6 +110,7 @@
   ul,
   ol {
     padding: 0 1rem;
+    list-style-type: square;
   }
 
   h3{
