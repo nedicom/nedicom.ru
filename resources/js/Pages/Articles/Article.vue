@@ -37,7 +37,9 @@ defineProps({
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="py-12">
             <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
+              
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
                 <div class="px-6 text-gray-900 article" v-html="article.body"></div>
               </div>
             </div>

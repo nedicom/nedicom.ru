@@ -1,4 +1,4 @@
-<script setup>
+  <script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
@@ -9,37 +9,44 @@ import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import { reactive } from "vue";
 
-let form = reactive({
-  header: "",
-  description: "",
-  body: "",
+let set = defineProps({
+  article: String,
 });
 
-let submit = () => {
-  Inertia.post("/articles/create", form);
-};
+let form = reactive({
+  header: set.article.header,
+  description: set.article.description,
+  body: set.article.body,
+  id: set.article.id,
+});
 
-//import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-let title = ref("Добавить статью");
+function submit() {
+  Inertia.post("/articles/{url}/update", form);
+}
+
+let title = ref("Редактировать статью");
+
 </script>
 
 <template>
-  <Head title="Добавить статью" />
+  <Head title="Редактировать статью" />
 
   <MainHeader />
 
   <Header :ttl="title" />
 
   <Body>
-    <div class="bg-white py-12">
+    <div class="bg-white py-12">   
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="flex justify-start p-5">
-            <div class="mb-3 xl:w-3/6">
-              <form @submit.prevent="submit" class="">
+            <div class="mb-3 xl:w-3/6">          
+              <form @submit.prevent="submit">
+                <input v-model="form.id" class="invisible">         
                 <textarea
-                  v-model="form.header"
+                  v-model="form.header"                                
                   @input="onInputheader"
+                  name="header"
                   maxlength="55"
                   class="
                     form-control
@@ -60,10 +67,8 @@ let title = ref("Добавить статью");
                     focus:bg-white
                     focus:border-blue-600
                     focus:outline-none
-                  "
-                  id=""
-                  rows="2"
-                  placeholder="Тут Ваш прекрасный Заголовок. Задумайтесь, что в нем зацепит внимание пользователя"
+                  "                  
+                  rows="2"      
                 ></textarea>
                 <div
                   class="
@@ -83,8 +88,9 @@ let title = ref("Добавить статью");
                 <p class="text-xs text-gray-900 dark:text-white">
                   Символов: {{ wordscounter }}
                 </p>
-                <textarea
-                  v-model="form.description"
+                <textarea  
+                  v-model="form.description" 
+                  name="description"          
                   @input="onInputdesc"
                   class="
                     h-20
@@ -108,22 +114,13 @@ let title = ref("Добавить статью");
                     focus:border-blue-600
                     focus:outline-none
                   "
-                  id=""
-                  name="description"
                   rows="3"
-                  placeholder="Здесь Ваше интересное описание, которое расскажет о чем статья. Его отображают поисковики, поэтому не забудьте парочку ключевых слов."
-                ></textarea>
+                 ></textarea>
 
                 <editor v-model="form.body"/>
-
-                <!--<input name="url" v-model="form.url" :placeholder="form.url"> -->
-
-                <!-- <div id="ckeditorwrap">
-                            <ckeditor tag-name="textarea" 
-                            :editor="editor" name="body" v-model="form.body" :config="editorConfig"></ckeditor>
-                        </div>-->
-
+                
                 <button
+                  
                   type="submit"
                   class="
                     my-5
@@ -221,10 +218,9 @@ let title = ref("Добавить статью");
 
 <script>
 export default {
-  //?export object to DOM??
   data() {
     return {
-      //retirning value or what?
+      content: '<p>A Vue.js wrapper component for tiptap to use <code>v-model</code>.</p>',    
       yaheader: "Заголовок идеальной статьи в Яндексе. До 55 символов", //yaheader is variable for ???
       yabody:
         "Описание идеальной статьи в Яндексе. Яндекс любит краткое описание до 160 символов на компьютере, и до 80 символов наэкране мобильного.",
@@ -238,7 +234,6 @@ export default {
   },
   methods: {
     onInputheader(e) {
-      //event, what is e
       (this.yaheader = this.gooheader = e.target.value), //this keyword refers to an object, yaheader - method
         (this.wordscounter = this.yaheader.length);
       if (this.yaheader.length <= 50) {
@@ -248,11 +243,9 @@ export default {
         this.url = e.target.value;
       }
     },
-
     onInputdesc(e) {
       (this.yabody = e.target.value), (this.goobody = e.target.value);
     },
   },
 };
 </script>
-    

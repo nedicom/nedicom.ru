@@ -41,16 +41,35 @@ class ArticleController extends Controller
         return redirect()->route('articles/url', $url);
     }
 
-    public function edit(Article $article)
+    public function edit(string $url)
     {
-        return Inertia::render('article/Edit', [
+        return Inertia::render('Articles/Edit', [
+            'article' => Article::where('url', '=', $url)->first(),
+        ],  
+    );
+    }
+
+    public function update(Request $request)
+    {   
+        $id = $request->id;
+        $article = Article::find($id);
+        $article->header = $request->header;
+        $article->description = $request->description;
+        $article->body = $request->body;
+        $url = $article->url;
+        $article->save();
+        return redirect()->route('articles/url', $url);     
+    }
+        
+        
+        /*return Inertia::render('article/Edit', [
             'article' => [
                 'id' => $article->id,
                 'header' => $article->header,
                 'body' => $article->body,
             ],
-        ]);
-    }
+        ]);*/
+    
 
     public function store(StoreArticleRequest $request)
     {
@@ -67,11 +86,6 @@ class ArticleController extends Controller
         return Inertia::render('Articles/Article', [
             'article' => Article::where('url', '=', $url)->first(),
         ]);
-    }
-
-    public function update(UpdateArticleRequest $request, Article $article)
-    {
-        //
     }
 
     /**

@@ -56,7 +56,9 @@ Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
 
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/articles', 'index')->name('articles');
-        Route::post('/articles/create', 'create')->name('articles/create');   
+        Route::post('/articles/create', 'create')->name('articles/create');
+        Route::get('/articles/{url}/edit', 'edit')->name('articles.edit');
+        Route::post('/articles/{url}/update', 'update')->name('articles.update');   
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
         Route::get('/articles/{id}/delete', 'delete')->name('article.delete');
       });

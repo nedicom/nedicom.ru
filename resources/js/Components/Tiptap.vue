@@ -8,8 +8,9 @@
         </div>
     </div>
 
-    <editor-content :editor="editor" 
-    class="
+    <editor-content :editor="editor"
+    name="body" 
+    class="form-control
                     
                     text-base
                     font-normal
@@ -26,9 +27,8 @@
                     focus:outline-none                    
                   "
                   placeholder="Здесь Ваше интересное описание"
-                  name="body"
                   />
-</template>
+  </template>
   
   <script>
   import StarterKit from '@tiptap/starter-kit'
