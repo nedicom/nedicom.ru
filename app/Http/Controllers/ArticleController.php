@@ -59,17 +59,7 @@ class ArticleController extends Controller
         $url = $article->url;
         $article->save();
         return redirect()->route('articles/url', $url);     
-    }
-        
-        
-        /*return Inertia::render('article/Edit', [
-            'article' => [
-                'id' => $article->id,
-                'header' => $article->header,
-                'body' => $article->body,
-            ],
-        ]);*/
-    
+    }    
 
     public function store(StoreArticleRequest $request)
     {
@@ -85,6 +75,7 @@ class ArticleController extends Controller
     public function articleURL($url){ 
         return Inertia::render('Articles/Article', [
             'article' => Article::where('url', '=', $url)->first(),
+            'user' => Auth::user(),
         ]);
     }
 

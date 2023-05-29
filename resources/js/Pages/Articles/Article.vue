@@ -10,10 +10,13 @@ import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 
 
-defineProps({
+let vars = defineProps({
   article: String,
+  user: String,
 });
 </script>
+
+
 <style>
 .article h3{
   font-size: 2rem;
@@ -45,7 +48,12 @@ defineProps({
             <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
               
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                <div v-if="vars.user.id == article.userid" >
+                  <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                </div>
+                <div v-else>
+                  <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Автор статьи - {{ article.userid }}</a>
+                </div>
                 <div class="px-6 text-gray-900 article" v-html="article.body"></div>
               </div>
             </div>
@@ -63,5 +71,4 @@ defineProps({
   <Modal />
   <MainFooter />
 </template>
-
 

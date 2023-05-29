@@ -1,4 +1,4 @@
-  <script setup>
+<script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
@@ -40,12 +40,13 @@ let title = ref("Редактировать статью");
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="flex justify-start p-5">
-            <div class="mb-3 xl:w-3/6">          
+            <div class="mb-3 xl:w-3/6">    
               <form @submit.prevent="submit">
                 <input v-model="form.id" class="invisible">         
                 <textarea
                   v-model="form.header"                                
                   @input="onInputheader"
+                  spellcheck="true"
                   name="header"
                   maxlength="55"
                   class="
@@ -89,9 +90,9 @@ let title = ref("Редактировать статью");
                   Символов: {{ wordscounter }}
                 </p>
                 <textarea  
-                  v-model="form.description" 
-                  name="description"          
+                  v-model="form.description"          
                   @input="onInputdesc"
+                  spellcheck="true"
                   class="
                     h-20
                     form-control
@@ -117,7 +118,7 @@ let title = ref("Редактировать статью");
                   rows="3"
                  ></textarea>
 
-                <editor v-model="form.body"/>
+                <editor spellcheck="true" v-model="form.body"/>
                 
                 <button
                   
