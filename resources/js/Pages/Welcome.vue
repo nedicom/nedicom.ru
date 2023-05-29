@@ -22,7 +22,7 @@ let mainbannerimg;
     mainbannerimg = ref("/storage/images/landing/main/all1920on600.jpg");
     }
     else if(screen>600){
-      mainbannerimg = ref("/storage/images/landing/main/all1280on800.jpg");
+      mainbannerimg = ref("/storage/images/landing/main/all1280on600.jpg");
     }
     else{
       mainbannerimg = ref("/storage/images/landing/main/all1600on900.jpg");
