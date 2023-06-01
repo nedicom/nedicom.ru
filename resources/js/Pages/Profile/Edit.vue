@@ -3,18 +3,16 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import DeleteUserForm from "./Partials/DeleteUserForm.vue";
 import UpdateImageForm from "./Partials/UpdateImageForm.vue";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
-import Cropper from "@/Components/Cropper.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 
 defineProps({
   mustVerifyEmail: Boolean,
   status: String,
+  imgurl: String,
 });
 </script>
 
@@ -34,8 +32,11 @@ defineProps({
           />
         </div>
 
+        
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-          <UpdateImageForm class="max-w-xl" />
+          <UpdateImageForm 
+          :imgurl="imgurl"
+          class="w-full" />
         </div>
 
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">

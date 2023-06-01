@@ -1,62 +1,129 @@
 <script setup>
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
+
+import { Inertia } from "@inertiajs/inertia";
 import { Cropper } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
+defineProps({
+  imgurl: String,
+});
+
 </script>
 
 <template>
+<div class="inline-grid grid-cols-2 gap-4">
+  
+  <div id="crop" class="w-full">
+    <h2 class="text-lg font-medium text-gray-900">Обложка на вашей странице</h2>
 
-  <form action="imagepost" method="POST" class="mt-6 space-y-6">
-
-      <cropper
-      :src="img"
-      @change="change"
-    />
-
-    <InputLabel for="userimage" value="Ваше сногсшибательное изображение" />
-    <input type="file" name="userimage" id="userimage" accept="image/*" @change="onChange" />
-    <div id="preview">
-      <img v-if="item.imageUrl" :src="item.imageUrl" 
-      class="mx-auto mb-4 w-32 rounded-lg"
-    alt="Avatar"
+      <InputLabel value="Ваше новое изображение" />
+      <div class="my-5">
+        <button 
+        class="button mr-5  inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+        @click="$refs.file.click()">
+          <input
+            type="file"
+            ref="file"
+            accept=".jpg, .jpeg"
+            @change="uploadImage($event)"
+          />
+          Загрузить
+        </button> 
+        <button 
+        class="button inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+        @click="cropImage">Сохранить</button>
+      </div>
+      <cropper ref="cropper" class="cropper" 
+      :src="image.src"
+      :stencil-props="{
+        handlers: {eastSouth: true,},
+        movable: true,
+        resizable: true,
+        aspectRatio: 2/1,
+      }"
+        image-restriction="stencil" 
       />
 
-    </div>
-    <div class="flex items-center gap-4">
-                <PrimaryButton>Сохранить</PrimaryButton>
-            </div>
 
-  </form>
-  </template>
+  </div>
+  <div class="w-full ">
+    <InputLabel value="Текущее изображение" />
+    <div class="flex h-full w-full justify-center items-center">  
+    <img
+      :src="imgurl"
+      alt="Avatar" 
+    />
+    </div>
+  </div>
+</div>
+
+
+</template>
   
   
   <script>
-  
-  export default {
-    components: {
-		Cropper,
-	},
-    data() {
-      return {
-        img: null,
-        item:{
-            //...
-            image : null,
-            imageUrl: null
+export default {
+  name: "test",
+  data() {
+    return {
+      image: {
+        src: null,
+        type: "image/jpg",
+      },
+    };
+  },
+  methods: {
+    cropImage() {
+      const {canvas} = this.$refs.cropper.getResult();
+      if (canvas) {
+				const form = new FormData();
+				canvas.toBlob(blob => {
+					form.append('file', blob, 'profileimg');
+          Inertia.post("/imagepost", form);
+				});
+			}
+    },
+    uploadImage(event) {
+      /// Reference to the DOM input element
+      const { files } = event.target;
+      // Ensure that you have a file before attempting to read it
+      if (files && files[0]) {
+        // 1. Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
+        if (this.image.src) {
+          URL.revokeObjectURL(this.image.src);
         }
+        // 2. Create the blob link to the file to optimize performance:
+        const blob = URL.createObjectURL(files[0]);
+
+        // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:
+        this.image = {
+          src: blob,
+          type: files[0].type,
+        };
       }
     },
-    methods: {
-      change({ coordinates, canvas }) {
-			console.log(coordinates, canvas);
-		},
-      onChange(e) {
-        const file = e.target.files[0]
-        this.image = file
-        this.item.imageUrl = URL.createObjectURL(file)
-        this.img = URL.createObjectURL(file)
-      },   
+  },
+  destroyed() {
+    // Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
+    if (this.image.src) {
+      URL.revokeObjectURL(this.image.src);
     }
-  } 
-  </script>
+  },
+  components: {
+    Cropper,
+  },
+};
+</script>
+
+<style lang="scss">
+.cropper {
+  height: 400px;
+  width: 100%;
+}
+
+.button 
+  input {
+    display: none;
+  }
+
+</style>
