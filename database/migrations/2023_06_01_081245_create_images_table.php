@@ -13,16 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('images', function (Blueprint $table) {
-            $table->id();
-            $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->string('name')->nullable();
-            $table->string('file_path')->nullable();
-            $table->string('ext')->nullable();
-            $table->integer('size')->nullable();
-            $table->timestamps();
-        });
+        if (Schema::hasColumn('images','user_id')) {
+            // The "users" table exists and has an "email" column...
+        }
+        else{
+            Schema::create('images', function (Blueprint $table) {
+                $table->id();
+                $table->integer('user_id');
+                $table->foreign('user_id')->references('id')->on('users');
+                $table->string('name')->nullable();
+                $table->string('file_path')->nullable();
+                $table->string('ext')->nullable();
+                $table->integer('size')->nullable();
+                $table->timestamps();
+            });
+        }
 
         Schema::table('users', function (Blueprint $table) {
             $table->string('file_path')->default('/storage/images/landing/main/default.webp');

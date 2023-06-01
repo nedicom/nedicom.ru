@@ -13,8 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
+        
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('isadmin')->default(0);
+            if (Schema::hasColumn('users','isadmin')) {
+                // The "users" table exists and has an "email" column...
+            }
+            else{
+                $table->boolean('isadmin')->default(0);
+            }
+            
         });
     }
 
