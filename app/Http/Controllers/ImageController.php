@@ -56,7 +56,7 @@ class ImageController extends Controller
                 $imgModel->save();
 
                 $user = User::find(Auth::user()->id);
-                $user->image_url = $newfilepath;
+                $user->file_path = $newfilepath;
                 $user->save();
                 //  'storage/'.$filePath.'/'.$fileName
                 //  '/public/'.$filePath.'/'.$fileName
