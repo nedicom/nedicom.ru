@@ -20,7 +20,7 @@ class ProfileController extends Controller
     {
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
-            'imgurl' => Auth::user()->image_url,
+            'imgurl' => Auth::user()->file_path,
             'status' => session('status'),
         ]);
     }
