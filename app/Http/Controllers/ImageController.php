@@ -35,13 +35,7 @@ class ImageController extends Controller
                
                 $fileName = time().'_'.$req->file->getClientOriginalName();
                 $filePath = 'usr/'.Auth::user()->id.'/images';
-
-
-
-                $fullPath = '/storage/' . $filePath.'/'.$fileName;
-
-                
-
+               
                 $req->file('file')->storeAs($filePath, $fileName, 'public');
 
                 $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);

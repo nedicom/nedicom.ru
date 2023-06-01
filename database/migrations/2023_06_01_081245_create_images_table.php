@@ -23,6 +23,11 @@ return new class extends Migration
             $table->integer('size')->nullable();
             $table->timestamps();
         });
+
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('file_path')->default('/storage/images/landing/main/default.webp');
+            
+        });
     }
 
     /**

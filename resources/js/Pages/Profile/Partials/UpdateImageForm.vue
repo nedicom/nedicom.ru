@@ -35,6 +35,7 @@ defineProps({
       </div>
       <cropper ref="cropper" class="cropper" 
       :src="image.src"
+      :resizeImage="{ wheel: false }"
       :stencil-props="{
         handlers: {eastSouth: true,},
         movable: true,
