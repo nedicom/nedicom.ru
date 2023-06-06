@@ -38,7 +38,7 @@ Route::get('/yurist-po-nasledstvu', function () {
 
 Route::get('/lawyers', [LawyerController::class, 'index'])
     ->name('lawyers');
-Route::get('/lawyers/{url}', [LawyerController::class, 'lawyer'])
+Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
     ->name('lawyer');
 
     Route::get('/uslugi', function () {

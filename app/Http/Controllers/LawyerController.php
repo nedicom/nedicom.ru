@@ -18,9 +18,9 @@ class LawyerController extends Controller
         ]);
     }
 
-     public function lawyer($url){ 
+     public function lawyer($id){ 
         return Inertia::render('Lawyers/Lawyer', [
-            'lawyer' => User::where('id', '=', $url)->first(),
+            'lawyer' => User::where('id', '=', $id)->first(),
         ]);
     }
 

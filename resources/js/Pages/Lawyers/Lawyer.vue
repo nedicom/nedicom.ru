@@ -2,55 +2,83 @@
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
-import Sidebaraction from "@/Layouts/Sidebaraction.vue";
+import Mainbanner from "@/Layouts/Mainbanner.vue";
+import Casecard from "@/Layouts/Casecard.vue";
+import Testimonials from "@/Layouts/Testimonials.vue";
+import Practice from "@/Layouts/Practice.vue";
+import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Modal from '@/Components/Modal.vue';
-import TailwindModal from '@/Components/TailwindModal.vue';
-import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
+import { ref } from "vue";
 
+/*defineProps({
+  canLogin: Boolean,
+  canRegister: Boolean,
+});*/
 
-defineProps({
+let set = defineProps({
   lawyer: "$string",
 });
+
+let screen = window.innerWidth;
+
+let mainbannerimg;
+  if (screen>1919){
+    mainbannerimg = ref(`/${set.lawyer.file_path}`);
+    }
+    else if(screen>600){
+      mainbannerimg = ref(`/${set.lawyer.file_path}`);
+    }
+    else{
+      mainbannerimg = ref(`/${set.lawyer.file_path}`);
+    };
+
+
+let title = ref(set.lawyer.name);
+
+let statusonimage = ref("Юрист сайта");
+let nameonimage = ref(set.lawyer.name);
+
+
+
+let firstcardheader = ref("Наследственные дела");
+let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
+let secondcardheader = ref("Семейные споры");
+let secondcardbody = ref("Раздел имущества, признание личной собственностью, установление отцовства, порядок общения, алименты");
+let thirdcardheader = ref("Юрдическое обслуживание");
+let thirdcardbody = ref("Сопровождение и защита бизнеса от уголовной, налоговой и корпоративных споров до проверки контрагентов и ");
+let fourthcardheader = ref("Пенсионные споры");
+let fourthcardbody = ref("Если не назначили пенсию или платят меньше, чем должны. Признание права на трудовой стаж, перерасчет, расчет");
+let fifthcardheader = ref("Имущественные споры");
+let fifthcardbody = ref("Сносы, сохранение в реконструированном виде, установление границ участков, перераспредление участков, признание прав");
+let sixthcardheader = ref("Все остальные");
+let sixthcardbody = ref("Если Вашего дела нет в списке, это не значит, что мы таким не занимаемся. Мы поможем в большинстве случаев");
 </script>
 
 <template>
-  <Head>
-    <title>{{lawyer.name}}</title>
-    <meta name="description" :content="lawyer.email" />
+  <Head title="Адвокат Симферополь" />
+
+  <div class="min-h-screen">
     
+    <MainHeader />
 
-  </Head>
+    <Header :ttl="title" />  
 
-  <MainHeader />
+    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
 
-  <Header :ttl="lawyer.name" />
+    <Address />
 
-  <Body>
-    <div class="py-6 flex justify-start">
+    <Testimonials />
 
-      <div class="max-w-5xl sm:px-6 lg:px-4">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="py-12">
-            <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
-              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="px-6 text-gray-900">{{ lawyer.email }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
+    :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
+    :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
-      
-      
-    </div>
-  </Body>
+    <Practice />
 
-  <Sidebaraction />
-  <TailwindModal />
-  <Modal />
-  <MainFooter />
+    <MainFooter />
+    
+  </div>
 </template>
 
 
