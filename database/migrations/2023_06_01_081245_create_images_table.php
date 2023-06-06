@@ -19,7 +19,7 @@ return new class extends Migration
         else{
             Schema::create('images', function (Blueprint $table) {
                 $table->id();
-                $table->integer('user_id');
+                $table->unsignedBigInteger('user_id');
                 $table->foreign('user_id')->references('id')->on('users');
                 $table->string('name')->nullable();
                 $table->string('file_path')->nullable();
@@ -29,9 +29,8 @@ return new class extends Migration
             });
         }
 
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('file_path')->default('/storage/images/landing/main/default.webp');
-            
+        Schema::table('users', function (Blueprint $table) {            
+            $table->string('file_path')->default('/storage/images/landing/main/default.webp');                       
         });
     }
 
@@ -43,5 +42,9 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('images');
+            Schema::table('users', function (Blueprint $table) {
+                $table->dropColumn('file_path');
+            });
     }
+    
 };

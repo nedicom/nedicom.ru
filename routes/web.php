@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PostphoneController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\UslugiController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -35,33 +36,44 @@ Route::get('/yurist-po-nasledstvu', function () {
         Route::get('/dashboard', 'index')->name('dashboard');
     });
 
-
 Route::get('/lawyers', [LawyerController::class, 'index'])
     ->name('lawyers');
 Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
     ->name('lawyer');
 
-    Route::get('/uslugi', function () {
-        return Inertia::render('Uslugi', [
-        ]);
-    })->name('uslugi');
+
+
+   
+
+    Route::middleware('auth')->group(function () {
+        Route::post('/uslugi/post', [UslugiController::class, 'create'])->name('uslugi.post');
+    });
+
+    Route::controller(UslugiController::class)->group(function () {
+        Route::get('/uslugi', 'index')->name('uslugi');
+        Route::get('/uslugi/{url}', 'show')->name('uslugi.url');
+
+            Route::get('/uslugiadd', 'formadd')->name('uslugi.add');
+            Route::post('/uslugi/create', 'create')->name('uslugi.create');
+            Route::get('/uslugi/{url}/edit', 'edit')->name('uslugi.edit');
+            Route::post('/uslugi/{url}/update', 'update')->name('uslugi.update');          
+            Route::get('/uslugi/{url}/delete', 'delete')->name('uslugi.delete'); 
+      });
 
     Route::get('/policy', function () {
         return Inertia::render('Policy', [
         ]);
     })->name('policy');
       
-    Route::get('/articles/add', function () {
-        return Inertia::render('Articles/Add');
-    })->name('articles/add');
-
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/articles', 'index')->name('articles');
-        Route::post('/articles/create', 'create')->name('articles/create');
-        Route::get('/articles/{url}/edit', 'edit')->name('articles.edit');
-        Route::post('/articles/{url}/update', 'update')->name('articles.update');   
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
-        Route::get('/articles/{id}/delete', 'delete')->name('article.delete');
+
+            Route::get('/articlesadd', 'formadd')->name('articles/add');
+            Route::post('/articles/create', 'create')->name('articles/create');
+            Route::get('/articles/{url}/edit', 'edit')->name('articles.edit');
+            Route::post('/articles/{url}/update', 'update')->name('articles.update');          
+            Route::get('/articles/{id}/delete', 'delete')->name('article.delete'); 
       });
 
     Route::get('/questions/add', function () {

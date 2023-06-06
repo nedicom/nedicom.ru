@@ -28,6 +28,11 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function formadd()
+    {
+        return Inertia::render('Articles/Add');    
+    }
+
     public function create(Request $request){
         $article = new Article;
         $article->userid = Auth::user()->id;
@@ -56,7 +61,8 @@ class ArticleController extends Controller
         $article->header = $request->header;
         $article->description = $request->description;
         $article->body = $request->body;
-        $url = $article->url;
+        $url = Translate::translit($request->header);        
+        $article->url =  $url;
         $article->save();
         return redirect()->route('articles/url', $url);     
     }    
