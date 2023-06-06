@@ -1,11 +1,11 @@
 <script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
-import Body from "@/Layouts/Body.vue";
 import Mainbanner from "@/Layouts/Mainbanner.vue";
-import Casecard from "@/Layouts/Casecard.vue";
-import Testimonials from "@/Layouts/Testimonials.vue";
+import Specialization from "@/Layouts/Specialization.vue";
 import Practice from "@/Layouts/Practice.vue";
+import Articles from "@/Layouts/Articles.vue";
+import About from "@/Layouts/About.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
@@ -18,6 +18,10 @@ import { ref } from "vue";
 
 let set = defineProps({
   lawyer: "$string",
+  specializationOne: "$string",
+  specializationTwo: "$string",
+  specializationThree: "$string",
+  articles: "$Array",
 });
 
 let screen = window.innerWidth;
@@ -33,26 +37,8 @@ let mainbannerimg;
       mainbannerimg = ref(`/${set.lawyer.file_path}`);
     };
 
-
 let title = ref(set.lawyer.name);
 
-let statusonimage = ref("Юрист сайта");
-let nameonimage = ref(set.lawyer.name);
-
-
-
-let firstcardheader = ref("Наследственные дела");
-let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
-let secondcardheader = ref("Семейные споры");
-let secondcardbody = ref("Раздел имущества, признание личной собственностью, установление отцовства, порядок общения, алименты");
-let thirdcardheader = ref("Юрдическое обслуживание");
-let thirdcardbody = ref("Сопровождение и защита бизнеса от уголовной, налоговой и корпоративных споров до проверки контрагентов и ");
-let fourthcardheader = ref("Пенсионные споры");
-let fourthcardbody = ref("Если не назначили пенсию или платят меньше, чем должны. Признание права на трудовой стаж, перерасчет, расчет");
-let fifthcardheader = ref("Имущественные споры");
-let fifthcardbody = ref("Сносы, сохранение в реконструированном виде, установление границ участков, перераспредление участков, признание прав");
-let sixthcardheader = ref("Все остальные");
-let sixthcardbody = ref("Если Вашего дела нет в списке, это не значит, что мы таким не занимаемся. Мы поможем в большинстве случаев");
 </script>
 
 <template>
@@ -64,16 +50,22 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
 
     <Header :ttl="title" />  
 
-    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
+    <Mainbanner :statusonimage="statusonimage" :nameonimage="set.lawyer.name" :mainbannerimg="mainbannerimg"/>
 
     <Address />
 
-    <Testimonials />
+    <About :about="set.lawyer.about"/>
 
-    <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
-    :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
-    :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
+    <Specialization 
+      :firstcardheader="specializationOne.usl_name" 
+      :firstcardbody="specializationOne.usl_desc" 
+      :secondcardheader="specializationTwo.usl_name" 
+      :secondcardbody="specializationTwo.usl_desc"   
+      :thirdcardheader="specializationThree.usl_name" 
+      :thirdcardbody="specializationThree.usl_desc"/>
 
+    <Articles :articles = "articles"/>
+    
     <Practice />
 
     <MainFooter />

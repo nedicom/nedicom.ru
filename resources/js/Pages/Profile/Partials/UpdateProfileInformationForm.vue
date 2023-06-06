@@ -3,6 +3,7 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import TextArea from '@/Components/TextArea.vue';
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
@@ -15,6 +16,8 @@ const user = usePage().props.value.auth.user;
 const form = useForm({
     name: user.name,
     email: user.email,
+    about: user.about,
+    speciality_one_id: user.speciality_one_id,
 });
 </script>
 
@@ -46,6 +49,23 @@ const form = useForm({
             </div>
 
             <div>
+                <InputLabel for="about" value="О себе" />
+
+                <TextArea
+                    id="about"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.about"
+                    required
+                    autofocus
+                    autocomplete="about"
+                    rows="4"
+                />  
+
+                <InputError class="mt-2" :message="form.errors.about" />
+            </div>
+
+            <div>
                 <InputLabel for="email" value="Email" />
 
                 <TextInput
@@ -58,6 +78,18 @@ const form = useForm({
                 />
 
                 <InputError class="mt-2" :message="form.errors.email" />
+            </div>
+
+            <div>
+                <InputLabel for="speciality_one_id" value="Первая специализация" />
+                <TextInput
+                    id="speciality_one_id"
+                    type="number"
+                    class="mt-1 block w-full"
+                    v-model="form.speciality_one_id"                    
+                    autocomplete="speciality_one_id"
+                />
+                <InputError class="mt-2" :message="form.errors.specialityone" />
             </div>
 
             <div v-if="props.mustVerifyEmail && user.email_verified_at === null">

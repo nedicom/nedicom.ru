@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -22,6 +24,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'about',
+        'speciality_one_id',
     ];
 
     /**
@@ -42,4 +46,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+        /**
+     * Relation User
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function lawyerSpecOne(): HasOne
+    {
+        return $this->hasOne(Uslugi::class, 'id', 'speciality_one_id');
+    }
+
+    public function lawyerSpecTwo(): HasOne
+    {
+        return $this->hasOne(Uslugi::class, 'id', 'speciality_two_id');
+    }
+
+    public function lawyerSpecThree(): HasOne
+    {
+        return $this->hasOne(Uslugi::class, 'id', 'speciality_three_id');
+    }
 }

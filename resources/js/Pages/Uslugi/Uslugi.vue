@@ -54,7 +54,7 @@ let title = ref("Услуги");
                     mb-2
                   "
                 >
-                  {{ uslugi.name }}
+                  {{ uslugi.usl_name }}
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   nothing
