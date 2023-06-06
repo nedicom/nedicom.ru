@@ -37,8 +37,19 @@ class ImageController extends Controller
                 $filePath = 'usr/'.Auth::user()->id.'/images';
                
                 $req->file('file')->storeAs($filePath, $fileName, 'public');
-
-                $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                //dd (finfo_file($finfo, 'storage/'.$filePath."/".$fileName));
+                    $mime = finfo_file($finfo, 'storage/'.$filePath."/".$fileName);
+                finfo_close($finfo);
+                if($mime == "image/png"){
+                    $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);
+                }
+                else if($mime == "image/jpeg"){
+                    $im = imagecreatefromjpeg('storage/'.$filePath.'/'.$fileName);
+                }
+                else{
+                    return back();
+                }
                 
                 $files = Storage::allFiles('/public/'.$filePath);
                 Storage::delete($files);

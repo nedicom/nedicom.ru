@@ -15,7 +15,7 @@ defineProps({
   
   <div id="crop" class="w-full">
     <h2 class="text-lg font-medium text-gray-900">Обложка на вашей странице</h2>
-
+    
       <InputLabel value="Ваше новое изображение" />
       <div class="my-5">
         <button 
@@ -24,7 +24,7 @@ defineProps({
           <input
             type="file"
             ref="file"
-            accept=".jpg, .jpeg"
+            accept="image/jpeg, image/png"
             @change="uploadImage($event)"
           />
           Загрузить
@@ -64,18 +64,20 @@ defineProps({
   
   <script>
 export default {
-  name: "test",
+  name: "imgupld",
   data() {
     return {
+      pixels: null,
       image: {
         src: null,
-        type: "image/jpg",
+        type: null,        
       },
     };
   },
   methods: {
     cropImage() {
       const {canvas} = this.$refs.cropper.getResult();
+      //pixels = $refs.cropper.getResult();
       if (canvas) {
 				const form = new FormData();
 				canvas.toBlob(blob => {
@@ -97,9 +99,10 @@ export default {
         const blob = URL.createObjectURL(files[0]);
 
         // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:
+        
         this.image = {
           src: blob,
-          type: files[0].type,
+          type: files[0].type,          
         };
       }
     },
