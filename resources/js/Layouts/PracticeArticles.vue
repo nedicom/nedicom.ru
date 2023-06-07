@@ -1,13 +1,13 @@
 <script setup>
 const props = defineProps({
-    articles: "Array",
+    practice: "Array",
 });
 </script>
 
 <template>
 <!-- case card -->   
        <h1 class="text-4xl font-semibold text-grey text-center py-10">
-        Публикации юриста
+        Практика юриста
       </h1>
 
       <div class="max-w-6xl mx-auto md:my-9 sm:px-6 lg:px-8 text-center">
@@ -16,8 +16,8 @@ const props = defineProps({
 
     <!-- card -->
                 <div
-                v-for="article in articles"
-                :key="article.id"
+                v-for="one in practice"
+                :key="one.id"
                 class="flex justify-center"
                 >
                 <div
@@ -40,13 +40,13 @@ const props = defineProps({
                 mb-2
             "
             >
-            {{ article.header }}
+            {{ one.header }}
             </h5>
             <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-            {{ article.description }}
+            {{ one.description }}
             </p>
             <a
-            :href="'/articles/' + articles.url"
+            :href="'/articles/' + one.url"
             class="
                 text-blue-500
                 underline

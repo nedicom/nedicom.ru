@@ -24,7 +24,8 @@ class LawyerController extends Controller
             'specializationOne' => User::find($id)->lawyerSpecOne,
             'specializationTwo' => User::find($id)->lawyerSpecTwo,
             'specializationThree' => User::find($id)->lawyerSpecThree,
-            'articles' => Article::where('userid', $id)->orderBy('updated_at', 'desc')->take(3)->get(),
+            'articles' => Article::where('userid', $id)->where('practice_file_path', '=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
+            'practice' => Article::where('userid', $id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
             'countarticles' => Article::where('userid', $id)->count(),
         ]);
     }

@@ -5,6 +5,7 @@ import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Specialization from "@/Layouts/Specialization.vue";
 import Practice from "@/Layouts/Practice.vue";
 import Articles from "@/Layouts/Articles.vue";
+import PracticeArticles from "@/Layouts/PracticeArticles.vue";
 import About from "@/Layouts/About.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
@@ -22,6 +23,7 @@ let set = defineProps({
   specializationTwo: "$string",
   specializationThree: "$string",
   articles: "$Array",
+  practice: "$Array",
 });
 
 let screen = window.innerWidth;
@@ -65,9 +67,9 @@ let title = ref(set.lawyer.name);
       :thirdcardbody="specializationThree.usl_desc"/>
 
     <Articles :articles = "articles"/>
-    
-    <Practice />
 
+    <PracticeArticles :practice = "practice"/>
+    
     <MainFooter />
     
   </div>
