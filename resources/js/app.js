@@ -8,7 +8,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import CKEditor from '@ckeditor/ckeditor5-vue';
 import 'flowbite';
-import VueYandexMetrika from 'vue-yandex-metrika'
+
 
 createInertiaApp({
     title: (title) => `${title}`,
@@ -18,10 +18,6 @@ createInertiaApp({
             .use(plugin)
             .use(CKEditor)
             .use(ZiggyVue, Ziggy)
-            .use(VueYandexMetrika, {
-                id: 24900584,
-                env: process.env.NODE_ENV
-            })
             .mount(el);
     },
 });
