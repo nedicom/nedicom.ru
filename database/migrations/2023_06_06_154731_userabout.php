@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->text('about')->default('Юрист не заполнил информацию о себе.');
+            $table->text('about')->nullable();
             $table->unsignedBigInteger('speciality_one_id')->nullable();
             $table->unsignedBigInteger('speciality_two_id')->nullable();
             $table->unsignedBigInteger('speciality_three_id')->nullable();
