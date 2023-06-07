@@ -11,7 +11,7 @@ class PostphoneController extends Controller
         
                 $phone = $request->phone;
                 echo    $phone;             
-                $conn = mysqli_connect("127.0.0.1", "crm", "crm", "crm");
+                $conn = mysqli_connect("178.208.94.106", "crm", "904klfkFL:DlflrD4", "crm");
                 //$conn = mysqli_connect("127.0.0.1", "root", "", "crm");
                     if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
