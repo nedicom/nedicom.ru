@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
+use App\Models\Article;
 use App\Models\Image;
 
 
@@ -32,9 +33,19 @@ class ImageController extends Controller
     {                
             $imgModel = new Image;
             if($req->file()) {
-               
+
+                $id = $req->id;
+
                 $fileName = time().'_'.$req->file->getClientOriginalName();
-                $filePath = 'usr/'.Auth::user()->id.'/images';
+                if(str_contains($req->header('referer'), 'profile')){
+                    $filePath = 'usr/'.Auth::user()->id.'/images';
+                }
+                elseif(str_contains($req->header('referer'), 'articles')){
+                    $filePath = 'usr/'.Auth::user()->id.'/articleimages';
+                }
+                else{
+                    return back();
+                }
                
                 $req->file('file')->storeAs($filePath, $fileName, 'public');
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
@@ -66,9 +77,20 @@ class ImageController extends Controller
                 $imgModel->size = $req->file->getSize();
                 $imgModel->save();
 
-                $user = User::find(Auth::user()->id);
-                $user->file_path = $newfilepath;
-                $user->save();
+                if(str_contains($req->header('referer'), 'profile')){
+                    $user = User::find(Auth::user()->id);
+                    $user->file_path = $newfilepath;
+                    $user->save();
+                }
+                elseif(str_contains($req->header('referer'), 'articles')){
+                    $article = Article::find($id);
+                    $article->practice_file_path = $newfilepath;
+                    $article->save();  
+                }
+                else{
+                    return back();
+                }
+                
                 //  'storage/'.$filePath.'/'.$fileName
                 //  '/public/'.$filePath.'/'.$fileName
                 //$file = Storage::get('/public/'.$filePath.'/'.$fileName);  

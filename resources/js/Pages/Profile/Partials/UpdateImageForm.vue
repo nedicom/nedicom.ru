@@ -4,6 +4,7 @@ import InputLabel from '@/Components/InputLabel.vue';
 import { Inertia } from "@inertiajs/inertia";
 import { Cropper } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
+
 defineProps({
   imgurl: String,
 });
@@ -47,6 +48,7 @@ defineProps({
 
 
   </div>
+
   <div class="w-full ">
     <InputLabel value="Текущее изображение" />
     <div class="flex h-full w-full justify-center items-center">  
@@ -62,61 +64,62 @@ defineProps({
 </template>
   
   
-  <script>
-export default {
-  name: "imgupld",
-  data() {
-    return {
-      pixels: null,
-      image: {
-        src: null,
-        type: null,        
-      },
-    };
-  },
-  methods: {
-    cropImage() {
-      const {canvas} = this.$refs.cropper.getResult();
-      //pixels = $refs.cropper.getResult();
-      if (canvas) {
-				const form = new FormData();
-				canvas.toBlob(blob => {
-					form.append('file', blob, 'profileimg');
-          Inertia.post("/imagepost", form);
-				});
-			}
+<script>
+  export default {
+    name: "imgupld",
+    data() {
+      return {
+        pixels: null,
+        image: {
+          src: null,
+          type: null,        
+        },
+      };
     },
-    uploadImage(event) {
-      /// Reference to the DOM input element
-      const { files } = event.target;
-      // Ensure that you have a file before attempting to read it
-      if (files && files[0]) {
-        // 1. Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
-        if (this.image.src) {
-          URL.revokeObjectURL(this.image.src);
+    methods: {
+      cropImage() {
+        var target = "/imagepost";
+        const {canvas} = this.$refs.cropper.getResult();
+        //pixels = $refs.cropper.getResult();
+        if (canvas) {
+          const form = new FormData();
+          canvas.toBlob(blob => {
+            form.append('file', blob, 'profileimg');
+            Inertia.post(target, form);
+          });
         }
-        // 2. Create the blob link to the file to optimize performance:
-        const blob = URL.createObjectURL(files[0]);
+      },
+      uploadImage(event) {
+        /// Reference to the DOM input element
+        const { files } = event.target;
+        // Ensure that you have a file before attempting to read it
+        if (files && files[0]) {
+          // 1. Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
+          if (this.image.src) {
+            URL.revokeObjectURL(this.image.src);
+          }
+          // 2. Create the blob link to the file to optimize performance:
+          const blob = URL.createObjectURL(files[0]);
 
-        // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:
-        
-        this.image = {
-          src: blob,
-          type: files[0].type,          
-        };
+          // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:
+          
+          this.image = {
+            src: blob,
+            type: files[0].type,          
+          };
+        }
+      },
+    },
+    destroyed() {
+      // Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
+      if (this.image.src) {
+        URL.revokeObjectURL(this.image.src);
       }
     },
-  },
-  destroyed() {
-    // Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
-    if (this.image.src) {
-      URL.revokeObjectURL(this.image.src);
-    }
-  },
-  components: {
-    Cropper,
-  },
-};
+    components: {
+      Cropper,
+    },
+  };
 </script>
 
 <style lang="scss">

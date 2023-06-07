@@ -13,7 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('articles', function (Blueprint $table) {
+            $table->string('practice_file_path')->nullable(); 
+        });
     }
 
     /**

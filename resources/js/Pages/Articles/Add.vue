@@ -3,7 +3,8 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Editor from '@/Components/Tiptap.vue'
+import Editor from '@/Components/Tiptap.vue';
+import Practicecropper from '@/Components/Practicecropper.vue';
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
@@ -203,8 +204,10 @@ let title = ref("Добавить статью");
                   </p>
                 </div>
               </div>
-            </div>
-          </div>
+            </div>          
+                        
+          </div>          
+          
         </div>
       </div>
     </div>
