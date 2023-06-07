@@ -3,8 +3,6 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Modalbutton from '@/Components/Modalbutton.vue';
-import Modalformback from '@/Components/Modalformback.vue';
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
@@ -90,7 +88,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Оспаривание завещаний, дарственных, других договоров по различным мотивам
                 </p>
-                <Modalbutton />
+              
               </div>
             </div>
             <!-- card -->
@@ -104,7 +102,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Если умерший не успел оформить самострой, потерял документы или не оформил права при жизни
                 </p>
-                <Modalbutton />
+          
               </div>
             </div>
             <!-- card -->
@@ -118,7 +116,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Установление факта родственных отношений для оформления наследства
                 </p>
-                <Modalbutton />
+   
               </div>
             </div>
             <!-- card -->
@@ -132,7 +130,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Рекомендации и документы для гарантий при оформлении имущества еще при жизни 
                 </p>
-                <Modalbutton />
+   
               </div>
             </div>
             <!-- card -->
@@ -146,7 +144,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Сопровождение оформления у нотариуса, если у Вы находитесь далеко или у Вас нет времени
                 </p>
-                <Modalbutton />
+         
               </div>
             </div>
             <!-- card -->
@@ -160,7 +158,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   Экзотические случаи вроде оформлени акций, соц. найма, криптовалюты и прочее
                 </p>
-                <Modalbutton />
+              
               </div>
             </div>
             <!-- card -->
@@ -246,7 +244,7 @@ let submit = () => {
 
     </Body>
   
-  <Modalformback />
+
   
   <MainFooter />
   
