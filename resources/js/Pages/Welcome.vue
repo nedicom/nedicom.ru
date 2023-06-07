@@ -1,20 +1,21 @@
 <script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
-import Body from "@/Layouts/Body.vue";
 import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Casecard from "@/Layouts/Casecard.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
 import Practice from "@/Layouts/Practice.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import Modalformback from '@/Components/Modalformback.vue';
+import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
 /*defineProps({
   canLogin: Boolean,
   canRegister: Boolean,
 });*/
+
 let screen = window.innerWidth;
 
 let mainbannerimg;
@@ -42,12 +43,6 @@ let secondcardheader = ref("Семейные споры");
 let secondcardbody = ref("Раздел имущества, признание личной собственностью, установление отцовства, порядок общения, алименты");
 let thirdcardheader = ref("Юрдическое обслуживание");
 let thirdcardbody = ref("Сопровождение и защита бизнеса от уголовной, налоговой и корпоративных споров до проверки контрагентов и ");
-let fourthcardheader = ref("Пенсионные споры");
-let fourthcardbody = ref("Если не назначили пенсию или платят меньше, чем должны. Признание права на трудовой стаж, перерасчет, расчет");
-let fifthcardheader = ref("Имущественные споры");
-let fifthcardbody = ref("Сносы, сохранение в реконструированном виде, установление границ участков, перераспредление участков, признание прав");
-let sixthcardheader = ref("Все остальные");
-let sixthcardbody = ref("Если Вашего дела нет в списке, это не значит, что мы таким не занимаемся. Мы поможем в большинстве случаев");
 </script>
 
 <template>
@@ -57,10 +52,12 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
     
     <MainHeader />
 
-    <Header :ttl="title" />  
+    <Header :ttl="title" /> 
+
+    
 
     <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
-
+   
     <Address />
 
     <Testimonials />
@@ -72,6 +69,8 @@ let sixthcardbody = ref("Если Вашего дела нет в списке, 
     <Practice />
 
     <MainFooter />
+
+    
     
   </div>
 </template>
