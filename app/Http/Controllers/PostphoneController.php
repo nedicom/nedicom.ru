@@ -21,6 +21,6 @@ class PostphoneController extends Controller
                 VALUES ('nedicom.ru', 'лид с главной nedicom.ru', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
                 $conn->query($sql);
 
-        return redirect()->route('Welcome');
+        return redirect()->route('lawyers');
     }
 }
