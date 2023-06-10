@@ -4,10 +4,9 @@ import Header from "@/Layouts/Header.vue";
 import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Casecard from "@/Layouts/Casecard.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
-import Practice from "@/Layouts/Practice.vue";
+import Slider from "@/Layouts/Slider.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Modalformback from '@/Components/Modalformback.vue';
 import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
@@ -17,6 +16,11 @@ import { ref } from "vue";
 });*/
 
 let screen = window.innerWidth;
+
+let sldimg = ref([{id:1, url : "/storage/images/landing/main/slider/1.png"}, 
+                  {id:2, url : "/storage/images/landing/main/slider/2.png"}, 
+                  {id:3, url : "/storage/images/landing/main/slider/3.JPEG"},                  
+                  ]);
 
 let mainbannerimg;
   if (screen>1919){
@@ -52,9 +56,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     
     <MainHeader />
 
-    <Header :ttl="title" /> 
-
-    
+    <Header :ttl="title" />    
 
     <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
    
@@ -66,11 +68,9 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
-    <Practice />
+    <Slider :sldimg="sldimg"/>
 
     <MainFooter />
-
-    
-    
+  
   </div>
 </template>

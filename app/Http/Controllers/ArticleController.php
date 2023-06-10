@@ -19,10 +19,7 @@ class ArticleController extends Controller
 {
 
     public function index()
-    {        
-
-        //$url = Storage::url('storage/app/public/images/landing/nasledstvo/mainpc.jpg');
-        //echo asset($url);
+    {  
         return Inertia::render('Articles/Articles', [
             'articles' => Article::paginate(9),
         ]);
