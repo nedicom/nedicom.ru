@@ -256,7 +256,7 @@ const showingNavigationDropdown = ref(false);
               <ResponsiveNavLink :href="route('articles')">
                 Статьи
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('articles/add')"
+              <ResponsiveNavLink :href="route('articles.add')"
                 >Добавить статью</ResponsiveNavLink
               >
             </div>
