@@ -8,14 +8,21 @@ const props = defineProps({
         type: [Array, Boolean],
         default: false,
     },
-    value: {
-        default: null,
+    unchecked: {
+        type: [Array, Boolean],
+        default: true,
     },
+    islawyer: String,
 });
 
 const proxyChecked = computed({
     get() {
-        return props.checked;
+        if(props.islawyer == 0){
+            return props.checked;
+        }
+        else{
+            return props.unchecked;
+        }        
     },
 
     set(val) {
@@ -27,7 +34,7 @@ const proxyChecked = computed({
 <template>
     <input
         type="checkbox"
-        :value="value"
+        :value="val"
         v-model="proxyChecked"
         class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500"
     />

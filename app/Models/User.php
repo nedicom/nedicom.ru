@@ -25,6 +25,7 @@ class User extends Authenticatable
         'email',
         'password',
         'about',
+        'lawyer',
         'speciality_one_id',
     ];
 

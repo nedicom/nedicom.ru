@@ -2,7 +2,7 @@
 import InputLabel from '@/Components/InputLabel.vue';
 
 import { Inertia } from "@inertiajs/inertia";
-import { Cropper } from 'vue-advanced-cropper';
+import { Cropper, ResizeEvent } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
 defineProps({
@@ -76,6 +76,9 @@ defineProps({
         },
       };
     },
+    components: {
+      Cropper,
+    },
     methods: {
       cropImage() {
         var target = "/imagepost";
@@ -109,16 +112,13 @@ defineProps({
             type: files[0].type,          
           };
         }
-      },
+      },    
     },
     destroyed() {
       // Revoke the object URL, to allow the garbage collector to destroy the uploaded before file
       if (this.image.src) {
         URL.revokeObjectURL(this.image.src);
       }
-    },
-    components: {
-      Cropper,
     },
   };
 </script>

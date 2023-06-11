@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionsController;
 use App\Http\Controllers\LawyerController;
+use App\Http\Controllers\AutocompleteController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PostphoneController;
@@ -42,7 +43,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
     ->name('lawyer');
 
 
-
+    Route::post('search',[AutocompleteController::class,'searchUslugi']);
    
 
     Route::middleware('auth')->group(function () {

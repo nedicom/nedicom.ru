@@ -13,6 +13,8 @@ defineProps({
   mustVerifyEmail: Boolean,
   status: String,
   imgurl: String,
+  islawyer: String,
+  test: String,
 });
 </script>
 
@@ -28,6 +30,8 @@ defineProps({
           <UpdateProfileInformationForm
             :must-verify-email="mustVerifyEmail"
             :status="status"
+            :islawyer="islawyer"
+            :test="test"            
             class="max-w-xl"
           />
         </div>

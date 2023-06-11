@@ -48,46 +48,6 @@ const closeModal = () => {
         </header>
 
         <DangerButton @click="confirmUserDeletion">Удалить аккаунт</DangerButton>
-
-        <Modal :show="confirmingUserDeletion" @close="closeModal">
-            <div class="p-6">
-                <h2 class="text-lg font-medium text-gray-900">
-                    Вы уверены что хотите удалить Ваш аккаунт?
-                </h2>
-
-                <p class="mt-1 text-sm text-gray-600">
-                   Удаление аккаунта - это серьезный шаг. Пожалуйста, введите пароль.
-                </p>
-
-                <div class="mt-6">
-                    <InputLabel for="password" value="Password" class="sr-only" />
-
-                    <TextInput
-                        id="password"
-                        ref="passwordInput"
-                        v-model="form.password"
-                        type="password"
-                        class="mt-1 block w-3/4"
-                        placeholder="Password"
-                        @keyup.enter="deleteUser"
-                    />
-
-                    <InputError :message="form.errors.password" class="mt-2" />
-                </div>
-
-                <div class="mt-6 flex justify-end">
-                    <SecondaryButton @click="closeModal"> Отмена </SecondaryButton>
-
-                    <DangerButton
-                        class="ml-3"
-                        :class="{ 'opacity-25': form.processing }"
-                        :disabled="form.processing"
-                        @click="deleteUser"
-                    >
-                        Удалить аккаунт
-                    </DangerButton>
-                </div>
-            </div>
-        </Modal>
+        
     </section>
 </template>
