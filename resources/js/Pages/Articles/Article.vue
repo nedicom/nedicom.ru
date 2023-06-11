@@ -48,12 +48,15 @@ let vars = defineProps({
             <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
               
               <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div v-if="vars.user.id == article.userid" >
-                  <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                <div v-if="vars.user">
+                  <div v-if="vars.user.id == article.userid" >
+                    <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
+                  </div>
                 </div>
                 <div v-else>
-                  <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Автор статьи - {{ article.userid }}</a>
-                </div>
+                  <p class="my-3">Автор статьи - <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ article.username }}</a>
+                  </p>
+                  </div>
                 <div class="px-6 text-gray-900 article" v-html="article.body"></div>
               </div>
             </div>
@@ -67,7 +70,6 @@ let vars = defineProps({
   </Body>
 
   <Sidebaraction />
-  <TailwindModal />
   <Modal />
   <MainFooter />
 </template>
