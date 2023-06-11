@@ -69,7 +69,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
         Route::get('/articles', 'index')->name('articles');
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
 
-            Route::get('/articlesadd', 'formadd')->name('articles/add');
+            Route::get('/articlesadd', 'formadd')->name('articles.add');
             Route::post('/articles/create', 'create')->name('articles/create');
             Route::get('/articles/{url}/edit', 'edit')->name('articles.edit');
             Route::post('/articles/{url}/update', 'update')->name('articles.update');          

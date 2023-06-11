@@ -73,18 +73,28 @@ let title = ref("Статьи");
 
           </div>
 
-          <!-- card -->
-          <div v-else class="flex justify-center">
+           <!-- row -->
+           <div v-else class="flex justify-center h-96">
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
               <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
                 Статей пока нет
               </h5>
               <p class="text-gray-700 text-base mb-2">
-                Но вы можете добавить)) Для этого нужно просто начать
+                Самое время 
+                <a :href="route('articles.add')"
+                class="
+                    basis-2/12
+                    text-end              
+                    text-blue-500
+                    underline
+                    dark:text-blue-500
+                    hover:no-underline
+                  "
+                  >начать статью</a>
               </p>
             </div>
           </div>
-          <!-- card -->
+          <!-- row -->
 
           <Pagination :links="articles.links" />
         </div>

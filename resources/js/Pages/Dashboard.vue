@@ -85,14 +85,14 @@ let number = 1;
           </div>
 
           <!-- row -->
-          <div v-else class="flex justify-center">
+          <div v-else class="flex justify-center h-96">
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
               <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
                 Статей пока нет
               </h5>
               <p class="text-gray-700 text-base mb-2">
-                Но вы можете 
-                <a href="/articles/add"
+                Самое время 
+                <a :href="route('articles.add')"
                 class="
                     basis-2/12
                     text-end              
@@ -101,7 +101,7 @@ let number = 1;
                     dark:text-blue-500
                     hover:no-underline
                   "
-                  >добавить</a>
+                  >начать статью</a>
               </p>
             </div>
           </div>
