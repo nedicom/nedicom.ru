@@ -148,7 +148,7 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
-                      <DropdownLink :href="route('articles/add')">
+                      <DropdownLink :href="route('articles.add')">
                         Добавить статью
                       </DropdownLink>
                        <DropdownLink :href="route('questions/add')">
