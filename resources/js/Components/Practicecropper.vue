@@ -90,7 +90,8 @@ defineProps({
         if (canvas) {
             const id = this.article.id;
             const form = new FormData();
-            form.append('id', id);  
+            form.append('id', id);
+            form.append('pagetype', 'article');   
             canvas.toBlob(blob => {
             form.append('file', blob, 'profileimg');                        
             Inertia.post("/imagepost", form);

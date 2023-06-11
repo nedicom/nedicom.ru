@@ -1,27 +1,46 @@
 <script setup>
 defineProps({
   sldimg: Array,
+  sliderheader: String,
 });
 </script>
 
 <template>
   <h1 class="text-4xl font-semibold text-grey text-center py-10">
-    Наша практика говорит за нас
+    {{ sliderheader }}
   </h1>
   
-  <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500">
-    <Slide v-for="slide in sldimg" :key="sldimg.id">
-      <div class="carousel__item">
-        <img :src ="slide.url">
-        
-       </div>
-    </Slide>
+  <div v-if="sldimg">
+    <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500">
+      <Slide v-for="slide in sldimg" :key="slide.practice_file_path">
+        <div class="carousel__item">
+          <a :href= "'/articles/'+slide.url"><img :src = "'/'+slide.practice_file_path">     </a>     
+        </div>
+      </Slide>
 
-    <template #addons>
-      <Navigation />
-      <Pagination />
-    </template>
-  </Carousel>
+      <template #addons>
+        <Navigation />
+        <Pagination />
+      </template>
+    </Carousel>
+  </div>
+
+  <div v-else>
+    <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500">
+      <Slide v-for="slide in 1" :key="slide">
+        <div class="carousel__item">
+          
+          Юрист еще не добавил практику
+          
+        </div>
+      </Slide>
+
+      <template #addons>
+        <Navigation />
+        <Pagination />
+      </template>
+    </Carousel>
+  </div>
 </template>
   
   <script>

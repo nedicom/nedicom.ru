@@ -83,6 +83,7 @@ defineProps({
         //pixels = $refs.cropper.getResult();
         if (canvas) {
           const form = new FormData();
+          form.append('pagetype', 'profile'); 
           canvas.toBlob(blob => {
             form.append('file', blob, 'profileimg');
             Inertia.post(target, form);

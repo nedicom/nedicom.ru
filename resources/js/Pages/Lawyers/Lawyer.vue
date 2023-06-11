@@ -3,9 +3,8 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Specialization from "@/Layouts/Specialization.vue";
-import Practice from "@/Layouts/Practice.vue";
+import Slider from "@/Layouts/Slider.vue";
 import Articles from "@/Layouts/Articles.vue";
-import PracticeArticles from "@/Layouts/PracticeArticles.vue";
 import About from "@/Layouts/About.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
@@ -16,6 +15,8 @@ import { ref } from "vue";
   canLogin: Boolean,
   canRegister: Boolean,
 });*/
+
+let sliderheader = ref("Практика юриста");
 
 let set = defineProps({
   lawyer: "$string",
@@ -68,7 +69,7 @@ let title = ref(set.lawyer.name);
 
     <Articles :articles = "articles"/>
 
-    <PracticeArticles :practice = "practice"/>
+    <Slider :sliderheader="sliderheader" :sldimg="practice" />
     
     <MainFooter />
     

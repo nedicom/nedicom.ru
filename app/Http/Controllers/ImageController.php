@@ -33,15 +33,14 @@ class ImageController extends Controller
     {                
             $imgModel = new Image;
             if($req->file()) {
-
+                $pagetype = $req->pagetype;
                 $id = $req->id;
-
                 $fileName = time().'_'.$req->file->getClientOriginalName();
-                if(str_contains($req->header('referer'), 'profile')){
+                if($pagetype == 'profile'){
                     $filePath = 'usr/'.Auth::user()->id.'/images';
                 }
-                elseif(str_contains($req->header('referer'), 'articles')){
-                    $filePath = 'usr/'.Auth::user()->id.'/articleimages';
+                elseif($pagetype ==  'article'){
+                    $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
                 }
                 else{
                     return back();

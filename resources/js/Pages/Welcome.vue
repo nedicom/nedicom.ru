@@ -17,9 +17,11 @@ import { ref } from "vue";
 
 let screen = window.innerWidth;
 
-let sldimg = ref([{id:1, url : "/storage/images/landing/main/slider/1.png"}, 
-                  {id:2, url : "/storage/images/landing/main/slider/2.png"}, 
-                  {id:3, url : "/storage/images/landing/main/slider/3.JPEG"},                  
+let sliderheader = ref("Наша практика говорит за нас");
+
+let sldimg = ref([{id:1, practice_file_path : "/storage/images/landing/main/slider/1.png"}, 
+                  {id:2, practice_file_path : "/storage/images/landing/main/slider/2.png"}, 
+                  {id:3, practice_file_path : "/storage/images/landing/main/slider/3.JPEG"},                  
                   ]);
 
 let mainbannerimg;
@@ -38,8 +40,6 @@ let title = ref("Главная");
 
 let statusonimage = ref("Адвокатский кабинет");
 let nameonimage = ref("Мина Марк Анатольевич");
-
-
 
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
@@ -68,7 +68,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
-    <Slider :sldimg="sldimg"/>
+    <Slider :sldimg="sldimg" :sliderheader="sliderheader"/>
 
     <MainFooter />
   
