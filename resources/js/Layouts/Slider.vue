@@ -13,9 +13,9 @@ defineProps({
   <div v-if="sldimg">
     <Carousel :itemsToShow="3.95" :wrapAround="true" :transition="500">
       <Slide v-for="slide in sldimg" :key="slide.practice_file_path">
-        <div class = "carousel__item w-full flex items-center justify-center h-128"
+        <div class = "carousel__item w-full flex items-center justify-center h-128 bg-cover"
         :style="{ backgroundImage: 'url(' + `/`+slide.practice_file_path + ')' }">
-            <a :href= "'/articles/'+slide.url" 
+            <a v-if="slide.url" :href= "'/articles/'+slide.url" 
             class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
             подробнее</a>
         </div>
