@@ -13,7 +13,7 @@ class LawyerController extends Controller
     public function index()
     {
         return Inertia::render('Lawyers/Lawyers', [
-            'lawyers' => User::where('lawyer', 1) -> paginate(9),
+            'lawyers' => User::where('lawyer', 1)->select('id', 'name')-> paginate(9),
         ]);
     }
 
