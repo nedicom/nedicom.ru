@@ -1,14 +1,18 @@
 <script setup>
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
+import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
+import Multiselect from 'vue-multiselect';
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
+    islawyer: String,
+    test: String,
 });
 
 const user = usePage().props.value.auth.user;
@@ -18,6 +22,7 @@ const form = useForm({
     email: user.email,
     about: user.about,
     speciality_one_id: user.speciality_one_id,
+    lawyer: false,
 });
 </script>
 
@@ -47,6 +52,25 @@ const form = useForm({
 
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
+{{ test }}
+            <div class="flex f flex-row"> 
+                <Checkbox
+                    :islawyer="islawyer"
+                    class="mr-2"                    
+                    id = "lawyer" 
+                    name = "lawyer"             
+                    v-model="form.lawyer"
+                />
+                <InputLabel for="lawyer" value="Я - юрист" />
+            </div>
+
+            <div v-if="islawyer == '1'">
+                <Link
+                        :href="route('lawyer', 1)"
+                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                        >Моя публичная страница
+                </Link>
+            </div>
 
             <div>
                 <InputLabel for="about" value="О себе" />
@@ -56,8 +80,6 @@ const form = useForm({
                     type="text"
                     class="mt-1 block w-full"
                     v-model="form.about"
-                    required
-                    autofocus
                     autocomplete="about"
                     rows="4"
                 />  
@@ -84,7 +106,7 @@ const form = useForm({
                 <InputLabel for="speciality_one_id" value="Первая специализация" />
                 <TextInput
                     id="speciality_one_id"
-                    type="number"
+                    type="text"
                     class="mt-1 block w-full"
                     v-model="form.speciality_one_id"                    
                     autocomplete="speciality_one_id"
