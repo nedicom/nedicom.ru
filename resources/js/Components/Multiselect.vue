@@ -1,0 +1,21 @@
+<script setup>
+
+defineProps( {
+    test: Array,
+    datavalue: String,
+});
+
+defineEmits(['update:modelValue']);
+</script>
+
+<template>
+    <input 
+    @input="$emit('update:modelValue', $event.target.value)"
+    autocomplete="off"
+    list="uslugi"
+    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+     />
+        <datalist id="uslugi">
+            <option v-for="id in test" :value="id.id">{{ id.usl_name }}</option>
+        </datalist>
+</template>

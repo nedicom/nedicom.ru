@@ -1,6 +1,6 @@
 import './bootstrap';
 import '../css/app.css';
-import 'vue-final-modal/style.css'
+import 'vue-final-modal/style.css';
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';

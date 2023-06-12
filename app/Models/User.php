@@ -27,6 +27,8 @@ class User extends Authenticatable
         'about',
         'lawyer',
         'speciality_one_id',
+        'speciality_two_id',
+        'speciality_three_id',
     ];
 
     /**

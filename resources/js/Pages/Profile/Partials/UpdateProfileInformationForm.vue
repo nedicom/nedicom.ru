@@ -5,14 +5,15 @@ import Checkbox from '@/Components/Checkbox.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
-import Multiselect from 'vue-multiselect';
+import Multiselect from '@/Components/Multiselect.vue';
+
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
     islawyer: String,
-    test: String,
+    test: "Array",
 });
 
 const user = usePage().props.value.auth.user;
@@ -22,6 +23,8 @@ const form = useForm({
     email: user.email,
     about: user.about,
     speciality_one_id: user.speciality_one_id,
+    speciality_two_id: user.speciality_two_id,
+    speciality_three_id: user.speciality_three_id,
     lawyer: false,
 });
 </script>
@@ -47,12 +50,12 @@ const form = useForm({
                     v-model="form.name"
                     required
                     autofocus
-                    autocomplete="name"
+                    
                 />
 
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
-{{ test }}
+
             <div class="flex f flex-row"> 
                 <Checkbox
                     :islawyer="islawyer"
@@ -103,16 +106,26 @@ const form = useForm({
             </div>
 
             <div>
-                <InputLabel for="speciality_one_id" value="Первая специализация" />
-                <TextInput
-                    id="speciality_one_id"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.speciality_one_id"                    
-                    autocomplete="speciality_one_id"
-                />
-                <InputError class="mt-2" :message="form.errors.specialityone" />
+                <InputLabel for="speciality" value="Первая специализация" />                
+                <Multiselect                                
+                    :test="test"
+                    v-model="form.speciality_one_id"                        
+                >
+                </Multiselect>
+                <InputLabel for="speciality2" value="Вторая специализация" />                
+                <Multiselect                                
+                    :test="test"
+                    v-model="form.speciality_two_id"                        
+                >
+                </Multiselect>
+                <InputLabel for="speciality3" value="Третья специализация" />                
+                <Multiselect                                
+                    :test="test"
+                    v-model="form.speciality_three_id   "                        
+                >
+                </Multiselect>
             </div>
+
 
             <div v-if="props.mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">

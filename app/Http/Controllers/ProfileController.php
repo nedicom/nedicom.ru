@@ -17,23 +17,16 @@ class ProfileController extends Controller
     /**
      * Display the user's profile form.
      */
-    public function teeest(Request $request): Response 
+    public function edit(Request $request, ): Response 
     {
-        $test =111;
-    }
-
-    public function edit(Request $request, $test): Response 
-    {
-            /*$test = Uslugi::orderBy('created_at','desc')
-            ->where('uslugis','like','%'.$request->speciality_one_id.'%')
-            ->get();*/
-
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'imgurl' => Auth::user()->file_path,
             'islawyer' => Auth::user()->lawyer,
             'status' => session('status'),
-            'test'=>  $test,
+            'test'=>  Uslugi::orderBy('usl_name','desc')
+            ->select('id', 'usl_name')
+            ->get(),
         ]);
     }
 
@@ -42,7 +35,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        //dd($request);
         $request->user()->fill($request->validated());
         if($request->lawyer == true){
             $request->user()->lawyer = 1;

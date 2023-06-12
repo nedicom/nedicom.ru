@@ -14,7 +14,7 @@ defineProps({
   status: String,
   imgurl: String,
   islawyer: String,
-  test: String,
+  test: "Array",
 });
 </script>
 
