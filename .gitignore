@@ -3,6 +3,7 @@
 /public/hot
 /storage/*.key
 /storage/logs
+/storage/app
 /vendor
 .env
 .env.example
