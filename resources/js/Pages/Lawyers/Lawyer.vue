@@ -59,7 +59,7 @@ let title = ref(set.lawyer.name);
 
     <About :about="set.lawyer.about"/>
 
-    <Specialization 
+    <Specialization v-if="specializationOne"
       :firstcardheader="specializationOne.usl_name" 
       :firstcardbody="specializationOne.usl_desc" 
       :secondcardheader="specializationTwo.usl_name" 
