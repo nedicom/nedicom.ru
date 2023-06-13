@@ -5,7 +5,7 @@
   </h1>
   <div
     class="relative overflow-hidden bg-cover bg-no-repeat my-9 p-12 text-center h-96"
-    style="background-image: url('/storage/images/landing/nasledstvo/testimonials.jpg');">
+    style="background-image: url('/storage/images/landing/main/testimonials.webp');">
     <div
       class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-fixed"
       style="background-color: rgba(0, 0, 0, 0.6)">
