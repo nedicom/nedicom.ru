@@ -20,7 +20,13 @@ let submit = () => {
 <template>
 <!-- main banner -->
     <div
-    class="relative overflow-hidden bg-cover bg-no-repeat py-12 text-center mb-9"
+    class="
+        relative 
+        overflow-hidden 
+        bg-cover 
+        bg-no-repeat 
+        py-12 
+        text-center mb-9"
     :style="{ backgroundImage: `url(${mainbannerimg})` , height: '600px'}"
     >
     <div

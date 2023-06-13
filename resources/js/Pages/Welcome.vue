@@ -25,16 +25,8 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
                   {id:4, practice_file_path : "storage/images/landing/main/slider/4.webp"},                   
                   ]);
 
-let mainbannerimg;
-  if (screen>1919){
-    mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
-    }
-    else if(screen>600){
-      mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
-    }
-    else{
-      mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
-    };
+let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
+
 
 
 let title = ref("Главная");
