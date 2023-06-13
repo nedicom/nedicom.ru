@@ -26,13 +26,13 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let mainbannerimg;
   if (screen>1919){
-    mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
+    mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
     }
     else if(screen>600){
-      mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
+      mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
     }
     else{
-      mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
+      mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
     };
 
 
