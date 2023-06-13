@@ -29,10 +29,10 @@ let mainbannerimg;
     mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
     }
     else if(screen>600){
-      mainbannerimg = ref("/storage/images/landing/main/all1280on600.png");
+      mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
     }
     else{
-      mainbannerimg = ref("/storage/images/landing/main/all1600on900.jpg");
+      mainbannerimg = ref("/storage/images/landing/main/1920on600.webp");
     };
 
 
