@@ -46,7 +46,7 @@ const props = defineProps({
             {{ article.description }}
             </p>
             <a
-            :href="'/articles/' + articles.url"
+            :href="'/articles/' + article.url"
             class="
                 text-blue-500
                 underline

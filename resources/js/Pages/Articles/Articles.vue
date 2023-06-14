@@ -23,6 +23,7 @@ let title = ref("Статьи");
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+          test3
         
           <div v-if="articles.total > 0" class="grid grid-cols-3 gap-9">
 
@@ -51,14 +52,15 @@ let title = ref("Статьи");
                     font-medium
                     mb-2
                   "
-                >
+                > 
                   {{ articles.header }}
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   {{ articles.description }}
+                  
                 </p>
                 <a
-                  :href="'articles/' + articles.url"
+                  :href="'articles/' + articles.id"
                   class="
                     text-blue-500
                     underline
