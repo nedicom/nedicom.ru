@@ -60,7 +60,7 @@ let title = ref("Статьи");
                   
                 </p>
                 <a
-                  :href="'articles/' + articles.id"
+                  :href="route('articles/url', articles.url)"
                   class="
                     text-blue-500
                     underline

@@ -47,30 +47,43 @@ let vars = defineProps({
           <div class="py-12">
             <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
               
-              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div v-if="vars.user">
+              
+              <div class="px-6  bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+                <div v-if="vars.user" class="my-3">
                   <div v-if="vars.user.id == article.userid" >
                     <a :href="route('articles.edit', article.url)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
                   </div>
                 </div>
-                <div v-else>
-                  <p class="my-3">Автор статьи - <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ article.username }}</a>
+                
+                <div v-else class="my-3">
+                  <p >Автор статьи - <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ article.username }}</a>
                   </p>
-                  </div>
-                <div class="px-6 text-gray-900 article" v-html="article.body"></div>
+                </div>  
+
+                <div v-if="article.header" class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+                  {{ article.header }}
+                </div>
+                
+
+
+                <div v-if="article.description" class="my-3">
+                  {{ article.description }}
+                </div>
+
+                <div v-html="article.body"></div>
+
               </div>
+
             </div>
           </div>
         </div>
-      </div>
-
-      
+      </div> 
       
     </div>
   </Body>
 
   <Sidebaraction />
-  <Modal />
   <MainFooter />
 </template>
 
