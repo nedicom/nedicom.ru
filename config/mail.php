@@ -45,7 +45,6 @@ return [
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
             'verify_peer' => env('MAIL_VERIFY_PEER', false),
             'allow_self_signed' => true,
-            'verify_peer' => false,
             'verify_peer_name' => false,
         ],
 
