@@ -31,7 +31,6 @@ let title = ref("Услуги");
             <!-- card -->
             <div
               v-for="uslugi in uslugi.data"
-              :key="uslugi.id"
               class="flex justify-center"
             >
               <div

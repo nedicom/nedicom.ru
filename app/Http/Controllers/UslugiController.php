@@ -24,6 +24,8 @@ class UslugiController extends Controller
         return Inertia::render('Uslugi/Usluga', [
             'usluga' => Uslugi::where('url', '=', $url)->first(),
             'user' => Auth::user(),
+            'firstlawyer' => Uslugi::where('url', '=', $url)->first()->firstlawyer,
+
         ]);
     }
 
