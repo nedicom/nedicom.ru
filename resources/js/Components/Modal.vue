@@ -20,10 +20,9 @@ const { open, close } = useModal({
   @click="() => open()"
   class="
         m-auto
-        my-1
         w-1/2
+        outline
         flex justify-center
-        mt-5
         px-5
         py-2
         text-md
@@ -36,7 +35,7 @@ const { open, close } = useModal({
         hover:bg-blue-800
         cursor-grab
         ">
-    Мой случай
+    связаться
 </VButton>
 
   <ModalsContainer />

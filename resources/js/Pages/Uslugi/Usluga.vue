@@ -1,18 +1,24 @@
 <script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
+
+import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Body from "@/Layouts/Body.vue";
 import Sidebaraction from "@/Layouts/Sidebaraction.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import Modal from '@/Components/Modal.vue';
 import { Head, Link } from "@inertiajs/inertia-vue3";
-
+import { ref } from "vue";
 
 let vars = defineProps({
   usluga: String,
   user: String,
   firstlawyer: String,
 });
+
+
+let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
+
 </script>
 
 
@@ -38,30 +44,22 @@ let vars = defineProps({
 
   <Header :ttl="usluga.usl_name" />
 
+  <Mainbanner :statusonimage="usluga.usl_name" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
+
   <Body>
 
     <div class="py-6">
 
-      <div class="px-6 text-gray-900">{{ usluga.usl_name }}</div>
-
-      <div class="max-w-5xl sm:px-6 lg:px-4">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="py-12">
-            <div class="mx-auto sm:px-6 lg:px-8">
-              
-              <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div v-if="user" >
-                  <div v-if="vars.user.id == 1" >
-                    <a :href="route('uslugi.edit', usluga.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
-                  </div>
-                </div>
-
-                <div class="px-6 text-gray-900">{{ usluga.usl_desc }}</div>
+          <div class="max-w-5xl py-12 mx-auto sm:px-6 lg:px-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">        
+            <div v-if="user" >
+              <div v-if="vars.user.id == 1" >
+                <a :href="route('uslugi.edit', usluga.id)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Редактировать</a>
               </div>
             </div>
+            <div class="px-6 text-gray-900">{{ usluga.usl_desc }}</div>           
           </div>
-        </div>
-      </div>
+        
+      
 
 
       <h1 class="text-4xl font-semibold text-grey text-center py-10"> Юристы в этой категории </h1>
