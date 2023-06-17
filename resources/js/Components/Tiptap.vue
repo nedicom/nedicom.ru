@@ -1,5 +1,6 @@
 <template> 
-  <div v-if="editor" class="flex gap-9 py-3">
+<div class="">
+  <div v-if="editor" class="flex gap-9 p-3 my-3 border border-solid border-gray-300 rounded  sticky  top-50">
       <div @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }" class="py-1 px-2  text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
         жирный
       </div>
@@ -12,9 +13,8 @@
   </div>
 
   <editor-content :editor="editor"
-  name="body" 
-  class="form-control
-                  
+           name="body" 
+           class="form-control                  
                   text-base
                   font-normal
                   text-gray-700
@@ -23,7 +23,7 @@
                   rounded
                   transition
                   ease-in-out
-                  m-0
+                  mt-5
                   focus:text-gray-700
                   focus:bg-white
                   focus:border-blue-600
@@ -31,6 +31,7 @@
                 "
                 placeholder="Здесь Ваше интересное описание"
                 />
+              </div>
 </template>
 
 <script>
@@ -109,13 +110,15 @@ padding: 10px;
 
 ul,
 ol {
-  padding: 0 1rem;
+  padding: 0 2rem;
+  margin: 1rem 0;
   list-style-type: square;
 }
 
 h3{
-  line-height: 2;
-  font-size: 2rem;
+  line-height: 1.3;
+  font-size: 1.5rem;
+  margin: 1rem;
 }
 
 code {

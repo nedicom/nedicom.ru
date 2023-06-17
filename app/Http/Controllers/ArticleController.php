@@ -27,7 +27,7 @@ class ArticleController extends Controller
 
     public function formadd()
     {
-        return Inertia::render('Articles.Add');    
+        return Inertia::render('Articles/Add');    
     }
 
     public function create(Request $request){

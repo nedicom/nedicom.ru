@@ -5,3 +5,15 @@
 html {
     scroll-behavior: smooth;
 }
+
+h3{
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 1rem;
+}
+
+ul{
+    padding: 0 2rem;
+    margin: 1rem 0;
+    list-style-type: square;
+}
