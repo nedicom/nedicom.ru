@@ -6,6 +6,7 @@ use App\Http\Requests\ProfileUpdateRequest;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\Uslugi;
@@ -19,6 +20,8 @@ class ProfileController extends Controller
      */
     public function edit(Request $request, ): Response 
     {
+        
+        $id = Auth::user()->id;
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'imgurl' => Auth::user()->file_path,
@@ -26,7 +29,10 @@ class ProfileController extends Controller
             'status' => session('status'),
             'test'=>  Uslugi::orderBy('usl_name','desc')
             ->select('id', 'usl_name')
-            ->get(),
+            ->get(),            
+            'specializationOne' => User::find($id)->lawyerSpecOne,
+            'specializationTwo' => User::find($id)->lawyerSpecTwo,
+            'specializationThree' => User::find($id)->lawyerSpecThree,
         ]);
     }
 
@@ -35,6 +41,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        //dd($request);
         $request->user()->fill($request->validated());
         if($request->lawyer == true){
             $request->user()->lawyer = 1;
@@ -46,6 +53,19 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+
+        $request->user()->save();
+
+        return Redirect::route('profile.edit');
+    }
+
+    /**
+     * Update the user's profile information.
+     */
+    public function updatespec(ProfileUpdateRequest $request): RedirectResponse
+    {
+        //dd($request);
+        $request->user()->fill($request->validated());
 
         $request->user()->save();
 

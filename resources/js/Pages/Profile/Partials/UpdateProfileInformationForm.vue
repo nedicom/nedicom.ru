@@ -14,17 +14,15 @@ const props = defineProps({
     status: String,
     islawyer: String,
     test: "Array",
+    specializationOne: String,
 });
 
 const user = usePage().props.value.auth.user;
 
-const form = useForm({
+let form = useForm({
     name: user.name,
     email: user.email,
     about: user.about,
-    speciality_one_id: user.speciality_one_id,
-    speciality_two_id: user.speciality_two_id,
-    speciality_three_id: user.speciality_three_id,
     lawyer: false,
 });
 </script>
@@ -66,14 +64,25 @@ const form = useForm({
                 />
                 <InputLabel for="lawyer" value="Я - юрист" />
             </div>
-
             <div v-if="islawyer == '1'">
-                <Link
-                        :href="route('lawyer', 1)"
-                        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                        >Моя публичная страница
-                </Link>
+                <div class="my-5">
+                    <Link
+                            :href="route('lawyer', 1)"
+                            class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                            >Моя публичная страница
+                    </Link>
+                </div>
+
+                <InputLabel for="speciality" value="Специализация" />                
+                    <Multiselect                                
+                        :specdata="test" 
+                        :specializationOne="specializationOne"                      
+                    >      
+                </Multiselect>
+
             </div>
+
+
 
             <div>
                 <InputLabel for="about" value="О себе" />
@@ -104,28 +113,6 @@ const form = useForm({
 
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
-
-            <div>
-                <InputLabel for="speciality" value="Первая специализация" />                
-                <Multiselect                                
-                    :test="test"
-                    v-model="form.speciality_one_id"                        
-                >
-                </Multiselect>
-                <InputLabel for="speciality2" value="Вторая специализация" />                
-                <Multiselect                                
-                    :test="test"
-                    v-model="form.speciality_two_id"                        
-                >
-                </Multiselect>
-                <InputLabel for="speciality3" value="Третья специализация" />                
-                <Multiselect                                
-                    :test="test"
-                    v-model="form.speciality_three_id   "                        
-                >
-                </Multiselect>
-            </div>
-
 
             <div v-if="props.mustVerifyEmail && user.email_verified_at === null">
                 <p class="text-sm mt-2 text-gray-800">

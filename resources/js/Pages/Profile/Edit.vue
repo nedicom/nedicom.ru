@@ -15,6 +15,7 @@ defineProps({
   imgurl: String,
   islawyer: String,
   test: "Array",
+  specializationOne: String,
 });
 </script>
 
@@ -31,6 +32,7 @@ defineProps({
             :must-verify-email="mustVerifyEmail"
             :status="status"
             :islawyer="islawyer"
+            :specializationOne="specializationOne"
             :test="test"            
             class="max-w-xl"
           />
