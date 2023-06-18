@@ -20,6 +20,6 @@ class AnswerController extends Controller
         $Answer->users_id = Auth::user()->id;
         $Answer->save();
         $url = $request->url;
-        return redirect()->route('questions.url', $url);
+        //return redirect()->route('questions.url', $url);
     }
 }

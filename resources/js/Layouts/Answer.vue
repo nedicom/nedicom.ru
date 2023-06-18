@@ -15,13 +15,16 @@ let form = reactive({
 });
 
 let submit = () => {
-  Inertia.post("/answerpost", form);
-  
+  //Inertia.post("/answerpost", form);
+  Inertia.post(route('answer.post'), form, { preserveState: false, preserveScroll: true })
+  window.scrollTo(0, document.body.scrollHeight);
 };
 </script>
 
 <template>
-              <form @submit.prevent="submit" class="">
+              <form 
+              @submit.prevent="submit" 
+              class="">
 
                 <input v-model="form.question_id" class="invisible">
             
@@ -30,6 +33,7 @@ let submit = () => {
                   @input="onInputheader"
                   spellcheck="true"
                   maxlength="55"
+                  required
                   class="
                     form-control
                     block
@@ -94,10 +98,8 @@ let submit = () => {
                   Ответить
                 </button>
               </form>
-
+              <div class="overflow-y-auto" scroll-region>
+  <!-- Your page content -->scroll-region
+</div>
 </template>
-
-<script>
-
-</script>
     
