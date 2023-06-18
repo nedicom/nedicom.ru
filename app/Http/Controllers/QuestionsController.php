@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Questions;
+use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Translate;
 
@@ -19,8 +20,12 @@ class QuestionsController extends Controller
     }
 
     public function questionsURL($url){ 
+        $id = Questions::where('url', '=', $url)->pluck('id')->first();  
+        //$answers = Answer::with('UserAns')->get();    
         return Inertia::render('Questions/Question', [
-            'question' => Questions::where('url', '=', $url)->first(),
+            'question' => Questions::where('id', '=', $id)->first(),
+            'answers' => Answer::where('questions_id', '=', $id)->with('UserAns')->get(),
+            //'testus'=> $answers,
         ]);
     }
 
@@ -32,6 +37,6 @@ class QuestionsController extends Controller
         $url = Translate::translit($request->header);        
         $Question->url =  $url;
         $Question->save();
-        return redirect()->route('questions/url', $url);
+        return redirect()->route('questions.url', $url);
     }
 }

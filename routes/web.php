@@ -10,6 +10,7 @@ use App\Http\Controllers\ImportController;
 use App\Http\Controllers\PostphoneController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UslugiController;
+use App\Http\Controllers\AnswerController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -83,7 +84,11 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
     Route::controller(QuestionsController::class)->group(function () {
         Route::get('/questions', 'index')->name('questions');
         Route::post('/questions/post', 'post')->name('articles/post');
-        Route::get('/questions/{url}', 'questionsURL')->name('questions/url');
+        Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
+      });
+
+      Route::controller(AnswerController::class)->group(function () {
+        Route::post('/answerpost', 'post')->name('answer.post');
       });
 
 Route::middleware('auth')->group(function () {
