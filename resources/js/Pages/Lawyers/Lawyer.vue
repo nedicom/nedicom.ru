@@ -20,9 +20,9 @@ let sliderheader = ref("Практика юриста");
 
 let set = defineProps({
   lawyer: "$string",
-  specializationOne: "$string",
-  specializationTwo: "$string",
-  specializationThree: "$string",
+  specializationOne: Array,
+  specializationTwo: Array,
+  specializationThree: Array,
   articles: "$Array",
   practice: "$Array",
 });
@@ -59,13 +59,11 @@ let title = ref(set.lawyer.name);
 
     <About :about="set.lawyer.about"/>
 
-    <Specialization v-if="specializationOne"
-      :firstcardheader="specializationOne.usl_name" 
-      :firstcardbody="specializationOne.usl_desc" 
-      :secondcardheader="specializationTwo.usl_name" 
-      :secondcardbody="specializationTwo.usl_desc"   
-      :thirdcardheader="specializationThree.usl_name" 
-      :thirdcardbody="specializationThree.usl_desc"/>
+    <Specialization 
+      :specializationOne="specializationOne" 
+      :specializationTwo="specializationTwo"
+      :specializationThree="specializationThree"
+      />
 
     <Articles :articles = "articles"/>
 
