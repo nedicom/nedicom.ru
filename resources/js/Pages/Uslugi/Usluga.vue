@@ -42,7 +42,7 @@ let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
 
   <MainHeader />
 
-  <Header :ttl="usluga.usl_name" />
+  <Header :phone="usluga.phone" :address="usluga.address" />
 
   <Mainbanner :statusonimage="usluga.usl_name" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
 
