@@ -16,6 +16,13 @@ let set = defineProps({
 let form = reactive({
   header: set.uslugi.usl_name,
   description: set.uslugi.usl_desc,
+  longdescription: set.uslugi.longdescription,
+  preimushestvo1: set.uslugi.preimushestvo1,
+  preimushestvo2: set.uslugi.preimushestvo2,
+  preimushestvo3: set.uslugi.preimushestvo3,
+  phone: set.uslugi.phone, 
+  address: set.uslugi.address, 
+  maps: set.uslugi.maps,  
   id: set.uslugi.id,
 });
 
@@ -41,7 +48,8 @@ let title = ref("Редактировать статью");
           <div class="flex justify-start p-5">
             <div class="mb-3 xl:w-3/6">    
               <form @submit.prevent="submit">
-                <input v-model="form.id" class="invisible">         
+                <input v-model="form.id" class="invisible">
+
                 <textarea
                   v-model="form.header"   
                   spellcheck="true"
@@ -73,6 +81,7 @@ let title = ref("Редактировать статью");
                 <textarea  
                   v-model="form.description"  
                   spellcheck="true"
+                  maxlength="200"
                   class="
                     h-20
                     form-control
@@ -97,6 +106,201 @@ let title = ref("Редактировать статью");
                   "
                   rows="3"
                  ></textarea>
+
+                 <textarea
+                  v-model="form.longdescription"   
+                  spellcheck="true"
+                  name="longdescription"
+                  maxlength="1000"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="5"      
+                ></textarea>
+
+                <textarea
+                  v-model="form.preimushestvo1"   
+                  spellcheck="true"
+                  name="preimushestvo1"
+                  maxlength="55"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="2"      
+                ></textarea>
+
+
+                <textarea
+                  v-model="form.preimushestvo2"   
+                  spellcheck="true"
+                  name="preimushestvo1"
+                  maxlength="55"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="2"      
+                ></textarea>
+
+
+                <textarea
+                  v-model="form.preimushestvo3"   
+                  spellcheck="true"
+                  name="preimushestvo1"
+                  maxlength="55"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="2"      
+                ></textarea>
+
+                <textarea
+                  v-model="form.phone"
+                  name="phone"
+                  maxlength="20"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="2"      
+                ></textarea>
+
+                <textarea
+                  v-model="form.address"
+                  name="address"
+                  maxlength="100"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="2"      
+                ></textarea>
+
+                <textarea
+                  v-model="form.maps"
+                  name="maps"
+                  maxlength="300"
+                  class="
+                    form-control
+                    block
+                    w-full
+                    px-3
+                    py-1.5
+                    text-base
+                    font-normal
+                    text-gray-700
+                    bg-white bg-clip-padding
+                    border border-solid border-gray-300
+                    rounded
+                    transition
+                    ease-in-out
+                    m-0
+                    focus:text-gray-700
+                    focus:bg-white
+                    focus:border-blue-600
+                    focus:outline-none
+                  "                  
+                  rows="5 "      
+                ></textarea>
                 
                 <button
                   
