@@ -6,18 +6,18 @@ const emit = defineEmits(['update:checked']);
 const props = defineProps({
     checked: {
         type: [Array, Boolean],
-        default: false,
+        default: true,
     },
     unchecked: {
         type: [Array, Boolean],
-        default: true,
+        default: false,
     },
     islawyer: String,
 });
 
 const proxyChecked = computed({
     get() {
-        if(props.islawyer == 0){
+        if(props.islawyer == 1){
             return props.checked;
         }
         else{
@@ -26,6 +26,9 @@ const proxyChecked = computed({
     },
 
     set(val) {
+        if(props.islawyer == 1){
+            val = 1;
+        }
         emit('update:checked', val);
     },
 });

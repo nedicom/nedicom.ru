@@ -23,7 +23,7 @@ let form = useForm({
     name: user.name,
     email: user.email,
     about: user.about,
-    lawyer: false,
+    lawyer: true,
 });
 </script>
 
