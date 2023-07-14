@@ -3,16 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Uslugi;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreArticleRequest;
-use App\Http\Requests\UpdateArticleRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use App\Helpers\Translate;
-use Illuminate\Support\Facades\Storage;
 
 
 class ArticleController extends Controller
@@ -47,6 +44,7 @@ class ArticleController extends Controller
     {
         return Inertia::render('Articles/Edit', [
             'article' => Article::where('url', '=', $url)->first(),
+            'uslugi' => Uslugi::all(),
         ],  
     );
     }
@@ -58,6 +56,7 @@ class ArticleController extends Controller
         $article->header = $request->header;
         $article->description = $request->description;
         $article->body = $request->body;
+        $article->usluga_id = $request->usluga_id;
         $url = Translate::translit($request->header);        
         $article->url =  $url;
         $article->save();

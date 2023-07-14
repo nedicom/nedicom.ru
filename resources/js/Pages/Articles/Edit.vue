@@ -12,12 +12,14 @@ import { reactive } from "vue";
 
 let set = defineProps({
     article: String,
+    uslugi: String,
   });
 
 let form = reactive({
     header: set.article.header,
     description: set.article.description,
     body: set.article.body,
+    usluga_id: set.article.usluga_id,
     id: set.article.id,
 });
 
@@ -41,13 +43,13 @@ let title = ref("Редактировать статью");
     <div class="bg-white py-12">   
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
           <form @submit.prevent="submit">
           
             <div class="grid gap-4 md:grid-cols-2">
               <div class="">    
                 
-                  <input v-model="form.id" class="invisible">         
+                  <input v-model="form.id" class="invisible">  
+
                   <textarea
                     v-model="form.header"                                
                     @input="onInputheader"
@@ -143,6 +145,13 @@ let title = ref("Редактировать статью");
                     Символов: {{ wordsdesccounter }} Макс: 260 Рекомендовано: от 80 до 160
                    </p>
                   
+                   <label class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">Выберите категорию</label>
+                   <select v-model="form.usluga_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled value="">Выберите один из вариантов</option>
+                    <option v-for="option in uslugi" v-bind:value="option.id" :selected="option.usl_name == '123'">
+                      {{ option.usl_name }}
+                    </option>
+                  </select>
 
               </div>
 

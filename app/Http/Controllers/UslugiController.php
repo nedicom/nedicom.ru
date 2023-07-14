@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Uslugi;
+use App\Models\Article;
 use App\Http\Controllers\Controller;
 use App\Helpers\Translate;
 use Inertia\Inertia;
@@ -27,7 +28,7 @@ class UslugiController extends Controller
             'usluga' => Uslugi::where('url', '=', $url)->first(),
             'user' => Auth::user(),
             'lawyers' => User::where('speciality_one_id', '=', $id)->orderBy('name', 'asc')->get()->take(3),
-            //'practice' => Article::where('userid', $id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
+            'practice' => Article::where('usluga_id', $id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
             'firstlawyer' => Uslugi::where('url', '=', $url)->first()->firstlawyer,
 
         ]);
