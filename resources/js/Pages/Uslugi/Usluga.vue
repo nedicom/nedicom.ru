@@ -19,8 +19,15 @@ let vars = defineProps({
 });
 
 let sliderheader = "Доверяйте нашей практике";
+  if(vars.lawyers[0].file_path == null){
+    var path = '/#';
+  }
+  else{
+    var path = '/'+vars.lawyers[0].file_path;
+  }
+  
+let mainbannerimg = path;
 
-let mainbannerimg = '/'+vars.lawyers[0].file_path;
 
 </script>
 
