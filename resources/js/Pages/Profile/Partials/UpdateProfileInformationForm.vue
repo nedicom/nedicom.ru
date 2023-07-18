@@ -67,7 +67,7 @@ let form = useForm({
             <div v-if="islawyer == '1'">
                 <div class="my-5">
                     <Link
-                            :href="route('lawyer', 1)"
+                            :href="route('lawyer', user.id)"
                             class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                             >Моя публичная страница
                     </Link>

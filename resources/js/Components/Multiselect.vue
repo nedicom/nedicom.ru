@@ -18,7 +18,7 @@ defineProps( {
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
         />
         <datalist id="uslugi" >
-            <option  v-for="id in specdata" :id="id.usl_name" :value="id.usl_name">{{ id.id }}</option>
+            <option  v-for="id in specdata" :id="id?.usl_name" :value="id?.usl_name">{{ id.id }}</option>
         </datalist>
     <Link 
         :href="route('uslugi.add')"        
@@ -49,9 +49,9 @@ export default {
       test: null,
       test2: null,
       test3: null,
-      testvalue: usePage().props.value.specializationOne.usl_name,
-      testvalue2: usePage().props.value.specializationTwo.usl_name,
-      testvalue3: usePage().props.value.specializationThree.usl_name,
+      testvalue: usePage().props.value.specializationOne?.usl_name,
+      testvalue2: usePage().props.value.specializationTwo?.usl_name,
+      testvalue3: usePage().props.value.specializationThree?.usl_name,
       invisibility: 'visible mt-3 mr-2 px-4 py-2',
       invisibility2: 'visible mt-3 mr-2 px-4 py-2',
       invisibility3: 'visible mt-3 mr-2 px-4 py-2',
