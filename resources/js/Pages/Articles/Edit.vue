@@ -50,6 +50,7 @@ let title = ref("Редактировать статью");
                 
                   <input v-model="form.id" class="invisible">  
 
+                  
                   <textarea
                     v-model="form.header"                                
                     @input="onInputheader"

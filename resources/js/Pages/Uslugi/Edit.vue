@@ -50,6 +50,7 @@ let title = ref("Редактировать статью");
               <form @submit.prevent="submit">
                 <input v-model="form.id" class="invisible">
 
+                <label for="header" class="block text-sm font-medium leading-6 text-gray-900">Название услуги</label>
                 <textarea
                   v-model="form.header"   
                   spellcheck="true"
@@ -70,6 +71,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -78,14 +80,15 @@ let title = ref("Редактировать статью");
                   rows="2"      
                 ></textarea>
 
+                <label for="description" class="block text-sm font-medium leading-6 text-gray-900">Краткое описание услуги (не более 200 симв.)</label>
                 <textarea  
                   v-model="form.description"  
                   spellcheck="true"
+                  name="description"
                   maxlength="200"
                   class="
                     h-20
                     form-control
-                    mt-3
                     block
                     w-full
                     px-3
@@ -99,6 +102,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -107,6 +111,8 @@ let title = ref("Редактировать статью");
                   rows="3"
                  ></textarea>
 
+                 <label for="longdescription" class="block text-sm font-medium leading-6 text-gray-900">Подробное описание услуги (не более 1000 симв.)</label>
+                
                  <textarea
                   v-model="form.longdescription"   
                   spellcheck="true"
@@ -127,6 +133,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -135,6 +142,8 @@ let title = ref("Редактировать статью");
                   rows="5"      
                 ></textarea>
 
+                <label for="preimushestvo1" class="block text-sm font-medium leading-6 text-gray-900">Первое преимущество услуги</label>
+                
                 <textarea
                   v-model="form.preimushestvo1"   
                   spellcheck="true"
@@ -155,6 +164,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -163,7 +173,7 @@ let title = ref("Редактировать статью");
                   rows="2"      
                 ></textarea>
 
-
+                <label for="preimushestvo2" class="block text-sm font-medium leading-6 text-gray-900">Второе преимущество услуги</label>
                 <textarea
                   v-model="form.preimushestvo2"   
                   spellcheck="true"
@@ -184,6 +194,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -192,7 +203,8 @@ let title = ref("Редактировать статью");
                   rows="2"      
                 ></textarea>
 
-
+                <label for="preimushestvo3" class="block text-sm font-medium leading-6 text-gray-900">Третье преимущество услуги</label>
+                
                 <textarea
                   v-model="form.preimushestvo3"   
                   spellcheck="true"
@@ -213,6 +225,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -221,6 +234,8 @@ let title = ref("Редактировать статью");
                   rows="2"      
                 ></textarea>
 
+                <label for="phone" class="block text-sm font-medium leading-6 text-gray-900">Телефон</label>
+                
                 <textarea
                   v-model="form.phone"
                   name="phone"
@@ -240,6 +255,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -247,6 +263,8 @@ let title = ref("Редактировать статью");
                   "                  
                   rows="2"      
                 ></textarea>
+
+                <label for="address" class="block text-sm font-medium leading-6 text-gray-900">Адрес</label>
 
                 <textarea
                   v-model="form.address"
@@ -267,6 +285,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
@@ -274,6 +293,8 @@ let title = ref("Редактировать статью");
                   "                  
                   rows="2"      
                 ></textarea>
+
+                <label for="maps" class="block text-sm font-medium leading-6 text-gray-900">Код из яндекс карт (ссылка начиная с https )</label>
 
                 <textarea
                   v-model="form.maps"
@@ -294,6 +315,7 @@ let title = ref("Редактировать статью");
                     transition
                     ease-in-out
                     m-0
+                    mb-5
                     focus:text-gray-700
                     focus:bg-white
                     focus:border-blue-600
