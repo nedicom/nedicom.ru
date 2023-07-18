@@ -44,14 +44,13 @@ class UslugiController extends Controller
         $usluga->usl_name = $request->header;
         $usluga->usl_desc = $request->description;
 
-        $usluga->longdescription = 'Это детальное описание услуги';
-        $usluga->preimushestvo1 = '600+ дел';
-        $usluga->preimushestvo2 = 'Более 10 лет практики';
-        $usluga->preimushestvo3 = 'Аналитический подход к решению задачи';
-        $usluga->address = 'Респ. Крым, г. Симферополь, ул. Долгоруковская, 5';
-        $usluga->phone = '+79788838978';
-        $usluga->maps = 'https://yandex.ru/map-widget/v1/?um=constructor%3Af656829d54430f3c7f23ae0313146d2525f75dfbaffa3e083f51d06d98a33614&amp;source=constructor';
-
+            $usluga->longdescription = 'Это детальное описание услуги';
+            $usluga->preimushestvo1 = '600+ дел';
+            $usluga->preimushestvo2 = 'Более 10 лет практики';
+            $usluga->preimushestvo3 = 'Аналитический подход к решению задачи';
+            $usluga->address = 'Респ. Крым, г. Симферополь, ул. Долгоруковская, 5';
+            $usluga->phone = '+79788838978';
+            $usluga->maps = 'https://yandex.ru/map-widget/v1/?um=constructor%3Af656829d54430f3c7f23ae0313146d2525f75dfbaffa3e083f51d06d98a33614&amp;source=constructor';
 
         $url = Translate::translit($request->header);        
         $usluga->url =  $url;

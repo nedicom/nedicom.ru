@@ -12,6 +12,7 @@ let form = reactive({
   phone: "",
 });
 
+
 let submit = () => {
   Inertia.post("/phone/send", form);
 }

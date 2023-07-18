@@ -19,16 +19,12 @@ let vars = defineProps({
 });
 
 let sliderheader = "Доверяйте нашей практике";
-  if(vars.lawyers[0].file_path == null){
-    var path = '/#';
-  }
-  else{
-    var path = '/'+vars.lawyers[0].file_path;
-  }
   
-let mainbannerimg = path;
+let mainbannerimg = '/'+vars.lawyers[0]?.file_path;
 
-
+if(vars.lawyers[0]?.file_path === undefined){
+    mainbannerimg  = '/storage/images/landing/main/1280on600.webp';
+}
 </script>
 
 
@@ -76,29 +72,35 @@ let mainbannerimg = path;
           <div class="px-6 text-gray-900 text-center">{{ usluga.longdescription }}</div>   
         
           <Address :phone="usluga.phone" :address="usluga.address" />
-      
+
           <!--lawyers-->
-          <div v-if="lawyers" >
+          <div v-if="lawyers != 0" >
             <h1 class="text-4xl font-semibold text-grey text-center py-10"> Юристы в этой категории </h1>          
-            <div v-for="item in lawyers">           
-              <div class="w-full md:w-1/3">
-                <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                  <a :href="route('lawyer', item.id)">
-                      <img class="rounded-t-lg" :src="'/'+item.file_path" alt="" />
-                  </a>
-                  <div class="p-5">
-                    <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                        {{item.about}}
-                      </p>
-                          <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.name }}</h5>
+            
+            <div class="">   
+            
+              <div class="grid md:grid-cols-3 gap-4 mx-4">   
+                <div v-for="item in lawyers" class="">           
+                  <div >
+                    <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+                      <a :href="route('lawyer', item.id)">
+                          <img class="rounded-t-lg" :src="'/'+item?.file_path" alt="" />
+                      </a>
+                      <div class="p-5">
+                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                            {{item.about}}
+                          </p>
+                              <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{ item.name }}</h5>
+                      </div>
+                    </div>  
                   </div>
-                </div>  
+                </div>
               </div>
-            </div>
+            </div>  
           </div>
           <!--lawyers-->
 
-        <Slider :sliderheader="sliderheader" :sldimg="practice" />
+        <Slider v-if="practice != 0" :sliderheader="sliderheader" :sldimg="practice" />
       
     </div>
   </Body>
