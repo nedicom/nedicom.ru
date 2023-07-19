@@ -14,56 +14,57 @@ defineProps({
 <template>
     <div class="p-5">
 
-          <h2 class="text-lg font-medium text-gray-900">Фото судебного решения (необязательно)</h2>
-        <div class="w-full inline-grid grid-cols-2 gap-4">
+        <h2 class="text-lg font-medium text-gray-900">Фото судебного решения (необязательно)</h2>
+        
+        <div class="w-full inline-grid grid-cols-1 md:grid-cols-2 gap-4">
             
-        <div id="crop" class="w-full">        
-            <InputLabel value="Ваше новое изображение" />
-            <div class="h-12 w-full mt-3">
-                <button 
-                class="button mr-5  inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
-                @click="$refs.file.click()">                 
+          <div id="crop" class="w-full">        
+              <InputLabel value="Ваше новое изображение" />
+              <div class="h-12 w-full mt-3">
+                  <button 
+                  class="button mr-5  inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+                  @click="$refs.file.click()">                 
 
-                <input
-                    type="file"
-                    ref="file"           
-                    accept="image/jpeg, image/png"
-                    @change="uploadImage($event)"
-                />
-                Загрузить
-                </button> 
-                <button 
-                    
-                    class="button inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
-                    @click="cropImage">Сохранить
-                </button>
-            </div>
-            <cropper ref="cropper" class="cropper" 
-            
-            :src="image.src"
-            :resizeImage="{ wheel: false }"
-            :stencil-props="{
-                handlers: {eastSouth: true,},
-                movable: true,
-                resizable: true,
-                aspectRatio: 3/4,
-            }"
-                image-restriction="stencil" 
-            />
-
-
-        </div>
-        <div class="w-full">
-            <InputLabel value="Текущее изображение" />
-            <div class="h-12 w-full mt-3"></div>
-            <div class="w-full cropper"> 
-              <img class="h-full"
-              :src='"/"+article.practice_file_path'
-              alt="Avatar" 
+                  <input
+                      type="file"
+                      ref="file"           
+                      accept="image/jpeg, image/png"
+                      @change="uploadImage($event)"
+                  />
+                  Загрузить
+                  </button> 
+                  <button 
+                      
+                      class="button inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+                      @click="cropImage">Сохранить
+                  </button>
+              </div>
+              <cropper ref="cropper" class="cropper" 
+              
+              :src="image.src"
+              :resizeImage="{ wheel: false }"
+              :stencil-props="{
+                  handlers: {eastSouth: true,},
+                  movable: true,
+                  resizable: true,
+                  aspectRatio: 3/4,
+              }"
+                  image-restriction="stencil" 
               />
-            
-            </div>
-        </div>
+          </div>
+
+          <div class="w-full">
+              <InputLabel value="Текущее изображение" />
+              <div class="h-12 w-full mt-3"></div>
+              <div class="w-full cropper"> 
+                <img class="h-full"
+                :src='"/"+article.practice_file_path'
+                alt="Avatar" 
+                />
+              
+              </div>
+          </div>
+
         </div>
 
 </div>

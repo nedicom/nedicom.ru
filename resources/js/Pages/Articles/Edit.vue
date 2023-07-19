@@ -40,9 +40,9 @@ let title = ref("Редактировать статью");
   <MainHeader />
 
   <Body>
-    <div class="bg-white py-12">   
+    <div class="bg-white py-12 m-3">   
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="bg-white shadow-sm sm:rounded-lg">
           <form @submit.prevent="submit">
           
             <div class="grid gap-4 md:grid-cols-2">
@@ -77,7 +77,8 @@ let title = ref("Редактировать статью");
                       focus:border-blue-600
                       focus:outline-none
                     "                  
-                    rows="2"      
+                    rows="2"
+                    required      
                   ></textarea>
                   <div
                     class="
@@ -125,6 +126,7 @@ let title = ref("Редактировать статью");
                       focus:border-blue-600
                       focus:outline-none
                     "
+                    required
                   ></textarea>
                   <div
                     class="
@@ -156,7 +158,7 @@ let title = ref("Редактировать статью");
 
               </div>
 
-              <div class="">
+              <div class="hidden md:contents">
                 <div class="bg-gray-50 text-gray-800">
                   <h3 class="text-2xl font-bold p-3">Яндекс</h3>
                   <div class="rounded-lg shadow-lg bg-white p-5 mx-5">
@@ -225,27 +227,30 @@ let title = ref("Редактировать статью");
 
 
             <editor spellcheck="true" v-model="form.body"/>
-            <button
-                    
-                    type="submit"
-                    class="
-                      my-5
-                      inline-flex
-                      items-center
-                      px-5
-                      py-2.5
-                      text-sm
-                      font-medium
-                      text-center text-white
-                      bg-blue-700
-                      rounded-lg
-                      focus:ring-4 focus:ring-blue-200
-                      dark:focus:ring-blue-900
-                      hover:bg-blue-800
-                    "
-                  >
-                    Обновить
-                  </button>
+              <div class="flex justify-center">
+                <button
+                      
+                      type="submit"
+                      class="
+                        my-5
+                        inline-flex
+                        items-center
+                        px-5
+                        py-2.5
+                        text-sm
+                        font-medium
+                        text-center text-white
+                        bg-blue-700
+                        rounded-lg
+                        focus:ring-4 focus:ring-blue-200
+                        dark:focus:ring-blue-900
+                        hover:bg-blue-800
+                        text-center
+                      "
+                    >
+                      Обновить
+                    </button>
+              </div>
                 </form>
           
         </div>

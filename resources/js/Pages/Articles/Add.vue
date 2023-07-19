@@ -4,7 +4,6 @@ import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import Editor from '@/Components/Tiptap.vue';
-import Practicecropper from '@/Components/Practicecropper.vue';
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
@@ -33,9 +32,9 @@ let title = ref("Добавить статью");
   <Body>
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="flex justify-start p-5">
-            <div class="mb-3 xl:w-3/6">
+        <div class="bg-white shadow-sm sm:rounded-lg">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3 p-5">
+            <div class="">
               <form @submit.prevent="submit" class="">
                 <textarea
                   v-model="form.header"
@@ -62,12 +61,13 @@ let title = ref("Добавить статью");
                     focus:border-blue-600
                     focus:outline-none
                   "
+                  required
                   id=""
                   rows="2"
                   placeholder="Тут Ваш прекрасный Заголовок. Задумайтесь, что в нем зацепит внимание пользователя"
                 ></textarea>
                 <div
-                  class="
+                  class="                    
                     my-1
                     w-full
                     bg-gray-200
@@ -77,7 +77,8 @@ let title = ref("Добавить статью");
                   "
                 >
                   <div
-                    class="bg-blue-600 h-1 rounded-full"
+                    class="                   
+                    bg-blue-600 h-1 rounded-full"
                     :style="{ width: progresswidth + '%' }"
                   ></div>
                 </div>
@@ -111,6 +112,7 @@ let title = ref("Добавить статью");
                     focus:outline-none
                   "
                   id=""
+                  required
                   name="description"
                   rows="3"
                   placeholder="Здесь Ваше интересное описание, которое расскажет о чем статья. Его отображают поисковики, поэтому не забудьте парочку ключевых слов."
@@ -141,7 +143,9 @@ let title = ref("Добавить статью");
               </form>
             </div>
 
-            <div class="ml-3 xl:w-3/6">
+            <div class="
+                        hidden 
+                        md:contents ">
               <div class="bg-gray-50 text-gray-800">
                 <h3 class="text-2xl font-bold p-3">Яндекс</h3>
                 <div class="rounded-lg shadow-lg bg-white p-5 mx-5">

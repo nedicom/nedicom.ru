@@ -1,6 +1,6 @@
 <template> 
 <div class="">
-  <div v-if="editor" class="flex gap-9 p-3 my-3 border border-solid border-gray-300 rounded  sticky  top-50">
+  <div v-if="editor" class="flex gap-9 p-3 my-3 rounded  sticky  top-50">
       <div @click="editor.chain().focus().toggleBold().run()" :disabled="!editor.can().chain().focus().toggleBold().run()" :class="{ 'is-active': editor.isActive('bold') }" class="py-1 px-2  text-white bg-blue-700 rounded focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800 ">
         жирный
       </div>
@@ -13,25 +13,20 @@
   </div>
 
   <editor-content :editor="editor"
-           name="body" 
-           class="form-control                  
-                  text-base
-                  font-normal
-                  text-gray-700
-                  bg-white bg-clip-padding
-                  border border-solid border-gray-300
-                  rounded
-                  transition
-                  ease-in-out
-                  mt-5
-                  focus:text-gray-700
-                  focus:bg-white
-                  focus:border-blue-600
-                  focus:outline-none                    
-                "
-                placeholder="Здесь Ваше интересное описание"
-                />
-              </div>
+        name="body" 
+        class="form-control
+              overflow-auto                  
+              text-base
+              font-normal
+              text-gray-700                  
+              rounded                  
+              ease-in-out
+              mt-5  
+              border                
+      "
+      />
+
+  </div>
 </template>
 
 <script>
@@ -99,15 +94,21 @@ export default {
 <style lang="scss">
 /* Basic editor styles */
 
-.ProseMirror {
-min-height: 300px;
-padding: 10px;  
+.ProseMirror-focused {
+    outline: none;
+}
 
+.ProseMirror {
+height: 400px;
+padding: 10px;
 > * + * {
  // margin-top: 0.75em;
   
 }
 
+p{
+  border : none;
+}
 ul,
 ol {
   padding: 0 2rem;
@@ -118,6 +119,7 @@ ol {
 h3{
   line-height: 1.3;
   font-size: 1.5rem;
+  border : none;
   margin: 1rem;
 }
 
@@ -131,7 +133,6 @@ pre {
   color: #FFF;
   font-family: 'JetBrainsMono', monospace;
   padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
 
   code {
     color: inherit;
