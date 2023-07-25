@@ -12,7 +12,7 @@ import { reactive } from "vue";
 let form = reactive({
   header: "",
   description: "",
-  body: "",
+  body: "Текст прекрасной и полезной статьи",
 });
 
 let submit = () => {
@@ -221,6 +221,9 @@ let title = ref("Добавить статью");
 </template>
 
 <script>
+etInterval(function() {
+  alert('form.body');  .
+}, 60 * 1000);
 export default {
   //?export object to DOM??
   data() {
@@ -249,6 +252,8 @@ export default {
         this.url = e.target.value;
       }
     },
+
+
 
     onInputdesc(e) {
       (this.yabody = e.target.value), (this.goobody = e.target.value);

@@ -13,7 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        //
+        Schema::table('articles', function (Blueprint $table) {
+            $table->unsignedBigInteger('is_published')->nullable();
+            $table->string('file_url')->nullable();
+        });
     }
 
     /**
