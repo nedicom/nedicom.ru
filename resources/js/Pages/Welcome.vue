@@ -6,6 +6,7 @@ import Casecard from "@/Layouts/Casecard.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
 import Slider from "@/Layouts/Slider.vue";
 import Address from "@/Layouts/Address.vue";
+import VK from "@/Layouts/Vk.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
@@ -68,6 +69,8 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
     <Slider :sldimg="sldimg" :sliderheader="sliderheader"/>
+
+    <VK />
 
     <MainFooter />
   
