@@ -222,7 +222,7 @@ let title = ref("Добавить статью");
 
 <script>
 etInterval(function() {
-  alert('form.body');  .
+  alert('form.body');  
 }, 60 * 1000);
 export default {
   //?export object to DOM??
