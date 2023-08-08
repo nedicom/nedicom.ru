@@ -8,7 +8,9 @@ export default {
 
         VKOpenApi.then(() => {
             status.value = 'Script loaded'
-            VK.Widgets.Group('vk_groups', {mode: 3}, 20003922)
+            VK.Widgets.Group('vk_groups', {mode: 0, width: 'auto', height: '400', 
+                              color1: "FFFFFF", color2: "000000", color3: "1976d2"}, 
+                              72406118)
         })
 
         return {
@@ -19,13 +21,11 @@ export default {
 </script>
 
 <template>
-    <!-- secondary banner - testimonials -->
-    <h1 class="text-4xl font-semibold text-grey text-center py-10">Наши друзья, клиенты и партнеры</h1>
+    <h1 class="text-4xl font-semibold text-grey text-center py-10 px-4">Становись другом</h1>
     <div
-        class="relative overflow-hidden bg-cover bg-no-repeat my-9 p-12 text-center h-96"
+        class="relative overflow-hidden bg-cover bg-no-repeat text-center px-4" 
     >
         <!-- VK Widget -->
         <div id="vk_groups"></div>
     </div>
-    <!-- secondary banner - testimonials -->
 </template>
