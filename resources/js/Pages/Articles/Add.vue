@@ -5,7 +5,6 @@ import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import Editor from "@/Components/Tiptap.vue";
 import { ref } from "vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
 import { reactive } from "vue";
 
@@ -127,9 +126,11 @@ let title = ref("Добавить статью");
 </template>
 
 <script>
+/* autosave
 setInterval(function () {
   alert("form.body");
-}, 60 * 1000);
+}, 60 * 1000);*/
+
 export default {
   //?export object to DOM??
   data() {
@@ -137,7 +138,7 @@ export default {
       //retirning value or what?
       yaheader: "Заголовок идеальной статьи в Яндексе. До 55 символов", //yaheader is variable for ???
       yabody:
-        "Описание идеальной статьи в Яндексе. Яндекс любит краткое описание до 160 символов на компьютере, и до 80 символов наэкране мобильного.",
+        "Описание идеальной статьи в Яндексе. Яндекс любит краткое описание до 160 символов на компьютере, и до 80 символов на экране мобильного.",
       gooheader: "Заголовок идеальной статьи в Google",
       goobody:
         "Описание идеальной статьи в Google. Google тоже предпочитает до 160 символов на десктопе и до 80 на мобильном. ",
