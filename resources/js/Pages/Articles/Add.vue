@@ -3,7 +3,7 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import Editor from '@/Components/Tiptap.vue';
+import Editor from "@/Components/Tiptap.vue";
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { Inertia } from "@inertiajs/inertia";
@@ -41,44 +41,17 @@ let title = ref("Добавить статью");
                   @input="onInputheader"
                   spellcheck="true"
                   maxlength="55"
-                  class="
-                    form-control
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700
-                    focus:bg-white
-                    focus:border-blue-600
-                    focus:outline-none
-                  "
+                  class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   required
                   id=""
                   rows="2"
                   placeholder="Тут Ваш прекрасный Заголовок. Задумайтесь, что в нем зацепит внимание пользователя"
                 ></textarea>
                 <div
-                  class="                    
-                    my-1
-                    w-full
-                    bg-gray-200
-                    rounded-full
-                    h-1
-                    dark:bg-gray-700
-                  "
+                  class="my-1 w-full bg-gray-200 rounded-full h-1 dark:bg-gray-700"
                 >
                   <div
-                    class="                   
-                    bg-blue-600 h-1 rounded-full"
+                    class="bg-blue-600 h-1 rounded-full"
                     :style="{ width: progresswidth + '%' }"
                   ></div>
                 </div>
@@ -89,28 +62,7 @@ let title = ref("Добавить статью");
                   v-model="form.description"
                   @input="onInputdesc"
                   spellcheck="true"
-                  class="
-                    h-20
-                    form-control
-                    mt-3
-                    block
-                    w-full
-                    px-3
-                    py-1.5
-                    text-base
-                    font-normal
-                    text-gray-700
-                    bg-white bg-clip-padding
-                    border border-solid border-gray-300
-                    rounded
-                    transition
-                    ease-in-out
-                    m-0
-                    focus:text-gray-700
-                    focus:bg-white
-                    focus:border-blue-600
-                    focus:outline-none
-                  "
+                  class="h-20 form-control mt-3 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                   id=""
                   required
                   name="description"
@@ -118,58 +70,29 @@ let title = ref("Добавить статью");
                   placeholder="Здесь Ваше интересное описание, которое расскажет о чем статья. Его отображают поисковики, поэтому не забудьте парочку ключевых слов."
                 ></textarea>
 
-                <editor v-model="form.body"/>
+                <editor v-model="form.body" />
 
                 <button
                   type="submit"
-                  class="
-                    my-5
-                    inline-flex
-                    items-center
-                    px-5
-                    py-2.5
-                    text-sm
-                    font-medium
-                    text-center text-white
-                    bg-blue-700
-                    rounded-lg
-                    focus:ring-4 focus:ring-blue-200
-                    dark:focus:ring-blue-900
-                    hover:bg-blue-800
-                  "
+                  class="my-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
                 >
                   Опубликовать
                 </button>
               </form>
             </div>
 
-            <div class="
-                        hidden 
-                        md:contents ">
+            <div class="hidden md:contents">
               <div class="bg-gray-50 text-gray-800">
                 <h3 class="text-2xl font-bold p-3">Яндекс</h3>
                 <div class="rounded-lg shadow-lg bg-white p-5 mx-5">
                   <h5
-                    class="
-                      text-blue-800 text-xl
-                      line-clamp-2
-                      leading-tight
-                      font-medium
-                      hover:text-red-400
-                    "
+                    class="text-blue-800 text-xl line-clamp-2 leading-tight font-medium hover:text-red-400"
                   >
                     {{ yaheader }}
                   </h5>
                   <a
                     href="#!"
-                    class="
-                      text-green-700
-                      hover:text-red-400
-                      transition
-                      duration-300
-                      ease-in-out
-                      mb-4
-                    "
+                    class="text-green-700 hover:text-red-400 transition duration-300 ease-in-out mb-4"
                     >https://nedicom.ru/статьи/<span>{{ url }}</span></a
                   >
                   <p class="text-gray-700 line-clamp-3 text-base text-ellipsis">
@@ -182,36 +105,19 @@ let title = ref("Добавить статью");
                     >https://nedicom.ru/статьи/<span>{{ url }}</span></a
                   >
                   <h5
-                    class="
-                      text-blue-700
-                      no-underline
-                      line-clamp-2
-                      hover:underline
-                      text-xl
-                      leading-tight
-                      font-medium
-                      my-1
-                    "
+                    class="text-blue-700 no-underline line-clamp-2 hover:underline text-xl leading-tight font-medium my-1"
                   >
                     {{ gooheader }}
                   </h5>
                   <p
-                    class="
-                      text-gray-700 text-base
-                      line-clamp-3
-                      text-ellipsis
-                      overflow-hidden
-                      ...
-                    "
+                    class="text-gray-700 text-base line-clamp-3 text-ellipsis overflow-hidden ..."
                   >
                     {{ goobody }}
                   </p>
                 </div>
               </div>
-            </div>          
-                        
-          </div>          
-          
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -221,8 +127,8 @@ let title = ref("Добавить статью");
 </template>
 
 <script>
-etInterval(function() {
-  alert('form.body');  
+setInterval(function () {
+  alert("form.body");
 }, 60 * 1000);
 export default {
   //?export object to DOM??
@@ -252,8 +158,6 @@ export default {
         this.url = e.target.value;
       }
     },
-
-
 
     onInputdesc(e) {
       (this.yabody = e.target.value), (this.goobody = e.target.value);

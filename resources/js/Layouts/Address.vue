@@ -19,6 +19,10 @@ let phoneto = "tel:"+phone;
 </script>
 
 <template>
+       
+        <h1 class="text-4xl font-semibold text-grey text-center py-10">
+            Контакты
+        </h1>
     <!-- address -->
     <div class="grid grid-cols-1 md:grid-cols-2 my-6 py-6">
         

@@ -26,9 +26,6 @@ let submit = () => {
        <h1 class="text-4xl font-semibold text-grey text-center py-10">
         Дела, по которым мы помогаем
       </h1>
-
-       
-
       <div class="max-w-6xl mx-auto md:my-9 sm:px-6 lg:px-8 text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-9">
             <!-- card -->
@@ -75,6 +72,12 @@ let submit = () => {
             
         </div>
       </div>
+
+      <div class="flex justify-center m-3">
+        <a href = "/uslugi" 
+          class="text-lg text-blue-700 hover:underline dark:text-blue-500">
+          Полный перечень услуг</a>
+        </div>
        <!-- case card -->
        
 </template> 
