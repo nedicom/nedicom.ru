@@ -56,7 +56,7 @@ let title = ref("Услуги");
                   {{ uslugi.usl_name }}
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  nothing
+                  {{ uslugi.usl_desc }}
                 </p>
                 <a
                   :href="'uslugi/' + uslugi.url"

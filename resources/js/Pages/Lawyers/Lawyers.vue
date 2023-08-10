@@ -57,7 +57,7 @@ let title = ref("Юристы");
                   {{ lawyers.name }}
                 </h5>
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  nothing
+                  {{ lawyers.about }}
                 </p>
                 <a
                   :href="'lawyers/' + lawyers.id"
@@ -78,10 +78,10 @@ let title = ref("Юристы");
           <div v-else class="flex justify-center">
             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
               <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
-                Статей пока нет
+                Юристов пока нет
               </h5>
               <p class="text-gray-700 text-base mb-2">
-                Но вы можете добавить)) Для этого нужно просто начать
+                Нужно кого-то зарегистрировать
               </p>
             </div>
           </div>

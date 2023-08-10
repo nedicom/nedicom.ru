@@ -33,7 +33,7 @@ let title = ref("Вопросы");
                   <a href="#">
                   <h5 class="mb-2 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Идет обучение ИИ</h5>
               </a>
-              <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Старт сервиса с вопросами - 01 августа 2023</p>             
+              <p class="mb-3 font-normal text-gray-500 dark:text-gray-400">Старт сервиса с вопросами - 01 октября 2023</p>             
           </div>
         </div>
       </div>
