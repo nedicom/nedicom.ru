@@ -20,11 +20,10 @@ defineProps({
           class = "carousel__item w-full flex items-center justify-center h-128 bg-cover"
           :style="{ backgroundImage: 'url(' + `/`+slide.practice_file_path + ')' }">
             
-            <div v-if="slide.header" class="mx-6 grid grid-cols-1 content-center">
-              <p class="line-clamp-4 mt-4 text-2xl font-extrabold tracking-tight text-slate-900">{{slide.header}}</p>
-              <div class="line-clamp-4 max-w-xl"><p class="mt-4 text-base leading-7 text-slate-700">{{slide.description}}</p></div>            
-              <div class="mt-6">
-                <a class="text-base font-semibold text-indigo-600 hover:text-indigo-700"
+            <div v-if="slide.header" class="bg-white rounded-lg py-1 px-4 mx-6 grid grid-cols-1 content-center">
+            <div class="line-clamp-5 max-w-xl"><p class="my-4 text-sm">{{slide.description}}</p></div>            
+              <div>
+                <a class="text-xs font-semibold text-indigo-600 hover:text-indigo-700"
                 target="_blank" 
               :href= "'/articles/'+slide.url" >Подробнее <span aria-hidden="true">→</span></a></div>
 
