@@ -24,9 +24,9 @@ let submit = () => {
     class="
         relative 
         overflow-hidden 
-        bg-contain  
+        bg-cover  
         bg-no-repeat
-        bg-center 
+        bg-md-top
         w-full
         h-96
         "

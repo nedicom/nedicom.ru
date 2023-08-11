@@ -6,7 +6,7 @@ defineProps({
 </script>
 
 <template>
-  <h1 class="text-4xl font-semibold text-grey text-center py-10">
+  <h1 class="mt-12 text-4xl font-semibold text-grey text-center py-10">
     {{ sliderheader }}
   </h1>
   
@@ -19,11 +19,16 @@ defineProps({
         <div 
           class = "carousel__item w-full flex items-center justify-center h-128 bg-cover"
           :style="{ backgroundImage: 'url(' + `/`+slide.practice_file_path + ')' }">
-            <a 
-              v-if="slide.url" 
-              :href= "'/articles/'+slide.url" 
-              class=" text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
-            подробнее</a>
+            
+            <div v-if="slide.header" class="mx-6 grid grid-cols-1 content-center">
+              <p class="line-clamp-4 mt-4 text-2xl font-extrabold tracking-tight text-slate-900">{{slide.header}}</p>
+              <div class="line-clamp-4 max-w-xl"><p class="mt-4 text-base leading-7 text-slate-700">{{slide.description}}</p></div>            
+              <div class="mt-6">
+                <a class="text-base font-semibold text-indigo-600 hover:text-indigo-700"
+                target="_blank" 
+              :href= "'/articles/'+slide.url" >Подробнее <span aria-hidden="true">→</span></a></div>
+
+            </div>
         </div>
       </Slide>
 

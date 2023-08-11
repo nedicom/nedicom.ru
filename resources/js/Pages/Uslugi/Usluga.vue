@@ -17,7 +17,7 @@ let vars = defineProps({
   practice: "$Array",
 });
 
-let sliderheader = "Доверяйте нашей практике";
+let sliderheader = "Доверяйте делам";
   
 let mainbannerimg = '/'+vars.lawyers[0]?.file_path;
 
