@@ -148,8 +148,11 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
-                      <DropdownLink :href="route('articles.add')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
                         Добавить статью
+                      </DropdownLink>
+                      <DropdownLink v-if="$page.props.auth.user.isadmin == 1" :href="route('uslugi.add')">
+                        Добавить услугу
                       </DropdownLink>
                        <DropdownLink :href="route('questions/add')">
                         Задать вопрос
