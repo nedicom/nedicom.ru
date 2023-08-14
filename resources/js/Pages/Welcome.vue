@@ -33,9 +33,6 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
                   {id:4, practice_file_path : "storage/images/landing/main/slider/4.webp"},                   
                   ]);
 
-
-
-
 let title = ref("Главная");
 
 let statusonimage = ref("Адвокатский кабинет");
@@ -54,17 +51,17 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
 
   <div class="min-h-screen">
     
-    <MainHeader />
+  <MainHeader />
 
-    <Header :ttl="title" />    
+  <Header :ttl="title" />    
 
-    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
+  <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
    
-    <Address />
+   <Testimonials />
 
-    <Testimonials />
+   <Address />
 
-    <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
+   <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
