@@ -1,8 +1,10 @@
 <script setup>
 import Modal from '@/Components/Modal.vue';
 
-let address ="Респ. Крым, г. Симферополь, ул. Долгоруковская, 5";
+let address ="Республика Крым";
+let secondaddress ="город Москва";
 let  phone ="+7 978 8838 978";
+let  secondphone ="+7 985 558 21 70";
 
 const props = defineProps({
     ttl: String,
@@ -18,6 +20,7 @@ const props = defineProps({
     }
 
 let phoneto = "tel:"+phone;
+let secondphoneto = "tel:"+secondphone;
 
 </script>
 
@@ -32,8 +35,15 @@ let phoneto = "tel:"+phone;
             <h2 class="font-semibold text-xl text-gray-800 leading-tight grid gap-4 md:grid-cols-3 text-center">
                 <div ><Modal /></div>
                 
-                <div><a href="#address">{{ address }}</a></div>
-                <div><a :href="phoneto" >{{ phone }}</a></div>
+                <div class="text-1xl">
+                    <a href="#address">{{ address }}</a><br>
+                    <a href="#address">{{ secondaddress }}</a>                
+                </div>
+                <div>
+                    <a :href="phoneto" >{{ phone }}</a><br>
+                    <a v-if="secondphone" :href="secondphoneto" >{{ secondphone }}</a>
+                </div>
+                
             </h2>
         </div>
     </header>

@@ -25,7 +25,7 @@ let mainbannerimg;
     mainbannerimg = ref("/storage/images/landing/main/main600.webp");
   }
 
-let sliderheader = ref("Наша практика говорит за нас");
+let sliderheader = ref("В нашей копилке сотни дел, но каждое новое дело для нас особенное");
 
 let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slider/1.webp"}, 
                   {id:2, practice_file_path : "storage/images/landing/main/slider/2.webp"}, 
@@ -35,8 +35,8 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let title = ref("Главная");
 
-let statusonimage = ref("Адвокатский кабинет");
-let nameonimage = ref("Мина Марк Анатольевич");
+let statusonimage = ref("Юридическая компания");
+let nameonimage = ref("Мина и партнеры");
 
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
@@ -47,25 +47,27 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
 </script>
 
 <template>
-  <Head title="Адвокат Симферополь" />
+  <Head title="Мина и партнеры. Юридическая компания" />
 
   <div class="min-h-screen">
     
-  <MainHeader />
+    <MainHeader />
 
-  <Header :ttl="title" />    
+    <Header :ttl="title" />    
 
-  <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
+    <Mainbanner :statusonimage="statusonimage" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
    
-   <Testimonials />
+    <Slider :sldimg="sldimg" :sliderheader="sliderheader"/>
+    
+    <Testimonials />
 
-   <Address />
+    <Address />
 
-   <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
+    <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
-    <Slider :sldimg="sldimg" :sliderheader="sliderheader"/>
+    
 
     <VK />
 
