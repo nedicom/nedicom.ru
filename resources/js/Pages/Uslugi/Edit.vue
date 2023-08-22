@@ -11,7 +11,14 @@ import { reactive } from "vue";
 
 let set = defineProps({
     uslugi: String,
+    all_uslugi: String,
+    user: String,
 });
+
+let checkbox = false;
+if(set.uslugi.is_main == 1){
+  checkbox = true;
+}
 
 let form = reactive({
   header: set.uslugi.usl_name,
@@ -22,7 +29,9 @@ let form = reactive({
   preimushestvo3: set.uslugi.preimushestvo3,
   phone: set.uslugi.phone, 
   address: set.uslugi.address, 
-  maps: set.uslugi.maps,  
+  maps: set.uslugi.maps,
+  is_main: checkbox, 
+  main_usluga_id: set.uslugi.main_usluga_id, 
   id: set.uslugi.id,
 });
 
@@ -30,12 +39,12 @@ function submit() {
   Inertia.post("/uslugi/{url}/update", form);
 }
 
-let title = ref("Редактировать статью");
+let title = ref("Редактировать услугу");
 
 </script>
 
 <template>
-  <Head title="Редактировать статью" />
+  <Head title="Редактировать услугу" />
 
   <MainHeader />
 
@@ -49,6 +58,23 @@ let title = ref("Редактировать статью");
             <div class="mb-3 xl:w-3/6">    
               <form @submit.prevent="submit">
                 <input v-model="form.id" class="invisible">
+
+                <!-- is main? --> 
+                  <div v-if="user.id == 1" class="flex items-center mb-4">
+                      <input v-model="form.is_main" id="default-checkbox" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="default-checkbox" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Сделать услугу главной</label>
+                  </div>
+                <!-- is main? -->
+
+                  <!-- main usluga -->
+                   <label class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">Выберите категорию услуг</label>
+                   <select v-model="form.main_usluga_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <option disabled value="">Выберите один из вариантов</option>
+                    <option v-for="option in all_uslugi" v-bind:value=option.id :selected="option.id == main_usluga_id">
+                      {{ option.usl_name }}
+                    </option>
+                  </select>
+                  <!-- main usluga -->
 
                 <label for="header" class="block text-sm font-medium leading-6 text-gray-900">Название услуги</label>
                 <textarea

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Uslugi;
+use App\Models\Objavleniya;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
 use App\Helpers\Translate;
@@ -12,25 +12,24 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
 
-class UslugiController extends Controller
+class ObjavleniyaController extends Controller
 {
 
     public function index()
     {
         return Inertia::render('Uslugi/Uslugi', [
-            'uslugi' => Uslugi::paginate(18),
+            'uslugi' => Objavleniya::paginate(18),
         ]);
     }
 
     public function show($url){ 
-        $id = Uslugi::where('url', '=', $url)->first()->id;
-        return Inertia::render('Uslugi/Usluga', [
-            'usluga' => Uslugi::where('url', '=', $url)->first(),
+        $id = Objavleniya::where('url', '=', $url)->first()->id;
+        return Inertia::render('Objavleniya/Objavleniye', [
+            'usluga' => Objavleniya::where('url', '=', $url)->first(),
             'user' => Auth::user(),
             'lawyers' => User::where('speciality_one_id', '=', $id)->orderBy('name', 'asc')->get()->take(3),
             'practice' => Article::where('usluga_id', $id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
-            'firstlawyer' => Uslugi::where('url', '=', $url)->first()->firstlawyer,
-
+            'firstlawyer' => Objavleniya::where('url', '=', $url)->first()->firstlawyer,
         ]);
     }
 
@@ -62,8 +61,6 @@ class UslugiController extends Controller
     {
         return Inertia::render('Uslugi/Edit', [
             'uslugi' => Uslugi::where('id', '=', $url)->first(),
-            'all_uslugi' => Uslugi::all(),
-            'user' => Auth::user(),
         ],  
     );
     }
@@ -81,15 +78,6 @@ class UslugiController extends Controller
             $usluga->phone = $request->phone;
             $usluga->address = $request->address;
             $usluga->maps = $request->maps;
-            if($request->is_main){
-                $usluga->is_main = $request->is_main;
-            }
-            else{
-                $usluga->is_main = false;
-            }
-            if($request->main_usluga_id){
-                $usluga->main_usluga_id = $request->main_usluga_id;
-            }
         $url = Translate::translit($request->header);        
         $usluga->url =  $url;
         $usluga->save();
