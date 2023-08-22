@@ -35,8 +35,8 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let title = ref("Главная");
 
-let statusonimage = ref("Юридическая компания");
-let nameonimage = ref("Мина и партнеры");
+let statusonimage = ref("юридическая компания");
+let nameonimage = ref("nedicom");
 
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
@@ -47,7 +47,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
 </script>
 
 <template>
-  <Head title="Мина и партнеры. Юридическая компания" />
+  <Head title="nedicom. Юридическая компания" />
 
   <div class="min-h-screen">
     
