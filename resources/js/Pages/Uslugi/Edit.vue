@@ -67,6 +67,7 @@ let title = ref("Редактировать услугу");
                 <!-- is main? -->
 
                   <!-- main usluga -->
+                  <div v-if="form.is_main !== true">
                    <label class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">Выберите категорию услуг</label>
                    <select v-model="form.main_usluga_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     <option disabled value="">Выберите один из вариантов</option>
@@ -74,6 +75,7 @@ let title = ref("Редактировать услугу");
                       {{ option.usl_name }}
                     </option>
                   </select>
+                  </div>
                   <!-- main usluga -->
 
                 <label for="header" class="block text-sm font-medium leading-6 text-gray-900">Название услуги</label>

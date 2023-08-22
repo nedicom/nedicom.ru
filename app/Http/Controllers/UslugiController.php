@@ -6,6 +6,7 @@ use App\Models\Uslugi;
 use App\Models\Article;
 use App\Http\Controllers\Controller;
 use App\Helpers\Translate;
+use App\Helpers\Checkurl;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,8 @@ class UslugiController extends Controller
         ]);
     }
 
-    public function show($url){ 
+    public function show($url, Request $request){ 
+        //dd($request);
         $id = Uslugi::where('url', '=', $url)->first()->id;
         return Inertia::render('Uslugi/Usluga', [
             'usluga' => Uslugi::where('url', '=', $url)->first(),
@@ -30,7 +32,7 @@ class UslugiController extends Controller
             'lawyers' => User::where('speciality_one_id', '=', $id)->orderBy('name', 'asc')->get()->take(3),
             'practice' => Article::where('usluga_id', $id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
             'firstlawyer' => Uslugi::where('url', '=', $url)->first()->firstlawyer,
-
+            'flash' => ['message' => $request->session()->get(key: 'message')], 
         ]);
     }
 
@@ -52,17 +54,18 @@ class UslugiController extends Controller
             $usluga->phone = '+79788838978';
             $usluga->maps = 'https://yandex.ru/map-widget/v1/?um=constructor%3Af656829d54430f3c7f23ae0313146d2525f75dfbaffa3e083f51d06d98a33614&amp;source=constructor';
 
-        $url = Translate::translit($request->header);        
-        $usluga->url =  $url;
+        $url = Translate::translit($request->header);
+        $checkurl = Checkurl::chkurl($url, 'usluga');       
+        $usluga->url =  $checkurl;
         $usluga->save();
-        return redirect()->route('uslugi');
+        return redirect()->route('uslugi.url', ['url' => $checkurl])->with('message', 'Сохранено успешно');
     }
 
     public function edit(string $url)
     {
         return Inertia::render('Uslugi/Edit', [
             'uslugi' => Uslugi::where('id', '=', $url)->first(),
-            'all_uslugi' => Uslugi::all(),
+            'all_uslugi' => Uslugi::where('is_main', '=', 1)->get(),
             'user' => Auth::user(),
         ],  
     );
@@ -90,9 +93,7 @@ class UslugiController extends Controller
             if($request->main_usluga_id){
                 $usluga->main_usluga_id = $request->main_usluga_id;
             }
-        $url = Translate::translit($request->header);        
-        $usluga->url =  $url;
         $usluga->save();
-        return redirect()->route('uslugi.url', $url);     
+        return redirect()->route('uslugi.url', $usluga->url)->with('message', 'Обновлено успешно');  
     }    
 }

@@ -25,7 +25,7 @@ class Translate{
         $value = mb_ereg_replace('[^-0-9a-z]', '-', $value);        
         $value = mb_ereg_replace('[-]+', '-', $value);        
         $value = trim($value, '-');	        
-        $value = mb_strimwidth($value, 0, 20);        
+        $value = mb_strimwidth($value, 0, 55);        
         return $value;
     }
 }

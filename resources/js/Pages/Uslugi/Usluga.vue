@@ -4,6 +4,7 @@ import Header from "@/Layouts/Header.vue";
 
 import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Body from "@/Layouts/Body.vue";
+import FlashMessage from "@/Components/FlashMessage.vue";
 
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
@@ -15,6 +16,7 @@ let vars = defineProps({
   lawyers: String,
   firstlawyer: String,
   practice: "$Array",
+  flash: String,
 });
 
 let sliderheader = "Доверяйте делам";
@@ -40,6 +42,8 @@ if(vars.lawyers[0]?.file_path === undefined){
 </style>
 
 <template>
+  <FlashMessage :message="flash.message"/>
+
   <Head>
     <title>{{usluga.usl_name}}</title>
     <meta name="description" :content="usluga.usl_desc" />
@@ -120,7 +124,7 @@ if(vars.lawyers[0]?.file_path === undefined){
             <div class="">   
             
               <div class="grid md:grid-cols-3 gap-4 mx-4">   
-                <div v-for="item in lawyers" class="">           
+                <div v-for="item in lawyers">           
                   <div >
                     <div class="bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                       <a :href="route('lawyer', item.id)">
