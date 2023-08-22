@@ -8,6 +8,7 @@ import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createVfm } from 'vue-final-modal';
+import { Inertia } from '@inertiajs/inertia';
 import 'flowbite';
 
 const vfm = createVfm();
@@ -26,3 +27,7 @@ createInertiaApp({
 
 InertiaProgress.init({ color: '#4B5563'});
 
+Inertia.on('navigate', (event) => {
+    const path = event.detail.page.url;
+    ym(24900584, 'hit', path);
+});

@@ -7,38 +7,8 @@ import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 const showingNavigationDropdown = ref(false);
-
 </script>
 
-<script>
-    export default {
-        //if(!config('app.debug')){
-            mounted() {
-                (function (m, e, t, r, i, k, a) {
-                    m[i] = m[i] || function () {
-                        (m[i].a = m[i].a || []).push(arguments);
-                    };
-                    m[i].l = 1 * new Date();
-                    for (var j = 0; j < document.scripts.length; j++) {
-                        if (document.scripts[j].src === r) {
-                            return;
-                        }
-                    }
-                    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-                })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-                ym(24900584, "init", {
-                    clickmap: true,
-                    trackLinks: true,
-                    accurateTrackBounce: true,
-                    webvisor: true,
-                    defer: true,
-                });
-            },
-       // }
-    }
-
-</script>
 
 <template>
   <div class="mh">
