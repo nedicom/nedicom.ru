@@ -9,6 +9,7 @@ use App\Http\Requests\StoreArticleRequest;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Helpers\Translate;
 
 
@@ -17,8 +18,11 @@ class ArticleController extends Controller
 
     public function index()
     {  
+        //dd(Article::find(1)->user);
         return Inertia::render('Articles/Articles', [
-            'articles' => Article::paginate(9),
+            'articles' => DB::table('articles')
+            ->leftJoin('users', 'articles.userid', '=', 'users.id')
+            ->paginate(9),
         ]);
     }
 

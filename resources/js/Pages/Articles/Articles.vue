@@ -53,7 +53,9 @@ let title = ref("Статьи");
                   "
                 > 
                   {{ articles.header }}
+                  
                 </h5>
+                <img :src="articles.avatar_path" width="40"/> 
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   {{ articles.description }}
                   
