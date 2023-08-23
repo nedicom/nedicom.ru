@@ -15,16 +15,6 @@ use App\Models\Image;
 class ImageController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -38,18 +28,24 @@ class ImageController extends Controller
                 $fileName = time().'_'.$req->file->getClientOriginalName();
                 if($pagetype == 'profile'){
                     $filePath = 'usr/'.Auth::user()->id.'/images';
+                    $fileName = $req->file->getClientOriginalName();
+                }
+                elseif($pagetype ==  'profileavatar'){
+                    $fileName = $req->file->getClientOriginalName();
+                    $filePath = 'usr/'.Auth::user()->id.'/avatar';
                 }
                 elseif($pagetype ==  'article'){
+                    $fileName = time().'_'.$req->file->getClientOriginalName();
                     $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
                 }
                 else{
                     return back();
                 }
                
-                $req->file('file')->storeAs($filePath, $fileName, 'public');
+                $req->file('file')->storeAs($filePath, $fileName, 'public'); 
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 //dd (finfo_file($finfo, 'storage/'.$filePath."/".$fileName));
-                    $mime = finfo_file($finfo, 'storage/'.$filePath."/".$fileName);
+                $mime = finfo_file($finfo, 'storage/'.$filePath."/".$fileName);
                 finfo_close($finfo);
                 if($mime == "image/png"){
                     $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);

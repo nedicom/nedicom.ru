@@ -5,6 +5,7 @@ import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import DeleteUserForm from "./Partials/DeleteUserForm.vue";
 import UpdateImageForm from "./Partials/UpdateImageForm.vue";
+import UpdateAvatarForm from "./Partials/UpdateAvatarForm.vue";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
 import { Head } from "@inertiajs/inertia-vue3";
@@ -13,6 +14,7 @@ defineProps({
   mustVerifyEmail: Boolean,
   status: String,
   imgurl: String,
+  avatarurl: String,
   islawyer: String,
   test: "Array",
   specializationOne: String,
@@ -38,6 +40,11 @@ defineProps({
           />
         </div>
 
+        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+          <UpdateAvatarForm 
+          :avatarurl="avatarurl"
+          class="w-full" />
+        </div>
         
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateImageForm 
