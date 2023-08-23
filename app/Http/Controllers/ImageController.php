@@ -21,7 +21,8 @@ class ImageController extends Controller
      */
     public function create(Request $req)
     {                
-            $imgModel = new Image;
+        $imgModel = new Image;
+
             if($req->file()) {
                 $pagetype = $req->pagetype;
                 $id = $req->id;
@@ -34,28 +35,29 @@ class ImageController extends Controller
                     $fileName = $req->file->getClientOriginalName();
                     $filePath = 'usr/'.Auth::user()->id.'/avatar';
                 }
-                elseif($pagetype ==  'article'){
-                    $fileName = time().'_'.$req->file->getClientOriginalName();
-                    $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
-                }
-                else{
-                    return back();
-                }
+                    elseif($pagetype ==  'article'){
+                        $fileName = time().'_'.$req->file->getClientOriginalName();
+                        $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
+                    }
+                        else{
+                            return back();
+                        }
                
                 $req->file('file')->storeAs($filePath, $fileName, 'public'); 
                 $finfo = finfo_open(FILEINFO_MIME_TYPE);
                 //dd (finfo_file($finfo, 'storage/'.$filePath."/".$fileName));
                 $mime = finfo_file($finfo, 'storage/'.$filePath."/".$fileName);
                 finfo_close($finfo);
+
                 if($mime == "image/png"){
                     $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);
                 }
-                else if($mime == "image/jpeg"){
-                    $im = imagecreatefromjpeg('storage/'.$filePath.'/'.$fileName);
-                }
-                else{
-                    return back();
-                }
+                    else if($mime == "image/jpeg"){
+                        $im = imagecreatefromjpeg('storage/'.$filePath.'/'.$fileName);
+                    }
+                        else{
+                            return back();
+                        }
                 
                 $files = Storage::allFiles('/public/'.$filePath);
                 Storage::delete($files);
@@ -72,27 +74,31 @@ class ImageController extends Controller
                 $imgModel->size = $req->file->getSize();
                 $imgModel->save();
 
-                if(str_contains($req->header('referer'), 'profile')){
+                //if(str_contains($req->header('referer'), 'profile')){
+                if($pagetype ==  'profile'){    
                     $user = User::find(Auth::user()->id);
                     $user->file_path = $newfilepath;
                     $user->save();
                 }
-                elseif(str_contains($req->header('referer'), 'articles')){
-                    $article = Article::find($id);
-                    $article->practice_file_path = $newfilepath;
-                    $article->save();  
-                }
-                else{
-                    return back();
-                }
-                
-                //  'storage/'.$filePath.'/'.$fileName
-                //  '/public/'.$filePath.'/'.$fileName
-                //$file = Storage::get('/public/'.$filePath.'/'.$fileName);  
+                    elseif($pagetype ==  'profileavatar'){
+                        $user = User::find(Auth::user()->id);
+                        $user->avatar_path = $newfilepath;
+                        $user->save();
+                    }
+                        elseif(str_contains($req->header('referer'), 'articles')){
+                            $article = Article::find($id);
+                            $article->practice_file_path = $newfilepath;
+                            $article->save();  
+                        }
+                            else{
+                                return back();
+                            }
+                 
 
-                return back();
+                
             }
-            else{
+
+            else {
                 return back();
             }
     }

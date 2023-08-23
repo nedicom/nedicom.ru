@@ -40,11 +40,12 @@ defineProps({
           />
         </div>
 
-        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+       <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateAvatarForm 
           :avatarurl="avatarurl"
           class="w-full" />
         </div>
+        -->
         
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateImageForm 

@@ -25,7 +25,7 @@ class ProfileController extends Controller
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'imgurl' => Auth::user()->file_path,
-            'avatarurl' => 'storage/usr/'.Auth::user()->id.'/avatar/avatar.webp',            
+            'avatarurl' => Auth::user()->avatar_path,            
             'islawyer' => Auth::user()->lawyer,
             'status' => session('status'),
             'test'=>  Uslugi::orderBy('usl_name','desc')
