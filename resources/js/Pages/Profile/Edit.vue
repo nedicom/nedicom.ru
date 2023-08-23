@@ -13,7 +13,6 @@ import { Head } from "@inertiajs/inertia-vue3";
 defineProps({
   mustVerifyEmail: Boolean,
   status: String,
-  imgurl: String,
   avatarurl: String,
   islawyer: String,
   test: "Array",
@@ -40,16 +39,14 @@ defineProps({
           />
         </div>
 
-       <!-- <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+        <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateAvatarForm 
           :avatarurl="avatarurl"
           class="w-full" />
         </div>
-        -->
         
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateImageForm 
-          :imgurl="imgurl"
           class="w-full" />
         </div>
 

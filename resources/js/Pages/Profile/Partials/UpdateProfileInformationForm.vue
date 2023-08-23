@@ -74,7 +74,8 @@ let form = useForm({
                 </div>
 
                 <InputLabel for="speciality" value="Специализация (не больше трех)" />                
-                    <Multiselect                                
+                    
+                <Multiselect                                
                         :specdata="test" 
                         :specializationOne="specializationOne"                      
                     >      

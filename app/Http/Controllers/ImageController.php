@@ -19,7 +19,7 @@ class ImageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $req)
+    public function create(Request $req) 
     {                
         $imgModel = new Image;
 
@@ -40,7 +40,7 @@ class ImageController extends Controller
                         $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
                     }
                         else{
-                            return back();
+                            return redirect()->back();
                         }
                
                 $req->file('file')->storeAs($filePath, $fileName, 'public'); 
@@ -56,7 +56,7 @@ class ImageController extends Controller
                         $im = imagecreatefromjpeg('storage/'.$filePath.'/'.$fileName);
                     }
                         else{
-                            return back();
+                            return redirect()->back();
                         }
                 
                 $files = Storage::allFiles('/public/'.$filePath);
@@ -83,23 +83,20 @@ class ImageController extends Controller
                     elseif($pagetype ==  'profileavatar'){
                         $user = User::find(Auth::user()->id);
                         $user->avatar_path = $newfilepath;
-                        $user->save();
+                        $user->save();                        
                     }
                         elseif(str_contains($req->header('referer'), 'articles')){
                             $article = Article::find($id);
                             $article->practice_file_path = $newfilepath;
-                            $article->save();  
+                            $article->save();                              
                         }
-                            else{
-                                return back();
-                            }
-                 
-
-                
+                            else{                                
+                                return redirect()->back();                               
+                            }                 
+                return redirect()->back();             
             }
-
             else {
-                return back();
+                return redirect()->back();  
             }
     }
 

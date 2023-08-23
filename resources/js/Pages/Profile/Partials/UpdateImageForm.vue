@@ -4,19 +4,21 @@ import InputLabel from '@/Components/InputLabel.vue';
 import { Inertia } from "@inertiajs/inertia";
 import { Cropper, ResizeEvent } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
+import { usePage } from '@inertiajs/inertia-vue3';
+
+const user = usePage().props.value.auth.user;
 
 defineProps({
   imgurl: String,
+  user: String,
 });
 
 </script>
 
 <template>
-<div class="inline-grid grid-cols-2 gap-4">
-  
-  <div id="crop" class="w-full">
-    <h2 class="text-lg font-medium text-gray-900">Обложка на вашей странице</h2>
-    
+  <h2 class="text-lg font-medium text-gray-900 py-5">Обложка на вашей странице</h2>
+<div class="inline-grid grid-cols-2 gap-4 w-full ">
+  <div id="crop" class="w-full text-center">
       <InputLabel value="Ваше новое изображение" />
       <div class="my-5">
         <button 
@@ -45,15 +47,13 @@ defineProps({
       }"
         image-restriction="stencil" 
       />
-
-
   </div>
 
-  <div class="w-full ">
+  <div class="w-full text-center">
     <InputLabel value="Текущее изображение" />
-    <div class="flex h-full w-full justify-center items-center">  
+    <div class="flex h-full w-full justify-center items-center">       
     <img
-      :src="imgurl"
+      :src="user.file_path"
       alt="Avatar" 
     />
     </div>
@@ -83,7 +83,6 @@ defineProps({
       cropImage() {
         var target = "/imagepost";
         const {canvas} = this.$refs.cropper.getResult();
-        //pixels = $refs.cropper.getResult();
         if (canvas) {
           const form = new FormData();
           form.append('pagetype', 'profile'); 
@@ -92,6 +91,7 @@ defineProps({
             Inertia.post(target, form);
           });
         }
+        window.location.reload()
       },
       uploadImage(event) {
         /// Reference to the DOM input element
@@ -105,12 +105,11 @@ defineProps({
           // 2. Create the blob link to the file to optimize performance:
           const blob = URL.createObjectURL(files[0]);
 
-          // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:
-          
+          // 3. Update the image. The type will be derived from the extension and it can lead to an incorrect result:         
           this.image = {
             src: blob,
             type: files[0].type,          
-          };
+          }          ;
         }
       },    
     },

@@ -1,6 +1,5 @@
 <script setup>
 import InputLabel from '@/Components/InputLabel.vue';
-
 import { Inertia } from "@inertiajs/inertia";
 import { Cropper, ResizeEvent, CircleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
@@ -12,54 +11,51 @@ defineProps({
 </script>
 
 <template>
-<div class="inline-grid grid-cols-2 gap-4">
+  <h2 class="text-lg font-medium text-gray-900 py-5">Ваш идеальный аватар</h2>
   
-  <div id="crop" class="w-full">
-    <h2 class="text-lg font-medium text-gray-900">Ваш идеальный аватар</h2>
-    
-      <InputLabel value="Ваш новый аватар" />
-      <div class="my-5">
-        <button 
-        class="button mr-5  inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
-        @click="$refs.file.click()">
-          <input
-            type="file"
-            ref="file"
-            accept="image/jpeg, image/png"
-            @change="uploadImage($event)"
-          />
-          Загрузить
-        </button> 
-        <button 
-        class="button inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
-        @click="cropImage">Сохранить</button>
-      </div>
-      <cropper ref="cropper" class="cropper" 
-      :src="image.src"
-      :resizeImage="{ wheel: false }"
-      :stencil-component="$options.components.CircleStencil"
-      :stencil-props="{
-        handlers: {eastSouth: true,},
-        movable: true,
-        resizable: true,
-        aspectRatio: 1/1,
-      }"
-        image-restriction="stencil" 
-      />
-  </div>
+  <div class="inline-grid w-full grid-cols-2 gap-4">    
+    <div id="crop" class="w-full text-center">    
+        <InputLabel value="Ваш новый аватар" />
+        <div class="my-5">
+          <button 
+          class="button mr-5  inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+          @click="$refs.file.click()">
+            <input
+              type="file"
+              ref="file"
+              accept="image/jpeg, image/png"
+              @change="uploadImage($event)"
+            />
+            Загрузить
+          </button> 
+          <button 
+          class="button inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150" 
+          @click="cropImage">Сохранить</button>
+        </div>
+        <cropper ref="cropper" class="cropper" 
+        :src="image.src"
+        :resizeImage="{ wheel: false }"
+        :stencil-component="$options.components.CircleStencil"
+        :stencil-props="{
+          handlers: {eastSouth: true,},
+          movable: true,
+          resizable: true,
+          aspectRatio: 1/1,
+        }"
+          image-restriction="stencil" 
+        />
+    </div>
 
-  <div class="w-full ">
-    <InputLabel value="Ваш текущий аватар" />
-    <div class="flex h-full w-full justify-center items-center">  
-    <img
-      :src="avatarurl"
-      alt="Avatar" 
-    />
+    <div class="w-full text-center">
+      <InputLabel value="Ваш текущий аватар" />
+      <div class="flex h-full w-full justify-center items-center">  
+      <img class="rounded-full h-1/2"
+        :src="avatarurl"
+        alt="Avatar" 
+      />
+      </div>
     </div>
   </div>
-</div>
-
-
 </template>
   
   
@@ -91,6 +87,7 @@ defineProps({
             Inertia.post(target, form);
           });
         }
+      window.location.reload()
       },
       uploadImage(event) {
         /// Reference to the DOM input element
