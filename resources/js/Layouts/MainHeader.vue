@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 
 
 <template>
-  <div class="mh">
+  <div class="h-full">
     <div class="bg-gray-100">
       <nav class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->

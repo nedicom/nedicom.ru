@@ -28,7 +28,7 @@ let submit = () => {
         bg-no-repeat
         bg-md-top
         w-full
-        md:h-96        
+        md:h-screen        
         "
         
     :style="{ backgroundImage: `url(${mainbannerimg})`}"
