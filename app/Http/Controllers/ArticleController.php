@@ -80,7 +80,10 @@ class ArticleController extends Controller
 
     public function articleURL($url){ 
         return Inertia::render('Articles/Article', [
-            'article' => Article::where('url', '=', $url)->first(),
+            'article' => DB::table('articles')            
+            ->where('url', '=', $url)  
+            ->leftJoin('users', 'articles.userid', '=', 'users.id')          
+            ->first(),
             'user' => Auth::user(),
         ]);
     }

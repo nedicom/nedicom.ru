@@ -53,31 +53,32 @@ let title = ref("Статьи");
             class="hover:underline"
             >
             <img :src="articles.avatar_path" width="40" class="rounded-full"/>
-          </Link>
-                    
+          </Link>                    
         </div>
+
         <div class="flex items-center justify-center">
-            <span class=" h-1/2
-                        group-hover:opacity-100 
-                        transition-opacity 
-                        bg-gray-800 
-                        mx-3
-                        px-1
-                        text-sm 
-                        text-gray-100 
-                        rounded-md
-                        opacity-0 
-                        ">
-                        автор - 
-                            <Link 
-                              :href="route('lawyer', articles.userid)"        
-                              class="hover:underline"
-                              target="_blank" 
-                              >{{articles.name}}</Link>
-                        
+          <span class=" h-1/2
+                      group-hover:opacity-100 
+                      transition-opacity 
+                      bg-gray-800 
+                      mx-3
+                      px-1
+                      text-sm 
+                      text-gray-100 
+                      rounded-md
+                      opacity-0 
+                      ">
+                      автор - 
+                          <Link 
+                            :href="route('lawyer', articles.userid)"        
+                            class="hover:underline"
+                            target="_blank" 
+                            >{{articles.name}}
+                          </Link>                        
           </span>
         </div>
       </div>
+      <!-- tooltip component -->
 
               
 

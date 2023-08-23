@@ -45,8 +45,7 @@ let vars = defineProps({
       <div class="max-w-5xl sm:px-6 lg:px-4">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="py-12">
-            <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">
-              
+            <div class="xl:w-4/6 mx-auto sm:px-6 lg:px-8">              
               
               <div class="px-6  bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
@@ -56,10 +55,39 @@ let vars = defineProps({
                   </div>
                 </div>
                 
-                <div v-else class="my-3">
-                  <p >Автор статьи - <a :href="route('lawyer', article.userid)" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">{{ article.username }}</a>
-                  </p>
-                </div>  
+      <!-- tooltip component -->
+      <div class="group flex item-center mb-2">
+        <div>
+          <Link 
+            :href="route('lawyer', article.userid)"        
+            class="hover:underline"
+            >
+            <img :src='"/"+article.avatar_path' width="40" class="rounded-full"/>
+          </Link>                    
+        </div>
+
+        <div class="flex items-center justify-center">
+          <span class=" h-1/2
+                      group-hover:opacity-100 
+                      transition-opacity 
+                      bg-gray-800 
+                      mx-3
+                      px-1
+                      text-sm 
+                      text-gray-100 
+                      rounded-md
+                      opacity-0 
+                      ">
+                      автор - 
+                          <Link 
+                            :href="route('lawyer', article.userid)"        
+                            class="hover:underline"
+                            >{{article.name}}
+                          </Link>                        
+          </span>
+        </div>
+      </div>
+      <!-- tooltip component --> 
 
                 <div v-if="article.header" class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
                   {{ article.header }}
