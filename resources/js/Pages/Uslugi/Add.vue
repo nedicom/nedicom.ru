@@ -32,9 +32,11 @@ let title = ref("Добавить услугу");
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div class="flex justify-start p-5">
-            <div class="mb-3 xl:w-3/6">
+          <div class="flex md:justify-start justify-center px-6">
+            <div class="mb-3 md:w-3/6 w-full">
               <form @submit.prevent="submit" class="">
+                <h2 class="text-lg font-medium text-gray-900">Краткая информация об услуге</h2>
+                <label class="block mt-5 mb-2 text-sm font-medium text-gray-900 dark:text-white">После создания Вы сможете ее дополнить</label>
                 <textarea
                   v-model="form.header"
                   spellcheck="true"
@@ -61,13 +63,13 @@ let title = ref("Добавить услугу");
                   "
                   id=""
                   rows="2"
-                  placeholder="Название услуги"
+                  placeholder="Название услуги (до 55 символов)"
                 ></textarea>
-
 
                 <textarea
                   v-model="form.description"
                   spellcheck="true"
+                  maxlength="150"
                   class="
                     h-20
                     form-control
@@ -92,8 +94,8 @@ let title = ref("Добавить услугу");
                   "
                   id=""
                   name="description"
-                  rows="3"
-                  placeholder="Описание услуги"
+                  rows="5"
+                  placeholder="Краткое описание услуги (до 150 символов)"
                 ></textarea>
 
 

@@ -58,7 +58,7 @@ class UslugiController extends Controller
         $checkurl = Checkurl::chkurl($url, 'usluga');       
         $usluga->url =  $checkurl;
         $usluga->save();
-        return redirect()->route('uslugi.url', ['url' => $checkurl])->with('message', 'Сохранено успешно');
+        return redirect()->route('uslugi.url', ['url' => $checkurl])->with('message', 'Услуга создана успешно.');
     }
 
     public function edit(string $url)
