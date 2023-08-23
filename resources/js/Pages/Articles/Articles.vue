@@ -3,6 +3,7 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import { Link } from '@inertiajs/inertia-vue3';
 import { ref } from "vue";
 
 defineProps({
@@ -43,23 +44,59 @@ let title = ref("Статьи");
                   max-w-sm
                 "
               >
+
+      <!-- tooltip component -->
+      <div class="group flex item-center mb-2">
+        <div>
+          <Link 
+            :href="route('lawyer', articles.userid)"        
+            class="hover:underline"
+            >
+            <img :src="articles.avatar_path" width="40" class="rounded-full"/>
+          </Link>
+                    
+        </div>
+        <div class="flex items-center justify-center">
+            <span class=" h-1/2
+                        group-hover:opacity-100 
+                        transition-opacity 
+                        bg-gray-800 
+                        mx-3
+                        px-1
+                        text-sm 
+                        text-gray-100 
+                        rounded-md
+                        opacity-0 
+                        ">
+                        автор - 
+                            <Link 
+                              :href="route('lawyer', articles.userid)"        
+                              class="hover:underline"
+                              target="_blank" 
+                              >{{articles.name}}</Link>
+                        
+          </span>
+        </div>
+      </div>
+
+              
+
                 <h5
                   class="
                     text-gray-900 text-xl
                     leading-tight
-                    line-clamp-1
+                    line-clamp-2
                     font-medium
                     mb-2
                   "
                 > 
-                  {{ articles.header }}
-                  
-                </h5>
-                <img :src="articles.avatar_path" width="40"/> 
-                <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                  {{ articles.description }}
-                  
+                  {{ articles.header }}                  
+                </h5>  
+
+                <p class="text-gray-700 text-xs line-clamp-3 h-min-24 mb-2">
+                  {{ articles.description }}                  
                 </p>
+
                 <a
                   :href="route('articles/url', articles.url)"
                   class="
