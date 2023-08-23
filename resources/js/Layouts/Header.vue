@@ -14,9 +14,11 @@ const props = defineProps({
 
     if(props.address !== undefined){
         address = props.address;
+        secondaddress = '';
     }
     if(props.phone !== undefined){
         phone = props.phone;
+        secondphone = '';
     }
 
 let phoneto = "tel:"+phone;
@@ -36,12 +38,12 @@ let secondphoneto = "tel:"+secondphone;
                 <div ><Modal /></div>
                 
                 <div class="text-1xl">
-                    <a href="#address">{{ address }}</a><br>
-                    <a href="#address">{{ secondaddress }}</a>                
+                    <a href="#address" class="md:float-right">{{ address }}</a><br>
+                    <a href="#address" class="md:float-right">{{ secondaddress }}</a>                
                 </div>
-                <div>
-                    <a :href="phoneto" >{{ phone }}</a><br>
-                    <a v-if="secondphone" :href="secondphoneto" >{{ secondphone }}</a>
+                <div >
+                    <a :href="phoneto" class="md:float-left md:ml-5">{{ phone }} </a><br>
+                    <a v-if="secondphone" :href="secondphoneto" class="md:float-left md:ml-5" >{{ secondphone }}</a>
                 </div>
                 
             </h2>

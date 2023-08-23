@@ -35,8 +35,8 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let title = ref("Главная");
 
-let statusonimage = ref("юридическая компания");
-let nameonimage = ref("nedicom");
+let statusonimage = ref("юристы для неюристов");
+let nameonimage = ref("nedicom - ");
 
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");

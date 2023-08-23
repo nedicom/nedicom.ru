@@ -43,7 +43,7 @@ let submit = () => {
                     <div class="text-black text-center">
                         
                         <div class="m-5">
-                            <span class="goo text-4xl font-semibold">{{ nameonimage }} <br> {{ statusonimage }}</span>
+                            <span class="goo text-4xl font-semibold">{{ nameonimage }}  {{ statusonimage }}</span>
                         </div>
                         <div  class="m-5">
                             <span class="goo text-xl font-semibold bg-white rounded-lg py-1 px-4">Запись на консультацию</span>
