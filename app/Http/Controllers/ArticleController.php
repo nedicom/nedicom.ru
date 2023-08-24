@@ -48,7 +48,7 @@ class ArticleController extends Controller
     {
         return Inertia::render('Articles/Edit', [
             'article' => Article::where('url', '=', $url)->first(),
-            'uslugi' => Uslugi::all(),
+            'uslugi' => Uslugi::where('is_main', '=', 1)->get(),
         ],  
     );
     }

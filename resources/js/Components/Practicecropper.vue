@@ -58,7 +58,7 @@ defineProps({
               <div class="h-12 w-full mt-3"></div>
               <div class="w-full cropper"> 
                 <img class="h-full"
-                :src='"/"+article.practice_file_path'
+                :src='article.practice_file_path'
                 alt="Avatar" 
                 />
               
