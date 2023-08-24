@@ -77,17 +77,17 @@ class ImageController extends Controller
                 //if(str_contains($req->header('referer'), 'profile')){
                 if($pagetype ==  'profile'){    
                     $user = User::find(Auth::user()->id);
-                    $user->file_path = $newfilepath;
+                    $user->file_path = '/'.$newfilepath;
                     $user->save();
                 }
                     elseif($pagetype ==  'profileavatar'){
                         $user = User::find(Auth::user()->id);
-                        $user->avatar_path = $newfilepath;
+                        $user->avatar_path = '/'.$newfilepath;
                         $user->save();                        
                     }
                         elseif(str_contains($req->header('referer'), 'articles')){
                             $article = Article::find($id);
-                            $article->practice_file_path = $newfilepath;
+                            $article->practice_file_path = '/'.$newfilepath;
                             $article->save();                              
                         }
                             else{                                

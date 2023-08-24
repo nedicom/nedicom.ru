@@ -62,7 +62,7 @@ let vars = defineProps({
             :href="route('lawyer', article.userid)"        
             class="hover:underline"
             >
-            <img :src='"/"+article.avatar_path' width="40" class="rounded-full"/>
+            <img :src="article.avatar_path" width="40" class="rounded-full"/>
           </Link>                    
         </div>
 
