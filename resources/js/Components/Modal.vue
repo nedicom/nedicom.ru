@@ -4,7 +4,7 @@ import ModalConfirm from './ModalConfirm.vue'
 const { open, close } = useModal({
   component: ModalConfirm,
   attrs: {
-    title: 'Hello World!',
+    test: 'Hello World!',
     onConfirm() {
       close()
     },
@@ -13,14 +13,16 @@ const { open, close } = useModal({
     default: '<p>UseModal: The content of the modal</p>',
   },
 })
+const props = defineProps({
+    ModalBtnText: String,
+});
 </script>
 
 <template>
   <VButton 
   @click="() => open()"
   class="
-        m-auto
-        w-1/2
+        mx-5
         outline
         flex justify-center
         px-5
@@ -33,10 +35,10 @@ const { open, close } = useModal({
         focus:ring-4 focus:ring-blue-200
         dark:focus:ring-blue-900
         hover:bg-blue-800
-        cursor-grab
+        cursor-grab  
         ">
-    связаться
-</VButton>
+        {{ModalBtnText}}    
+  </VButton>
 
   <ModalsContainer />
 </template>

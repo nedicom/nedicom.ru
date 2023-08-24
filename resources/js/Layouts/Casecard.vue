@@ -16,6 +16,8 @@ let form = reactive({
   phone: "",
 });
 
+let ModalBtnText = 'Подробнее';
+
 let submit = () => {
   Inertia.post("/phone/send", form);
 }
@@ -37,7 +39,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   {{ firstcardbody }}
                 </p>
-                <Modal /> 
+                <Modal :ModalBtnText="ModalBtnText"/> 
               </div>
             </div>
             <!-- card -->
@@ -51,7 +53,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   {{ secondcardbody }}
                 </p>
-                <Modal /> 
+                <Modal :ModalBtnText="ModalBtnText"/> 
               </div>
             </div>
             <!-- card -->
@@ -65,7 +67,7 @@ let submit = () => {
                 <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                   {{ thirdcardbody }}
                 </p>
-                <Modal /> 
+                <Modal :ModalBtnText="ModalBtnText"/> 
               </div>
             </div>
             <!-- card -->

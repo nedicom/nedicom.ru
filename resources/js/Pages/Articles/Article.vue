@@ -14,6 +14,8 @@ let vars = defineProps({
   article: String,
   user: String,
 });
+
+let ModalBtnText = 'Консультация с автором статьи';
 </script>
 
 
@@ -40,7 +42,7 @@ let vars = defineProps({
   <Header :ttl="article.header" />
 
   <Body>
-    <div class="py-6 flex justify-start">
+    <div class="py-6 md:w-4/6 flex justify-start">
 
       <div class="max-w-5xl sm:px-6 lg:px-4">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -109,7 +111,7 @@ let vars = defineProps({
     </div>
   </Body>
 
-  <Sidebaraction />
+  <Sidebaraction :ModalBtnText="ModalBtnText"/>
   <MainFooter />
 </template>
 

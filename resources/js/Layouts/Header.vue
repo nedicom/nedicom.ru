@@ -23,7 +23,7 @@ const props = defineProps({
 
 let phoneto = "tel:"+phone;
 let secondphoneto = "tel:"+secondphone;
-
+let ModalBtnText = 'записаться на консультацию';
 </script>
 
 
@@ -35,7 +35,7 @@ let secondphoneto = "tel:"+secondphone;
     <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight grid gap-4 md:grid-cols-3 text-center">
-                <div ><Modal /></div>
+                <div ><Modal :ModalBtnText="ModalBtnText"/></div>
                 
                 <div class="text-1xl">
                     <a href="#address" class="md:float-right">{{ address }}</a><br>

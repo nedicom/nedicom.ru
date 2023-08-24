@@ -35,7 +35,7 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let title = ref("Главная");
 
-let statusonimage = ref("юристы для неюристов");
+let statusonimage = ref("юристы без границ");
 let nameonimage = ref("nedicom - ");
 
 let firstcardheader = ref("Наследственные дела");
@@ -66,8 +66,6 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
-
-    
 
     <VK />
 
