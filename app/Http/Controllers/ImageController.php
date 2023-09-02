@@ -50,7 +50,7 @@ class ImageController extends Controller
                             return redirect()->back();
                         }
             if(!Storage::exists($filePath)){
-                Storage::makeDirectory($    );
+                Storage::makeDirectory($filePath);
             }
 
             $finfo = finfo_open(FILEINFO_MIME_TYPE);                
