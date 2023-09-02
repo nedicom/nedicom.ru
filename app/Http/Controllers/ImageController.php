@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateImageRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Models\User;
 use App\Models\Article;
 use App\Models\Image;
@@ -27,9 +28,6 @@ class ImageController extends Controller
                 if($pagetype == 'profile'){
                     $filePath = 'usr/'.Auth::user()->id.'/profileimg';
                     $fileName = 'profile';
-                        if(!Storage::exists($filePath)){
-                            Storage::makeDirectory($filePath);
-                        }
                     $user = User::find(Auth::user()->id);
                     $user->file_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
                     $user->save();
@@ -37,9 +35,6 @@ class ImageController extends Controller
                 elseif($pagetype ==  'profileavatar'){
                     $fileName = 'avatar';
                     $filePath = 'usr/'.Auth::user()->id.'/avatar';
-                        if(!Storage::exists($filePath)){
-                            Storage::makeDirectory($filePath);
-                        }
                     $user = User::find(Auth::user()->id);
                     $user->avatar_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
                     $user->save();
@@ -47,9 +42,6 @@ class ImageController extends Controller
                     elseif($pagetype ==  'article'){
                         $fileName = time().'_'.$req->file->getClientOriginalName();
                         $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
-                            if(!Storage::exists($filePath)){
-                                Storage::makeDirectory($filePath);
-                            }
                         $article = Article::find($id);
                         $article->practice_file_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
                         $article->save(); 
@@ -57,13 +49,13 @@ class ImageController extends Controller
                         else{
                             return redirect()->back();
                         }
-               
-                //$req->file('file')->storeAs($filePath, $fileName, 'public');
-                //$files = Storage::allFiles('/public/'.$filePath);
-                //Storage::delete($files);
-                $finfo = finfo_open(FILEINFO_MIME_TYPE);                
-                $mime = finfo_file($finfo, $req->file('file'));                
-                finfo_close($finfo);
+            if(!Storage::exists($filePath)){
+                Storage::makeDirectory($    );
+            }
+
+            $finfo = finfo_open(FILEINFO_MIME_TYPE);                
+            $mime = finfo_file($finfo, $req->file('file'));                
+            finfo_close($finfo);
 
                 if($mime == "image/png"){
                     $im = imagecreatefrompng($req->file('file'));                    
