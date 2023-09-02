@@ -25,6 +25,7 @@ class ImageController extends Controller
             if($req->file()) {
                 $pagetype = $req->pagetype;
                 $id = $req->id;
+
                 if($pagetype == 'profile'){
                     $filePath = 'usr/'.Auth::user()->id.'/profileimg';
                     $fileName = 'profile';
@@ -70,6 +71,7 @@ class ImageController extends Controller
                 $files = Storage::allFiles($filePath);
                 Storage::delete($files);
 
+                //Storage::disk('public')->put($filePath, $req->file('file'));
                 imagewebp($im, 'storage/'.$filePath.'/'.$fileName.'.webp' , 80);
                 //Image::make($im)->encode('webp', 80)->save(public_path('storage/'.$filePath.'/'.$fileName.'.webp'));
                 imagedestroy($im);
