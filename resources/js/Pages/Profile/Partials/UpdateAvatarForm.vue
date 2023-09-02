@@ -84,10 +84,10 @@ defineProps({
           form.append('pagetype', 'profileavatar'); 
           canvas.toBlob(blob => {
             form.append('file', blob, 'avatar');
-            Inertia.post(target, form);
+            Inertia.post("/imagepost", form);
           });
         }
-      window.location.reload()
+      window.location.reload();
       },
       uploadImage(event) {
         /// Reference to the DOM input element

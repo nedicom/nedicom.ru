@@ -91,7 +91,7 @@ defineProps({
             Inertia.post(target, form);
           });
         }
-        window.location.reload()
+
       },
       uploadImage(event) {
         /// Reference to the DOM input element
