@@ -52,7 +52,6 @@ class ImageController extends Controller
                         }
  
             if(!Storage::exists($filePath)){
-                dd(Storage::exists($filePath));
                 Storage::makeDirectory($filePath);
             }
 
