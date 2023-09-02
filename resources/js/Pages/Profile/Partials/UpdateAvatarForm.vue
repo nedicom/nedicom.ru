@@ -4,6 +4,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Cropper, ResizeEvent, CircleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
+
 defineProps({
   avatarurl: String,
 });
