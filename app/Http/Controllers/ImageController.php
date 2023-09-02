@@ -71,6 +71,7 @@ class ImageController extends Controller
                 Storage::delete($files);
 
                 imagewebp($im, 'storage/'.$filePath.'/'.$fileName.'.webp' , 80);
+                //Image::make($im)->encode('webp', 80)->save(public_path('storage/'.$filePath.'/'.$fileName.'.webp'));
                 imagedestroy($im);
 /* for database 
                 $imgModel = new Image;
