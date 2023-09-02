@@ -50,7 +50,9 @@ class ImageController extends Controller
                         else{
                             return redirect()->back();
                         }
+                        dd('not if');
             if(!Storage::exists($filePath)){
+                dd('if');
                 Storage::makeDirectory($filePath);
             }
 
