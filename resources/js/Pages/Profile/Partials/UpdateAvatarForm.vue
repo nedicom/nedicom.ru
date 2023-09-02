@@ -4,7 +4,6 @@ import { Inertia } from "@inertiajs/inertia";
 import { Cropper, ResizeEvent, CircleStencil } from 'vue-advanced-cropper';
 import 'vue-advanced-cropper/dist/style.css';
 
-
 defineProps({
   avatarurl: String,
 });
@@ -77,18 +76,18 @@ defineProps({
     },
     methods: {
       cropImage() {
-        var target = "/imagepost";
+        var avatarget = "/imagepost";
         const {canvas} = this.$refs.cropper.getResult();
         //pixels = $refs.cropper.getResult();
         if (canvas) {
-          const form = new FormData();
-          form.append('pagetype', 'profileavatar'); 
+          const avaform = new FormData();
+          avaform.append('pagetype', 'profileavatar'); 
           canvas.toBlob(blob => {
-            form.append('file', blob, 'avatar');
-            Inertia.post("/imagepost", form);
+            avaform.append('file', blob, 'avatar');
+            Inertia.post(avatarget, avaform);
           });
         }
-      window.location.reload();
+
       },
       uploadImage(event) {
         /// Reference to the DOM input element

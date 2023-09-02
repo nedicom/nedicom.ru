@@ -20,84 +20,81 @@ class ImageController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(Request $req) 
-    {                
-        $imgModel = new Image;
-
+    {     
             if($req->file()) {
                 $pagetype = $req->pagetype;
                 $id = $req->id;
-                $fileName = time().'_'.$req->file->getClientOriginalName();
                 if($pagetype == 'profile'){
-                    $filePath = 'usr/'.Auth::user()->id.'/images';
-                    $fileName = $req->file->getClientOriginalName();
+                    $filePath = 'usr/'.Auth::user()->id.'/profileimg';
+                    $fileName = 'profile';
+                        if(!Storage::exists($filePath)){
+                            Storage::makeDirectory($filePath);
+                        }
+                    $user = User::find(Auth::user()->id);
+                    $user->file_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
+                    $user->save();
                 }
                 elseif($pagetype ==  'profileavatar'){
-                    $fileName = $req->file->getClientOriginalName();
+                    $fileName = 'avatar';
                     $filePath = 'usr/'.Auth::user()->id.'/avatar';
+                        if(!Storage::exists($filePath)){
+                            Storage::makeDirectory($filePath);
+                        }
+                    $user = User::find(Auth::user()->id);
+                    $user->avatar_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
+                    $user->save();
                 }
                     elseif($pagetype ==  'article'){
                         $fileName = time().'_'.$req->file->getClientOriginalName();
                         $filePath = 'usr/'.Auth::user()->id.'/articleimages/'.$id;
+                            if(!Storage::exists($filePath)){
+                                Storage::makeDirectory($filePath);
+                            }
+                        $article = Article::find($id);
+                        $article->practice_file_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
+                        $article->save(); 
                     }
                         else{
                             return redirect()->back();
                         }
                
-                $req->file('file')->storeAs($filePath, $fileName, 'public'); 
-                $finfo = finfo_open(FILEINFO_MIME_TYPE);
-                //dd (finfo_file($finfo, 'storage/'.$filePath."/".$fileName));
-                $mime = finfo_file($finfo, 'storage/'.$filePath."/".$fileName);
+                //$req->file('file')->storeAs($filePath, $fileName, 'public');
+                //$files = Storage::allFiles('/public/'.$filePath);
+                //Storage::delete($files);
+                $finfo = finfo_open(FILEINFO_MIME_TYPE);                
+                $mime = finfo_file($finfo, $req->file('file'));                
                 finfo_close($finfo);
 
                 if($mime == "image/png"){
-                    $im = imagecreatefrompng('storage/'.$filePath.'/'.$fileName);
+                    $im = imagecreatefrompng($req->file('file'));                    
                 }
                     else if($mime == "image/jpeg"){
-                        $im = imagecreatefromjpeg('storage/'.$filePath.'/'.$fileName);
+                        $im = imagecreatefromjpeg($req->file('file'));
                     }
                         else{
                             return redirect()->back();
                         }
                 
-                $files = Storage::allFiles('/public/'.$filePath);
+                $files = Storage::allFiles($filePath);
                 Storage::delete($files);
 
-                $newfilepath = 'storage/'.$filePath.'/'.$fileName.'.webp';
-
-                imagewebp($im, $newfilepath , 80);
+                imagewebp($im, 'storage/'.$filePath.'/'.$fileName.'.webp' , 80);
                 imagedestroy($im);
-
+/* for database 
+                $imgModel = new Image;
                 $imgModel->user_id = Auth::user()->id;
                 $imgModel->name = $fileName;
                 $imgModel->file_path = $newfilepath;
                 $imgModel->ext = $req->file->getClientMimeType();
                 $imgModel->size = $req->file->getSize();
                 $imgModel->save();
-
-                //if(str_contains($req->header('referer'), 'profile')){
-                if($pagetype ==  'profile'){    
-                    $user = User::find(Auth::user()->id);
-                    $user->file_path = '/'.$newfilepath;
-                    $user->save();
-                }
-                    elseif($pagetype ==  'profileavatar'){
-                        $user = User::find(Auth::user()->id);
-                        $user->avatar_path = '/'.$newfilepath;
-                        $user->save();                        
-                    }
-                        elseif(str_contains($req->header('referer'), 'articles')){
-                            $article = Article::find($id);
-                            $article->practice_file_path = '/'.$newfilepath;
-                            $article->save();                              
-                        }
-                            else{                                
-                                return redirect()->back();                               
-                            }                 
+*/
+               
                 return redirect()->back();             
             }
-            else {
-                return redirect()->back();  
-            }
+        else {
+            return redirect()->back();  
+        }
     }
 
     /**

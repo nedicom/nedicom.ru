@@ -94,7 +94,7 @@ defineProps({
             form.append('id', id);
             form.append('pagetype', 'article');   
             canvas.toBlob(blob => {
-            form.append('file', blob, 'profileimg');                        
+            form.append('file', blob, 'articleimg');                        
             Inertia.post("/imagepost", form);
           });
         }
