@@ -19,7 +19,7 @@ defineProps({
         <Slide v-for="slide in sldimg" :key="slide.practice_file_path">
           <div 
             class = "carousel__item w-full flex items-center justify-center h-128 bg-cover"
-            :style="{ backgroundImage: 'url(' +slide.practice_file_path + ')' }">
+            :style="{ backgroundImage: 'url(' + `/`+slide.practice_file_path + ')' }">
               
               <div v-if="slide.header" class="bg-white rounded-lg py-1 px-4 mx-6 grid grid-cols-1 content-center">
               <div class="line-clamp-5 max-w-xl"><p class="my-4 text-sm">{{slide.description}}</p></div>            
