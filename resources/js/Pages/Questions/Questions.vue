@@ -16,8 +16,8 @@ let title = ref("Вопросы");
 <template>  
     <Head>
     <title>{{title}}</title>
-    <meta name="description" :content="вопросы" />
-  </Head>
+    <meta name="description" content="вопросы" />
+    </Head>
 
   <MainHeader />
 

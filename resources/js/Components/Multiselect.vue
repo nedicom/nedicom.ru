@@ -5,7 +5,7 @@ import { Inertia } from "@inertiajs/inertia";
 
 defineProps( {
     specdata: Array,
-    specializationOne: String,
+    specializationOne: Object,
 });
 </script>
 

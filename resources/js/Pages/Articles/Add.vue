@@ -22,7 +22,10 @@ let title = ref("Добавить статью");
 </script>
 
 <template>
-  <Head title="Добавить статью" />
+    <Head>
+    <title>{{title}}</title>
+    <meta name="description" :content="Страницастатьи" />
+  </Head>
 
   <MainHeader />
 

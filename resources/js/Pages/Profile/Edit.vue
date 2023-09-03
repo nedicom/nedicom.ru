@@ -14,9 +14,9 @@ defineProps({
   mustVerifyEmail: Boolean,
   status: String,
   avatarurl: String,
-  islawyer: String,
+  islawyer: Number,
   test: "Array",
-  specializationOne: String,
+  specializationOne: Object,
 });
 </script>
 

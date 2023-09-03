@@ -37,7 +37,9 @@ const props = defineProps({
         hover:bg-blue-800
         cursor-grab  
         ">
-        {{ModalBtnText}}    
+
+        {{ModalBtnText}}   
+         
   </VButton>
 
   <ModalsContainer />

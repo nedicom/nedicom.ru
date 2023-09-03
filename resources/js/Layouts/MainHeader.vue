@@ -11,7 +11,7 @@ const showingNavigationDropdown = ref(false);
 
 
 <template>
-  <div class="h-full">
+  <div class="">
     <div class="bg-gray-100">
       <nav class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->
@@ -20,7 +20,7 @@ const showingNavigationDropdown = ref(false);
             <div class="flex">
               <!-- Logo -->
               <div class="shrink-0 flex items-center">
-                <Link :href="route('dashboard')">
+                <Link :href="route('Welcome')">
                   <ApplicationLogo
                     class="block h-9 w-auto fill-current text-gray-800"
                   />
@@ -117,6 +117,9 @@ const showingNavigationDropdown = ref(false);
                     <div v-if="$page.props.auth.user">
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
+                      </DropdownLink>
+                      <DropdownLink :href="route('dashboard')">
+                        Дашборд
                       </DropdownLink>
                       <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
                         Добавить статью

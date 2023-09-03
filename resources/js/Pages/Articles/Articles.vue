@@ -3,7 +3,7 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import { Link } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 import { ref } from "vue";
 
 defineProps({
@@ -14,7 +14,10 @@ let title = ref("Статьи");
 </script>
 
 <template>
-  <Head title="Статьи" />
+    <Head>
+    <title>{{title}}</title>
+    <meta name="description" content="Перечень статей сайта" />
+    </Head>
 
   <MainHeader />
 

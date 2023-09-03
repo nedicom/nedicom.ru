@@ -12,7 +12,8 @@ const props = defineProps({
         type: [Array, Boolean],
         default: false,
     },
-    islawyer: String,
+    islawyer: Number,
+    val: Number,
 });
 
 const proxyChecked = computed({

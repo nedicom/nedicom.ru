@@ -14,6 +14,11 @@ export default defineConfig({
                     base: null,
                     includeAbsolute: false,
                 },
+                compilerOptions: {
+                    isCustomElement: (tag) => {
+                        return tag.startsWith('VButton') // (return true)
+                    }
+                },
             },
         }),
     ],

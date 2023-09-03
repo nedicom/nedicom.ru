@@ -12,9 +12,9 @@ import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
-    islawyer: String,
+    islawyer: Number,
     test: "Array",
-    specializationOne: String,
+    specializationOne: Object,
 });
 
 const user = usePage().props.value.auth.user;
