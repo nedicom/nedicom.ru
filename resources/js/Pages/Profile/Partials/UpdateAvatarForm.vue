@@ -51,7 +51,7 @@ defineProps({
       <div class="flex h-full w-full justify-center items-center">  
       <img class="rounded-full h-1/2"
         :src="avatarurl"
-        alt="Avatar" 
+        alt="Аватар юриста" 
       />
       </div>
     </div>

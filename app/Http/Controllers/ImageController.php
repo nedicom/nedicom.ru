@@ -28,13 +28,13 @@ class ImageController extends Controller
 
                 if($pagetype == 'profile'){
                     $filePath = 'usr/'.Auth::user()->id.'/profileimg';
-                    $fileName = 'profile';
+                    $fileName = time().'profile';
                     $user = User::find(Auth::user()->id);
                     $user->file_path = 'storage/'.$filePath.'/'.$fileName.'.webp';
                     $user->save();
                 }
                 elseif($pagetype ==  'profileavatar'){
-                    $fileName = 'avatar';
+                    $fileName = time().'avatar';
                     $filePath = 'usr/'.Auth::user()->id.'/avatar';
                     $user = User::find(Auth::user()->id);
                     $user->avatar_path = 'storage/'.$filePath.'/'.$fileName.'.webp';

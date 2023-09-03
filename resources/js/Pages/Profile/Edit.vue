@@ -14,6 +14,7 @@ defineProps({
   mustVerifyEmail: Boolean,
   status: String,
   avatarurl: String,
+  imgurl: String,
   islawyer: Number,
   test: "Array",
   specializationOne: Object,
@@ -41,12 +42,13 @@ defineProps({
 
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateAvatarForm 
-          :avatarurl="avatarurl"
+          :avatarurl="avatarurl"          
           class="w-full" />
         </div>
         
         <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
           <UpdateImageForm 
+          :imgurl="imgurl"
           class="w-full" />
         </div>
 

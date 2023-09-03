@@ -10,7 +10,7 @@ const user = usePage().props.value.auth.user;
 
 defineProps({
   imgurl: String,
-  user: String,
+  user: Array,
 });
 
 </script>
@@ -48,13 +48,12 @@ defineProps({
         image-restriction="stencil" 
       />
   </div>
-
   <div class="w-full text-center">
     <InputLabel value="Текущее изображение" />
     <div class="flex h-full w-full justify-center items-center">       
     <img
-      :src="user.file_path"
-      alt="Avatar" 
+      :src="imgurl"
+      alt="Большое фото юриста" 
     />
     </div>
   </div>
