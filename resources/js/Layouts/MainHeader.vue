@@ -121,6 +121,12 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('dashboard')">
                         Дашборд
                       </DropdownLink>
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('admin.users.list')">
+                        Пользователи
+                      </DropdownLink>
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('admin.articles.list')">
+                        Статьи
+                      </DropdownLink>
                       <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
                         Добавить статью
                       </DropdownLink>

@@ -11,6 +11,8 @@ use App\Http\Controllers\PostphoneController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UslugiController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\Admin\ArticlesController as AdminArticleController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,6 +22,24 @@ Route::get('/', function () {
         //'canRegister' => Route::has('register'),
     ]);
 })->name('Welcome');
+
+Route::controller(UserController::class)->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/admin/users', 'index')->name('admin.users.list');
+        Route::get('/admin/users/{id}/edit', 'edit')->name('admin.users.edit');
+        Route::patch('/admin/users/{id}/update', 'update')->name('admin.users.update');
+        Route::get('/admin/users/{id}/delete', 'delete')->name('admin.users.delete');
+    });
+});
+
+Route::controller(AdminArticleController::class)->group(function () {
+    Route::middleware(['auth', 'admin'])->group(function () {
+        Route::get('/admin/articles', 'index')->name('admin.articles.list');
+        Route::get('/admin/articles/{url}/edit', 'edit')->name('admin.articles.edit');
+        Route::post('/admin/articles/{url}/update', 'update')->name('admin.articles.update');
+        Route::get('/admin/articles/{id}/delete', 'delete')->name('admin.article.delete');
+    });
+});
 
 Route::post('/phone/send', [PostphoneController::class, 'postphone'])->name('phone/send');
 
