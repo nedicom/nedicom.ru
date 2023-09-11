@@ -7,11 +7,41 @@ import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 const showingNavigationDropdown = ref(false);
+
 </script>
 
+<script>
+    export default {
+        //if(!config('app.debug')){
+            // mounted() {
+            //     (function (m, e, t, r, i, k, a) {
+            //         m[i] = m[i] || function () {
+            //             (m[i].a = m[i].a || []).push(arguments);
+            //         };
+            //         m[i].l = 1 * new Date();
+            //         for (var j = 0; j < document.scripts.length; j++) {
+            //             if (document.scripts[j].src === r) {
+            //                 return;
+            //             }
+            //         }
+            //         k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+            //     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+            //     ym(24900584, "init", {
+            //         clickmap: true,
+            //         trackLinks: true,
+            //         accurateTrackBounce: true,
+            //         webvisor: true,
+            //         defer: true,
+            //     });
+            // },
+       // }
+    }
+
+</script>
 
 <template>
-  <div class="">
+  <div class="mh">
     <div class="bg-gray-100">
       <nav class="bg-white border-b border-gray-100">
         <!-- Primary Navigation Menu -->
@@ -20,7 +50,7 @@ const showingNavigationDropdown = ref(false);
             <div class="flex">
               <!-- Logo -->
               <div class="shrink-0 flex items-center">
-                <Link :href="route('Welcome')">
+                <Link :href="route('dashboard')">
                   <ApplicationLogo
                     class="block h-9 w-auto fill-current text-gray-800"
                   />
@@ -118,22 +148,16 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
-                      <DropdownLink :href="route('dashboard')">
-                        Дашборд
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('admin.users.list')">
-                        Пользователи
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('admin.articles.list')">
-                        Статьи
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
+                      <DropdownLink :href="route('articles.add')">
                         Добавить статью
                       </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.isadmin == 1" :href="route('uslugi.add')">
-                        Добавить услугу
+                      <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.articles.list')">
+                        Все статьи
                       </DropdownLink>
-                       <DropdownLink :href="route('questions/add')">
+                      <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.users.list')">
+                        Пользователи
+                      </DropdownLink>
+                      <DropdownLink :href="route('questions/add')">
                         Задать вопрос
                       </DropdownLink>
                       <DropdownLink
