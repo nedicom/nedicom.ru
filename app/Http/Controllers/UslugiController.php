@@ -86,18 +86,15 @@ class UslugiController extends Controller
             $usluga->address = $request->address;
             $usluga->maps = $request->maps;
 
-            if($request->main_usluga_id){
-                $usluga->main_usluga_id = $request->main_usluga_id;
-            }
+                if($request->main_usluga_id){  
+                    $usluga->is_main = false;                  
+                    $usluga->main_usluga_id = $request->main_usluga_id;                    
+                }
 
                 if($request->is_main){
                     $usluga->is_main = $request->is_main;
                     $usluga->main_usluga_id = $id;
                 }
-                    else{
-                        $usluga->main_usluga_id = null;
-                        $usluga->is_main = false;
-                    }
 
         $usluga->save();
         return redirect()->route('uslugi.url', $usluga->url)->with('message', 'Обновлено успешно');  
