@@ -26,7 +26,11 @@ class UslugiController extends Controller
     public function show($url, Request $request){ 
         //dd($request);
         $id = Uslugi::where('url', '=', $url)->first()->id;
-        $main_usluga_id = Uslugi::where('url', '=', $url)->first()->main_usluga_id;
+            $main_usluga_id = Uslugi::where('url', '=', $url)->first()->main_usluga_id;
+            if(!$main_usluga_id){
+                $main_usluga_id = $id;
+            }
+        // dd($main_usluga_id);
         return Inertia::render('Uslugi/Usluga', [
             'usluga' => Uslugi::where('url', '=', $url)->first(),
             'user' => Auth::user(),
