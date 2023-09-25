@@ -20,7 +20,7 @@ let phoneto = "tel:"+phone;
 
 <template>
        
-        <h1 class="text-4xl font-semibold text-grey text-center py-10">
+        <h1 class="text-4xl font-semibold text-grey text-center py-10 mt-10">
             Контакты
         </h1>
     <!-- address -->
