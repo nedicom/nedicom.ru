@@ -117,7 +117,7 @@ if(vars.lawyers[0]?.file_path === undefined){
     <Slider v-if="practice != 0" :sliderheader="sliderheader" :sldimg="practice" />
 
 
-    <Address :phone="usluga.phone" :address="usluga.address" />
+    <Address :phone="usluga.phone" :address="usluga.address" :maps="usluga.maps" />
 
 
           <!--lawyers-->

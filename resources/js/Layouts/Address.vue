@@ -5,6 +5,7 @@ let  phone ="+7 978 8838 978";
 const props = defineProps({
     address: String,
     phone: String,
+    maps: String,
 });
 
     if(props.address !== undefined){
@@ -19,18 +20,20 @@ let phoneto = "tel:"+phone;
 </script>
 
 <template>
-       
-        <h1 class="text-4xl font-semibold text-grey text-center py-10">
+
+        <h1 class="text-4xl font-semibold text-grey text-center mt-12 mb-6">
             Контакты
         </h1>
     <!-- address -->
-    <div class="grid grid-cols-1 md:grid-cols-2 my-6 py-6">
-        
-        <div class="">
-            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3Af656829d54430f3c7f23ae0313146d2525f75dfbaffa3e083f51d06d98a33614&amp;source=constructor" width="100%" height="400" frameborder="0"></iframe>
+    <div class="md:flex justify-center">
+        <div v-if ="props.maps" class="md:w-1/2 w-full mt-6" style ="height:400px">
+            <iframe 
+                :src="props.maps" 
+                width="100%" height="400" frameborder="0">
+            </iframe>
         </div>
 
-        <div class="flex flex-col justify-center gap-5" style ="height:400px">
+        <div class="md:w-1/2 w-full px-3 flex flex-col justify-center gap-7" style ="height:400px">
            
             <div>
                 <div class="text-3xl font-semibold text-grey text-center">
