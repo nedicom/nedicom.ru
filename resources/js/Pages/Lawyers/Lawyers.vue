@@ -27,12 +27,12 @@ let title = ref("Юристы");
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div v-if="lawyers.total > 0" class="grid grid-cols-3 gap-9">
+          <div v-if="lawyers.total > 0" class="grid md:grid-cols-3 gap-9">
             <!-- card -->
             <div
               v-for="lawyers in lawyers.data"
               :key="lawyers.id"
-              class="flex justify-center"
+              class="flex justify-center mx-3 md:mx-0"
             >
               <div
                 class="
@@ -45,18 +45,55 @@ let title = ref("Юристы");
                   max-w-sm
                 "
               >
+
+
+      <!-- tooltip component -->
+      <div class="group flex item-center mb-2">
+        <div>
+          <Link 
+            :href="route('lawyer', lawyers.id)"        
+            class="hover:underline"
+            >
+            <img v-if="lawyers.avatar_path" :src="lawyers.avatar_path" width="40" class="rounded-full"/>          
+          </Link>                    
+        </div>
+
+        <div class="flex items-center justify-center">
+          <span class=" h-1/2
+                      group-hover:opacity-100 
+                      transition-opacity 
+                      bg-gray-800 
+                      mx-3
+                      px-1
+                      text-sm 
+                      text-gray-100 
+                      rounded-md
+                      opacity-0 
+                      ">                      
+                          <Link 
+                            :href="route('lawyer', lawyers.id)"        
+                            class="hover:underline"
+                            target="_blank" 
+                            >подробнее
+                          </Link>                        
+          </span>
+        </div>
+      </div>
+      <!-- tooltip component -->
+
+
                 <h5
                   class="
                     text-gray-900 text-xl
                     leading-tight
-                    line-clamp-1
+                    line-clamp-2
                     font-medium
                     mb-2
                   "
                 >
                   {{ lawyers.name }}
                 </h5>
-                <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
+                <p class="text-gray-700 text-xs line-clamp-3 h-min-24 mb-2">
                   {{ lawyers.about }}
                 </p>
                 <a

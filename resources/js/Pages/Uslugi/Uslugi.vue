@@ -27,11 +27,11 @@ let title = ref("Услуги");
     <div class="bg-white py-12">
       <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-          <div v-if="uslugi.total > 0" class="grid grid-cols-3 gap-9">
+          <div v-if="uslugi.total > 0" class="grid md:grid-cols-3 gap-9">
             <!-- card -->
             <div
               v-for="uslugi in uslugi.data"
-              class="flex justify-center"
+              class="flex justify-center mx-3 md:mx-0"
             >
               <div
                 class="
