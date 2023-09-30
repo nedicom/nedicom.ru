@@ -10,36 +10,6 @@ const showingNavigationDropdown = ref(false);
 
 </script>
 
-<script>
-    export default {
-        //if(!config('app.debug')){
-            // mounted() {
-            //     (function (m, e, t, r, i, k, a) {
-            //         m[i] = m[i] || function () {
-            //             (m[i].a = m[i].a || []).push(arguments);
-            //         };
-            //         m[i].l = 1 * new Date();
-            //         for (var j = 0; j < document.scripts.length; j++) {
-            //             if (document.scripts[j].src === r) {
-            //                 return;
-            //             }
-            //         }
-            //         k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
-            //     })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-
-            //     ym(24900584, "init", {
-            //         clickmap: true,
-            //         trackLinks: true,
-            //         accurateTrackBounce: true,
-            //         webvisor: true,
-            //         defer: true,
-            //     });
-            // },
-       // }
-    }
-
-</script>
-
 <template>
   <div class="mh">
     <div class="bg-gray-100">
@@ -258,13 +228,33 @@ const showingNavigationDropdown = ref(false);
               </div>
             </div>
 
-            <div class="mt-3 space-y-1">
+            <div v-if="$page.props.auth.user" class="mt-3 space-y-1">
+              <ResponsiveNavLink :href="route('profile.edit')" class="underline">
+                {{$page.props.auth.user.name}}
+              </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('articles')">
                 Статьи
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('articles.add')"
-                >Добавить статью</ResponsiveNavLink
-              >
+              <ResponsiveNavLink :href="route('questions')">
+                Вопросы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('lawyers')">
+                Юристы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('uslugi')">
+                Услуги
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+                Выйти
+              </ResponsiveNavLink>
+            </div>
+            <div v-else>
+              <ResponsiveNavLink :href="route('login')">
+                Войти
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('register')">
+                Регистрация
+              </ResponsiveNavLink>
             </div>
           </div>
         </div>

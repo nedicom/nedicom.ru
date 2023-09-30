@@ -19,7 +19,7 @@ class UslugiController extends Controller
     public function index()
     {
         return Inertia::render('Uslugi/Uslugi', [
-            'uslugi' => Uslugi::paginate(12),
+            'uslugi' => Uslugi::where('is_main', '=', 1)->paginate(12),
         ]);
     }
 
