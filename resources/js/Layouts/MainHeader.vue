@@ -249,7 +249,19 @@ const showingNavigationDropdown = ref(false);
               </ResponsiveNavLink>
             </div>
             <div v-else>
-              <ResponsiveNavLink :href="route('login')">
+              <ResponsiveNavLink :href="route('articles')">
+                Статьи
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('questions')">
+                Вопросы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('lawyers')">
+                Юристы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('uslugi')">
+                Услуги
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('login')" class="underline">
                 Войти
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('register')">
