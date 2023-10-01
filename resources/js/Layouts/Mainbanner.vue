@@ -34,7 +34,7 @@ let submit = () => {
     :style="{ backgroundImage: `url(${mainbannerimg})`}"
     >
         <div
-            class="grid grid-cols-1 justify-items-end content-center py-5 w-full h-full"
+            class="grid grid-cols-1 md:justify-items-end content-center py-5 w-full h-full"
             style="background-color: rgba(0, 0, 0, 0.1); opacity: 1;">
 
             <div class="md:w-1/2 md:float-right">

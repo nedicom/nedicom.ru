@@ -12,7 +12,7 @@ const props = defineProps({
 
       <div class="max-w-6xl mx-auto md:my-9 sm:px-6 lg:px-8 text-center">
         
-        <div  class="grid grid-cols-3 gap-9">
+        <div  class="grid md:grid-cols-3 grid-cols-1 gap-9 mx-3 md:mx-0">
 
     <!-- card -->
                 <div

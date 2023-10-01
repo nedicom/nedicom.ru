@@ -5,18 +5,22 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { usePage, Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
 defineProps({
     canResetPassword: Boolean,
     status: String,
+    redirect: String,
 });
 
 const form = useForm({
     email: '',
     password: '',
     remember: false,
+    redirect: '',
 });
+
+form.redirect= usePage().props.value.redirect;
 
 const submit = () => {
     form.post(route('login'), {
@@ -27,15 +31,15 @@ const submit = () => {
 
 <template>
     <GuestLayout>
-        <Head title="Log in" />
-
+        <Head title="Вход" />
+{{redirect}}
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
         </div>
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+ 
 
                 <TextInput
                     id="email"
