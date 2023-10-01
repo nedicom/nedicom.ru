@@ -18,10 +18,8 @@ let number = 1;
 
 <template>
   <Head title="Панель управления" />
-
+<div class="min-h-screen">
   <MainHeader />
-
-  <Header :ttl="title" />
 
   <Body>
     <div class="bg-white py-12">
@@ -81,17 +79,18 @@ let number = 1;
               </div>
             </div>
             <!-- row -->
+          <Pagination :links="articles.links" />
 
           </div>
 
           <!-- row -->
-          <div v-else class="flex justify-center h-96">
-            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+          <div v-else class="flex justify-center mt-6 h-max">
+            <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm w-full">
               <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">
-                Статей пока нет
+               Приветсвуем в первый раз
               </h5>
-              <p class="text-gray-700 text-base mb-2">
-                Самое время 
+              <p class="text-gray-700 text-base mb-2 mt-6">
+                Здесь Вы можете 
                 <a :href="route('articles.add')"
                 class="
                     basis-2/12
@@ -101,19 +100,46 @@ let number = 1;
                     dark:text-blue-500
                     hover:no-underline
                   "
-                  >начать статью</a>
+                  >написать статью,</a>
+              </p>
+                            <p class="text-gray-700 text-base mb-2 mt-6">
+                так же Вы можете
+                <a :href="route('questions/add')"
+                class="
+                    basis-2/12
+                    text-end              
+                    text-blue-500
+                    underline
+                    dark:text-blue-500
+                    hover:no-underline
+                  "
+                  >задать вопрос, </a>
+              </p>
+                            <p class="text-gray-700 text-base mb-2 mt-6">
+                а чтобы стать юристом сайта нужно
+                <a :href="route('profile.edit')"
+                class="
+                    basis-2/12
+                    text-end              
+                    text-blue-500
+                    underline
+                    dark:text-blue-500
+                    hover:no-underline
+                  "
+                  >отредактировать профиль</a>
               </p>
             </div>
           </div>
           <!-- row -->
 
-          <Pagination :links="articles.links" />
+          
         </div>
       </div>
     </div>
   </Body>
 
   <MainFooter />
+</div>
 </template>
 
 <script>
