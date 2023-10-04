@@ -57,7 +57,7 @@ if(vars.lawyers[0]?.file_path === undefined){
 
   <Body>
 
-      <div class="py-6">
+    <div class="py-6">
     <!-- edit btn -->
       <div class="max-w-5xl mx-auto sm:px-6 lg:px-8 bg-white overflow-hidden shadow-sm sm:rounded-lg">        
         <div v-if="user" >
