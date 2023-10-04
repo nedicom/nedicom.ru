@@ -93,7 +93,7 @@ let title = ref("Юристы");
                 >
                   {{ lawyers.name }}
                 </h5>
-                <p class="text-gray-700 text-xs line-clamp-3 h-min-24 mb-2">
+                <p class="text-gray-700 text-xs line-clamp-3 h-12 mb-2">
                   {{ lawyers.about }}
                 </p>
                 <a

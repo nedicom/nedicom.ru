@@ -102,7 +102,7 @@ let title = ref("Редактировать статью");
                   <textarea  
                     v-model="form.description"          
                     @input="onInputdesc"
-                    maxlength="260"
+                    maxlength="200"
                     spellcheck="true"
                     class="
                       h-28

@@ -89,15 +89,16 @@ let title = ref("Статьи");
                   class="
                     text-gray-900 text-xl
                     leading-tight
-                    line-clamp-2
+                    line-clamp-1
                     font-medium
+                    h-6
                     mb-2
                   "
                 > 
                   {{ articles.header }}                  
                 </h5>  
 
-                <p class="text-gray-700 text-xs line-clamp-3 h-min-24 mb-2">
+                <p class="text-gray-700 text-xs line-clamp-3 h-12 mb-2">
                   {{ articles.description }}                  
                 </p>
 
