@@ -28,7 +28,7 @@ class PostphoneController extends Controller
             //$post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$request->token;
 
             $post_data = array(
-                'secret' => "6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK",
+                'secret' => "6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY",
                 'response' => $request->token,
             );
             $post_data = json_encode($post_data);
