@@ -16,13 +16,12 @@ class PostphoneController extends Controller
             
             $response = Http::asForm()->post($endpoint['url'], [
                 'secret' => $endpoint['secret_key'],
-                'response' => $request,           
+                'response' => $request->captcha_token,           
             ])->json();
     
             //if(  $response['success'] && $response['score'] > 0.5) {
                 if(  $response['success'] ) {
                 dd('test');
-                dd('true');
             }
     
             dd('false');
