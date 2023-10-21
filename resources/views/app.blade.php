@@ -16,6 +16,24 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+
+        <!-- Grecaptcha -->
+        <script src="https://www.google.com/recaptcha/api.js?render=6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK"></script>
+        <script>
+            grecaptcha.ready(function() {
+                grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'homepage'}).then(function(token) {
+                    let json = JSON.stringify({
+                        token: token
+                    });
+                    
+                    let xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/functions/recaptcha.php', false);
+                    xhr.send(json);
+                });
+            });
+        </script>
+        <!-- Grecaptcha -->
+        
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript" >
            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};

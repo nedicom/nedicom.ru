@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
+import { useReCaptcha } from "vue-recaptcha-v3";
 
 const props = defineProps({
     statusonimage: String,
@@ -8,14 +9,26 @@ const props = defineProps({
     mainbannerimg: String,
 });
 
+
 let form = reactive({
   phone: "",
+  captcha_token: '',
+  errors: '123',
 });
 
+    const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
+    
+    const recaptcha = async () => {
+      await recaptchaLoaded()
+      form.captcha_token = await executeRecaptcha('login')
+      submit();
+    }
 
 let submit = () => {
-  Inertia.post("/phone/send", form);
+  Inertia.post("/phone/send", form)
 }
+
+
 </script>
 
 <template>
@@ -48,7 +61,8 @@ let submit = () => {
                         <div  class="m-5">
                             <span class="goo text-xl font-semibold bg-white rounded-lg py-1 px-4">Запись на консультацию</span>
                         </div>
-                    
+
+                        <!-- Form on main banner-->
                         <div class="flex justify-center">
                             <form @submit.prevent="submit" class="w-80 space-y-6">
                                 <div>                    
@@ -63,9 +77,16 @@ let submit = () => {
                                     </div>
                                     <a href="/policy" class="text-sm bg-white px-1 rounded-lg text-blue-700 hover:underline dark:text-blue-500">Подробнее</a>
                                 </div>
+
                                 <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Отправить</button>
+                        
+{{ form.errors }}
+{{ form.captcha_token }}
+                                
                             </form>
                         </div>
+                        <!-- Form on main banner-->
+
                     </div>
                 </div>
             </div>            

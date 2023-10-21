@@ -4,14 +4,19 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Rules\Recaptcha;
 
 class PostphoneController extends Controller
 {
-    public function postphone(Request $request){  
-        
+    public function postphone(Request $request){ 
+
+        dd($request -> captcha_token);
+
+        return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+       
                 $phone = $request->phone;
                 echo    $phone;             
-                $conn = mysqli_connect("127.0.0.1", "crm", "904klfkFL:DlflrD4", "crm");
+                $conn = mysqli_connect("178.208.94.106", "crm", "904klfkFL:DlflrD4", "crm");
                 //$conn = mysqli_connect("127.0.0.1", "root", "", "crm");
                     if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
@@ -21,6 +26,6 @@ class PostphoneController extends Controller
                 VALUES ('nedicom.ru', 'лид с главной nedicom.ru', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
                 $conn->query($sql);
 
-        return redirect()->route('lawyers');
+        //return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
     }
 }
