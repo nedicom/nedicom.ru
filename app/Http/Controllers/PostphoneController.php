@@ -26,12 +26,12 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            dd($post_data, $googresp, $decgoogresp);
+            //dd($post_data, $googresp, $decgoogresp);
             if ($decgoogresp->success == true)
                 {
                     $phone = $request->phone;
-                    //$conn = mysqli_connect("178.208.94.106", "crm", "904klfkFL:DlflrD4", "crm");
-                    $conn = mysqli_connect("localhost", "crm", "904klfkFL:DlflrD4", "crm");
+                    $conn = mysqli_connect("178.208.94.106", "crm", "904klfkFL:DlflrD4", "crm");
+                    //$conn = mysqli_connect("localhost", "crm", "904klfkFL:DlflrD4", "crm");
                         if ($conn->connect_error) {
                         die("Connection failed: " . $conn->connect_error);
                         } 
