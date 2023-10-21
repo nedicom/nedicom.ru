@@ -10,9 +10,7 @@ class PostphoneController extends Controller
 {
     public function postphone(Request $request){ 
 
-        dd($request -> captcha_token);
-
-        return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+        //dd($request -> captcha_token);
        
                 $phone = $request->phone;
                 echo    $phone;             
@@ -26,6 +24,6 @@ class PostphoneController extends Controller
                 VALUES ('nedicom.ru', 'лид с главной nedicom.ru', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
                 $conn->query($sql);
 
-        //return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+        return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
     }
 }

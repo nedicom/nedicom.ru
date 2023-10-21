@@ -63,7 +63,7 @@ let submit = () => {
 
                         <!-- Form on main banner-->
                         <div class="flex justify-center">
-                            <form @submit.prevent="submit" class="w-80 space-y-6">
+                            <form @submit.prevent="recaptcha" class="w-80 space-y-6">
                                 <div>                    
                                     <input v-model="form.phone" type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
                                 </div>
@@ -77,10 +77,7 @@ let submit = () => {
                                     <a href="/policy" class="text-sm bg-white px-1 rounded-lg text-blue-700 hover:underline dark:text-blue-500">Подробнее</a>
                                 </div>
 
-                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Отправить</button>
-                        
-{{ form.captcha_token }}
-                                
+                                <button type="submit" class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Отправить</button>                               
                             </form>
                         </div>
                         <!-- Form on main banner-->
