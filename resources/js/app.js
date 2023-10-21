@@ -9,7 +9,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import { createVfm } from 'vue-final-modal';
 import { Inertia } from '@inertiajs/inertia';
-import { VueReCaptcha, useReCaptcha } from '/vue-recaptcha-v3';
+import { VueReCaptcha, useReCaptcha } from 'vue-recaptcha-v3';
 import 'flowbite';
 
 const vfm = createVfm();
