@@ -25,7 +25,14 @@ class PostphoneController extends Controller
                 dd('test');
             }*/
 
-            $post_data = "secret=".$endpoint['secret_key']."&response=".$request->token;
+            //$post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$request->token;
+
+            $post_data = array(
+                'secret' => "6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY",
+                'response' => $request->token,
+            );
+            $post_data = json_encode($post_data);
+
             $ch = curl_init(); 
             curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
             curl_setopt($ch, CURLOPT_POST, true);
@@ -36,7 +43,7 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            dd($decgoogresp);
+            dd($post_data);
             if ($decgoogresp->success == true)
                 {
                     dd('good');
