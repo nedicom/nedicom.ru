@@ -11,14 +11,17 @@ class PostphoneController extends Controller
 {
     public function postphone(Request $request){
 
-
+        
             $endpoint = config('services.google_recaptcha');
-    
+            
             $response = Http::asForm()->post($endpoint['url'], [
-                'secret' => $endpoint['secret_key'],                
+                'secret' => $endpoint['secret_key'],
+                'sitekey' => $request->captcha_token,              
             ])->json();
     
-            if(  $response['success'] && $response['score'] > 0.5) {
+            //if(  $response['success'] && $response['score'] > 0.5) {
+                if(  $response['success'] ) {
+                dd('test');
                 dd('true');
             }
     
