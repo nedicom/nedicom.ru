@@ -43,7 +43,7 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            dd($post_data);
+            //dd($post_data);
             if ($decgoogresp->success == true)
                 {
                     dd('good');
