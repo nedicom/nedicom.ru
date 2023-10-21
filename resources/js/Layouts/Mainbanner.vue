@@ -1,7 +1,6 @@
 <script setup>
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
-import { useForm } from '@inertiajs/inertia-vue3'
 import { useReCaptcha } from "vue-recaptcha-v3";
 
 const props = defineProps({
@@ -20,8 +19,8 @@ let form = reactive({
     
     const recaptcha = async () => {
       await recaptchaLoaded()
-      form.captcha_token = await executeRecaptcha('login')
-      Inertia.post("/phone/send", form)
+      form.captcha_token = await executeRecaptcha('homepage')
+      submit();
     }
 
 let submit = () => {
@@ -77,7 +76,10 @@ let submit = () => {
                                     <a href="/policy" class="text-sm bg-white px-1 rounded-lg text-blue-700 hover:underline dark:text-blue-500">Подробнее</a>
                                 </div>
 
-                                <button type="submit"  id="recaptcha"
+                                <button type="submit"  id="recaptcha" 
+                                    data-sitekey="6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK" 
+                                    data-callback='onSubmit' 
+                                    data-action='submit'
                                     class="g-recaptcha w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Отправить</button>                               
                             </form>
                         </div>
