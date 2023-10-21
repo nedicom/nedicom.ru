@@ -13,19 +13,40 @@ class PostphoneController extends Controller
 
         
             $endpoint = config('services.google_recaptcha');
-            
-            $response = Http::asForm()->post($endpoint['url'], [
+
+            /*$response = Http::asForm()->post($endpoint['url'], [
                 'secret' => $endpoint['secret_key'],
                 'response' => $request->token,           
-            ])->json();
+            ]);
             
     
             //if(  $response['success'] && $response['score'] > 0.5) {
             if(  $response['success'] ) {
                 dd('test');
-            }
-            dd($response);
-            dd('false');
+            }*/
+
+            $post_data = "secret=".$endpoint['secret_key']."&response=".$request->token;
+            $ch = curl_init(); 
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded; charset=utf-8', 'Content-Length: ' . strlen($post_data)));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            $googresp = curl_exec($ch);      
+            $decgoogresp = json_decode($googresp);
+            curl_close($ch);
+
+            //dd($request->token);
+            if ($decgoogresp->success == true)
+                {
+                    dd('good');
+                }
+                else
+                {
+                // Let the user know ...
+                }
+            
+
         
         
                 
