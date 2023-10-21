@@ -11,14 +11,14 @@ const props = defineProps({
 
 let form = reactive({
   phone: "",
- token: null,
+  token: '123',
 });
 
 
-const recaptcha = async () => {
-    
+    const recaptcha = async () => {    
         grecaptcha.ready(function() {
           grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {
+            form.token = token
             Inertia.post("/phone/send", form)
           });
         });
@@ -32,6 +32,7 @@ let submit = (token) => {
 </script>
 
 <template>
+    {{ form.token }}
 <!-- main banner -->
     <div
     class="
@@ -62,7 +63,7 @@ let submit = (token) => {
                             <span class="goo text-xl font-semibold bg-white rounded-lg py-1 px-4">Запись на консультацию</span>
                         </div>
 
-                        <!-- Form on main banner-->
+                        <!-- Form on main banner-->                        
                         <div class="flex justify-center">
                             <form @submit.prevent="recaptcha" class="w-80 space-y-6">
                                 <div>                    
