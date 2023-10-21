@@ -14,25 +14,18 @@ let form = reactive({
   token: '123',
 });
 
-
-    const recaptcha = async () => {    
-        grecaptcha.ready(function() {
-          grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {
-            form.token = token
-            Inertia.post("/phone/send", form)
-          });
+const recaptcha = async () => {    
+    grecaptcha.ready(function() {
+        grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {
+        form.token = token
+        Inertia.post("/phone/send", form)
         });
-      }
-
-  /*    
-let submit = (token) => {
-  Inertia.post("/phone/send", form)
-}*/
-
+    });
+    }
 </script>
 
 <template>
-    {{ form.token }}
+
 <!-- main banner -->
     <div
     class="
