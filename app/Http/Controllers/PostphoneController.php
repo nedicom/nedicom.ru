@@ -13,7 +13,7 @@ class PostphoneController extends Controller
 
         
             $endpoint = config('services.google_recaptcha');
-            
+            dd($request->captcha_token);
             $response = Http::asForm()->post($endpoint['url'], [
                 'secret' => $endpoint['secret_key'],
                 'response' => $request->captcha_token,           

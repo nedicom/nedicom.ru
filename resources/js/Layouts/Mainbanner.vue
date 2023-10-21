@@ -1,6 +1,7 @@
 <script setup>
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
+import { useForm } from '@inertiajs/inertia-vue3'
 import { useReCaptcha } from "vue-recaptcha-v3";
 
 const props = defineProps({
@@ -20,13 +21,12 @@ let form = reactive({
     const recaptcha = async () => {
       await recaptchaLoaded()
       form.captcha_token = await executeRecaptcha('login')
-      submit();
+      Inertia.post("/phone/send", form)
     }
 
 let submit = () => {
   Inertia.post("/phone/send", form)
 }
-
 
 </script>
 
