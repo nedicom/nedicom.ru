@@ -36,14 +36,14 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            //dd($request->token);
+            dd($decgoogresp);
             if ($decgoogresp->success == true)
                 {
                     dd('good');
                 }
                 else
                 {
-                // Let the user know ...
+                    dd($decgoogresp);
                 }
             
 
