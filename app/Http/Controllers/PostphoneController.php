@@ -8,14 +8,12 @@ use App\Rules\Recaptcha;
 
 class PostphoneController extends Controller
 {
-    public function postphone(Request $request){ 
+    public function postphone(Request $request){
 
-        //dd($request -> captcha_token);
-       
+              new Recaptcha;
+
                 $phone = $request->phone;
-                echo    $phone;             
                 $conn = mysqli_connect("178.208.94.106", "crm", "904klfkFL:DlflrD4", "crm");
-                //$conn = mysqli_connect("127.0.0.1", "root", "", "crm");
                     if ($conn->connect_error) {
                     die("Connection failed: " . $conn->connect_error);
                     } 

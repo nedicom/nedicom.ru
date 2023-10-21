@@ -12,7 +12,7 @@ const props = defineProps({
 
 let form = reactive({
   phone: "",
-  captcha_token: '',
+  captcha_token: null,
 });
 
     const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
