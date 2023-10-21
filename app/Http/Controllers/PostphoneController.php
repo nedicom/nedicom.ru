@@ -26,7 +26,7 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            //dd($post_data, $googresp, $decgoogresp);
+            dd($post_data, $googresp, $decgoogresp);
             if ($decgoogresp->success == true)
                 {
                     $phone = $request->phone;
