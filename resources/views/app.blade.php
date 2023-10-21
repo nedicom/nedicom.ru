@@ -16,9 +16,7 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
-
-        <script src="https://www.google.com/recaptcha/api.js?render=6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK"></script>
-
+        
         <!-- Yandex.Metrika counter -->
         <script type="text/javascript" >
            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -37,5 +35,11 @@
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/24900584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
+
+        <!-- Grecaptcha -->
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <!-- Grecaptcha -->
+
+
     </body>
 </html>

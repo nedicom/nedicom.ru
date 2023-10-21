@@ -1,7 +1,6 @@
 <script setup>
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
-import { useReCaptcha } from "vue-recaptcha-v3";
 
 const props = defineProps({
     statusonimage: String,
@@ -12,20 +11,23 @@ const props = defineProps({
 
 let form = reactive({
   phone: "",
-  captcha_token: null,
+ token: null,
 });
 
-    const { executeRecaptcha, recaptchaLoaded } = useReCaptcha();
-    
-    const recaptcha = async () => {
-      await recaptchaLoaded()
-      form.captcha_token = await executeRecaptcha('homepage')
-      submit();
-    }
 
-let submit = () => {
+const recaptcha = async () => {
+    
+        grecaptcha.ready(function() {
+          grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {
+            Inertia.post("/phone/send", form)
+          });
+        });
+      }
+
+  /*    
+let submit = (token) => {
   Inertia.post("/phone/send", form)
-}
+}*/
 
 </script>
 
