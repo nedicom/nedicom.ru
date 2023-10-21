@@ -28,7 +28,7 @@ class PostphoneController extends Controller
             //$post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$request->token;
 
             $post_data = array(
-                'secret' => "6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY",
+                'secret' => "6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK",
                 'response' => $request->token,
             );
             $post_data = json_encode($post_data);
@@ -43,7 +43,7 @@ class PostphoneController extends Controller
             $decgoogresp = json_decode($googresp);
             curl_close($ch);
 
-            //dd($post_data);
+            dd($post_data, $googresp, $decgoogresp);
             if ($decgoogresp->success == true)
                 {
                     dd('good');
