@@ -18,12 +18,13 @@ class PostphoneController extends Controller
                 'secret' => $endpoint['secret_key'],
                 'response' => $request->token,           
             ])->json();
+            
     
             //if(  $response['success'] && $response['score'] > 0.5) {
-                if(  $response['success'] ) {
+            if(  $response['success'] ) {
                 dd('test');
             }
-    
+            dd($response);
             dd('false');
         
         
