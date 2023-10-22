@@ -9,9 +9,11 @@ const props = defineProps({
 });
 
 
+
 let form = reactive({
   phone: "",
   token: null,
+  url: location.href,
 });
 
 const recaptcha = async () => {    
@@ -25,6 +27,7 @@ const recaptcha = async () => {
 </script>
 
 <template>
+
 <!-- main banner -->
     <div
     class="
@@ -58,9 +61,9 @@ const recaptcha = async () => {
                         <!-- Form on main banner-->                        
                         <div class="flex justify-center">
                             <form @submit.prevent="recaptcha" class="w-80 space-y-6">
-                                <div>                    
+                                <div>                
                                     <input v-model="form.phone" type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
-                                    <div class="text-red-500 font-semibold text-sm animate-spin-pulse" v-if="$page.props.errors['phone']">{{ $page.props.errors['phone'] }}</div>
+                                    <span class="text-red-500 bg-white rounded-lg px-2 py-1 font-semibold text-sm animate-spin-pulse" v-if="$page.props.errors['phone']">{{ $page.props.errors['phone'] }}</span>
                                 </div>
                                 <div class="flex justify-between">
                                     <div class="flex items-start">
@@ -74,7 +77,8 @@ const recaptcha = async () => {
 
                                 <button type="submit"  
                                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Отправить</button>                               
-                            </form>
+                                    <div class="text-red-500 bg-white rounded-lg px-2 py-1 font-semibold text-sm animate-spin-pulse" v-if="$page.props.errors['token']">{{ $page.props.errors['token'] }}</div>
+                                </form>
                         </div>
                         <!-- Form on main banner-->
 

@@ -8,6 +8,7 @@ import Articles from "@/Layouts/Articles.vue";
 import About from "@/Layouts/About.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import FlashMessage from "@/Components/FlashMessage.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
@@ -25,6 +26,7 @@ let set = defineProps({
   specializationThree: Array,
   articles: "$Array",
   practice: "$Array",
+  flash: String,
 });
 
 let screen = window.innerWidth;
@@ -45,6 +47,8 @@ let title = ref(set.lawyer.name);
 </script>
 
 <template>
+  <FlashMessage :message="flash.message"/>
+
   <Head title="Адвокат Симферополь" />
 
   <div class="min-h-screen">

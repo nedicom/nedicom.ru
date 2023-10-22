@@ -6,7 +6,7 @@ const props = defineProps({
 </script>
 
 <template>  
-    <div v-if="message" class="flex">
+    <div v-if="message" class="flex fixed top-1 inset-x-0 z-50">
     <div class="m-auto">
         <div class="bg-white rounded-lg border-gray-300 border p-3 shadow-lg">
         <div class="flex flex-row">

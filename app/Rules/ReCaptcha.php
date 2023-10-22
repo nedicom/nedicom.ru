@@ -25,33 +25,34 @@ class Recaptcha implements Rule
      * @return bool
      */
     public function passes($attribute, $value)
-    {
-        $endpoint = config('services.google_recaptcha');
+        {
+            $endpoint = config('services.google_recaptcha');
 
-        $post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$value;
+            $post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$value;
 
-        $ch = curl_init(); 
-        curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded; charset=utf-8', 'Content-Length: ' . strlen($post_data)));
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-        $googresp = curl_exec($ch);      
-        $decgoogresp = json_decode($googresp);
-        curl_close($ch);
-
-        //if(  $response['success'] && $response['score'] > 0.5) {
-        if($decgoogresp->success == true) {            
+            $ch = curl_init(); 
+            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded; charset=utf-8', 'Content-Length: ' . strlen($post_data)));
+            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+            $googresp = curl_exec($ch);      
+            $decgoogresp = json_decode($googresp);
+            curl_close($ch);
+            
+                if($decgoogresp !== null){
+                    if($decgoogresp->success == true) {      // && $decgoogresp->score > 0.5      
+                        return true;
+                    }
+                }
             return true;
         }
-        return false;
-    }
 
     /**
      * Get the validation error message.
      *
      * @return string
-     */
+     */    
     public function message()
     {
         return 'Что - то пошло не так. Попробуйте связаться с нами по телефону.';

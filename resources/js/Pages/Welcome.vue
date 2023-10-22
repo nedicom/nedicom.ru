@@ -8,13 +8,13 @@ import Slider from "@/Layouts/Slider.vue";
 import Address from "@/Layouts/Address.vue";
 import VK from "@/Layouts/Vk.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import FlashMessage from "@/Components/FlashMessage.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
-/*defineProps({
-  canLogin: Boolean,
-  canRegister: Boolean,
-});*/
+defineProps({
+  flash: String,
+});
 
 let screen = window.innerWidth;
 let mainbannerimg;
@@ -47,6 +47,8 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
 </script>
 
 <template>
+  <FlashMessage :message="flash.message"/>
+  
   <Head title="nedicom. Юридическая компания" />
 
   <div class="min-h-screen">

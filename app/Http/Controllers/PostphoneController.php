@@ -5,60 +5,37 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\URL;
 use App\Rules\ReCaptcha;
 
-class PostphoneController extends Controller
-{
-    public function postphone(Request $request): RedirectResponse
+
+    class PostphoneController extends Controller
         {
-            $validated = $request->validate([                
-                    'phone' => 'required|max:12|min:10',
-                    'token' => [new Recaptcha],
-                ],
-                [
-                    'phone.max' => 'Телефон не должен быть более 12 цифр',
-                    'phone.min' => 'Телефон не должен быть меньше 10 цифр',
-                ]
-            );
-            
-        }
-/*
-        if(config('app.debug')){
-            new Recaptcha;
-            dd('test');
-        }
-            $endpoint = config('services.google_recaptcha');
-
-            $post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$request->token;
-
-            $ch = curl_init(); 
-            curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded; charset=utf-8', 'Content-Length: ' . strlen($post_data)));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
-            $googresp = curl_exec($ch);      
-            $decgoogresp = json_decode($googresp);
-            curl_close($ch);
-
-            if ($decgoogresp->success == true)
+            public function postphone(Request $request): RedirectResponse
                 {
-                    $phone = $request->phone;
-                    $conn = mysqli_connect("localhost", "crm", "904klfkFL:DlflrD4", "crm");
-                        if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                        } 
-    
-                    $sql = "INSERT INTO leads (source, description, phone, lawyer, created_at, responsible, status, service)
-                    VALUES ('nedicom.ru', 'лид с главной nedicom.ru', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
-                    $conn->query($sql);
-                    return redirect()->back()->with('success', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
-                }
-                else
-                {
-                    dd('broke');
-                    return redirect()->back()->with('success', 'Не прошла капча. Попробуйте отправить телефон еще раз.');
-                    */
-                
-                
-}
+                    $validated = $request->validate([                
+                            'phone' => 'required|max:12|min:10',
+                            'token' => [new Recaptcha],
+                        ],
+                        [
+                            'phone.max' => 'Телефон не должен быть более 12 цифр',
+                            'phone.min' => 'Телефон не должен быть меньше 10 цифр',
+                        ]
+                    );       
+                    
+                    if(!config('app.debug')) // ! - for development
+                        {          
+                                    $phone = $request->phone;
+                                    $conn = mysqli_connect("localhost", "crm", "904klfkFL:DlflrD4", "crm");
+                                        if ($conn->connect_error) {
+                                        die("Connection failed: " . $conn->connect_error);
+                                        } 
+                    
+                                    $sql = "INSERT INTO leads (source, description, phone, lawyer, created_at, responsible, status, service)
+                                    VALUES ('nedicom.ru', 'лид с '.$request->url, $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
+                                    $conn->query($sql);
+                                    return redirect()->back()->with('message', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+                        }
+                    return redirect()->back()->with('message', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+                }       
+        }
