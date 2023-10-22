@@ -18,6 +18,9 @@ module.exports = {
             height: {
                 '128': '32rem',
             },
+            animation: {
+                'spin-pulse': 'pulse 1s linear infinite',
+               },
         },
     },
 

@@ -28,15 +28,22 @@ class Recaptcha implements Rule
     {
         $endpoint = config('services.google_recaptcha');
 
-        $response = Http::asForm()->post($endpoint['url'], [
-            'secret' => $endpoint['secret_key'],
-            'response' => $value,
-        ])->json();
+        $post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$value;
 
-        if(  $response['success'] && $response['score'] > 0.5) {
+        $ch = curl_init(); 
+        curl_setopt($ch, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded; charset=utf-8', 'Content-Length: ' . strlen($post_data)));
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+        $googresp = curl_exec($ch);      
+        $decgoogresp = json_decode($googresp);
+        curl_close($ch);
+
+        //if(  $response['success'] && $response['score'] > 0.5) {
+        if($decgoogresp->success == true) {            
             return true;
         }
-
         return false;
     }
 
@@ -47,6 +54,6 @@ class Recaptcha implements Rule
      */
     public function message()
     {
-        return 'Something goes wrong. Please contact us directly through the phone or email.';
+        return 'Что - то пошло не так. Попробуйте связаться с нами по телефону.';
     }
 }

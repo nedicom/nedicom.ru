@@ -3,15 +3,30 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Http;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Rules\ReCaptcha;
 
 class PostphoneController extends Controller
 {
-    public function postphone(Request $request){
-
-        
+    public function postphone(Request $request): RedirectResponse
+        {
+            $validated = $request->validate([                
+                    'phone' => 'required|max:12|min:10',
+                    'token' => [new Recaptcha],
+                ],
+                [
+                    'phone.max' => 'Телефон не должен быть более 12 цифр',
+                    'phone.min' => 'Телефон не должен быть меньше 10 цифр',
+                ]
+            );
+            
+        }
+/*
+        if(config('app.debug')){
+            new Recaptcha;
+            dd('test');
+        }
             $endpoint = config('services.google_recaptcha');
 
             $post_data = "secret=6Lf0-tAZAAAAACjG_OHu4hkZxvj92Q6kuxfvCZiY"."&response=".$request->token;
@@ -43,6 +58,7 @@ class PostphoneController extends Controller
                 {
                     dd('broke');
                     return redirect()->back()->with('success', 'Не прошла капча. Попробуйте отправить телефон еще раз.');
-                }
-    }
+                    */
+                
+                
 }
