@@ -32,7 +32,7 @@ use App\Rules\ReCaptcha;
                                         } 
                     
                                     $sql = "INSERT INTO leads (source, description, phone, lawyer, created_at, responsible, status, service)
-                                    VALUES ('nedicom.ru', 'лид с '.$request->url, $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
+                                    VALUES ('nedicom.ru', 'лид с ".$request->url."', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
                                     $conn->query($sql);
                                     return redirect()->back()->with('message', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
                         
