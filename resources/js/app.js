@@ -26,7 +26,7 @@ createInertiaApp({
     },
 });
 
-InertiaProgress.init({ color: '#4B5563'});
+InertiaProgress.init({ color: '#4B5563', showSpinner: true});
 
 Inertia.on('navigate', (event) => {
     const path = event.detail.page.url;

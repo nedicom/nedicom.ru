@@ -36,6 +36,7 @@ use App\Rules\ReCaptcha;
                                     $conn->query($sql);
                                     return redirect()->back()->with('message', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
                         
-                    return redirect()->back()->with('message', 'Ваш телефон отправлен. Скоро мы Вам перезвоним!');
+
+                    return redirect()->back()->with('message', $request->token);
                 }       
         }
