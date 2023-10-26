@@ -168,7 +168,6 @@ export default {
                     })   
                     ;
             },
-
             reset(){
                 this.success = false;
                 this.error = false;

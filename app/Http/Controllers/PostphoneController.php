@@ -13,6 +13,8 @@ use App\Rules\ReCaptcha;
         {
             public function postphone(Request $request): RedirectResponse
                 {
+
+                    dd($request->token);
                     $validated = $request->validate([                
                             'phone' => 'required|max:12|min:10',
                             'token' => [new Recaptcha],
