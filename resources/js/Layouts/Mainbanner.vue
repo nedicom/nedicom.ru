@@ -24,16 +24,16 @@ const p = new Promise((resolve, reject) =>{ // Promise (class) - class, resolve 
     })
     .catch(error => console.error(error))
     .finally(() => console.log('finally')) //function
-
+*/
     
 
 let form = reactive({
   phone: "",
   token: null,
   url: location.href,
-});*/
+});
 
-/*
+
     const recaptcha = async () => { 
         grecaptcha.ready(function() {                                  
             grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {            
@@ -43,7 +43,7 @@ let form = reactive({
             });
         });             
     }
-*/
+
 
 
     
@@ -136,7 +136,7 @@ let form = reactive({
 </template>
 
 <script>
-
+/*
 import { useForm } from '@inertiajs/inertia-vue3'
 
 export default {
@@ -150,34 +150,35 @@ export default {
                 phone: "",
                 token: null,
                 url: location.href,
-            }
+            },
         }
     },
     methods:{
-            recaptcha( e ){
-                    this.loading = true,
-                    e.preventDefault();
+            recaptcha(){
+                this.loading = true;                
+                let form = this.form;               
                     grecaptcha.ready(function() {                                  
-                        grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {            
-                            form.token = token;
-                            alert(token);
-                        });
-                    }),
-                    Inertia.post("/phone/send", this.form, {
-                        preserveScroll: true,
-                        onFinish: () => this.loading =  false,
-                    })   
-                    ;
+                        grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {                                     
+                            form.token =  token;
+                            Inertia.post("/phone/send", form, {
+                                preserveScroll: true, onSuccess: () => {this.loading = false}
+                            })
+                            });                        
+                        }) 
+                        this.loading = false;  
+                        // /const reset = this.reset();                     
             },
             reset(){
+                this.loading =  false;
                 this.success = false;
                 this.error = false;
                 for(let field in this.form){
                     this.form[field] = null;
                 }
-            }
+            },
+
     }
-}
+}*/
 
 </script>
 
