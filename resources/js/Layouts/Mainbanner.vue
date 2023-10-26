@@ -160,6 +160,7 @@ export default {
                     grecaptcha.ready(function() {                                  
                         grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {            
                             form.token = token;
+                            alert(token);
                         });
                     }),
                     Inertia.post("/phone/send", this.form, {

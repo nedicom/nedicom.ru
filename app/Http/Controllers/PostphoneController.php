@@ -27,7 +27,7 @@ use App\Rules\ReCaptcha;
                     
                     //if(!config('app.debug'))  ! - for development
                                   
-                                    $phone = $request->phone;
+                                   /* $phone = $request->phone;
                                     $conn = mysqli_connect("localhost", "crm", "904klfkFL:DlflrD4", "crm");
                                         if ($conn->connect_error) {
                                         die("Connection failed: " . $conn->connect_error);
@@ -36,7 +36,7 @@ use App\Rules\ReCaptcha;
                                     $sql = "INSERT INTO leads (source, description, phone, lawyer, created_at, responsible, status, service)
                                     VALUES ('nedicom.ru', 'лид с ".$request->url."', $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
                                     $conn->query($sql);
-                                    return redirect()->back()->with('message', $request->token);
+                                    return redirect()->back()->with('message', $request->token);*/
                         
 
                     return redirect()->back()->with('message', $request->token);
