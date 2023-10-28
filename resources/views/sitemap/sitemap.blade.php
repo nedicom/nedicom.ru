@@ -2,13 +2,13 @@
 
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://nedicom.ru/sitemap.xml/articles.xml</loc>
+        <loc>https://nedicom.ru/sitemap/articles.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://nedicom.ru/sitemap.xml/lawyers.xml</loc>
+        <loc>https://nedicom.ru/sitemap/lawyers.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://nedicom.ru/sitemap.xml/uslugi.xml</loc>
+        <loc>https://nedicom.ru/sitemap/uslugi.xml</loc>
     </sitemap>
 </sitemapindex>
 
