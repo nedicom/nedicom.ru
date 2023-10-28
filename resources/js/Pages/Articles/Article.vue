@@ -34,7 +34,7 @@ let ModalBtnText = 'Консультация с автором статьи';
 <template>
   <Head>
     <title>{{article.header}}</title>
-    <meta name="description" :content="article.body" />
+    <meta name="description" :content="article.description">
   </Head>
 
   <MainHeader />

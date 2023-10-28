@@ -9,6 +9,8 @@ import FlashMessage from "@/Components/FlashMessage.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import Slider from "@/Layouts/Slider.vue";
+import { Head } from "@inertiajs/inertia-vue3";
+
 
 let vars = defineProps({
   usluga: String,
@@ -46,7 +48,7 @@ if(vars.lawyers[0]?.file_path === undefined){
 
   <Head>
     <title>{{usluga.usl_name}}</title>
-    <meta name="description" :content="usluga.usl_desc" />
+    <meta name="description" :content="usluga.usl_desc">
   </Head>
 
   <MainHeader />
