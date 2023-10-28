@@ -11,6 +11,7 @@ use App\Http\Controllers\PostphoneController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UslugiController;
 use App\Http\Controllers\AnswerController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\Admin\ArticlesController as AdminArticleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -124,6 +125,12 @@ Route::middleware('auth')->group(function () {
 
 //import
 Route::get('import/', [ImportController::class, 'import']);
+
+//import
+Route::get('sitemap.xml', [SitemapController::class, 'sitemap']);
+Route::get('sitemap/articles.xml', [SitemapController::class, 'articles']);
+Route::get('sitemap/lawyers.xml', [SitemapController::class, 'lawyers']);
+Route::get('sitemap/uslugi.xml', [SitemapController::class, 'uslugi']);
 
 
 /*Route::get('test', [TestController::class, 'test'])
