@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /trackback
+Disallow: */trackback
+Disallow: */*/trackback
+Disallow: */*/edit/*
+Disallow: */feed
+Disallow: /*?*
+Disallow: /tag
+Disallow: /index.php*
+
+Host: https://nedicom.ru/
+Sitemap: https://wpnew.ru/sitemap.xml.gz
+Sitemap: https://wpnew.ru/sitemap.xml
