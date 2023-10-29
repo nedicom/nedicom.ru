@@ -33,6 +33,7 @@
         "@tiptap/pm": "^2.0.3",
         "@tiptap/starter-kit": "^2.0.3",
         "@tiptap/vue-3": "^2.0.3",
+        "@vue/server-renderer": "^3.3.7",
         "flowbite": "^1.8.1",
         "nodemon": "^2.0.20",
         "vue-advanced-cropper": "^2.8.8",
