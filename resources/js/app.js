@@ -16,7 +16,7 @@ const vfm = createVfm();
 createInertiaApp({
     title: (title) => `${title}`,
     resolve: (name) => resolvePageComponent(`./Pages/${name}.vue`, import.meta.glob('./Pages/**/*.vue')),
-    setup({ el, app, props, plugin }) {
+    setup({ el, App, props, plugin }) {
         return createSSRApp({ render: () => h(App, props) })
             .use(plugin)
             .use(vfm)

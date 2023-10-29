@@ -21,12 +21,12 @@ let sliderheader = ref("Практика юриста");
 
 let set = defineProps({
   lawyer: "$string",
-  specializationOne: Array,
-  specializationTwo: Array,
-  specializationThree: Array,
+  specializationOne: Object,
+  specializationTwo: Object,
+  specializationThree: Object,
   articles: "$Array",
   practice: "$Array",
-  flash: String,
+  flash: Object,
 });
 
 /*let screen = window.innerWidth;

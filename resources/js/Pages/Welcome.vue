@@ -6,7 +6,7 @@ import Casecard from "@/Layouts/Casecard.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
 import Slider from "@/Layouts/Slider.vue";
 import Address from "@/Layouts/Address.vue";
-import VK from "@/Layouts/Vk.vue";
+//import VK from "@/Layouts/Vk.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import FlashMessage from "@/Components/FlashMessage.vue";
 import { Head } from "@inertiajs/inertia-vue3";
@@ -16,15 +16,16 @@ defineProps({
   flash: String,
 });
 
-let screen = window.innerWidth;
-let mainbannerimg;
+  //let screen = window.innerWidth;
+let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
+  /*
   if(screen > 1024){
-    mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
-  }
-  else{
-    mainbannerimg = ref("/storage/images/landing/main/main600.webp");
-  }
-
+      mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
+    }
+    else{
+      mainbannerimg = ref("/storage/images/landing/main/main600.webp");
+    }
+  */
 let sliderheader = ref("В нашей копилке сотни дел, но каждое новое дело для нас особенное");
 
 let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slider/1.webp"}, 
@@ -69,7 +70,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
     :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
 
-    <VK />
+    <!--<VK />-->
 
     <MainFooter />
   
