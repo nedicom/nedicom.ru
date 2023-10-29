@@ -29,7 +29,7 @@ let set = defineProps({
   flash: String,
 });
 
-let screen = window.innerWidth;
+/*let screen = window.innerWidth;
 
 let mainbannerimg;
   if (screen>1919){
@@ -40,7 +40,7 @@ let mainbannerimg;
     }
     else{
       mainbannerimg = ref(`/${set.lawyer.file_path}`);
-    };
+    };*/
 
 let title = ref(set.lawyer.name);
 

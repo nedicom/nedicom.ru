@@ -151,7 +151,7 @@ export default {
             form : {
                 phone: "",
                 token: null,
-                url: location.href,                
+                url: '',//location.href,                
             },
         }
     },
