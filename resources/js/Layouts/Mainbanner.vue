@@ -29,29 +29,27 @@ const p = new Promise((resolve, reject) =>{ // Promise (class) - class, resolve 
 
 let form = reactive({
   phone: "",
-  token: null,
+  token: 'null',
   url: location.href,
 });
 
 let loading = true;
-    const recaptcha = async () => { 
+
+function startCaptcha(){
         grecaptcha.ready(function() {                                  
             grecaptcha.execute('6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK', {action: 'submit'}).then(function(token) {            
-            form.token = token            
-            Inertia.post("/phone/send", form, {preserveScroll: true,})               
-            
-            });
-        });             
-    }
+        form.token = token                   
+        });
+    });       
+}
 
-
-
+const recaptcha = async () => {    
+    Inertia.post("/phone/send", form, {preserveScroll: true,})
+}
     
 </script>
 
 <template>
-
-
 <!-- main banner -->
     <div
     class="
@@ -86,7 +84,7 @@ let loading = true;
                         <div class="flex justify-center">
                             <form @submit.prevent="recaptcha" class="w-80 space-y-6">
                                 <div>                
-                                    <input v-model="form.phone" type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
+                                    <input v-model="form.phone" v-on:click="startCaptcha" type="number" name="phone" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="+7" required>
                                     <span class="text-red-500 bg-white rounded-lg px-2 py-1 font-semibold text-sm animate-spin-pulse" v-if="$page.props.errors['phone']">{{ $page.props.errors['phone'] }}</span>
                                 </div>
                                 <div class="flex justify-between">
