@@ -14,7 +14,7 @@ defineProps({
   status: String,
   imgurl: String,
   islawyer: String,
-  test: Array,
+  uslugi: Array,
   specializationOne: String,
 });
 </script>
@@ -33,7 +33,7 @@ defineProps({
             :status="status"
             :islawyer="islawyer"
             :specializationOne="specializationOne"
-            :test="test"
+            :uslugi="uslugi"
             class="max-w-xl"
           />
         </div>

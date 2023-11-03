@@ -116,6 +116,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::patch('/profilespec', [ProfileController::class, 'updatespec'])->name('profile.updatespec');
+    Route::patch('/deletespec', [ProfileController::class, 'deletespec'])->name('profile.deletespec');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 

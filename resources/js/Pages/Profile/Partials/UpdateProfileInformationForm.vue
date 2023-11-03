@@ -13,7 +13,8 @@ const props = defineProps({
     mustVerifyEmail: Boolean,
     status: String,
     islawyer: Number,
-    test: "Array",
+    uslugi: "Array",
+    userspec: "Array",
     specializationOne: Object,
 });
 
@@ -28,6 +29,7 @@ let form = useForm({
 </script>
 
 <template>
+
     <section>
         <header>
             <h2 class="text-lg font-medium text-gray-900">Ваша информация</h2>
@@ -74,8 +76,9 @@ let form = useForm({
                 <InputLabel for="speciality" value="Специализация (не больше трех)" />                
                     
                 <Multiselect                                
-                        :specdata="test" 
-                        :specializationOne="specializationOne"                      
+                        :specdata="uslugi" 
+                        :specializationOne="specializationOne"
+                        :userspec="userspec"                    
                     >      
                 </Multiselect>
 

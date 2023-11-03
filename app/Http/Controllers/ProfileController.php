@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use App\Models\Uslugi;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Arr;
 
 class ProfileController extends Controller
 {
@@ -28,9 +29,10 @@ class ProfileController extends Controller
             'imgurl' => Auth::user()->file_path,              
             'islawyer' => Auth::user()->lawyer,
             'status' => session('status'),
-            'test'=>  Uslugi::orderBy('usl_name','desc')
+            'uslugi'=>  Uslugi::orderBy('usl_name','desc')
             ->select('id', 'usl_name')
-            ->get(),            
+            ->get(),
+            'userspec' => User::find($id)->arrayspec,         
             'specializationOne' => User::find($id)->lawyerSpecOne,
             'specializationTwo' => User::find($id)->lawyerSpecTwo,
             'specializationThree' => User::find($id)->lawyerSpecThree,
@@ -42,7 +44,6 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        //dd($request);
         $request->user()->fill($request->validated());
         if($request->lawyer == true){
             $request->user()->lawyer = 1;
@@ -63,12 +64,47 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function updatespec(ProfileUpdateRequest $request): RedirectResponse
-    {
-        //dd($request);
-        $request->user()->fill($request->validated());
+    public function updatespec(Request $request)
+    {   
+        //check is admin
 
-        $request->user()->save();
+        //get array
+        $user = User::find(Auth::user()->id);
+        $userspec = $user -> arrayspec;              
+        $usluhaid = $request -> arrayspec;
+        $uslugavalue = $request -> arrayvalue; 
+            if($userspec){
+                $array = json_decode($userspec, JSON_FORCE_OBJECT);
+                $array[] = ['specialization' => $usluhaid, 'value' => $uslugavalue];
+                $user->arrayspec = json_encode($array);
+            }
+            else{
+                $array = array(array('specialization' => $usluhaid, 'value' => $uslugavalue));
+                $user->arrayspec = json_encode($array);
+            }
+        $user->save();
+        return Redirect::route('profile.edit');
+    }
+
+    public function deletespec(Request $request): RedirectResponse
+    {   
+        $user = User::find(Auth::user()->id);
+        $userspec = $user -> arrayspec;
+        $usluhaid = $request -> id;
+        $array = json_decode($userspec, JSON_FORCE_OBJECT);
+
+        $k=0;
+        $newarray=[];
+            for($i = 0; $i < count($array); $i++){            
+                        if ((array_search($usluhaid,  $array[$i])) == false) {
+                            $newarray[$k] = $array[$i];  
+                            $k++; 
+                        }                      
+            }
+
+        $user->arrayspec = json_encode($newarray);
+
+        $user->save();
 
         return Redirect::route('profile.edit');
     }

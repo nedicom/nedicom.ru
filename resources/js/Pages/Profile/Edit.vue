@@ -16,12 +16,14 @@ defineProps({
   avatarurl: String,
   imgurl: String,
   islawyer: Number,
-  test: "Array",
+  uslugi: Array,
+  userspec: Array,
   specializationOne: Object,
 });
 </script>
 
 <template>
+
   <Head title="Профиль" />
 
   <MainHeader />
@@ -35,7 +37,8 @@ defineProps({
             :status="status"
             :islawyer="islawyer"
             :specializationOne="specializationOne"
-            :test="test"            
+            :uslugi="uslugi"
+            :userspec="userspec"             
             class="max-w-xl"
           />
         </div>
