@@ -6,7 +6,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 
 <template>
     <!-- Page Content -->
-    <div class="">   
+    <div class="min-h-full">   
         <slot />   
     </div>    
 </template>

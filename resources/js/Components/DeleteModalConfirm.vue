@@ -4,7 +4,7 @@ import { reactive } from "vue";
 
 defineProps<{
   title?: string,
-  id?: string,
+  id?: number,
 }>()
 
 const emit = defineEmits<{

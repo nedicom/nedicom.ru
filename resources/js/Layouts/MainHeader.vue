@@ -118,8 +118,26 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
+                      <DropdownLink :href="route('dashboard')">
+                        Мои Статьи
+                      </DropdownLink>
+                      <DropdownLink :href="route('dashboard')">
+                        Мои Вопросы
+                      </DropdownLink>
+                      <DropdownLink :href="route('dashboard')">
+                        Мои Ответы
+                      </DropdownLink>
+                      <DropdownLink :href="route('dashboard')">
+                        Мои Услуги
+                      </DropdownLink>
                       <DropdownLink :href="route('articles.add')">
                         Добавить статью
+                      </DropdownLink>
+                      <DropdownLink :href="route('uslugi.add')">
+                        Добавить услугу
+                      </DropdownLink>
+                      <DropdownLink :href="route('questions/add')">
+                        Задать вопрос
                       </DropdownLink>
                       <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.articles.list')">
                         Все статьи
@@ -127,9 +145,7 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.users.list')">
                         Пользователи
                       </DropdownLink>
-                      <DropdownLink :href="route('questions/add')">
-                        Задать вопрос
-                      </DropdownLink>
+
                       <DropdownLink
                         :href="route('logout')"
                         method="post"
