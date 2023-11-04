@@ -11,7 +11,7 @@ import { reactive } from "vue";
 let form = reactive({
   header: "",
   description: "",
-  body: "Текст прекрасной и полезной статьи",
+  body: "",
 });
 
 let submit = () => {
@@ -24,7 +24,7 @@ let title = ref("Добавить статью");
 <template>
     <Head>
     <title>{{title}}</title>
-    <meta name="description" :content="Страницастатьи" />
+    <meta name="description" content="Страница статьи" />
   </Head>
 
   <MainHeader />
