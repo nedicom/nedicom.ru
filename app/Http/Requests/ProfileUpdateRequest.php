@@ -17,7 +17,7 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'name' => ['string', 'max:255'],
-            'about' => ['string', 'max:500'],
+            'about' => ['string', 'max:500', 'required'],
             'jsonspec' => ['json'],
             'speciality_one_id' => ['numeric'],
             'speciality_two_id' => ['numeric'],
@@ -26,4 +26,12 @@ class ProfileUpdateRequest extends FormRequest
             'email' => ['email', 'max:255', Rule::unique(User::class)->ignore($this->user()->id)],
         ];
     }
+
+    public function messages(): array
+{
+    return [
+        'about.required' => 'О себе нужно обязательно рассказать.', 
+        'about.string' => 'О себе нужно обязательно рассказать.', 
+    ];
+}
 }

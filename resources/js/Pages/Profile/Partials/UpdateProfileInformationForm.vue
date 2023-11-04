@@ -6,6 +6,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import TextArea from '@/Components/TextArea.vue';
 import Multiselect from '@/Components/Multiselect.vue';
+import Tooltip from '@/Components/Tooltip.vue';
 
 import { Link, useForm, usePage } from '@inertiajs/inertia-vue3';
 
@@ -54,7 +55,8 @@ let form = useForm({
                 <InputError class="mt-2" :message="form.errors.name" />
             </div>
 
-            <div class="flex f flex-row"> 
+            <div class="flex items-center"> 
+                <div class ="flex items-center">
                 <Checkbox
                     :islawyer="islawyer"
                     class="mr-2"                    
@@ -62,7 +64,11 @@ let form = useForm({
                     name = "lawyer"             
                     v-model="form.lawyer"
                 />
-                <InputLabel for="lawyer" value="Я - юрист" />
+                <InputLabel class="w-[4rem]" for="lawyer" value="Я - юрист" />
+                </div>
+                <Tooltip text="Юристы сайта получают публичную страницу, возможность публиковать объявления 
+                о своих услугах и делиться практикой для привлечения клиентов."/>
+  
             </div>
             <div v-if="islawyer == '1'">
                 <div class="my-5">

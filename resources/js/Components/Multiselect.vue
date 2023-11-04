@@ -2,6 +2,7 @@
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import CrossButton from '@/Components/CrossButton.vue';
+import Tooltip from '@/Components/Tooltip.vue';
 
 defineProps( {
     specdata: Array,
@@ -16,16 +17,21 @@ defineProps( {
         @input.prevent="inputusl"
         autocomplete="off"
         id="listid"
-        list="uslugi"        
+        list="uslugi" 
+        placeholder="Выбрать услугу"       
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
         />
           <datalist id="uslugi" >
               <option  v-for="key in specdata" :key="key" :data-value="key.id" :value="key?.usl_name"></option>
           </datalist>
-    <Link 
-        :href="route('uslugi.add')"        
-        class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-        >придумать новую услугу</Link>
+      <Link 
+          :href="route('uslugi.add')"        
+          class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+          >придумать новую услугу
+      </Link>
+
+        <Tooltip text="Ваш профиль может быть показан на странице услуги в зависимости от рейтинга. А в Вашем профиле
+        появиться то чем Вы занимаетесь. Так Вас найдут клиенты."/>
     </div>  
 
         <div class="my-3">
