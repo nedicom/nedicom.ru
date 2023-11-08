@@ -22,10 +22,10 @@ let vars = defineProps({
 });
 
 let sliderheader = "Доверяйте делам";
-  
-let mainbannerimg = '/'+vars.lawyers[0]?.file_path;
 
-if(vars.lawyers[0]?.file_path === undefined){
+let mainbannerimg = '/'+vars.firstlawyer[0].file_path;
+
+if(vars.firstlawyer[0].file_path === ''){
     mainbannerimg  = 'https://nedicom.ru/storage/images/landing/main/1280on600.webp';
 }
 </script>

@@ -26,17 +26,18 @@ class UslugiController extends Controller
     public function show($url, Request $request){ 
         //dd($request);
         $id = Uslugi::where('url', '=', $url)->first()->id;
-            $main_usluga_id = Uslugi::where('url', '=', $url)->first()->main_usluga_id;
+        $main_usluga_id = Uslugi::where('url', '=', $url)->first()->main_usluga_id;
             if(!$main_usluga_id){
                 $main_usluga_id = $id;
             }
+        $user_id = Uslugi::where('url', '=', $url)->first()->user_id;
         // dd($main_usluga_id);
         return Inertia::render('Uslugi/Usluga', [
             'usluga' => Uslugi::where('url', '=', $url)->first(),
             'user' => Auth::user(),
             'lawyers' => User::where('speciality_one_id', '=', $id)->orderBy('name', 'asc')->get()->take(3),
             'practice' => Article::where('usluga_id', $main_usluga_id)->where('practice_file_path', '!=', null)->orderBy('updated_at', 'desc')->take(3)->get(),
-            'firstlawyer' => Uslugi::where('url', '=', $url)->first()->firstlawyer,
+            'firstlawyer' => User::where('id', $user_id)->get(),
             'flash' => ['message' => $request->session()->get(key: 'message')], 
         ]);
     }
