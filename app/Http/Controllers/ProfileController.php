@@ -31,11 +31,12 @@ class ProfileController extends Controller
             'status' => session('status'),
             'uslugi'=>  Uslugi::orderBy('usl_name','desc')
             ->select('id', 'usl_name')
+            ->where('is_main', 1)
             ->get(),
             'userspec' => User::find($id)->arrayspec,         
-            'specializationOne' => User::find($id)->lawyerSpecOne,
-            'specializationTwo' => User::find($id)->lawyerSpecTwo,
-            'specializationThree' => User::find($id)->lawyerSpecThree,
+            //'specializationOne' => User::find($id)->lawyerSpecOne,
+            //'specializationTwo' => User::find($id)->lawyerSpecTwo,
+            //'specializationThree' => User::find($id)->lawyerSpecThree,
         ]);
     }
 
