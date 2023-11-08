@@ -50,6 +50,8 @@ class UslugiController extends Controller
         $usluga = new Uslugi;
         $usluga->usl_name = $request->header;
         $usluga->usl_desc = $request->description;
+        $usluga->user_id = Auth::id();
+        
 
             $usluga->longdescription = 'Это детальное описание услуги';
             $usluga->preimushestvo1 = '600+ дел';
@@ -102,4 +104,37 @@ class UslugiController extends Controller
         $usluga->save();
         return redirect()->route('uslugi.url', $usluga->url)->with('message', 'Обновлено успешно');  
     }    
+
+    public function useruslugi(Request $request)
+    {
+        $id = Auth::id();        
+        $query = Uslugi::query()->where('user_id', '=', $id);
+
+        if ($request->has('search')) {     
+            //dd('test');       
+            $query = $query->filter($request->all('search'));
+        }
+        else{
+            $query = Uslugi::where('user_id', '=', $id);
+        }
+
+        $uslugi = $query->orderBy('id')->paginate(12);
+        
+        return Inertia::render('Uslugi/Byuser', [
+            'filters' => $request->all('search'),
+            'uslugi' =>  $uslugi,
+        ]);
+    }
+
+    public function delete(int $id)
+    {   
+        if ($usluga = Uslugi::find($id)) {
+            $usluga->delete();
+
+            return redirect()->route('uslugi.user');
+        }
+
+        abort(404);
+    }
+    
 }

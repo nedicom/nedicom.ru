@@ -70,17 +70,18 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
 
     Route::middleware('auth')->group(function () {
         Route::post('/uslugi/post', [UslugiController::class, 'create'])->name('uslugi.post');
+        Route::get('/uslugi/user', [UslugiController::class, 'useruslugi'])->name('uslugi.user');
     });
 
     Route::controller(UslugiController::class)->group(function () {
         Route::get('/uslugi', 'index')->name('uslugi');
         Route::get('/uslugi/{url}', 'show')->name('uslugi.url');
-
+       // Route::get('/uslugi/user/', 'useruslugi')->name('uslugi.user');
             Route::get('/uslugiadd', 'formadd')->name('uslugi.add');
             Route::post('/uslugi/create', 'create')->name('uslugi.create');
             Route::get('/uslugi/{url}/edit', 'edit')->name('uslugi.edit');
             Route::post('/uslugi/{url}/update', 'update')->name('uslugi.update');          
-            Route::get('/uslugi/{url}/delete', 'delete')->name('uslugi.delete'); 
+            Route::get('/uslugi/{url}/delete', 'delete')->name('uslugi.delete');
       });
 
     Route::get('/policy', function () {

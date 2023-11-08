@@ -1,7 +1,6 @@
 <script setup>
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
-import { Link } from '@inertiajs/inertia-vue3';
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import { ref } from "vue";
@@ -12,11 +11,13 @@ import { Inertia } from "@inertiajs/inertia";
 
 let modalTitle = ref(null);
 let userId = ref(null);
+let title = ref("Услуги");
 
 defineProps({
-  articles: "Array",
-  filters: "Object",
+    uslugi: "Array",
+    filters: "Object",
 });
+
 
 const { open, close } = useModal({
   component: DeleteModalConfirm,
@@ -24,7 +25,7 @@ const { open, close } = useModal({
     title: modalTitle,
     id: userId,
     onConfirm(id) {
-      Inertia.get(`/admin/articles/${id}/delete`)
+      Inertia.get(`/uslugi/${id}/delete`)
     },
     onClose() {
       close()
@@ -34,8 +35,6 @@ const { open, close } = useModal({
     default: '<p>UseModal: The content of the modal</p>',
   },
 })
-
-let title = ref("Статьи");
 
 const handleDelete = (id, title) => {
   userId.value = id
@@ -47,9 +46,14 @@ const handleDelete = (id, title) => {
 </script>
 
 <template>
-  <Head title="Статьи" />
+  <Head>
+    <title>{{title}}</title>
+    <meta name="description" content="Услуги юриста" />
+  </Head>
 
   <MainHeader />
+
+  <Header :ttl="title" />
 
   <ModalsContainer />
 
@@ -73,12 +77,12 @@ const handleDelete = (id, title) => {
             </div>
             <Link
               class="font-bold text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-              href="/articlesadd"
+              href="/uslugiadd"
             >
               Новая статья
             </Link>
         </div>
-          <div v-if="articles.total > 0">
+          <div v-if="uslugi.total > 0">
             <table class="w-full whitespace-nowrap">
                 <thead>
                     <tr class="text-left font-bold">
@@ -91,22 +95,22 @@ const handleDelete = (id, title) => {
                 </thead>
                 <tbody>
                     <tr
-                        v-for="articles in articles.data"
+                        v-for="uslugi in uslugi.data"
                         class="hover:bg-gray-100 focus-within:bg-gray-100"
                     >
                         <td class="border-t">
-                            <Link class="flex items-center px-6 py-4" :href="`/admin/articles/${articles.url}/edit`">{{ articles.id }}</Link>
+                            <Link class="flex items-center px-6 py-4" :href="`/uslugi/${uslugi.url}/edit`">{{ uslugi.id }}</Link>
                         </td>
                         <td class="border-t">
-                            <Link class="flex items-center px-6 py-4" :href="`/admin/articles/${articles.url}/edit`">{{ articles.header }}</Link>
+                            <Link class="flex items-center px-6 py-4" :href="`/uslugi/${uslugi.url}/edit`">{{ uslugi.usl_name }}</Link>
                         </td>
                         <td class="border-t">
-                            <Link class="flex items-center px-6 py-4" :href="`/admin/articles/${articles.url}/edit`">{{ articles.username }}</Link>
+                            <Link class="flex items-center px-6 py-4" :href="`/uslugi/${uslugi.url}/edit`">{{ uslugi.username }}</Link>
                         </td>
-                        <td class="border-t">{{ articles.created_at }}</td>
+                        <td class="border-t">{{ uslugi.created_at }}</td>
                         <td class="border-t">
                           <button 
-                            @click="handleDelete(articles.id, articles.header)"
+                            @click="handleDelete(uslugi.id, uslugi.header)"
                             class="btn btn-light w-100 ml-5" 
                             ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6"> <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" /> </svg>
                           </button>
@@ -124,7 +128,7 @@ const handleDelete = (id, title) => {
               </h5>
               <p class="text-gray-700 text-base mb-2">
                 Самое время 
-                <a :href="route('articles.add')"
+                <a :href="route('uslugi.add')"
                 class="
                     basis-2/12
                     text-end              
@@ -139,7 +143,7 @@ const handleDelete = (id, title) => {
           </div>
           <!-- row -->
 
-          <Pagination :links="articles.links" />
+          <Pagination :links="uslugi.links" />
         </div>
       </div>
     </div>
@@ -167,7 +171,7 @@ export default {
     form: {
       deep: true,
       handler: function (value) {         
-          this.$inertia.get('/admin/articles', { search: this.form.search }, { preserveState: true })
+          this.$inertia.get('/uslugi', { search: this.form.search }, { preserveState: true })
         }
     },
   },
@@ -250,3 +254,4 @@ export default {
   @apply text-red-700 mt-2 text-sm;
 }
 </style>
+

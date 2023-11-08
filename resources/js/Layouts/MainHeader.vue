@@ -127,7 +127,7 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('dashboard')">
                         Мои Ответы
                       </DropdownLink>
-                      <DropdownLink :href="route('dashboard')">
+                      <DropdownLink :href="route('uslugi.user')">
                         Мои Услуги
                       </DropdownLink>
                       <DropdownLink :href="route('articles.add')">
