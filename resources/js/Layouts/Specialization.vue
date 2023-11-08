@@ -1,8 +1,9 @@
 <script setup>
 const props = defineProps({
-    specializationOne: Array,
-    specializationTwo: Array,
-    specializationThree: Array,
+    specializationOne: Object,
+    specializationTwo: Object,
+    specializationThree: Object,
+    specialization: String,
 });
 
 </script>
@@ -16,7 +17,22 @@ const props = defineProps({
       <div class="max-w-6xl mx-auto md:my-9 sm:px-6 lg:px-8 text-center">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-9">
 
+
+                      <!-- card -->
+            <div v-for="key in JSON.parse(specialization)"  
+              :key="key.value" 
+              v-show="key.specialization" class="flex justify-center m-3 md:m-0">             
+              
+              <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
+                <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
+                  {{key.value}}
+                </h5>              
+              </div>
+            </div>
             <!-- card -->
+
+            <!-- old specialization 
+
             <div v-if="specializationOne" class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
@@ -37,9 +53,9 @@ const props = defineProps({
                 </p>                
               </div>
             </div>
-            <!-- card -->
 
-            <!-- card -->
+
+
             <div v-if="specializationTwo" class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
@@ -60,9 +76,7 @@ const props = defineProps({
                 </p>                
               </div>
             </div>
-            <!-- card -->
 
-            <!-- card -->
             <div v-if="specializationThree" class="flex justify-center m-3 md:m-0">
               <div class="block min-w-full p-6 rounded-lg shadow-lg bg-white max-w-sm">
                 <h5 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium mb-2">
@@ -83,9 +97,12 @@ const props = defineProps({
                 </p>                
               </div>
             </div>
-            <!-- card -->
+old specialization -->
            
         </div>
       </div>
        <!-- case card -->
+       
+
+
 </template> 

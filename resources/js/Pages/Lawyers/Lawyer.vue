@@ -20,10 +20,13 @@ import { ref } from "vue";
 let sliderheader = ref("Практика юриста");
 
 let set = defineProps({
+  statusonimage: String,
+  mainbannerimg: String, 
   lawyer: "$string",
   specializationOne: Object,
   specializationTwo: Object,
   specializationThree: Object,
+  specialization: String,
   articles: "$Array",
   practice: "$Array",
   flash: Object,
@@ -67,6 +70,7 @@ let title = ref(set.lawyer.name);
       :specializationOne="specializationOne" 
       :specializationTwo="specializationTwo"
       :specializationThree="specializationThree"
+      :specialization="specialization"
       />
 
     <Articles :articles = "articles"/>
