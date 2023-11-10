@@ -36,9 +36,9 @@
         <noscript><div><img src="https://mc.yandex.ru/watch/24900584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
 
-        <!-- Grecaptcha -->
+        <!-- Grecaptcha 
         <script src="https://www.google.com/recaptcha/api.js?render=6Lf0-tAZAAAAAIxKP1YOtKrCfqSm_yl3QF-IzglK"></script>
-        <!-- Grecaptcha -->
+         Grecaptcha -->
 
 
     </body>

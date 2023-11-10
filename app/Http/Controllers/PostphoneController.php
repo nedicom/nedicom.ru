@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\URL;
-use App\Rules\ReCaptcha;
+//use App\Rules\ReCaptcha;
 
 
     class PostphoneController extends Controller
@@ -15,7 +15,7 @@ use App\Rules\ReCaptcha;
                 {
                     $validated = $request->validate([                
                             'phone' => 'required|max:12|min:9',
-                            'token' => [new Recaptcha],
+                            //'token' => [new Recaptcha],
                         ],
                         [
                             'phone.max' => 'Телефон не должен быть более 12 цифр',
