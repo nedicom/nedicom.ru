@@ -11,7 +11,6 @@ import MainFooter from "@/Layouts/MainFooter.vue";
 import Slider from "@/Layouts/Slider.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 
-
 let vars = defineProps({
   usluga: String,
   user: String,
@@ -23,11 +22,14 @@ let vars = defineProps({
 
 let sliderheader = "Доверяйте делам";
 
-let mainbannerimg = '/'+vars.firstlawyer[0].file_path;
-
-if(vars.firstlawyer[0].file_path === ''){
-    mainbannerimg  = 'https://nedicom.ru/storage/images/landing/main/1280on600.webp';
+let mainbannerimg = vars.firstlawyer[0].file_path;
+if(!mainbannerimg){
+  mainbannerimg  = 'https://nedicom.ru/storage/images/landing/main/1280on600.webp';   
 }
+else{
+  mainbannerimg = '/'+vars.firstlawyer[0].file_path;
+}
+
 </script>
 
 
@@ -44,17 +46,19 @@ if(vars.firstlawyer[0].file_path === ''){
 </style>
 
 <template>
+  
   <FlashMessage :message="flash.message"/>
 
   <Head>
     <title>{{usluga.usl_name}}</title>
     <meta name="description" :content="usluga.usl_desc">
   </Head>
-
+  
   <MainHeader />
 
   <Header :phone="usluga.phone" :address="usluga.address" />
-
+  {{ vars.firstlawyer[0].file_path }}
+  
   <Mainbanner :statusonimage="usluga.usl_name" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
 
   <Body>

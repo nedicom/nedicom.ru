@@ -20,9 +20,6 @@
         <!-- Yandex.Metrika counter -->
         
         <script type="text/javascript" >
-            document.addEventListener('DOMContentLoaded', () => {
-                setTimeout(function(){
-
                     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
                     m[i].l=1*new Date();
                     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -36,9 +33,6 @@
                             webvisor:true,
                             trackHash:true
                     });
-
-                    }, 1500); // время указано в мс = 0,001 секунды, изменить по вкусу
-            });
         </script>
         <noscript><div><img src="https://mc.yandex.ru/watch/24900584" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
         <!-- /Yandex.Metrika counter -->
