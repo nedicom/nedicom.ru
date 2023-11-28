@@ -15,6 +15,7 @@
           focus:ring-4 focus:ring-blue-200
           dark:focus:ring-blue-900
           hover:bg-blue-800
+          disabled:opacity-25
         "
       >
     <slot />

@@ -5,12 +5,16 @@ import Body from "@/Layouts/Body.vue";
 import Answer from "@/Layouts/Answer.vue";
 import Answers from "@/Layouts/Answers.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
-import { Head } from "@inertiajs/inertia-vue3";
+import { Head, usePage } from "@inertiajs/inertia-vue3";
 
 defineProps({
   question: "$string",
   answers: "Array",
+  ownercookie: String,
 });
+
+const user = usePage().props.value.auth.user;
+
 </script>
 
 <template>
@@ -28,6 +32,12 @@ defineProps({
     <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
       <div class="px-6 text-gray-900">{{ question.body }}
       </div>
+
+    <div v-if="!user" class=""
+        >
+        Чтобы получить ответ
+        </div>
+
   <Answers class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
          :answers="answers"/>     
 

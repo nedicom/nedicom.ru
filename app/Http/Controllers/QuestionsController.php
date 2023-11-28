@@ -30,13 +30,19 @@ class QuestionsController extends Controller
 
     public function questionsURL($url){ 
         $id = Questions::where('url', '=', $url)->pluck('id')->first();  
-        //$answers = Answer::with('UserAns')->get();    
         return Inertia::render('Questions/Question', [
             'question' => Questions::where('id', '=', $id)->first(),
             'answers' => Answer::where('questions_id', '=', $id)->with('UserAns')->get(),
-            //'testus'=> $answers,
+            'ownercookie' => ['questionTitle' => session()->get(key: 'questionTitle'), 'questionBody' => session()->get(key: 'questionBody')], 
         ]);
     }
+
+    public function questionsNonAuth(){  
+        return Inertia::render('Questions/QuestionNA', [
+            'ownercookie' => ['questionTitle' => session()->get(key: 'questionTitle'), 'questionBody' => session()->get(key: 'questionBody')], 
+        ]);
+    }
+    
 
     public function questionAdd(){  
         return Inertia::render('Questions/Add', [
@@ -45,14 +51,18 @@ class QuestionsController extends Controller
     }
 
     public function post(Request $request){
-        $Question = new Questions;
-        $Question->user_id = Auth::user()->id;
+        $Question = new Questions;     
         $Question->title = $request->header;
         $Question->body = $request->body;
         $url = Translate::translit($request->header);        
         $Question->url = $url;
-        $Question->save();
-        return redirect()->route('questions.url', $url);
+        if(Auth::user()){
+            $Question->user_id = Auth::user()->id;
+            $Question->save();
+            return redirect()->route('questions.url', $url);
+        }         
+        session(['questionTitle' => $Question->title, 'questionBody' => $Question->body]);
+            return redirect()->route('questions.nonauth');        
     }
 
     public function delete(int $id)

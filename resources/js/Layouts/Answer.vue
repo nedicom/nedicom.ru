@@ -17,9 +17,15 @@ let form = reactive({
 
 
 const user = usePage().props.value.auth.user;
-
+let ownerId;
+  if(user==null){
+    ownerId = 0;
+  }
+  else{
+    ownerId = user.id;
+  }
 let placeholder;
-placeholder = (set.question.user_id == user.id) ? "Вы можете дополнить свой вопрос, если посчитаете нужным." : "Ваш грамотный ответ. Старайтесь ответить максимально полно, это поможет тому кто задал вопрос и всему миру.";
+placeholder = (set.question.user_id == ownerId) ? "Вы можете дополнить свой вопрос, если посчитаете нужным." : "Ваш грамотный ответ. Старайтесь ответить максимально полно, это поможет тому кто задал вопрос и всему миру.";
 
 let submit = () => {
   //Inertia.post("/answerpost", form);

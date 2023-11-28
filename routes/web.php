@@ -107,6 +107,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
         Route::get('/questions/add', 'questionAdd')->name('questions.add');
         Route::post('/questions/post', 'post')->name('articles/post');
         Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
+        Route::get('/question/nonauth', 'questionsNonAuth')->name('questions.nonauth');
         Route::get('/questions/{id}/delete', 'delete')->name('questions.delete'); 
       });
 
