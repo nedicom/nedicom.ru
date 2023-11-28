@@ -4,7 +4,7 @@ import { createInertiaApp } from '@inertiajs/vue3';
 import createServer from '@inertiajs/vue3/server';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
-import { createVfm } from 'vue-final-modal';
+import {createVfm} from 'vue-final-modal';
 
 const appName = 'Laravel';
 const vfm = createVfm();

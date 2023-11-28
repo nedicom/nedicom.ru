@@ -13,7 +13,7 @@ import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
 defineProps({
-  flash: String,
+  flash: Object,
 });
 
   //let screen = window.innerWidth;
@@ -36,21 +36,21 @@ let sldimg = ref([{id:1, practice_file_path : "storage/images/landing/main/slide
 
 let title = ref("Главная");
 
-let statusonimage = ref("юристы без границ");
-let nameonimage = ref("nedicom - ");
+let statusonimage = ref("Адвокатский кабинет");
+let nameonimage = ref("Мина");
 
 let firstcardheader = ref("Наследственные дела");
 let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
 let secondcardheader = ref("Семейные споры");
 let secondcardbody = ref("Раздел имущества, признание личной собственностью, установление отцовства, порядок общения, алименты");
-let thirdcardheader = ref("Юрдическое обслуживание");
+let thirdcardheader = ref("Юридическое обслуживание");
 let thirdcardbody = ref("Сопровождение и защита бизнеса от уголовной, налоговой и корпоративных споров до проверки контрагентов и ");
 </script>
 
 <template>
   <FlashMessage :message="flash.message"/>
   
-  <Head title="nedicom. Юридическая компания" />
+  <Head title="Адвокатский кабинет Мина" />
 
   <div class="min-h-screen">
     
@@ -67,8 +67,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
     <Address />
 
     <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
-    :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" :fourthcardheader="fourthcardheader" :fourthcardbody="fourthcardbody"
-    :fifthcardheader="fifthcardheader" :fifthcardbody="fifthcardbody" :sixthcardheader="sixthcardheader" :sixthcardbody="sixthcardbody"/>
+    :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" />
 
     <!--<VK />-->
 
