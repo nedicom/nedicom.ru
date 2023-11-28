@@ -8,6 +8,7 @@ use App\Models\Questions;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\Translate;
+use App\Models\User;
 
 class QuestionsController extends Controller
 {
@@ -26,6 +27,12 @@ class QuestionsController extends Controller
             'question' => Questions::where('id', '=', $id)->first(),
             'answers' => Answer::where('questions_id', '=', $id)->with('UserAns')->get(),
             //'testus'=> $answers,
+        ]);
+    }
+
+    public function questionAdd(){  
+        return Inertia::render('Questions/Add', [
+            'lawyers' => User::all()->where('lawyer', 1),
         ]);
     }
 

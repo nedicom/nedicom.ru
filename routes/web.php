@@ -100,11 +100,10 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
             Route::get('/articles/{id}/delete', 'delete')->name('article.delete'); 
       });
 
-    Route::get('/questions/add', function () {
-        return Inertia::render('Questions/Add');
-    })->name('questions/add');
+
     Route::controller(QuestionsController::class)->group(function () {
         Route::get('/questions', 'index')->name('questions');
+        Route::get('/questions/add', 'questionAdd')->name('questions/add');
         Route::post('/questions/post', 'post')->name('articles/post');
         Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
       });
