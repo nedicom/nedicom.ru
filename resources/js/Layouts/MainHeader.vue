@@ -46,10 +46,10 @@ const showingNavigationDropdown = ref(false);
               </div>
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <NavLink
-                  :href="route('questions')"
-                  :active="route().current('questions')"
+                  :href="route('questions.add')"
+                  :active="route().current('questions.add')"
                 >
-                  Вопросы
+                  Задать вопрос
                 </NavLink>
               </div>
               <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -121,7 +121,7 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('dashboard')">
                         Мои Статьи
                       </DropdownLink>
-                      <DropdownLink :href="route('dashboard')">
+                      <DropdownLink :href="route('my.questions')">
                         Мои Вопросы
                       </DropdownLink>
                       <DropdownLink :href="route('dashboard')">
@@ -136,7 +136,7 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('uslugi.add')">
                         Добавить услугу
                       </DropdownLink>
-                      <DropdownLink :href="route('questions/add')">
+                      <DropdownLink :href="route('questions.add')">
                         Задать вопрос
                       </DropdownLink>
                       <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.articles.list')">

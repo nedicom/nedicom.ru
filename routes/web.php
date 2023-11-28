@@ -103,9 +103,11 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
 
     Route::controller(QuestionsController::class)->group(function () {
         Route::get('/questions', 'index')->name('questions');
-        Route::get('/questions/add', 'questionAdd')->name('questions/add');
+        Route::get('/questions/my', 'myQuestions')->name('my.questions');
+        Route::get('/questions/add', 'questionAdd')->name('questions.add');
         Route::post('/questions/post', 'post')->name('articles/post');
         Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
+        Route::get('/questions/{id}/delete', 'delete')->name('questions.delete'); 
       });
 
       Route::controller(AnswerController::class)->group(function () {

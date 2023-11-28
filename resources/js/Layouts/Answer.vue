@@ -1,11 +1,12 @@
 <script setup>
 import { ref } from "vue";
-import { Head, Link } from "@inertiajs/inertia-vue3";
+import { usePage } from '@inertiajs/inertia-vue3';
 import { Inertia } from "@inertiajs/inertia";
 import { reactive } from "vue";
 
 let set = defineProps({
   question: "$string",
+  placeholder: String,
 });
 
 let form = reactive({
@@ -13,6 +14,12 @@ let form = reactive({
   questions_id: set.question.id,
   url: set.question.id,
 });
+
+
+const user = usePage().props.value.auth.user;
+
+let placeholder;
+placeholder = (set.question.user_id == user.id) ? "Вы можете дополнить свой вопрос, если посчитаете нужным." : "Ваш грамотный ответ. Старайтесь ответить максимально полно, это поможет тому кто задал вопрос и всему миру.";
 
 let submit = () => {
   //Inertia.post("/answerpost", form);
@@ -32,7 +39,7 @@ let submit = () => {
                   v-model="form.body"
                   @input="onInputheader"
                   spellcheck="true"
-                  maxlength="55"
+                  maxlength="1000"
                   required
                   class="
                     form-control
@@ -56,7 +63,7 @@ let submit = () => {
                   "
                   id=""
                   rows="4"
-                  placeholder="Ваш грамотный ответ. Старайтесь ответить максимально полно, это поможет тому кто задал вопрос и всему миру."
+                  :placeholder="placeholder"
                 ></textarea>
                 <div
                   class="
@@ -99,7 +106,7 @@ let submit = () => {
                 </button>
               </form>
               <div class="overflow-y-auto" scroll-region>
-  <!-- Your page content -->scroll-region
+  <!-- Your page content -->
 </div>
 </template>
     

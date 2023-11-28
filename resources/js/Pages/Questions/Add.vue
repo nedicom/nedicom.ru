@@ -54,6 +54,7 @@ let title = ref("Задать вопрос юристу");
                     v-model="form.header"
                     @input="onInputheader"
                     maxlength="55"
+                    required
                     class="
                       form-control
                       block
@@ -99,6 +100,7 @@ let title = ref("Задать вопрос юристу");
                   
                   <textarea
                     v-model="form.body"
+                    required
                     class="
                       h-50
                       form-control

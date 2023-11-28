@@ -25,18 +25,18 @@ defineProps({
   <Header :ttl="question.title" />
 
   <Body>
-      <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="px-6 text-gray-900">{{ question.body }}
-        </div>
+    <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+      <div class="px-6 text-gray-900">{{ question.body }}
       </div>
-    
-  </Body>
+  <Answers class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+         :answers="answers"/>     
 
   <Answer class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
          :question="question"/>
 
-  <Answers class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
-         :answers="answers"/>
+
+    </div>
+  </Body>
 
   <MainFooter />
   </div>
