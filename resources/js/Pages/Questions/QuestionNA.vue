@@ -39,7 +39,7 @@ let submit = () => {
 
   <Body>
     <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div  class="mb-5"
+        <div  class="mb-5 text-center"
         >
         Ваш вопрос (еще не опубликован)
         </div>
@@ -47,11 +47,11 @@ let submit = () => {
         </div>
     </div>
 
-        <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div class="text-center mb-5">
             <SendButton class="m-5" :onclick="submit" :disabled="!user">Опубликовать</SendButton>
         </div>
 
-        <div v-if="user == null" class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto bg-white overflow-hidden shadow-sm sm:rounded-lg">
+        <div v-if="user == null" class="mt-5 text-center">
             <PrimaryButton>
                 <a :href="route('login')">            
                     Войдите
@@ -63,7 +63,7 @@ let submit = () => {
                     Зарегистрируйтесь
                 </a>
             </PrimaryButton>
-            <p class="text-xs">чтобы опубликовать Ваш вопрос. Не волнуйтесь. После входа или регистрации мы вернем Вас на эту страницу
+            <p class="text-xs mt-5">чтобы опубликовать Ваш вопрос. Не волнуйтесь, вопрос сохранен
             </p>
         </div>
 
@@ -71,7 +71,7 @@ let submit = () => {
 
     
 
-    <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+    <div class="xl:w-4/6 mx-5 sm:px-6 lg:px-4 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
     >
         <div  class="grid grid-cols-1 gap-9 my-2">
                 <div
@@ -88,11 +88,11 @@ let submit = () => {
                     max-w-sm
                     "
                 >
-                    <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
+                    <p class="text-gray-900 text-base line-clamp-3 h-min-24 mb-2">
                     Так будет выглядеть первый ответ на Ваш вопрос
                     </p>
                     <p id="test" class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                    отвечает - первый юрист
+                    отвечает - лучший юрист
                     </p>
         </div>
         </div>

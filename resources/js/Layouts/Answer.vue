@@ -37,7 +37,7 @@ let submit = () => {
 <template>
               <form 
               @submit.prevent="submit" 
-              class="">
+              class="mx-5">
 
                 <input v-model="form.question_id" class="invisible">
             
@@ -90,26 +90,28 @@ let submit = () => {
                   Символов: {{ wordscounter }}
                 </p>
 
-                <button
-                  type="submit"
-                  class="
-                    my-5
-                    inline-flex
-                    items-center
-                    px-5
-                    py-2.5
-                    text-sm
-                    font-medium
-                    text-center text-white
-                    bg-blue-700
-                    rounded-lg
-                    focus:ring-4 focus:ring-blue-200
-                    dark:focus:ring-blue-900
-                    hover:bg-blue-800
-                  "
-                >
-                  Ответить
-                </button>
+                <div class="text-center">
+                  <button
+                    type="submit"
+                    class="
+                      my-5
+                      inline-flex
+                      items-center
+                      px-5
+                      py-2.5
+                      text-sm
+                      font-medium
+                      text-center text-white
+                      bg-blue-700
+                      rounded-lg
+                      focus:ring-4 focus:ring-blue-200
+                      dark:focus:ring-blue-900
+                      hover:bg-blue-800
+                    "
+                  >
+                    Ответить
+                  </button>
+                </div>
               </form>
               <div class="overflow-y-auto" scroll-region>
   <!-- Your page content -->

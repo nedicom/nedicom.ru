@@ -251,8 +251,8 @@ const showingNavigationDropdown = ref(false);
               <ResponsiveNavLink :href="route('articles')">
                 Статьи
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('questions')">
-                Вопросы
+              <ResponsiveNavLink :href="route('questions.add')">
+                Задать вопрос
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('lawyers')">
                 Юристы
@@ -268,8 +268,8 @@ const showingNavigationDropdown = ref(false);
               <ResponsiveNavLink :href="route('articles')">
                 Статьи
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('questions')">
-                Вопросы
+              <ResponsiveNavLink :href="route('questions.add')">
+                Задать вопрос
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('lawyers')">
                 Юристы

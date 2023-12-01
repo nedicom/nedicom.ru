@@ -38,12 +38,11 @@ const user = usePage().props.value.auth.user;
         Чтобы получить ответ
         </div>
 
-  <Answers class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+  <Answers class="xl:w-4/6 sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
          :answers="answers"/>     
 
-  <Answer class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+  <Answer class="xl:w-4/6 sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
          :question="question"/>
-
 
     </div>
   </Body>
