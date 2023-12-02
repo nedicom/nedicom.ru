@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Models\Questions;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
-use Jumbaeric\Laragpt\Laragpt;
+use Illuminate\Support\Facades\Http;
 use App\Helpers\Translate;
 use App\Models\User;
 
@@ -72,15 +72,33 @@ class QuestionsController extends Controller
         }
         
         
-        $args = [
-            'prompt' => 'Brainstorm some ideas combining VR and fitness', //required
-            'model' => 'text-davinci-003',  //  required
-        ];
-    
-        Laragpt::complete($args);
+        $search = "laravel get ip address";
+  
+        $data = Http::withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer '.env('OPENAI_API_KEY'),
+                  ])
+                  ->post("https://api.openai.com/v1/chat/completions", [
+                    "model" => "gpt-3.5-turbo",
+                    'messages' => [
+                        [
+                           "role" => "user",
+                           "content" => $search
+                       ]
+                    ],
+                    'temperature' => 0.5,
+                    "max_tokens" => 200,
+                    "top_p" => 1.0,
+                    "frequency_penalty" => 0.52,
+                    "presence_penalty" => 0.5,
+                    "stop" => ["11."],
+                  ])
+                  ->json();
+  
+        $responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
 
         $question = $Question->body;
-        $aianswer = "test2";
+        $aianswer = $responce;
         //$aianswer = $result->choices[0]->message->content;
 
         session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
