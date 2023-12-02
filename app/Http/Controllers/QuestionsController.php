@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Http\JsonResponse;
 use Inertia\Inertia;
 use App\Models\Questions;
 use App\Models\Answer;
@@ -59,7 +61,7 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function post(Request $request){
+    public function post(Request $request): JsonResponse{
         $Question = new Questions;     
         $Question->title = $request->header;
         $Question->body = $request->body;
@@ -72,17 +74,33 @@ class QuestionsController extends Controller
         }
         
         
-       /* $result = OpenAI::chat()->create([
-            'model' => 'gpt-3.5-turbo',
-            'messages' => [
-                ['role' => 'user', 'content' => 'Hello!'],
-            ],
-        ]);
-        dd($result);
-        //echo $result->choices[0]->message->content; // Hello! How can I assist you today?
-        */
+        $search = "laravel get ip address";
+  
+        $data = Http::withHeaders([
+                    'Content-Type' => 'application/json',
+                    'Authorization' => 'Bearer '.env('OPENAI_API_KEY'),
+                  ])
+                  ->post("https://api.openai.com/v1/chat/completions", [
+                    "model" => "gpt-3.5-turbo",
+                    'messages' => [
+                        [
+                           "role" => "user",
+                           "content" => $search
+                       ]
+                    ],
+                    'temperature' => 0.5,
+                    "max_tokens" => 200,
+                    "top_p" => 1.0,
+                    "frequency_penalty" => 0.52,
+                    "presence_penalty" => 0.5,
+                    "stop" => ["11."],
+                  ])
+                  ->json();
+  
+                  $aianswer = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
+    
         $question = $Question->body;
-        $aianswer = "test2";
+        //$aianswer = "test2";
         //$aianswer = $result->choices[0]->message->content;
 
         session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
