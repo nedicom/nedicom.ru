@@ -71,13 +71,14 @@ class QuestionsController extends Controller
             return redirect()->route('questions.url', $url);
         }
         
+        
         $result = OpenAI::chat()->create([
             'model' => 'gpt-3.5-turbo',
             'messages' => [
                 ['role' => 'user', 'content' => 'Hello!'],
             ],
         ]);
-        
+        dd($result);
         //echo $result->choices[0]->message->content; // Hello! How can I assist you today?
         $question = $Question->body;
         $aianswer = $result->choices[0]->message->content;
