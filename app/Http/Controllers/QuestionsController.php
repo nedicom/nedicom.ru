@@ -77,7 +77,7 @@ class QuestionsController extends Controller
             'model' => 'text-davinci-003',  //  required
         ];
     
-        dd(Laragpt::complete($args));
+        Laragpt::complete($args);
 
         $question = $Question->body;
         $aianswer = "test2";
