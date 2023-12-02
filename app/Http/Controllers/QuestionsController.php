@@ -34,13 +34,21 @@ class QuestionsController extends Controller
         return Inertia::render('Questions/Question', [
             'question' => Questions::where('id', '=', $id)->first(),
             'answers' => Answer::where('questions_id', '=', $id)->with('UserAns')->get(),
-            'ownercookie' => ['questionTitle' => session()->get(key: 'questionTitle'), 'questionBody' => session()->get(key: 'questionBody')], 
+            /*'ownercookie' => [
+                'questionTitle' => session()->get(key: 'questionTitle'), 
+                'questionBody' => session()->get(key: 'questionBody'),
+                'aianswer' => session()->get(key: 'aianswer'),
+            ], */
         ]);
     }
 
     public function questionsNonAuth(){  
         return Inertia::render('Questions/QuestionNA', [
-            'ownercookie' => ['questionTitle' => session()->get(key: 'questionTitle'), 'questionBody' => session()->get(key: 'questionBody')], 
+            'ownercookie' => [
+                'questionTitle' => session()->get(key: 'questionTitle'), 
+                'questionBody' => session()->get(key: 'questionBody'),
+                'aianswer' => session()->get(key: 'aianswer'),
+            ], 
         ]);
     }
     
@@ -71,10 +79,10 @@ class QuestionsController extends Controller
         ]);
         
         //echo $result->choices[0]->message->content; // Hello! How can I assist you today?
-        //$question = $Question->body;
-        $question = $result->choices[0]->message->content;
+        $question = $Question->body;
+        $aianswer = $result->choices[0]->message->content;
 
-        session(['questionTitle' => $Question->title, 'questionBody' => $question]);
+        session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
             return redirect()->route('questions.nonauth');        
     }
 

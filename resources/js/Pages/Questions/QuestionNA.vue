@@ -35,8 +35,6 @@ let submit = () => {
   <div class="min-h-screen">
   <MainHeader />
 
-  
-
   <Body>
     <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div  class="mb-5 text-center"
@@ -89,7 +87,7 @@ let submit = () => {
                     "
                 >
                     <p class="text-gray-900 text-base line-clamp-3 h-min-24 mb-2">
-                    Так будет выглядеть первый ответ на Ваш вопрос
+                    {{ownercookie.aianswer}}
                     </p>
                     <p id="test" class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
                     отвечает - лучший юрист
