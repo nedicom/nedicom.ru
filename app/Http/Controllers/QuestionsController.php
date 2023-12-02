@@ -95,10 +95,12 @@ class QuestionsController extends Controller
                   ])
                   ->json();
   
-        $responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
+        //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
+        $response = $data->json()['choices'][0]['message'] ?? 'npthing to resp';
+        $aianswer = response()->json(['message' => $response]);
 
         $question = $Question->body;
-        $aianswer = $responce;
+
         //$aianswer = $result->choices[0]->message->content;
 
         session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
