@@ -57,7 +57,6 @@ else{
   <MainHeader />
 
   <Header :phone="usluga.phone" :address="usluga.address" />
-  {{ vars.firstlawyer[0].file_path }}
   
   <Mainbanner :statusonimage="usluga.usl_name" :nameonimage="nameonimage" :mainbannerimg="mainbannerimg"/>
 
