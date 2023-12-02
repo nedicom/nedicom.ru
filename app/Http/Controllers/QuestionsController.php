@@ -7,6 +7,7 @@ use Inertia\Inertia;
 use App\Models\Questions;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
+use OpenAI\Laravel\Facades\OpenAI;
 use App\Helpers\Translate;
 use App\Models\User;
 
@@ -60,8 +61,20 @@ class QuestionsController extends Controller
             $Question->user_id = Auth::user()->id;
             $Question->save();
             return redirect()->route('questions.url', $url);
-        }         
-        session(['questionTitle' => $Question->title, 'questionBody' => $Question->body]);
+        }
+        
+        $result = OpenAI::chat()->create([
+            'model' => 'gpt-3.5-turbo',
+            'messages' => [
+                ['role' => 'user', 'content' => 'Hello!'],
+            ],
+        ]);
+        
+        //echo $result->choices[0]->message->content; // Hello! How can I assist you today?
+        //$question = $Question->body;
+        $question = $result->choices[0]->message->content;
+
+        session(['questionTitle' => $Question->title, 'questionBody' => $question]);
             return redirect()->route('questions.nonauth');        
     }
 
