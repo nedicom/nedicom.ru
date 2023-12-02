@@ -14,8 +14,6 @@
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
         "maatwebsite/excel": "^3.1",
-        "openai-php/client": "^0.4.1",
-        "openai-php/laravel": "^0.4.1",
         "phpoffice/phpspreadsheet": "^1.27",
         "symfony/mailgun-mailer": "*",
         "symfony/postmark-mailer": "*",
