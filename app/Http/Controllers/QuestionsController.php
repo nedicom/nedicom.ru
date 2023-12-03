@@ -122,7 +122,7 @@ class QuestionsController extends Controller
         //$aianswer = $result->choices[0]->message->content;
 
         session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
-            return redirect()->route('questions.nonauth');        
+            return redirect()->route('questions.nonauth');    */    
     }
 
     public function delete(int $id)
