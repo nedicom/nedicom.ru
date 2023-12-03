@@ -8,6 +8,7 @@ use App\Models\Questions;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Http\JsonResponse;
 use App\Helpers\Translate;
 use App\Models\User;
 
@@ -59,7 +60,7 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function post(Request $request){
+    public function post(Request $request): JsonResponse{
         $Question = new Questions;     
         $Question->title = $request->header;
         $Question->body = $request->body;
@@ -92,11 +93,11 @@ class QuestionsController extends Controller
                     "frequency_penalty" => 0.52,
                     "presence_penalty" => 0.5,
                     "stop" => ["11."],
-                ]);                  
-  dd($data->json());
+                ])
+                ->json();
         //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
-        $aianswer = $data->body();//['choices'][0]['message'] ?? 'npthing to resp';
-        //$aianswer = response()->json(['message' => $response]);
+
+        $aianswer =response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
 
         $question = $Question->body;
 
