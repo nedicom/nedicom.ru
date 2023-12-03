@@ -66,7 +66,7 @@ class QuestionsController extends Controller
       
             $data = Http::withHeaders([
                         'Content-Type' => 'application/json',
-                        'Authorization' => 'Bearer '.env('OPENAI_API_KEY'),
+                        'Authorization' => 'Bearer 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',
                       ])
                       ->post("https://api.openai.com/v1/chat/completions", [
                         "model" => "gpt-3.5-turbo",
