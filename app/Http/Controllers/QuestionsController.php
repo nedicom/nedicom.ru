@@ -120,7 +120,7 @@ class QuestionsController extends Controller
 
             $headers = array();
             $headers[] = 'Content-Type: application/json';
-            $headers[] = 'Authorization: Bearer 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';
+            $headers[] = 'Authorization: Bearer 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';
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_HEADER, 0);
