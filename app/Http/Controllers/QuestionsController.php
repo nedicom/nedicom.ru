@@ -127,7 +127,7 @@ class QuestionsController extends Controller
                 echo 'Error:' . curl_error($ch);
             }
             curl_close($ch);
-            var_dump($result);
+            dd($result);
 
        /* $question = $Question->body;
 
