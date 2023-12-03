@@ -60,52 +60,34 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function post(Request $request): JsonResponse{
-        $Question = new Questions;     
-        $Question->title = $request->header;
-        $Question->body = $request->body;
-        $url = Translate::translit($request->header);        
-        $Question->url = $url;
-        if(Auth::user()){
-            $Question->user_id = Auth::user()->id;
-            $Question->save();
-            return redirect()->route('questions.url', $url);
+    public function post): JsonResponse{
+        {
+            $search = "laravel get ip address";
+      
+            $data = Http::withHeaders([
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'Bearer '.env('OPENAI_API_KEY'),
+                      ])
+                      ->post("https://api.openai.com/v1/chat/completions", [
+                        "model" => "gpt-3.5-turbo",
+                        'messages' => [
+                            [
+                               "role" => "user",
+                               "content" => $search
+                           ]
+                        ],
+                        'temperature' => 0.5,
+                        "max_tokens" => 200,
+                        "top_p" => 1.0,
+                        "frequency_penalty" => 0.52,
+                        "presence_penalty" => 0.5,
+                        "stop" => ["11."],
+                      ])
+                      ->json();
+      
+            return response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
         }
-        
-        
-        $search = "Who are you?";
-  
-        $data = Http::withHeaders([
-                    'Content-Type' => 'application/json',
-                    'Authorization' => 'Bearer '.env('OPENAI_API_KEY'),
-                  ])
-                  ->post("https://api.openai.com/v1/chat/completions", [
-                    "model" => "gpt-3.5-turbo",
-                    'messages' => [
-                        [
-                           "role" => "user",
-                           "content" => $search
-                       ]
-                    ],
-                    'temperature' => 0.5,
-                    "max_tokens" => 200,
-                    "top_p" => 1.0,
-                    "frequency_penalty" => 0.52,
-                    "presence_penalty" => 0.5,
-                    "stop" => ["11."],
-                ])
-                ->json();
-        //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
-
-        return response()->json($data);
-
-       /* $question = $Question->body;
-
-        //$aianswer = $result->choices[0]->message->content;
-
-        session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
-            return redirect()->route('questions.nonauth');     
-            */   
+    }
     }
 
     public function delete(int $id)
