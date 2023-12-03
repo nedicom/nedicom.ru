@@ -9,6 +9,7 @@ import { Inertia } from "@inertiajs/inertia";
 import { Head, usePage, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SendButton from '@/Components/SendButton.vue';
+import Comment from '@/Components/Comment.vue';
 
 let set = defineProps({
     ownercookie: Object,
@@ -68,33 +69,29 @@ let submit = () => {
 
 
     
-
-    <div class="xl:w-4/6 mx-5 sm:px-6 lg:px-4 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
-    >
-        <div  class="grid grid-cols-1 gap-9 my-2">
-                <div
-                class="flex justify-center"
-                >
-                <div
-                    class="
-                    block
-                    min-w-full
-                    p-6
-                    rounded-lg
-                    shadow-lg
-                    bg-white
-                    max-w-sm
-                    "
-                >
-                    <p class="text-gray-900 text-base line-clamp-3 h-min-24 mb-2">
-                    {{ownercookie.aianswer}}
-                    </p>
-                    <p id="test" class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
-                    отвечает - лучший юрист
-                    </p>
-        </div>
-        </div>
-    <!-- card -->
+    <div class="flex justify-center">
+        <div class="xl:w-4/6 mx-5 sm:px-6 lg:px-4 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+        >
+            <div  class="grid grid-cols-1 gap-9 my-2">
+                    <div
+                    class="flex justify-center"
+                    >
+                    <div
+                        class="
+                        block
+                        min-w-full
+                        p-6
+                        rounded-lg
+                        shadow-lg
+                        bg-white
+                        max-w-sm
+                        "
+                    >
+                    <Comment>{{ownercookie.aianswer}}</Comment>
+            </div>
+            </div>
+        <!-- card -->
+            </div>
         </div>
     </div>
   </Body>
