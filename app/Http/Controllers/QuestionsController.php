@@ -97,14 +97,15 @@ class QuestionsController extends Controller
                 ->json();
         //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
 
-        $aianswer =response()->json($data);
+        return response()->json($data);
 
-        $question = $Question->body;
+       /* $question = $Question->body;
 
         //$aianswer = $result->choices[0]->message->content;
 
         session(['questionTitle' => $Question->title, 'questionBody' => $question, 'aianswer' => $aianswer]);
-            return redirect()->route('questions.nonauth');        
+            return redirect()->route('questions.nonauth');     
+            */   
     }
 
     public function delete(int $id)
