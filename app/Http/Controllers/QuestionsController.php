@@ -95,8 +95,8 @@ class QuestionsController extends Controller
                 ]);                  
   
         //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
-        $response = $data->json();//['choices'][0]['message'] ?? 'npthing to resp';
-        $aianswer = response()->json(['message' => $response]);
+        $aianswer = $data->json();//['choices'][0]['message'] ?? 'npthing to resp';
+        //$aianswer = response()->json(['message' => $response]);
 
         $question = $Question->body;
 
