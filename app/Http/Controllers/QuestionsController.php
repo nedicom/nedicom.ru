@@ -97,7 +97,7 @@ class QuestionsController extends Controller
                 ->json();
         //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
 
-        $aianswer =response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
+        $aianswer =response()->json($data, 200, array(), JSON_PRETTY_PRINT);
 
         $question = $Question->body;
 
