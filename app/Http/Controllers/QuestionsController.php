@@ -72,7 +72,7 @@ class QuestionsController extends Controller
         }
         
         
-        $search = "laravel get ip address";
+        $search = "Who are you?";
   
         $data = Http::withHeaders([
                     'Content-Type' => 'application/json',
@@ -92,11 +92,10 @@ class QuestionsController extends Controller
                     "frequency_penalty" => 0.52,
                     "presence_penalty" => 0.5,
                     "stop" => ["11."],
-                  ])
-                  ->json();
+                ]);                  
   
         //$responce = response()->json($data['choices'][0]['message'], 200, array(), JSON_PRETTY_PRINT);
-        $response = $data->json()['choices'][0]['message'] ?? 'npthing to resp';
+        $response = $data->json();//['choices'][0]['message'] ?? 'npthing to resp';
         $aianswer = response()->json(['message' => $response]);
 
         $question = $Question->body;
