@@ -60,7 +60,7 @@ class QuestionsController extends Controller
         ]);
     }
 
-    public function post): JsonResponse{
+    public function post(): JsonResponse{
         {
             $search = "laravel get ip address";
       
