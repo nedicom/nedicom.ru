@@ -104,7 +104,7 @@ class QuestionsController extends Controller
             curl_setopt($ch, CURLOPT_URL, 'https://api.openai.com/v1/chat/completions');
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"расскажи про звезды\"\n      }\n    ]\n  }");
+            curl_setopt($ch, CURLOPT_POSTFIELDS, "{\n    \"model\": \"gpt-3.5-turbo\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"You are a poetic assistant, skilled in explaining complex programming concepts with creative flair.\"\n      },\n      {\n        \"role\": \"user\",\n        \"content\": \"расскажи про звезды пожалуйста\"\n      }\n    ]\n  }");
 
             $headers = array();
             $headers[] = 'Content-Type: application/json';
