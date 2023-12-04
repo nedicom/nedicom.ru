@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('avatar_path')->default('/storage/default/avatar.webp');
+            $table->string('avatar_path')->default('storage/default/avatar.webp');
         });
     }
 
