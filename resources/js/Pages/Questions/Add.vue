@@ -19,12 +19,16 @@ defineProps({
   lawyers: String,
 });
 
+const buttonDisabled = ref(false)
+
 let submit = () => {
+  buttonDisabled.value = true;
   Inertia.post("/questions/post", form);
 };
 
 //import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 let title = ref("Задать вопрос юристу");
+
 </script>
 
 <template>
@@ -137,7 +141,9 @@ let title = ref("Задать вопрос юристу");
                   
                 </div>
                 <div class="text-center items-center">
-                  <SendButton class="m-5"> задать вопрос</SendButton>
+                  <SendButton class="m-5" id="SendButton" 
+                  :disabled="buttonDisabled"
+                  > задать вопрос</SendButton>
                 </div>
               </form>
           </div>
