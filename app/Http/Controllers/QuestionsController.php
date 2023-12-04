@@ -120,7 +120,7 @@ class QuestionsController extends Controller
 
             $headers = array();
             $headers[] = 'Content-Type: application/json';
-            $headers[] = 'Authorization: Bearer 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';
+            $headers[] = 'Authorization: Bearer '.env('OPENAI_API_KEY');
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_HEADER, 0);
