@@ -73,8 +73,8 @@ class QuestionsController extends Controller
             
             $ch = curl_init();
 
-            $proxy = '185.253.45.133:50100';
-            $proxyauth = 'm6132:kpBRaYgXHk';
+            $proxy = env('PROXY');
+            $proxyauth = env('PROXY_AUTH');
             $url = 'https://api.openai.com/v1/chat/completions';
 
             $ask = $Question->body;
@@ -120,7 +120,7 @@ class QuestionsController extends Controller
 
             $headers = array();
             $headers[] = 'Content-Type: application/json';
-            $headers[] = 'Authorization: Bearer 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';
+            $headers[] = 'Authorization: Bearer '.env('OPENAI_API_KEY');
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_HEADER, 0);
