@@ -10,6 +10,7 @@ import { Head, usePage, useForm } from "@inertiajs/inertia-vue3";
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import SendButton from '@/Components/SendButton.vue';
 import Comment from '@/Components/Comment.vue';
+import Question from '@/Components/Question.vue';
 
 let set = defineProps({
     ownercookie: Object,
@@ -28,46 +29,31 @@ let submit = () => {
 </script>
 
 <template>
-  <Head>
+    <Head>
     <title>{{ownercookie.questionTitle}}</title>
     <meta name="description" :content="ownercookie.questionBody" />
-  </Head>
+    </Head>
 
-  <div class="min-h-screen">
-  <MainHeader />
+    <div class="min-h-screen">
+    <MainHeader />
 
-  <Body>
-    <div class="xl:w-4/6 sm:px-6 lg:px-4 mx-auto py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div  class="mb-5 text-center"
-        >
-        Ваш вопрос (еще не опубликован)
-        </div>
-        <div class="px-6 text-gray-900">{{ownercookie.questionBody}}
-        </div>
-    </div>
-
-        <div class="text-center mb-5">
-            <SendButton class="m-5" :onclick="submit" :disabled="!user">Опубликовать</SendButton>
-        </div>
-
-        <div v-if="user == null" class="mt-5 text-center">
-            <PrimaryButton>
-                <a :href="route('login')">            
-                    Войдите
-                </a>
-            </PrimaryButton>
-            или
-            <PrimaryButton>
-                <a :href="route('register')">
-                    Зарегистрируйтесь
-                </a>
-            </PrimaryButton>
-            <p class="text-xs mt-5">чтобы опубликовать Ваш вопрос. Не волнуйтесь, вопрос сохранен
-            </p>
-        </div>
+    <Body>
 
 
+    <Question>  
+    <template v-slot:title>
+        {{ownercookie.questionTitle}}
+    </template>
+    <template v-slot:body>
+        {{ownercookie.questionBody}}
+    </template>
+    </Question>
 
+            <div class="flex justify-between px-4 mx-auto max-w-screen-xl ">
+                <article class="mx-auto w-full max-w-2xl format format-sm sm:format-base lg:format-lg format-blue dark:format-invert">
+                    <SendButton class="" :onclick="submit" :disabled="!user">Опубликовать</SendButton>
+                </article>
+            </div>
     
     <div class="flex justify-center">
         <div class="xl:w-4/6 mx-5 sm:px-6 lg:px-4 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"

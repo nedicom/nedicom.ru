@@ -9,6 +9,7 @@ use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use App\Helpers\Translate;
+use App\Helpers\OpenAI;
 use App\Models\User;
 
 class QuestionsController extends Controller
@@ -55,7 +56,7 @@ class QuestionsController extends Controller
 
     public function questionAdd(){  
         return Inertia::render('Questions/Add', [
-            'lawyers' => User::all()->where('lawyer', 1),
+            'lawyers' => User::where('lawyer', 1)->inRandomOrder()->limit(5)->get(),
         ]);
     }
 
@@ -71,70 +72,9 @@ class QuestionsController extends Controller
                 return redirect()->route('questions.url', $url);
             }
             
-            $ch = curl_init();
+            $generated_text= OpenAI::Answer($request->body); 
 
-            $proxy = env('PROXY');
-            $proxyauth = env('PROXY_AUTH');
-            $url = 'https://api.openai.com/v1/chat/completions';
-
-            $ask = $Question->body;
-
-            $data = array(
-                'model' => 'gpt-3.5-turbo',
-                'messages' => [
-                    [
-                        'role' => 'system',
-                        'content' => 'Your are lawyer.'
-                    ],
-                    [
-                        'role' => 'system',
-                        'content' => 'Your task is to:'
-                    ],
-                    [
-                        'role' => 'system',
-                        'content' => 'Understand the language of the question.'
-                    ],
-                    [
-                        'role' => 'system',
-                        'content' => 'And give an answer up to 300 characters.'
-                    ],
-                    [
-                        'role' => 'user',
-                        'content' => $ask,
-                    ],
-                 ],
-                'temperature' => 0.5,
-                'max_tokens' => 500
-            );
-            $json_data = json_encode($data);
-
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
-            curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, $json_data);
-            curl_setopt($ch, CURLOPT_PROXY, $proxy);
-            curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-
-
-            $headers = array();
-            $headers[] = 'Content-Type: application/json';
-            $headers[] = 'Authorization: Bearer '.env('OPENAI_API_KEY');
-            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-            curl_setopt($ch, CURLOPT_HEADER, 0);
-
-            $result = curl_exec($ch);
-            if (curl_errno($ch)) {
-                echo 'Error:' . curl_error($ch);
-            }
-           
-            $response_data = json_decode($result, true);
-            $generated_text = $response_data['choices'][0]['message']['content'];
-            curl_close($ch);
-
-            session(['questionTitle' => $Question->title, 'questionBody' => $ask, 'aianswer' => $generated_text]);
+            session(['questionTitle' => $Question->title, 'questionBody' => $request->body, 'aianswer' => $generated_text]);
                 return redirect()->route('questions.nonauth');   
     }
 
