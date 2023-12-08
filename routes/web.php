@@ -12,6 +12,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\UslugiController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\AiController;
 use App\Http\Controllers\Admin\ArticlesController as AdminArticleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +110,10 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
         Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
         Route::get('/question/nonauth', 'questionsNonAuth')->name('questions.nonauth');
         Route::get('/questions/{id}/delete', 'delete')->name('questions.delete'); 
+      });
+
+      Route::controller(AiController::class)->group(function () {
+        Route::get('/ai', 'ai')->name('ai');
       });
 
       Route::controller(AnswerController::class)->group(function () {

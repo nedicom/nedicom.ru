@@ -14,6 +14,7 @@ import Question from '@/Components/Question.vue';
 
 let set = defineProps({
     ownercookie: Object,
+    test: String,
 });
 
 const user = usePage().props.value.auth.user;
@@ -26,6 +27,12 @@ const form = useForm({
 let submit = () => {
   Inertia.post("/questions/post", form);
 };
+
+
+function testus(){
+   Inertia.visit('/question/nonauth', { search: 'John' }, { only: ['ownercookie'] })
+};
+
 </script>
 
 <template>
@@ -73,7 +80,8 @@ let submit = () => {
                         max-w-sm
                         "
                     >
-                    <Comment>{{ownercookie.aianswer}}</Comment>
+                    <Comment>{{test}}</Comment>
+                    <button @click="testus">testгы</button>
             </div>
             </div>
         <!-- card -->

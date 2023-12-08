@@ -48,8 +48,9 @@ class QuestionsController extends Controller
             'ownercookie' => [
                 'questionTitle' => session()->get(key: 'questionTitle'), 
                 'questionBody' => session()->get(key: 'questionBody'),
-                'aianswer' => session()->get(key: 'aianswer'),
+                'aianswer' => session()->get(key: 'aianswer'),                
             ], 
+            'test' => 'ии отвечает',
         ]);
     }
     
@@ -72,11 +73,22 @@ class QuestionsController extends Controller
                 return redirect()->route('questions.url', $url);
             }
             
-            $generated_text= OpenAI::Answer($request->body); 
+            //$generated_text= OpenAI::Answer($request->body); 
+
+            $generated_text= 'тест'; 
 
             session(['questionTitle' => $Question->title, 'questionBody' => $request->body, 'aianswer' => $generated_text]);
                 return redirect()->route('questions.nonauth');   
     }
+
+    public function ai(){
+        return Inertia::render('Questions/QuestionNA', [
+            'test' => 'test'
+        ]);
+       //return OpenAI::Answer('привет, расскажи кто ты?'); 
+    }
+
+    
 
     public function delete(int $id)
     {
