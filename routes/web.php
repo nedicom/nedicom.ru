@@ -109,7 +109,8 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
         Route::post('/questions/post', 'post')->name('articles/post');
         Route::get('/questions/{url}', 'questionsURL')->name('questions.url');
         Route::get('/question/nonauth', 'questionsNonAuth')->name('questions.nonauth');
-        Route::get('/questions/{id}/delete', 'delete')->name('questions.delete'); 
+        Route::post('/questions/{id}/answer', 'getAIAnswer')->name('questions.AIanswer'); 
+        Route::post('/questions/{id}/delete', 'delete')->name('questions.delete'); 
       });
 
       Route::controller(AiController::class)->group(function () {
@@ -118,6 +119,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
 
       Route::controller(AnswerController::class)->group(function () {
         Route::post('/answerpost', 'post')->name('answer.post');
+        Route::post('/aianswerpost', 'aiComment')->name('answer.ia');
       });
 
 Route::middleware('auth')->group(function () {

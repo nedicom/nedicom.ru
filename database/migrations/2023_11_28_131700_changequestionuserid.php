@@ -13,13 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function (Blueprint $table) {
+        /*Schema::table('questions', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id')->after('id')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             
             //$table->dropForeign('questions_user_id_foreign'); 
             //$table->dropColumn('user_id');
-        });
+        });*/
     }
 
     /**

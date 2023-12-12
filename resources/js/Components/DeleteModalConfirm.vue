@@ -11,10 +11,6 @@ const emit = defineEmits<{
   (e: 'confirm'): void,
   (e: 'close'): void,
 }>()
-
-let form = reactive({
-  phone: "",
-});
 </script>
 
 <template>
@@ -33,7 +29,7 @@ let form = reactive({
     </button>
 </div>
 <div class="px-6 py-6 lg:px-8">
-    <div class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Вы действидельно хотите удалить {{ title }}?</div>
+    <div class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Вы действительно хотите удалить {{ title }}?</div>
     <div class="space-y-6">
         <div class="flex justify-between">
             <button @click="handleConfirm" type="submit" class="w-full mr-5 text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Удалить</button>

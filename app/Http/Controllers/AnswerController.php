@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Answer;
+use App\Helpers\OpenAI;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Redirect;
-
 use Illuminate\Support\Facades\URL;
 
 
@@ -17,9 +16,20 @@ class AnswerController extends Controller
         $Answer = new Answer;
         $Answer->body = $request->body;
         $Answer->questions_id = $request->questions_id;
+        $Answer->parent_comment_id = $request->answer_id;
         $Answer->users_id = Auth::user()->id;
         $Answer->save();
-        $url = $request->url;
+        //$url = $request->url;
+       // return redirect()->route('questions.url', $url);
+    }
+
+    public function aiComment(Request $request){
+        $Answer = new Answer;
+        $Answer->body = OpenAI::Answer($request->body);
+        $Answer->questions_id = $request->id;
+        $Answer->users_id = 87;
+        $Answer->save();
+        //$url = $request->url;
         //return redirect()->route('questions.url', $url);
     }
 }

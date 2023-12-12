@@ -24,10 +24,7 @@ let title = ref("Статьи");
   <Header :ttl="title" />
 
   <Body>
-    <div class="bg-white py-12">
-      <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-        <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        
+    <div class="bg-white py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-hidden shadow-sm sm:rounded-lg">
           <div v-if="articles.total > 0" class="grid md:grid-cols-3 gap-9">
 
             <!-- card -->
@@ -142,8 +139,8 @@ let title = ref("Статьи");
           <!-- row -->
 
           <Pagination :links="articles.links" />
-        </div>
-      </div>
+
+
     </div>
   </Body>
 

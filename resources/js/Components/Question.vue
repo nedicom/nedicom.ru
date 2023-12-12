@@ -1,5 +1,8 @@
 <script setup>
 import PrimaryButton from '@/Components/PrimaryButton.vue';
+import { usePage } from "@inertiajs/inertia-vue3";
+
+const user = usePage().props.value.auth.user;
 </script>
 
 
@@ -23,8 +26,6 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
                 </h1>
             </header>
             <p class="h-24 grid  content-center"><slot name="body"></slot></p>
-
-            
 
             <div v-if="user == null" class="mt-5 pt-5">
                 <PrimaryButton>
