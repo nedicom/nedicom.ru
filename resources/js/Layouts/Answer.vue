@@ -48,9 +48,9 @@ let submit = () => {
     <form v-if="user" @submit.prevent="submit" class="mx-5 lg:px-5">
         <textarea
             v-model="form.body"
-            @input="onInputheader"
+            @input="onInput"
             spellcheck="true"
-            maxlength="1000"
+            :maxlength="maxlength"
             required
             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id=""
@@ -61,6 +61,7 @@ let submit = () => {
             <div
                 class="bg-blue-600 h-1 rounded-full"
                 :style="{ width: progresswidth + '%' }"
+                :class="class"
             ></div>
         </div>
         <p class="text-xs text-gray-900 dark:text-white">
@@ -77,9 +78,30 @@ let submit = () => {
         </div>
     </form>
 
-    <AuthRegisterPropose v-else :comment="comment"/>
+    <AuthRegisterPropose v-else :comment="comment" />
 
     <div class="overflow-y-auto" scroll-region>
         <!-- Your page content -->
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            maxlength: 2000,
+            progresswidth: 0,
+            wordscounter: 0,
+        };
+    },
+    methods: {
+        onInput(e) {
+            this.wordscounter = e.target.value.length;
+            if (e.target.value.length <= this.maxlength) {
+                this.progresswidth =
+                    (100 * e.target.value.length) / this.maxlength;
+            }
+        },
+    },
+};
+</script>
