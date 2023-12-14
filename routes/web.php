@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MainpageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\QuestionsController;
@@ -17,13 +18,10 @@ use App\Http\Controllers\Admin\ArticlesController as AdminArticleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\Uslugi;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        //'canLogin' => Route::has('login'),
-        //'canRegister' => Route::has('register'),
-    ]);
-})->name('Welcome');
+Route::get('/', [MainpageController::class, 'main'])->name('Welcome');
+
 
 Route::controller(UserController::class)->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {

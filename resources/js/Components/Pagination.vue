@@ -1,5 +1,4 @@
 <script setup>
-import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/20/solid';
 import {  Link } from '@inertiajs/inertia-vue3';
 </script>
 
@@ -15,7 +14,8 @@ import {  Link } from '@inertiajs/inertia-vue3';
         </div>
         <div>
           <nav class="isolate inline-flex -space-x-px shadow-sm" aria-label="Pagination">
-            <Link v-for="(link, k) in links"              
+            <Link v-for="(link, k) in links"    
+                   
             :href = "link.url"
             :key="k"
             :disabled="link.url === null"

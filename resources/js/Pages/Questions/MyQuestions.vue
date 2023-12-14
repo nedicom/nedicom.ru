@@ -88,7 +88,7 @@ const handleDelete = (id, title) => {
                                     >смотреть</a
                                 >
 
-                                <button
+                                <button v-if="$page.props.auth.user.isadmin"
                                     @click="
                                         handleDelete(
                                             questions.id,
@@ -139,8 +139,7 @@ const handleDelete = (id, title) => {
                     </div>
                 </div>
                 <!-- row -->
-
-                <Pagination :links="questions.links" />
+                <Pagination v-if="questions.total > 3" :links="questions.links" />
             </div>
         </Body>
 

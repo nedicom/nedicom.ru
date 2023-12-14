@@ -39,7 +39,7 @@ defineProps({
                             {{ answer.created_at }}
                         </p>
                 </div>
-                <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
+                <p class="text-gray-700 text-base h-min-24 mb-2">
                     {{ answer.body }}
                 </p>
 
@@ -74,7 +74,7 @@ defineProps({
                             {{subcomments.pivot.created_at}}
                             </p>
                     </div>
-                    <p class="text-gray-700 text-base line-clamp-3 h-min-24 mb-2">
+                    <p class="text-gray-700 text-base h-min-24 mb-2">
                         {{ subcomments.pivot.body }}
                     </p>
 

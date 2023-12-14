@@ -61,7 +61,7 @@ let title = ref("Вопросы");
           </div>
           <!-- card -->
 
-          <Pagination :links="questions.links" />
+          <Pagination v-if="questions.total <   3" :links="questions.links" />
 
       
 

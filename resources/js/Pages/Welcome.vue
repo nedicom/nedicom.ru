@@ -5,6 +5,7 @@ import Mainbanner from "@/Layouts/Mainbanner.vue";
 import Casecard from "@/Layouts/Casecard.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
 import Slider from "@/Layouts/Slider.vue";
+import SliderUslug from "@/Layouts/SliderUslug.vue";
 import Address from "@/Layouts/Address.vue";
 //import VK from "@/Layouts/Vk.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
@@ -14,6 +15,8 @@ import { ref } from "vue";
 
 defineProps({
   flash: Object,
+  uslugi: String,
+  uslugislider: String,
 });
 
   //let screen = window.innerWidth;
@@ -38,13 +41,6 @@ let title = ref("Главная");
 
 let statusonimage = ref("Адвокатский кабинет");
 let nameonimage = ref("Мина");
-
-let firstcardheader = ref("Наследственные дела");
-let firstcardbody = ref("Оспаривание дарственных, завещаний, признание права в порядке наследования");
-let secondcardheader = ref("Семейные споры");
-let secondcardbody = ref("Раздел имущества, признание личной собственностью, установление отцовства, порядок общения, алименты");
-let thirdcardheader = ref("Юридическое обслуживание");
-let thirdcardbody = ref("Сопровождение и защита бизнеса от уголовной, налоговой и корпоративных споров до проверки контрагентов и ");
 </script>
 
 <template>
@@ -66,8 +62,7 @@ let thirdcardbody = ref("Сопровождение и защита бизнес
 
     <Address />
 
-    <Casecard :firstcardheader="firstcardheader" :firstcardbody="firstcardbody" :secondcardheader="secondcardheader" :secondcardbody="secondcardbody"
-    :thirdcardheader="thirdcardheader" :thirdcardbody="thirdcardbody" />
+    <SliderUslug :uslugislider="uslugislider" :sliderheader="'Дела, по которым мы помагаем'"/>
 
     <!--<VK />-->
 

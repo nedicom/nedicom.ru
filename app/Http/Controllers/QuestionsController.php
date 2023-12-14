@@ -26,7 +26,7 @@ class QuestionsController extends Controller
     public function myQuestions()
     {
         return Inertia::render('Questions/MyQuestions', [
-            'questions' => Questions::paginate(9),
+            'questions' => Questions::where('user_id', '=', Auth::user()->id)->paginate(9),
         ]);
     }
 

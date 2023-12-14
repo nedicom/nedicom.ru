@@ -11,6 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+  
   <div class="mh">
     <div class="bg-gray-100">
       <nav class="bg-white border-b border-gray-100">
@@ -118,22 +119,22 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
-                      <DropdownLink :href="route('dashboard')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('dashboard')">
                         Мои Статьи
                       </DropdownLink>
                       <DropdownLink :href="route('my.questions')">
                         Мои Вопросы
                       </DropdownLink>
-                      <DropdownLink :href="route('dashboard')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('dashboard')">
                         Мои Ответы
                       </DropdownLink>
-                      <DropdownLink :href="route('uslugi.user')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('uslugi.user')">
                         Мои Услуги
                       </DropdownLink>
-                      <DropdownLink :href="route('articles.add')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
                         Добавить статью
                       </DropdownLink>
-                      <DropdownLink :href="route('uslugi.add')">
+                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('uslugi.add')">
                         Добавить услугу
                       </DropdownLink>
                       <DropdownLink :href="route('questions.add')">
