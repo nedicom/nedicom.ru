@@ -63,7 +63,7 @@ let nameonimage = ref("Мина");
         <Address />
 
         <SliderUslug
-            :uslugislider="[1,2,3,4,5,6,7]"
+            :uslugislider="[uslugislider]"
             :sliderheader="'Дела, по которым мы помагаем'"
         />
 
