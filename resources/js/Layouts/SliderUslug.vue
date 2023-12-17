@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import Modal from "@/Components/Modal.vue";
 
-const props = defineProps({
+defineProps({
     uslugislider: String,
 });
 
@@ -24,7 +24,9 @@ let submit = () => {
     </h1>
     <div class="py-10 bg-gray-200">
         <Carousel v-bind="settings" :breakpoints="breakpoints">
-            <Slide v-for="slide in uslugislider" :key="slide">
+            test
+            <Slide v-for="card in uslugislider" :key="card">
+                test
                 <div class="carousel__item w-full mx-3 ">
                     <!-- card -->
                     <div
@@ -40,32 +42,32 @@ let submit = () => {
                                     ><img
                                         :src="
                                             'https://nedicom.ru/' +
-                                            slide.firstlawyer.avatar_path
+                                            card.firstlawyer.avatar_path
                                         "
                                         width="120"
                                         class="rounded-full"
                                 /></a>
                             </div>
                         </div>
-
+test
                         <div class="my-2 grid grid-cols-1 content-center">
                             <h5
                                 class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
                             >
-                                {{ slide.usl_name }}
+                                {{ card.usl_name }}
                             </h5>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <p class="text-gray-700/75 line-clamp-3 px-5">
-                                {{ slide.usl_desc }}
+                                {{ card.usl_desc }}
                             </p>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
-                            
+                            <Modal :ModalBtnText="ModalBtnText" />
                             <a
-                                :href="'https://nedicom.ru/uslugi/' + slide.url"
+                                :href="'https://nedicom.ru/uslugi/' + card.url"
                                 class="my-3 text-sm text-gray-700/75"
                                 >подробнее</a
                             >
