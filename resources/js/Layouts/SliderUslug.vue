@@ -2,6 +2,9 @@
 import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import Modal from "@/Components/Modal.vue";
+import "vue3-carousel/dist/carousel.css";
+import { defineComponent } from "vue";
+import { Carousel, Navigation, Slide } from "vue3-carousel";
 
 const props = defineProps({
     uslugislider: Array,
@@ -91,6 +94,7 @@ import { Carousel, Navigation, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
 
 export default defineComponent({
+    uslugislider: "",
     name: "Breakpoints",
     components: {
         Carousel,
