@@ -14,8 +14,7 @@ import { ref } from "vue";
 
 defineProps({
     flash: Object,
-    uslugi: String,
-    uslugislider: String,
+    uslugislider: Array,
 });
 
 //let screen = window.innerWidth;
