@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\belongsTo;
 
 class Uslugi extends Model
 {
@@ -28,8 +28,8 @@ class Uslugi extends Model
         });
     }
 
-    public function firstlawyer(): HasOne
+    public function firstlawyer(): belongsTo
     {
-        return $this->hasOne(User::class, 'id', 'lawyerone_id');
+        return $this->belongsTo(User::class, 'user_id', 'id')->select(['id', 'avatar_path']);
     }
 }

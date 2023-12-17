@@ -11,7 +11,7 @@ let form = reactive({
     phone: "",
 });
 
-let ModalBtnText = "Подробнее";
+let ModalBtnText = "Записаться на консультацию";
 
 let submit = () => {
     Inertia.post("/phone/send", form);
@@ -19,46 +19,67 @@ let submit = () => {
 </script>
 
 <template>
-    <h1 class="text-4xl font-semibold text-grey text-center py-10">
+    <h1 class="text-4xl font-semibold text-grey text-center py-10 ">
         Дела, по которым мы помогаем
     </h1>
-    <Carousel v-bind="settings" :breakpoints="breakpoints">
-        <Slide v-for="slide in uslugislider" :key="slide">
-            <div class="carousel__item">
-                        <!-- card -->
-                        
-                            <div
-                                class="bg-gray-100 h-80 mx-1 rounded-lg"
-                            >
-                                <h5
-                                    class="text-gray-900 h-24 text-2xl line-clamp-2 font-medium py-6 px-1"
-                                ><div>{{ slide.usl_name }}</div>
-                                    
-                                </h5>
-                                <p
-                                    class="text-gray-700 h-32 text-base line-clamp-5 h-min-24 h-max-48 mb-2 px-1"
-                                >
-                                    {{ slide.usl_desc }}
-                                </p>
-                                <Modal :ModalBtnText="ModalBtnText" />
+    <div class="py-10 bg-gray-200">
+        <Carousel v-bind="settings" :breakpoints="breakpoints">
+            <Slide v-for="slide in uslugislider" :key="slide">
+                <div class="carousel__item w-full mx-3 ">
+                    <!-- card -->
+                    <div
+                        class="w-full mx-1 rounded-lg border-1 border-gray-600 flex flex-col bg-white"
+                    >
+                        <div
+                            class="group flex items-center justify-center my-6 h-36"
+                        >
+                            <div class="rounded-full">
+                                <a
+                                    class="hover:underline"
+                                    href="https://nedicom.ru/lawyers/67"
+                                    ><img
+                                        :src="
+                                            'https://nedicom.ru/' +
+                                            slide.firstlawyer.avatar_path
+                                        "
+                                        width="120"
+                                        class="rounded-full"
+                                /></a>
                             </div>
-                        
-                        <!-- card -->
-            </div>
-        </Slide>
+                        </div>
 
-        <template #addons>
-            <Navigation />
-        </template>
-    </Carousel>
+                        <div class="my-2 grid grid-cols-1 content-center">
+                            <h5
+                                class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
+                            >
+                                {{ slide.usl_name }}
+                            </h5>
+                        </div>
 
-    <div class="flex justify-center m-3">
-        <a
-            href="/uslugi"
-            class="text-lg text-blue-700 hover:underline dark:text-blue-500"
-        >
-            Полный перечень услуг</a
-        >
+                        <div class="h-24 grid grid-cols-1 content-center">
+                            <p class="text-gray-700/75 line-clamp-3 px-5">
+                                {{ slide.usl_desc }}
+                            </p>
+                        </div>
+
+                        <div class="h-24 grid grid-cols-1 content-center">
+                            <Modal :ModalBtnText="ModalBtnText" />
+                            <a
+                                :href="'https://nedicom.ru/uslugi/' + slide.url"
+                                class="my-3 text-sm text-gray-700/75"
+                                >подробнее</a
+                            >
+                        </div>
+                    </div>
+
+                    <!-- card -->
+                </div>
+            </Slide>
+
+            <template #addons>
+                <Navigation />
+            </template>
+        </Carousel>
     </div>
 </template>
 
@@ -78,7 +99,7 @@ export default defineComponent({
     data: () => ({
         // carousel settings
         settings: {
-            itemsToShow: 1,
+            itemsToShow: 1.25,
             snapAlign: "center",
         },
         // breakpoints are mobile first
@@ -91,7 +112,7 @@ export default defineComponent({
             },
             // 1024 and up
             1024: {
-                itemsToShow: 5,
+                itemsToShow: 4.5,
                 snapAlign: "start",
             },
         },
