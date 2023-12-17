@@ -13,7 +13,7 @@ const { open, close } = useModal({
     default: '<p>UseModal: The content of the modal</p>',
   },
 })
-const props = defineProps({
+defineProps({
     ModalBtnText: String,
 });
 </script>

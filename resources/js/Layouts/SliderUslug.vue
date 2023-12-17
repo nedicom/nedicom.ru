@@ -10,15 +10,7 @@ const props = defineProps({
     uslugislider: Array,
 });
 
-let form = reactive({
-    phone: "",
-});
-
 let ModalBtnText = "Записаться на консультацию";
-
-let submit = () => {
-    Inertia.post("/phone/send", form);
-};
 </script>
 
 <template>
