@@ -4,7 +4,7 @@ import { Inertia } from "@inertiajs/inertia";
 import Modal from "@/Components/Modal.vue";
 
 defineProps({
-    uslugislider: String,
+    uslugislider: Array,
 });
 
 let form = reactive({
@@ -53,7 +53,7 @@ let submit = () => {
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
-                            <Modal :ModalBtnText="ModalBtnText" />
+
                             <a
                                 href="/"
                                 class="my-3 text-sm text-gray-700/75"
