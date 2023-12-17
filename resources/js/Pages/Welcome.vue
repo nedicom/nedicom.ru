@@ -28,15 +28,11 @@ let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
       mainbannerimg = ref("/storage/images/landing/main/main600.webp");
     }
   */
-let sliderheader = ref(
-    "В нашей копилке сотни дел, но каждое новое дело для нас особенное"
-);
-
 let sldimg = ref([
-    { id: 1, practice_file_path: "storage/images/landing/main/slider/1.webp" },
-    { id: 2, practice_file_path: "storage/images/landing/main/slider/2.webp" },
-    { id: 3, practice_file_path: "storage/images/landing/main/slider/3.webp" },
-    { id: 4, practice_file_path: "storage/images/landing/main/slider/4.webp" },
+    { id: 1, practice_file_path: "https://nedicom.ru/storage/images/landing/main/slider/1.webp" },
+    { id: 2, practice_file_path: "https://nedicom.ru/storage/images/landing/main/slider/2.webp" },
+    { id: 3, practice_file_path: "https://nedicom.ru/storage/images/landing/main/slider/3.webp" },
+    { id: 4, practice_file_path: "https://nedicom.ru/storage/images/landing/main/slider/4.webp" },
 ]);
 
 let title = ref("Главная");
@@ -60,7 +56,7 @@ let nameonimage = ref("Мина");
             :mainbannerimg="mainbannerimg"
         />
 
-        <Slider :sldimg="sldimg" :sliderheader="sliderheader" />
+        
 
         <Testimonials />
 
