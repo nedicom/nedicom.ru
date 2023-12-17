@@ -56,7 +56,7 @@ let nameonimage = ref("Мина");
             :mainbannerimg="mainbannerimg"
         />
 
-        
+        <Slider :sldimg="sldimg" :sliderheader="'В нашей копилке сотни дел, но каждое новое дело для нас особенное'" />
 
         <Testimonials />
 

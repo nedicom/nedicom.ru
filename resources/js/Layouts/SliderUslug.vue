@@ -63,7 +63,7 @@ let submit = () => {
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
-                            <Modal :ModalBtnText="ModalBtnText" />
+                            
                             <a
                                 :href="'https://nedicom.ru/uslugi/' + slide.url"
                                 class="my-3 text-sm text-gray-700/75"
