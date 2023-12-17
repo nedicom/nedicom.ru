@@ -63,7 +63,6 @@ let nameonimage = ref("Мина");
 
         <SliderUslug
             :uslugislider="[uslugislider]"
-            :sliderheader="'Дела, по которым мы помагаем'"
         />
 
         <!--<VK />-->

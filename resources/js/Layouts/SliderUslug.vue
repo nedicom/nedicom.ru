@@ -3,7 +3,7 @@ import { reactive } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import Modal from "@/Components/Modal.vue";
 
-defineProps({
+const props = defineProps({
     uslugislider: Array,
 });
 
@@ -25,7 +25,7 @@ let submit = () => {
     </h1>
     <div class="py-10 bg-gray-200">
         <Carousel v-bind="settings" :breakpoints="breakpoints">
-            <Slide v-for="card in uslugislider" :key="card">
+            <Slide v-for="card in props.uslugislider" :key="card">
                 <div class="carousel__item w-full mx-3 ">
                     <!-- card -->
                     <div
