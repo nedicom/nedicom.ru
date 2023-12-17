@@ -24,9 +24,7 @@ let submit = () => {
     </h1>
     <div class="py-10 bg-gray-200">
         <Carousel v-bind="settings" :breakpoints="breakpoints">
-            test
             <Slide v-for="card in uslugislider" :key="card">
-                test
                 <div class="carousel__item w-full mx-3 ">
                     <!-- card -->
                     <div
@@ -49,7 +47,7 @@ let submit = () => {
                                 /></a>
                             </div>
                         </div>
-test
+
                         <div class="my-2 grid grid-cols-1 content-center">
                             <h5
                                 class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
