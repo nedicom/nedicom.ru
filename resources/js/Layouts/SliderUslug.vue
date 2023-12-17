@@ -34,7 +34,17 @@ let submit = () => {
                             class="group flex items-center justify-center my-6 h-36"
                         >
                             <div class="rounded-full">
-                               1
+                                <a
+                                    class="hover:underline"
+                                    href="https://nedicom.ru/lawyers/67"
+                                    ><img
+                                        :src="
+                                            'https://nedicom.ru/' +
+                                            card
+                                        "
+                                        width="120"
+                                        class="rounded-full"
+                                /></a>
                             </div>
                         </div>
 
@@ -42,20 +52,20 @@ let submit = () => {
                             <h5
                                 class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
                             >
-                                2
+                                {{ card }}
                             </h5>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <p class="text-gray-700/75 line-clamp-3 px-5">
-                                3
+                                {{ card }}
                             </p>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
-
+                            <Modal :ModalBtnText="ModalBtnText" />
                             <a
-                                href="/"
+                                :href="'https://nedicom.ru/uslugi/' + card"
                                 class="my-3 text-sm text-gray-700/75"
                                 >подробнее</a
                             >
