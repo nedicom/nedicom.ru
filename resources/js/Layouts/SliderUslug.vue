@@ -24,7 +24,6 @@ let submit = () => {
 <template>
     <h1 class="text-4xl font-semibold text-grey text-center py-10 ">
         Дела, по которым мы помогаем
-        {{uslugislider}}
     </h1>
     <div class="py-10 bg-gray-200">
         <Carousel v-bind="settings" :breakpoints="breakpoints">
@@ -44,7 +43,7 @@ let submit = () => {
                                     ><img
                                         :src="
                                             'https://nedicom.ru/' +
-                                            card
+                                            card.firstlawyer.avatar_path
                                         "
                                         width="120"
                                         class="rounded-full"
@@ -56,20 +55,20 @@ let submit = () => {
                             <h5
                                 class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
                             >
-                                {{ card }}
+                                {{ card.usl_name }}
                             </h5>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <p class="text-gray-700/75 line-clamp-3 px-5">
-                                {{ card }}
+                                {{ card.usl_desc }}
                             </p>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <Modal :ModalBtnText="ModalBtnText" />
                             <a
-                                :href="'https://nedicom.ru/uslugi/' + card"
+                                :href="'https://nedicom.ru/uslugi/' + card.url"
                                 class="my-3 text-sm text-gray-700/75"
                                 >подробнее</a
                             >
