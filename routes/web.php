@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Models\Uslugi;
 
-Route::get('/', [MainpageController::class, 'main'])->name('Welcome');
+Route::get('', [MainpageController::class, 'main'])->name('Welcome');
 
 
 Route::controller(UserController::class)->group(function () {
