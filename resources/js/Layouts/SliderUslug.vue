@@ -52,20 +52,20 @@ let submit = () => {
                             <h5
                                 class="text-gray-900 subpixel-antialiased text-center text-lg line-clamp-2 font-bold px-1"
                             >
-                                1
+                                {{ card }}
                             </h5>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <p class="text-gray-700/75 line-clamp-3 px-5">
-                                2
+                                {{ card }}
                             </p>
                         </div>
 
                         <div class="h-24 grid grid-cols-1 content-center">
                             <Modal :ModalBtnText="ModalBtnText" />
                             <a
-                                :href="'https://nedicom.ru/uslugi/'"
+                                :href="'https://nedicom.ru/uslugi/' + card"
                                 class="my-3 text-sm text-gray-700/75"
                                 >подробнее</a
                             >
