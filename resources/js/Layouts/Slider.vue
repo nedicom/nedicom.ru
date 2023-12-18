@@ -23,7 +23,9 @@ defineProps({
                         class="carousel__item w-full flex items-center justify-center h-128 bg-cover"
                         :style="{
                             backgroundImage:
-                                'url(' + slide.practice_file_path + ')',
+                                'url(https://nedicom.ru/' +
+                                slide.practice_file_path +
+                                ')',
                         }"
                     >
                         <div

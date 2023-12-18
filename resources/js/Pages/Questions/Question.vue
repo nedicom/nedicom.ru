@@ -59,9 +59,9 @@ const getAIAnswer = () => {
                         class="hover:underline flex flex-right"
                     >
                         <img
-                            :src="set.question.user.avatar_path"
-                            width="40"
-                            class="rounded-full"
+                            :src="'https://nedicom.ru/' + set.question.user.avatar_path"
+                            width="60"
+                            class="rounded-full m-3  p-1 ring-2 ring-gray-300 dark:ring-gray-500"
                         />
                         <p
                             class="mr-3 text-sm text-gray-900 dark:text-white font-semibold h-min-24 flex items-center"

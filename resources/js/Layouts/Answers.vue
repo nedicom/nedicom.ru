@@ -23,9 +23,9 @@ defineProps({
                         class="hover:underline flex flex-justify"
                     >
                         <img
-                            :src="answer.user_ans.avatar_path"
+                            :src="'https://nedicom.ru/' + answer.user_ans.avatar_path"
                             width="40"
-                            class="rounded-full"
+                            class="rounded-full mr-3"
                         />
                         <p
                             class="mr-3 text-sm text-gray-900 dark:text-white font-semibold h-min-24 flex items-center"

@@ -20,66 +20,63 @@ import { ref } from "vue";
 let sliderheader = ref("Практика юриста");
 
 let set = defineProps({
-  statusonimage: String,
-  mainbannerimg: String, 
-  lawyer: "$string",
-  specializationOne: Object,
-  specializationTwo: Object,
-  specializationThree: Object,
-  specialization: String,
-  articles: "$Array",
-  practice: "$Array",
-  flash: Object,
+    statusonimage: String,
+    mainbannerimg: String,
+    lawyer: "$string",
+    specializationOne: Object,
+    specializationTwo: Object,
+    specializationThree: Object,
+    specialization: String,
+    articles: "$Array",
+    practice: "$Array",
+    flash: Object,
 });
 
 let screen = window.innerWidth;
 
 let mainbannerimg;
-  if (screen>1919){
-    mainbannerimg = ref(`/${set.lawyer.file_path}`);
-    }
-    else if(screen>600){
-      mainbannerimg = ref(`/${set.lawyer.file_path}`);
-    }
-    else{
-      mainbannerimg = ref(`/${set.lawyer.file_path}`);
-    };
+if (screen > 1919) {
+    mainbannerimg = ref(`https://nedicom.ru/${set.lawyer.file_path}`);
+} else if (screen > 600) {
+    mainbannerimg = ref(`https://nedicom.ru/${set.lawyer.file_path}`);
+} else {
+    mainbannerimg = ref(`https://nedicom.ru/${set.lawyer.file_path}`);
+}
 
 let title = ref(set.lawyer.name);
-
 </script>
 
 <template>
-  <FlashMessage :message="flash.message"/>
+    <FlashMessage :message="flash.message" />
 
-  <Head title="Адвокат Симферополь" />
+    <Head title="Адвокат Симферополь" />
 
-  <div class="min-h-screen">
-    
-    <MainHeader />
+    <div class="min-h-screen">
+        <MainHeader />
 
-    <Header :ttl="title" />  
+        <Header :ttl="title" />
 
-    <Mainbanner :statusonimage="statusonimage" :nameonimage="set.lawyer.name" :mainbannerimg="mainbannerimg"/>
+        <Mainbanner
+            :statusonimage="statusonimage"
+            :nameonimage="set.lawyer.name"
+            :mainbannerimg="mainbannerimg"
+        />
 
-    <Address />
+        <Address />
 
-    <About :about="set.lawyer.about"/>
+        <About :about="set.lawyer.about" />
 
-    <Specialization 
-      :specializationOne="specializationOne" 
-      :specializationTwo="specializationTwo"
-      :specializationThree="specializationThree"
-      :specialization="specialization"
-      />
+        <Specialization
+            :specializationOne="specializationOne"
+            :specializationTwo="specializationTwo"
+            :specializationThree="specializationThree"
+            :specialization="specialization"
+        />
 
-    <Articles :articles = "articles"/>
+        <Articles :articles="articles" />
 
-    <Slider :sliderheader="sliderheader" :sldimg="practice" />
-    
-    <MainFooter />
-    
-  </div>
+        <Slider :sliderheader="sliderheader" :sldimg="practice" />
+
+        <MainFooter />
+    </div>
 </template>
-
-
