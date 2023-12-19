@@ -32,7 +32,7 @@ let ModalBtnText = "Записаться на консультацию";
                                 <a
                                     class="hover:underline"
                                     href="https://nedicom.ru/lawyers/67"
-                                    ><img
+                                    ><img v-if="card.firstlawyer"
                                         :src="
                                             'https://nedicom.ru/' +
                                             card.firstlawyer.avatar_path
