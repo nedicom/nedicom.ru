@@ -6,7 +6,7 @@ use App\Casts\humandate;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Relations\hasMany;
 
 class Questions extends Model
 {
@@ -15,6 +15,11 @@ class Questions extends Model
     public function User(): HasOne
     {
         return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
+    public function QuantityAns(): hasMany
+    {
+        return $this->hasMany(Answer::class,'questions_id',  'id');
     }
 
     protected $casts = [

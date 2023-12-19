@@ -7,11 +7,9 @@ import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 const showingNavigationDropdown = ref(false);
-
 </script>
 
 <template>
-  
   <div class="mh">
     <div class="bg-gray-100">
       <nav class="bg-white border-b border-gray-100">
@@ -77,26 +75,12 @@ const showingNavigationDropdown = ref(false);
                     <span class="inline-flex rounded-md">
                       <button
                         type="button"
-                        class="
-                          inline-flex
-                          items-center
-                          px-3
-                          py-2
-                          border border-transparent
-                          text-sm
-                          leading-4
-                          font-medium
-                          rounded-md
-                          text-gray-500
-                          bg-white
-                          hover:text-gray-700
-                          focus:outline-none
-                          transition
-                          ease-in-out
-                          duration-150
-                        "
-                      ><span v-if="$page.props.auth.user !== null">{{$page.props.auth.user.name}}</span>                       
-                       <span v-else>войти</span>
+                        class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                      >
+                        <span v-if="$page.props.auth.user !== null">{{
+                          $page.props.auth.user.name
+                        }}</span>
+                        <span v-else>войти</span>
 
                         <svg
                           class="ml-2 -mr-0.5 h-4 w-4"
@@ -119,31 +103,35 @@ const showingNavigationDropdown = ref(false);
                       <DropdownLink :href="route('profile.edit')">
                         Профиль
                       </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('dashboard')">
-                        Мои Статьи
+                      <DropdownLink
+                        v-if="$page.props.auth.user.lawyer == 1"
+                        :href="route('my')"
+                      >
+                        Мой кабинет
                       </DropdownLink>
-                      <DropdownLink :href="route('my.questions')">
-                        Мои Вопросы
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('dashboard')">
-                        Мои Ответы
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('uslugi.user')">
-                        Мои Услуги
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('articles.add')">
-                        Добавить статью
-                      </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.lawyer == 1" :href="route('uslugi.add')">
-                        Добавить услугу
-                      </DropdownLink>
-                      <DropdownLink :href="route('questions.add')">
+                      <DropdownLink
+                        v-if="$page.props.auth.user.lawyer == 0"
+                        :href="route('questions.add')"
+                      >
                         Задать вопрос
                       </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.articles.list')">
+                      <DropdownLink
+                        v-if="$page.props.auth.user.lawyer == 0"
+                        :href="route('my.questions')"
+                      >
+                        Мои вопросы
+                      </DropdownLink>
+
+                      <DropdownLink
+                        v-if="$page.props.auth.user.isadmin"
+                        :href="route('admin.articles.list')"
+                      >
                         Все статьи
                       </DropdownLink>
-                      <DropdownLink v-if="$page.props.auth.user.isadmin" :href="route('admin.users.list')">
+                      <DropdownLink
+                        v-if="$page.props.auth.user.isadmin"
+                        :href="route('admin.users.list')"
+                      >
                         Пользователи
                       </DropdownLink>
 
@@ -154,6 +142,7 @@ const showingNavigationDropdown = ref(false);
                         >Выйти</DropdownLink
                       >
                     </div>
+
                     <div v-else>
                       <DropdownLink :href="route('login')">
                         Войти
@@ -171,19 +160,7 @@ const showingNavigationDropdown = ref(false);
             <div class="-mr-2 flex items-center sm:hidden">
               <button
                 @click="showingNavigationDropdown = !showingNavigationDropdown"
-                class="
-                  inline-flex
-                  items-center
-                  justify-center
-                  p-2
-                  rounded-md
-                  text-gray-400
-                  hover:text-gray-500 hover:bg-gray-100
-                  focus:outline-none focus:bg-gray-100 focus:text-gray-500
-                  transition
-                  duration-150
-                  ease-in-out
-                "
+                class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
               >
                 <svg
                   class="h-6 w-6"
@@ -246,31 +223,61 @@ const showingNavigationDropdown = ref(false);
             </div>
 
             <div v-if="$page.props.auth.user" class="mt-3 space-y-1">
-              <ResponsiveNavLink :href="route('profile.edit')" class="underline">
-                {{$page.props.auth.user.name}}
+              <ResponsiveNavLink :href="route('profile.edit')">
+                {{ $page.props.auth.user.name }}
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('articles')">
-                Статьи
+              <ResponsiveNavLink
+                v-if="$page.props.auth.user.lawyer == 1"
+                :href="route('my')"
+              >
+                Мой кабинет
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('questions.add')">
+              <ResponsiveNavLink
+                v-if="$page.props.auth.user.lawyer == 0"
+                :href="route('questions.add')"
+              >
                 Задать вопрос
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('lawyers')">
+              <ResponsiveNavLink :href="route('questions')">
+                Вопросы
+              </ResponsiveNavLink>
+
+              <ResponsiveNavLink
+                v-if="$page.props.auth.user.lawyer == 0"
+                :href="route('articles')"
+              >
+                Статьи
+              </ResponsiveNavLink>
+              <ResponsiveNavLink
+                v-if="$page.props.auth.user.lawyer == 0"
+                :href="route('lawyers')"
+              >
                 Юристы
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('uslugi')">
+              <ResponsiveNavLink
+                v-if="$page.props.auth.user.lawyer == 0"
+                :href="route('uslugi')"
+              >
                 Услуги
               </ResponsiveNavLink>
-              <ResponsiveNavLink :href="route('logout')" method="post" as="button">
+              <ResponsiveNavLink
+                :href="route('logout')"
+                method="post"
+                as="button"
+              >
                 Выйти
               </ResponsiveNavLink>
             </div>
+
             <div v-else>
-              <ResponsiveNavLink :href="route('articles')">
-                Статьи
-              </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('questions.add')">
                 Задать вопрос
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('questions')">
+                Вопросы
+              </ResponsiveNavLink>
+              <ResponsiveNavLink :href="route('articles')">
+                Статьи
               </ResponsiveNavLink>
               <ResponsiveNavLink :href="route('lawyers')">
                 Юристы

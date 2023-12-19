@@ -7,11 +7,9 @@ use Inertia\Inertia;
 use App\Models\Questions;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Http;
 use App\Helpers\Translate;
 use App\Helpers\OpenAI;
 use App\Models\User;
-use App\Casts\humandate;
 
 
 class QuestionsController extends Controller
@@ -26,7 +24,7 @@ class QuestionsController extends Controller
     public function myQuestions()
     {
         return Inertia::render('Questions/MyQuestions', [
-            'questions' => Questions::where('user_id', '=', Auth::user()->id)->paginate(9),
+            'questions' => Questions::where('user_id', '=', Auth::user()->id)->select('id', 'title', 'body', 'url')->withCount('QuantityAns')->paginate(9),
         ]);
     }
 

@@ -14,14 +14,15 @@ use App\Http\Controllers\UslugiController;
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\AiController;
+use App\Http\Controllers\MyController;
 use App\Http\Controllers\Admin\ArticlesController as AdminArticleController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Models\Uslugi;
 
 Route::get('', [MainpageController::class, 'main'])->name('Welcome');
 
+Route::get('/my', [MyController::class, 'my'])->middleware('lawyer')->name('my');
 
 Route::controller(UserController::class)->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
