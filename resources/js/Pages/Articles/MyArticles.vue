@@ -12,12 +12,12 @@ import { Head } from "@inertiajs/inertia-vue3";
 import { ModalsContainer, useModal } from "vue-final-modal";
 import { Inertia } from "@inertiajs/inertia";
 
-let title = ref("Мои вопросы");
+let title = ref("Мои статьи");
 let modalTitle = ref(null);
 let questionId = ref(null);
 
 defineProps({
-  questions: "Array",
+  articles: "Array",
 });
 
 const { open, close } = useModal({
@@ -45,7 +45,7 @@ const handleDelete = (id, title) => {
 </script>
 
 <template>
-  <Head title="Панель управления" />
+  <Head title="Мои статьи" />
 
   <div class="min-h-screen flex flex-col">
     <MainHeader />
@@ -56,18 +56,18 @@ const handleDelete = (id, title) => {
       <div
         class="bg-white py-12 max-w-7xl mx-auto sm:px-6 lg:px-8 overflow-hidden shadow-sm sm:rounded-lg"
       >
-        <ContentHero v-if="questions.total > 0" :data="questions" :routeurl="'questions.url'"/>
+        <ContentHero v-if="articles" :data="articles" :routeurl="'articles/url'"/>
 
         <EmptyHero
           v-else
-          :header="'Вопросов пока нет'"
-          :body="'Начните, задав новый вопрос'"
-          :btn="'задать вопрос'"
-          :btnroute="'questions.add'"
+          :header="'Статей пока нет'"
+          :body="'Расскажите о своем опыте потеницальным клиентам'"
+          :btn="'Написать статью'"
+          :btnroute="'articles.add'"
         />
 
         <!-- row -->
-        <Pagination v-if="questions.total > 3" :links="questions.links" />
+
       </div>
     </Body>
 

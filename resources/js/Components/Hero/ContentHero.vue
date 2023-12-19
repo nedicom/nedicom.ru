@@ -1,15 +1,16 @@
 <script setup>
 defineProps({
-  questions: "Array",
+  data: "Array",
+  routeurl: String,
 });
 </script>
 
 <template>
-        <div v-if="questions.total > 0" class="grid md:grid-cols-3 gap-9">
+        <div class="grid md:grid-cols-3 gap-9">
           <!-- card -->
           <div
-            v-for="questions in questions.data"
-            :key="questions.id"
+            v-for="data in data.data"
+            :key="data.id"
             class="flex justify-center mx-3 md:mx-0"
           >
             <div
@@ -18,25 +19,28 @@ defineProps({
               <h5
                 class="text-gray-900 text-xl leading-tight line-clamp-1 font-medium h-6 mb-2"
               >
-                {{ questions.title }}
+                <span v-if="data.title">{{ data.title }} </span>
+                <span v-if="data.header">{{ data.header }} </span>
+                <span v-if="data.question">{{ data.question.title }} </span>
               </h5>
 
               <p class="text-gray-700 text-xs line-clamp-3 h-12 mb-2">
-                {{ questions.body }}
+                <span v-if="data.body"> {{ data.body }} </span>
+                <span v-if="data.description"> {{ data.description }} </span>
               </p>
 
               <div class="flex justify-between">
-                <a
-                  :href="route('questions.url', questions.url)"
+                <a v-if="routeurl"
+                  :href="route(routeurl, data.question.url)"
                   class="text-blue-500 underline dark:text-blue-500 hover:no-underline"
                   >смотреть</a
                 >
 
-                <p class="text-gray-500">
+                <p v-if="data.quantity_ans_count" class="text-gray-500">
                   ответили:
                   <span class="inline-flex items-center ml-2 rounded-full bg-blue-500 px-2 py-1 text-xs font-bold text-white"
-                    ><span v-if="questions.quantity_ans_count">{{
-                      questions.quantity_ans_count
+                    ><span v-if="data.quantity_ans_count">{{
+                      data.quantity_ans_count
                     }}</span>
                     <span v-else>0</span>
                   </span>
@@ -44,7 +48,7 @@ defineProps({
 
                 <button
                   v-if="$page.props.auth.user.isadmin"
-                  @click="handleDelete(questions.id, questions.title)"
+                  @click="handleDelete(data.id, data.title)"
                   class="btn btn-light w-100 ml-5"
                 >
                   <svg

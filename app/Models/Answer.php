@@ -18,6 +18,11 @@ class Answer extends Model
         return $this->belongsTo(User::class, 'users_id', 'id')->select(['id', 'name', 'avatar_path']);
     }
 
+    public function Question(): belongsTo
+    {
+        return $this->belongsTo(Questions::class, 'questions_id', 'id')->select(['id', 'title', 'url']);
+    }
+
     public function subcomments(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'answers', 'parent_comment_id', 'users_id')

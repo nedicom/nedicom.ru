@@ -6,6 +6,7 @@ use App\Models\Answer;
 use App\Helpers\OpenAI;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\URL;
 
@@ -31,5 +32,14 @@ class AnswerController extends Controller
         $Answer->save();
         //$url = $request->url;
         //return redirect()->route('questions.url', $url);
+    }
+
+    public function my()
+    {
+        return Inertia::render('Answers/MyAnswers', [
+            'answers' => Answer::where('users_id', '=', Auth::user()->id)
+            ->with('Question')
+            ->paginate(9),
+        ]);
     }
 }

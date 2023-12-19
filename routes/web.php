@@ -91,6 +91,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
       
     Route::controller(ArticleController::class)->group(function () {
         Route::get('/articles', 'index')->name('articles');
+        Route::get('/articles/my', 'my')->middleware('lawyer')->name('my.articles');
         Route::get('/articles/{url}', 'articleURL')->name('articles/url');
 
             Route::get('/articlesadd', 'formadd')->name('articles.add');
@@ -117,6 +118,7 @@ Route::get('/lawyers/{id}', [LawyerController::class, 'lawyer'])
       });
 
       Route::controller(AnswerController::class)->group(function () {
+        Route::get('/my/answers', 'my')->middleware('lawyer')->name('my.answers');
         Route::post('/answerpost', 'post')->name('answer.post');
         Route::post('/aianswerpost', 'aiComment')->name('answer.ia');
       });
