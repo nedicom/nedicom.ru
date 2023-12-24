@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
-use config\services;
+use App\Models\Dialogue;
 
 class HandleInertiaRequests extends Middleware
 {
@@ -31,6 +31,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
+        //dd($request->session()->get('dialogue'));
         return array_merge(parent::share($request), [
             'auth' => [
                 'user' => $request->user(),
@@ -40,9 +41,11 @@ class HandleInertiaRequests extends Middleware
                     'location' => $request->url(),
                 ]);
             },
-            //'recaptcha_site_key' => config('services.google_recaptcha.site_key'),
             'flash' => [
                 'message' => fn () => $request->session()->get('message')
+            ],
+            'dialogue' => [
+                'message'  =>  fn () => Dialogue::find($request->session()->get('dialogue')),
             ],
         ]);
     }

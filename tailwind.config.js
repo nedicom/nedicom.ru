@@ -21,6 +21,9 @@ module.exports = {
             animation: {
                 'spin-pulse': 'pulse 1s linear infinite',
                },
+               fontSize: {
+                xxs: '0.5rem',
+              }
         },
     },
 

@@ -7,7 +7,7 @@ defineProps({
 <template>
   <div class="flex justify-center">
     <div
-      class="grid grid-cols-1 md:grid-cols-2 w-full m-5 md:m-0 md:w-2/3 gap-4 place-content-start"
+      class="grid grid-cols-1 md:grid-cols-2 w-full m-5 md:m-0 md:w-2/3 gap-4 ntent-start"
     >
       <div
         v-for="key in my"

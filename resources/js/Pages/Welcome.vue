@@ -8,6 +8,7 @@ import SliderUslug from "@/Layouts/SliderUslug.vue";
 import Address from "@/Layouts/Address.vue";
 //import VK from "@/Layouts/Vk.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import PopupDialogue from "@/Layouts/PopupDialogue/PopupDialogue.vue";
 import FlashMessage from "@/Components/FlashMessage.vue";
 import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
@@ -68,5 +69,7 @@ let nameonimage = ref("Мина");
         <!--<VK />-->
 
         <MainFooter />
+
+        <PopupDialogue />
     </div>
 </template>
