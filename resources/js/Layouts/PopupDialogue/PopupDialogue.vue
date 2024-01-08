@@ -56,6 +56,8 @@ const send = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=utf-8",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials" : true 
       },
       body: JSON.stringify(form),
     });
@@ -74,6 +76,7 @@ const send = () => {
         headers: {
         "Content-Type": "application/json;charset=utf-8",
         "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials" : true 
       },
       body: JSON.stringify(form),
       });
