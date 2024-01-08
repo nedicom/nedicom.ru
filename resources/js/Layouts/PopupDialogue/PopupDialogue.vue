@@ -14,12 +14,7 @@ const message = ref(null);
 let jsonresp = ref(null);
 
 if (usePage().props.value.dialogue.message) {
-
   jsonresp = JSON.parse(usePage().props.value.dialogue.message.json);
-  alert(JSON.stringify(jsonresp));
-}
-else{
-  alert('ok');
 }
 
 let processing = ref(false);
@@ -87,7 +82,6 @@ const send = () => {
       });
       if (resptoai.ok) {
         jsonresp = await resptoai.json();
-        alert(jsonresp);
         block = document.getElementById("scrollparent");
         block.scrollTop += block.scrollHeight;
         printing.value = false;
