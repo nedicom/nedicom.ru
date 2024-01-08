@@ -8,7 +8,7 @@ defineProps({
     <div class="grid grid-col-1 mr-1 content-end">
       <img
         class="w-8 h-8 rounded-full"
-        src="/docs/images/people/profile-picture-3.jpg"
+        src="https://nedicom.ru/storage/usr/69/avatar/1702823242avatar.webp"
         alt="юрист сайта"
       />
     </div>

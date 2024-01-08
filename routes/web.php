@@ -25,8 +25,9 @@ Route::get('', [MainpageController::class, 'main'])->name('Welcome');
 
 Route::get('/my', [MyController::class, 'my'])->middleware('lawyer')->name('my');
 
-Route::patch('/message', [MessageController::class, 'send'])->name('message');
-Route::patch('/messagesent', [MessageController::class, 'sent'])->name('message.sent');
+Route::post('/message', [MessageController::class, 'send'])->name('message');
+Route::post('/messagesent', [MessageController::class, 'sent'])->name('message.sent');
+Route::post('/messagegetdata', [MessageController::class, 'getdata'])->name('message.get');
 
 Route::controller(UserController::class)->group(function () {
     Route::middleware(['auth', 'admin'])->group(function () {
