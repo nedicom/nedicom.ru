@@ -79,6 +79,7 @@ const send = () => {
       });
       if (resptoai.ok) {
         jsonresp = await resptoai.json();
+        alert(jsonresp);
         block = document.getElementById("scrollparent");
         block.scrollTop += block.scrollHeight;
         printing.value = false;
