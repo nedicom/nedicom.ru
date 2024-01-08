@@ -65,7 +65,6 @@ const send = () => {
       alert("Ошибка HTTP: ");
     }
     block = document.getElementById("scrollparent");
-    let blocktwo = document.getElementById("scrollchild");
     block.scrollTop += 9999;
   })().then(
     (async () => {
