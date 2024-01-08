@@ -3,7 +3,7 @@
 namespace App\Helpers;
 
 
-class OpenAI{
+class OpenAIDialogue{
     public static function Answer($ask)
     {
             $ch = curl_init();
@@ -17,7 +17,7 @@ class OpenAI{
                 'messages' => [
                     [
                         'role' => 'system',
-                        'content' => 'Your are lawyer.'
+                        'content' => 'You are a seller of legal services.'
                     ],
                     [
                         'role' => 'system',
@@ -29,7 +29,11 @@ class OpenAI{
                     ],
                     [
                         'role' => 'system',
-                        'content' => 'And give an answer up to 300 characters.'
+                        'content' => 'Clarify the question if it is not clear or answer the question if it is very simple or Invite the user to leave a telephone number for communication'
+                    ],
+                    [
+                        'role' => 'system',
+                        'content' => 'Your message should not be more than 100 characters.'
                     ],
                     [
                         'role' => 'user',

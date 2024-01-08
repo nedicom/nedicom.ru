@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Dialogue;
 use Illuminate\Support\Facades\Auth;
-use App\Helpers\OpenAI;
+use App\Helpers\OpenAIDialogue;
 
 class MessageController extends Controller
 {
@@ -41,11 +41,9 @@ class MessageController extends Controller
 
     public function sent(Request $request)
     {
-        //sleep(5);
         $message = Dialogue::find($request->session()->get('dialogue'));
         $array = json_decode($message->json, JSON_FORCE_OBJECT); 
-        //$array[] = ['ai_message' => $request->mess];     
-        $openAi = OpenAI::Answer('привет');  
+        $openAi = OpenAIDialogue::Answer($request->mess);     
         $array[] = ['ai_message' => $openAi];
         $message->json = json_encode($array);
         $message->save();

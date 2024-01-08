@@ -5,7 +5,7 @@ defineProps({
 </script>
 <template>
   <div class="flex justify-start pr-5">
-    <div class="grid grid-col-1 mr-1 content-end">
+    <div class="w-10 grid grid-col-1 mr-1 content-end">
       <img
         class="w-8 h-8 rounded-full"
         src="https://nedicom.ru/storage/usr/69/avatar/1702823242avatar.webp"
@@ -14,7 +14,7 @@ defineProps({
     </div>
 
     <div
-      class="w-auto inline-block rounded-r-md rounded-t-md bg-white border-t-1 border-r-1 border-b-1 my-1 mr-5 pt-2 px-2"
+      class="w-full inline-block rounded-r-md rounded-t-md bg-white border-t-1 border-r-1 border-b-1 my-1 mr-5 pt-2 px-2"
     >
       <div class="text-xs font-semibold text-green-500">Андрей Дмитриевич</div>
 

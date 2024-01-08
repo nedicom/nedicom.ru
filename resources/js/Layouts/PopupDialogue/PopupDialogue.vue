@@ -1,9 +1,13 @@
 <script setup>
 import Question from "@/Layouts/PopupDialogue/Question.vue";
 import Answer from "@/Layouts/PopupDialogue/Answer.vue";
-import { ref, reactive, onMounted } from "vue";
-import { Inertia } from "@inertiajs/inertia";
+import { ref, reactive } from "vue";
 import { usePage } from "@inertiajs/inertia-vue3";
+
+
+defineProps({
+  question: Object,
+});
 
 const vision = ref(false);
 const message = ref(null);
@@ -67,7 +71,11 @@ const send = () => {
     (async () => {
       printing.value = true;
       let resptoai = await fetch(route("message.sent"), {
-        method: "GET",
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      body: JSON.stringify(form),
       });
       if (resptoai.ok) {
         jsonresp = await resptoai.json();
@@ -75,6 +83,9 @@ const send = () => {
         block.scrollTop += block.scrollHeight;
         printing.value = false;
         processing.value = false;
+      }
+      else{
+        alert('notworking');
       }
     })()
   );
@@ -85,7 +96,7 @@ const send = () => {
   <div class="fixed w-full md:w-80 md:right-1 md:bottom-3 right-1 bottom-1">
     <div class="flex flex-col mr-0 ml-2">
       <!-- dialogue button -->
-      <div class="flex justify-end mb-3">
+      <div class="flex justify-end mb-3 mr-3">
         <button
           :onclick="opendialogue"
           type="button"
