@@ -64,6 +64,7 @@ class OpenAI{
             }
            
             $response_data = json_decode($result, true);
+            dd($response_data);
             $generated_text = $response_data['choices'][0]['message']['content'];
             curl_close($ch);
             return $generated_text;

@@ -67,11 +67,7 @@ const send = () => {
     (async () => {
       printing.value = true;
       let resptoai = await fetch(route("message.sent"), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json;charset=utf-8",
-        },
-        body: JSON.stringify(form),
+        method: "GET",
       });
       if (resptoai.ok) {
         jsonresp = await resptoai.json();
