@@ -70,6 +70,6 @@ let nameonimage = ref("Мина");
 
         <MainFooter />
 
-        <PopupDialogue />
+        <!--<PopupDialogue />-->
     </div>
 </template>
