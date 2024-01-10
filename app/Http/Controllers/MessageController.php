@@ -41,13 +41,15 @@ class MessageController extends Controller
 
     public function sent(Request $request)
     {
-       /* $message = Dialogue::find($request->session()->get('dialogue'));
+        sleep(1);
+        $message = Dialogue::find($request->session()->get('dialogue'));
         $array = json_decode($message->json, JSON_FORCE_OBJECT); 
-        $openAi = OpenAIDialogue::Answer($request->mess);     
+        $openAi = OpenAIDialogue::Answer($request->mess);   
+        //$array[] = ['ai_message' => 'test'];  
         $array[] = ['ai_message' => $openAi];
         $message->json = json_encode($array);
-        $message->save();*/
-        return($request->session()->get('dialogue'));
+        $message->save();
+        return($array);
     }
 
 
