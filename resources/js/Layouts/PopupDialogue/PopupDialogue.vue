@@ -49,11 +49,8 @@ const send = async function () {
     processing.value = true;
     form.mess = message.value.innerText;
     message.value.innerText = "";
-    
 
     (async () => {
-        
-
         let resp = await fetch(route("message"), {
             method: "POST",
             headers: {
@@ -104,10 +101,10 @@ const send = async function () {
 </script>
 
 <template>
-    <div class="fixed w-full md:w-80 md:right-1 md:bottom-3 right-1 bottom-1">
+    <div class="fixed w-full md:w-96 md:right-1 right-1 bottom-0">
         <div class="flex flex-col mr-0 ml-2">
             <!-- dialogue button -->
-            <div class="flex justify-end mb-3 mr-3">
+            <div class="flex justify-end mb-5 mr-5">
                 <button
                     :onclick="opendialogue"
                     type="button"
@@ -136,14 +133,33 @@ const send = async function () {
 
             <div
                 v-if="vision"
-                class="h-96 flex flex-col items-start bg-white rounded-t-lg border-t-4 border-x-2 border-gray-900"
+                class="h-[32rem] flex flex-col items-start bg-white rounded-t-2xl border-t-8 border-x-4 border-gray-900"
             >
+                <div class="sticky top-0 w-full my-1 mr-3 pt-1 flex px-2">
+                    <img
+                        class="w-8 h-8 rounded-full"
+                        src="https://nedicom.ru/storage/usr/69/avatar/1702823242avatar.webp"
+                        alt="юрист сайта"
+                    />
+                    <div class="grid grid-cols-1 ml-3 content-end">
+                        <div class="text-xs font-bold">Андрей Дмитриевич</div>
+                        <div class="text-xs font-semibold text-gray-500">
+                            сейчас на связи
+                        </div>
+                    </div>
+                </div>
                 <!-- dialogue -->
 
                 <div
-                    class="h-full w-full bg-green-300 overflow-y-auto scroll-smooth rounded-t-md py-5"
+                    class="h-full w-full bg-[url('https://nedicom.ru/storage/default/wabg.jpg')] 
+                    bg-cover overflow-y-auto scroll-smooth rounded-t-md py-5"
                     id="scrollparent"
                 >
+                    <div v-if="!jsonresp" class="mx-5 h-full text-center  grid grid-cols-1 content-center font-semibold">
+                        <div class="inline-block  mb-3"><span class="bg-white py-2 px-3 rounded-lg">Юрист на связи!</span></div>
+                        <div class="inline-block mt-2 mb-3"><span class="bg-white  py-2 px-2 rounded-lg">Задайте вопрос,</span></div>
+                        <div class="inline-block mt-2"><span class="bg-white  py-2 px-2 rounded-lg">который Вас интересует</span></div>                        
+                    </div>
                     <div class="grid grid-cols-1 content-end" id="scrollchild">
                         <div v-for="question in jsonresp" :key="question">
                             <Question

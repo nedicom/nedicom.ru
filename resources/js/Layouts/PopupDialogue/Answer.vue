@@ -14,7 +14,7 @@ defineProps({
     </div>
 
     <div
-      class="w-full inline-block rounded-r-md rounded-t-md bg-white border-t-1 border-r-1 border-b-1 my-1 mr-5 pt-2 px-2"
+      class="w-full inline-block rounded-r-lg rounded-t-lg bg-white my-1 mr-5 pt-2 px-2"
     >
       <div class="text-xs font-semibold text-green-500">Андрей Дмитриевич</div>
 

@@ -20,7 +20,7 @@ defineProps({
 });
 
 //let screen = window.innerWidth;
-let mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
+let mainbannerimg = ref("https://nedicom.ru/storage/images/landing/main/1280on600.webp");
 /*
   if(screen > 1024){
       mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
@@ -71,8 +71,10 @@ let nameonimage = ref("Мина");
 
         <MainFooter />
 
+        <Tg />
+
         <PopupDialogue />
 
-        <Tg />
+        
     </div>
 </template>

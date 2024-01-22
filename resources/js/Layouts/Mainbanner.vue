@@ -85,7 +85,8 @@ const recaptcha = async () => {
     class="
         relative 
         overflow-hidden 
-        bg-cover  
+        bg-cover 
+        bg-transparent 
         bg-no-repeat
         bg-md-top
         w-full
@@ -96,7 +97,7 @@ const recaptcha = async () => {
     >
         <div
             class="grid grid-cols-1 md:justify-items-end content-center py-5 w-full h-full"
-            style="background-color: rgba(0, 0, 0, 0.1); opacity: 1;">
+           >
 
             <div class="md:w-1/2 md:float-right">
                 <div class="flex  items-center justify-center">            
