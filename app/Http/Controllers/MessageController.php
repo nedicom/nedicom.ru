@@ -44,9 +44,8 @@ class MessageController extends Controller
         sleep(1);
         $message = Dialogue::find($request->session()->get('dialogue'));
         $array = json_decode($message->json, JSON_FORCE_OBJECT); 
-        $openAi = OpenAIDialogue::Answer($request->mess);   
-        //$array[] = ['ai_message' => 'test'];  
-        $array[] = ['ai_message' => $openAi];
+        $openAi = OpenAIDialogue::Answer($request->mess, $array);
+        $openAi == 'true' ? $array[] = ['ai_message' => "Спасибо, я Вам перезвоню как освобожусь"] : $array[] = ['ai_message' => $openAi];
         $message->json = json_encode($array);
         $message->save();
         return($array);

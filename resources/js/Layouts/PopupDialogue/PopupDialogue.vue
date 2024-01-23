@@ -94,7 +94,7 @@ const send = async function () {
             printing.value = false;
             processing.value = false;
         } else {
-            alert("notworking");
+            alert("Пользователь занят. Попробуйте позже");
         }
     })();
 };

@@ -4,7 +4,7 @@ namespace App\Helpers;
 
 
 class OpenAIDialogue{
-    public static function Answer($ask)
+    public static function Answer($ask, $array_conversation)
     {
             $ch = curl_init();
 
@@ -17,32 +17,51 @@ class OpenAIDialogue{
                 'messages' => [
                     [
                         'role' => 'system',
-                        'content' => 'You are a seller of legal services.'
+                        'content' => 'You are a seller of legal services. 
+                        '
                     ],
                     [
                         'role' => 'system',
-                        'content' => 'Your task is to:'
+                        'content' => 'Your task is to: Understand the language of the question.
+                        Clarify the question if it is unclear, or answer the question if it is very simple.
+Invite the user to leave a phone number for contact under some pretext.'
                     ],
                     [
                         'role' => 'system',
-                        'content' => 'Understand the language of the question.'
-                    ],
-                    [
-                        'role' => 'system',
-                        'content' => 'Clarify the question if it is not clear or answer the question if it is very simple or Invite the user to leave a telephone number for communication'
-                    ],
-                    [
-                        'role' => 'system',
-                        'content' => 'Your message should not be more than 100 characters.'
-                    ],
-                    [
-                        'role' => 'user',
-                        'content' => $ask,
+                        'content' => 'Your message should not be more than 200 characters.'
                     ],
                  ],
                 'temperature' => 0.5,
                 'max_tokens' => 500
             );
+
+            if(count($array_conversation) > 1){
+                foreach ($array_conversation as $val) {
+                    if(array_key_first($val) == 'user_message')
+                    {
+                        $data['messages'][] = 
+                        [
+                            'role' => 'user',
+                            'content' => $val['user_message']
+                        ];
+                    }
+                    if(array_key_first($val) == 'ai_message')
+                    {
+                        $data['messages'][] = 
+                        [
+                            'role' => 'assistant',
+                            'content' => $val['ai_message']
+                        ];
+                    }
+                }
+            };
+
+            $data['messages'][] = 
+                [
+                    'role' => 'user',
+                    'content' => $ask,
+                ];
+
             $json_data = json_encode($data);
 
             curl_setopt($ch, CURLOPT_URL, $url);
