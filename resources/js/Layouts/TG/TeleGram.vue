@@ -1,8 +1,8 @@
 <template>
-    <div class="fixed w-1/3 md:w-80 md:left-1 md:bottom-3 left-1 bottom-1">
+    <div class="fixed md:w-80 w-full md:right-1 md:bottom-20 right-1 bottom-20">
         <div class="flex flex-col mr-0 ml-2">
             <!-- TG button -->
-            <div class="flex justify-start mb-3 mr-3">
+            <div class="flex justify-end mb-5 mr-5">
                 <a href="tg://resolve?domain=+79784731847"
                     class="flex justify-center text-white rounded-full hover:bg-blue-600"
                 >
