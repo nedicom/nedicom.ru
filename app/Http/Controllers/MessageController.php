@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Dialogue;
 use Illuminate\Support\Facades\Auth;
 use App\Helpers\OpenAIDialogue;
+use App\Helpers\PostDataOpenAI;
 
 class MessageController extends Controller
 {
@@ -45,7 +46,15 @@ class MessageController extends Controller
         $message = Dialogue::find($request->session()->get('dialogue'));
         $array = json_decode($message->json, JSON_FORCE_OBJECT); 
         $openAi = OpenAIDialogue::Answer($request->mess, $array);
-        $openAi == 'true' ? $array[] = ['ai_message' => "Спасибо, я Вам перезвоню как освобожусь"] : $array[] = ['ai_message' => $openAi];
+        //$openAi == 'Ok.' ? $array[] = ['ai_message' => "Спасибо, я свяжусь с Вами немного позже, как освобожусь."] : $array[] = ['ai_message' => $openAi];
+        $gotit = strripos($openAi, 'challenge');
+        if($gotit !== false){
+            $array[] = ['ai_message' => "Спасибо, я свяжусь с Вами немного позже, как освобожусь."];            
+            PostDataOpenAI::PostData($message->json, $request->mess);
+        } 
+        else{
+            $array[] = ['ai_message' => $openAi];
+        } 
         $message->json = json_encode($array);
         $message->save();
         return($array);

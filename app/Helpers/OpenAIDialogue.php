@@ -11,31 +11,35 @@ class OpenAIDialogue{
             $proxy = env('PROXY');
             $proxyauth = env('PROXY_AUTH');
             $url = 'https://api.openai.com/v1/chat/completions';
+            $mesquantity = count($array_conversation);
 
             $data = array(
                 'model' => 'gpt-3.5-turbo',
                 'messages' => [
                     [
                         'role' => 'system',
-                        'content' => 'You are a seller of legal services. 
+                        'content' => 'You are a lawyer. 
                         '
                     ],
                     [
                         'role' => 'system',
                         'content' => 'Your task is to: Understand the language of the question.
-                        Clarify the question if it is unclear, or answer the question if it is very simple.
-Invite the user to leave a phone number for contact under some pretext.'
+                            Clarify the question if it is unclear. Invite the user to leave a phone number for contact under some pretext.'
                     ],
                     [
                         'role' => 'system',
                         'content' => 'Your message should not be more than 200 characters.'
+                    ],
+                    [
+                        'role' => 'system',
+                        'content' => "If the user's message contains a phone number, give a one-word response 'challenge'"
                     ],
                  ],
                 'temperature' => 0.5,
                 'max_tokens' => 500
             );
 
-            if(count($array_conversation) > 1){
+            if($mesquantity > 1){
                 foreach ($array_conversation as $val) {
                     if(array_key_first($val) == 'user_message')
                     {
@@ -54,7 +58,7 @@ Invite the user to leave a phone number for contact under some pretext.'
                         ];
                     }
                 }
-            };
+            }
 
             $data['messages'][] = 
                 [
@@ -88,7 +92,7 @@ Invite the user to leave a phone number for contact under some pretext.'
            
             $response_data = json_decode($result, true);
             $generated_text = $response_data['choices'][0]['message']['content'];
-            curl_close($ch);
+            curl_close($ch);        
             return $generated_text;
     }
 }
