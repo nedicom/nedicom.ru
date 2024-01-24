@@ -138,7 +138,7 @@ const send = async function () {
                 <div class="sticky top-0 w-full my-1 mr-3 pt-1 flex px-2">
                     <img
                         class="w-8 h-8 rounded-full"
-                        src="https://nedicom.ru/storage/usr/69/avatar/1702823242avatar.webp"
+                        src="https://nedicom.ru/storage/usr/94/avatar/1706103130avatar.webp"
                         alt="юрист сайта"
                     />
                     <div class="grid grid-cols-1 ml-3 content-end">
