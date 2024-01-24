@@ -11,7 +11,7 @@ class PostDataOpenAI{
             } 
     
             $sql = "INSERT INTO leads (source, description, phone, lawyer, created_at, responsible, status, service)
-            VALUES ('nedicom.ru', $conversation, $phone, 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
+            VALUES ('nedicom.ru', '$conversation', '$phone', 2, CURRENT_TIME(), 2, 'поступил', 5)"; //2 - Mark, 4 - Анастасия, 5 - иск, 67 - вера
             $conn->query($sql);
         }
     }
