@@ -49,7 +49,7 @@ class MessageController extends Controller
         //$openAi == 'Ok.' ? $array[] = ['ai_message' => "Спасибо, я свяжусь с Вами немного позже, как освобожусь."] : $array[] = ['ai_message' => $openAi];
         $gotit = strripos($openAi, 'challenge');
         if($gotit !== false){
-            $array[] = ['ai_message' => "Спасибо, я свяжусь с Вами немного позже, как освобожусь."];            
+            $array[] = ['ai_message' => "Спасибо, я свяжусь с Вами немного позже, как освобожусь. Запишите и мой номер тоже 89788838978"];            
             PostDataOpenAI::PostData($message->json, $request->mess);
         } 
         else{
