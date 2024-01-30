@@ -24,7 +24,7 @@ const props = defineProps({
                         >
                         <img src="https://nedicom.ru/storage/usr/87/avatar/1702115295avatar.webp" width="40" class="rounded-full"/>
                         <p class="text-gray-700 text-base line-clamp-3 h-min-24 ml-2">
-                            ИИ (Андрей)
+                            Андрей Дмитриевич
                         </p>
                     </p>  
                 </div> 

@@ -20,7 +20,7 @@ let aianswer;
 
 if (user == null) {
     aianswer =
-        "Я готов ответить на Ваш вопорос, но сначала, его нужно опубликовать. ";
+        "Я готов ответить на Ваш вопрос, но сначала, его нужно опубликовать. ";
 } else {
     aianswer = "Вы почти у цели. Нажмите на кнопку опубликовать";
 }
@@ -66,13 +66,13 @@ let submit = () => {
 
             <div class="flex justify-center">
                 <div
-                    class="xl:w-4/6 mx-5 sm:px-6 lg:px-4 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                    class="md:w-4/6 mx-5  bg-white overflow-hidden shadow-sm sm:rounded-lg"
                 >
                     <div class="grid grid-cols-1 gap-9 my-2">
                         <div class="flex justify-center">
                             <div class="block min-w-full p-6 bg-white max-w-sm">
                                 <AIAnswer
-                                    class="sm:px-6 lg:px-4 mx-5 py-12"
+                                    class="sm:px-6 lg:px-4 mx-5"
                                     :aianswer="aianswer"
                                 >
                                 </AIAnswer>

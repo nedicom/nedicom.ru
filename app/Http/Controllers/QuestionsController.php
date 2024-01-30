@@ -63,7 +63,8 @@ class QuestionsController extends Controller
     public function questionAdd()
     {
         return Inertia::render('Questions/Add', [
-            'lawyers' => User::where('lawyer', 1)->inRandomOrder()->limit(5)->get(),
+            'lawyers' => User::where('lawyer', 1)->inRandomOrder()->get(),
+            'SliderQ' => Questions::limit(20)->withCount('QuantityAns')->get(),
         ]);
     }
 

@@ -5,8 +5,8 @@ defineProps({
 </script>
 
 <template>
-    <p class="mb-5 text-2xl font-semibold tracking-tight text-gray-900">
-        Выбрать юриста для ответа
+    <p class="mb-5  font-semibold tracking-tight text-gray-900">
+         выбрать юриста для ответа
     </p>
     <label
         v-for="value in lawyers"

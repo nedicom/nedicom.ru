@@ -4,6 +4,7 @@ import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import MyHero from "@/Components/Hero/MyHero.vue";
+import SliderQuestions from "@/Layouts/SliderQuestions.vue";
 import { Link } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 import { Head } from "@inertiajs/inertia-vue3";
@@ -16,6 +17,7 @@ defineProps({
   myAnwers: Number,
   myPractice: Number,
   myUslugi: Number,
+  SliderQ: Array,
 });
 </script>
 
@@ -67,6 +69,8 @@ defineProps({
         />
       </div>
     </Body>
+
+    <SliderQuestions :sliderq="SliderQ" />
 
     <MainFooter />
   </div>

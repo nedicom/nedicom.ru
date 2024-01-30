@@ -54,9 +54,8 @@ const getAIAnswer = () => {
                 class="xl:w-1/2 sm:px-6 lg:px-4 mx-auto my-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
             >
                 <div class="flex flex-right">
-                    <Link
-                        :href="route('lawyer', set.question.user_id)"
-                        class="hover:underline flex flex-right"
+                    <Span
+                        class="flex flex-right"
                     >
                         <img
                             :src="'https://nedicom.ru/' + set.question.user.avatar_path"
@@ -68,7 +67,7 @@ const getAIAnswer = () => {
                         >
                             {{ set.question.user.name }}
                         </p>
-                    </Link>
+                    </Span>
                     <p class="text-gray-400 text-sm mx-4 flex items-center">
                         {{ set.question.created_at }}
                     </p>
