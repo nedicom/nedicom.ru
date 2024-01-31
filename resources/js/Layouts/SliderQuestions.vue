@@ -51,7 +51,7 @@ const props = defineProps({
 
             <div class="h-24 grid grid-cols-1 content-center">
               <a
-                :href="'https://nedicom.ru/uslugi/' + card.url"
+                :href="'https://nedicom.ru/questions/' + card.url"
                 class="my-3 text-sm text-gray-700/75"
                 >подробнее</a
               >

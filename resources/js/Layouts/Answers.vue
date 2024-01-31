@@ -4,8 +4,8 @@ import AccordionComment from "@/Components/AccordionComment.vue";
 
 
 defineProps({
-    answers: "Array",
-    question: String,
+    answers: "Object",
+    question: "Number",
 });
 
 </script>

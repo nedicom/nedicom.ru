@@ -50,6 +50,7 @@ let title = ref("Задать вопрос юристу");
             </h1>
 
             <div class="flex -space-x-2 overflow-hidden pb-6">
+              
               <img
                 v-for="value in lawyers"
                 :key="value"

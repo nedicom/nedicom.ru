@@ -12,13 +12,18 @@ import { reactive, ref } from "vue";
 
 let set = defineProps({
   question: "Object",
-  answers: "Array",
+  answers: "Object",
+  authid: "Number",
 });
 
 let processing = ref(false);
 
-let btnAI = ref(!usePage().props.value.answers[0]);
+let test = set.answers;
 
+let btnAI = ref();
+if (!set.answers[0]) {
+  btnAI.value = true;
+}
 let form = reactive({
   id: set.question.id,
   body: set.question.body,
@@ -56,6 +61,7 @@ const getAIAnswer = () => {
         <div class="flex flex-right">
           <span class="flex flex-right">
             <img
+              v-if="set.question.user"
               :src="'https://nedicom.ru/' + set.question.user.avatar_path"
               width="60"
               class="rounded-full m-3 p-1 ring-2 ring-gray-300 dark:ring-gray-500"
@@ -63,7 +69,7 @@ const getAIAnswer = () => {
             <p
               class="mr-3 text-sm text-gray-900 dark:text-white font-semibold h-min-24 flex items-center"
             >
-              {{ set.question.user.name }}
+              <span v-if="set.question.user">{{ set.question.user.name }}</span>
             </p>
           </span>
           <p class="text-gray-400 text-sm mx-4 flex items-center">
@@ -76,8 +82,9 @@ const getAIAnswer = () => {
 
         <div class="flex justify-center">
           <Answer
-            answerclass="md:w-4/6 w-full sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+            :answerclass="'md:w-4/6 w-full sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg'"
             :question="set.question"
+            :authid="set.authid"
           />
         </div>
 

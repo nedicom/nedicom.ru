@@ -10,8 +10,8 @@ import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 
 let vars = defineProps({
-    article: String,
-    user: String,
+    article: "Object",
+    user: "Object",
 });
 
 let ModalBtnText = "Консультация с автором статьи";
@@ -125,6 +125,6 @@ ol {
         </div>
     </Body>
 
-    <Sidebaraction :ModalBtnText="ModalBtnText" />
+   <!-- <Sidebaraction :ModalBtnText="ModalBtnText" /> -->
     <MainFooter />
 </template>

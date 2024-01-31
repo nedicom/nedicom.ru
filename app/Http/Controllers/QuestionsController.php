@@ -39,6 +39,7 @@ class QuestionsController extends Controller
                 ->with('subcomments')
                 ->get(),
             'aianswer' => Inertia::lazy(fn() => OpenAI::Answer($body)),
+            'authid' =>Auth::user()->id,
         ]);
     }
 

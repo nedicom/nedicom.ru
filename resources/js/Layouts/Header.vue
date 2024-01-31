@@ -14,16 +14,6 @@ const props = defineProps({
   phone: String,
 });
 
-if (props.address !== undefined) {
-  address = props.address;
-  secondaddress = "";
-  thirdaddress = "";
-}
-if (props.phone !== undefined) {
-  phone = props.phone;
-  secondphone = "";
-  thirdphone = "";
-}
 
 let phoneto = "tel:" + phone;
 let secondphoneto = "tel:" + secondphone;

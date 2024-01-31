@@ -5,11 +5,13 @@ import { reactive } from "vue";
 import AuthRegisterPropose from "@/Components/AuthRegisterPropose.vue";
 
 let set = defineProps({
-    question: "Object",
+    question: "Array",
     placeholder: String,
-    answerid: String,
+    answerid: Number,
     answerclass: String,
+    authid: "Number",
 });
+
 
 let form = reactive({
     body: "",
@@ -18,12 +20,10 @@ let form = reactive({
     answer_id: set.answerid,
 });
 
-const user = usePage().props.value.auth.user;
-let ownerId;
-if (user == null) {
-    ownerId = 0;
-} else {
-    ownerId = user.id;
+let user = 2;
+
+if (set.question.user_id == set.authid) {
+    user = 1;
 }
 
 let comment = "чтобы дать ответ или оставить комментарий";
@@ -31,9 +31,9 @@ let comment = "чтобы дать ответ или оставить комме
 let placeholder;
 
 placeholder =
-    set.question.user_id == ownerId
-        ? "Вы можете дополнить свой вопрос, если посчитаете нужным."
-        : "Ваш ответ.";
+    user == 1
+        ? "Вы можете дополнить свой вопрос..."
+        : "Ваш ответ...";
 
 let submit = () => {
     //Inertia.post("/answerpost", form);
