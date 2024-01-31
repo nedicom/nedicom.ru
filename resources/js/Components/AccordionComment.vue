@@ -11,6 +11,7 @@ onMounted(() => {
 defineProps({
     question: Number,
     answerid: Number,
+    authid: Number,
 });
 </script>
 
@@ -87,6 +88,7 @@ defineProps({
                         :question="question"
                         :answerid="answerid"
                         :answerclass="'xl:w-4/6 sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg'"
+                        :authid="authid"
                     />
                 </p>
             </div>

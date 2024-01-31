@@ -6,6 +6,7 @@ import AccordionComment from "@/Components/AccordionComment.vue";
 defineProps({
     answers: "Object",
     question: "Number",
+    authid: "Number",
 });
 
 </script>
@@ -43,7 +44,7 @@ defineProps({
                     {{ answer.body }}
                 </p>
 
-                <AccordionComment :question="question" :answerid="answer.id"/>
+                <AccordionComment :question="question" :answerid="answer.id" :authid="authid"/>
             </div>
 
             <!--subcomments-->
@@ -78,7 +79,7 @@ defineProps({
                         {{ subcomments.pivot.body }}
                     </p>
 
-                    <AccordionComment :question="question" :answerid="answer.id"/>
+                    <AccordionComment :question="question" :answerid="answer.id" :authid="authid"/>
                 </div>
             </div>
 

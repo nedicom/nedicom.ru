@@ -20,20 +20,15 @@ let form = reactive({
     answer_id: set.answerid,
 });
 
-let user = 2;
+let user = null;
 
-if (set.question.user_id == set.authid) {
+if (set.authid) {
     user = 1;
 }
 
 let comment = "чтобы дать ответ или оставить комментарий";
 
-let placeholder;
-
-placeholder =
-    user == 1
-        ? "Вы можете дополнить свой вопрос..."
-        : "Ваш ответ...";
+let placeholder = "Ответ / Комментарий";
 
 let submit = () => {
     //Inertia.post("/answerpost", form);
@@ -52,6 +47,7 @@ let submit = () => {
             @input="onInput"
             spellcheck="true"
             :maxlength="maxlength"
+            :disabled="!set.authid"
             required
             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id=""
@@ -71,7 +67,9 @@ let submit = () => {
         <div class="text-center">
             <button
                 type="submit"
-                class="my-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                :disabled="!set.authid"
+                class="my-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg 
+                focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
             >
                 Ответить
             </button>

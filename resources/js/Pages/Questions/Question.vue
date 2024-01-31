@@ -18,8 +18,6 @@ let set = defineProps({
 
 let processing = ref(false);
 
-let test = set.answers;
-
 let btnAI = ref();
 if (!set.answers[0]) {
   btnAI.value = true;
@@ -55,6 +53,7 @@ const getAIAnswer = () => {
     <Header :ttl="set.question.title" />
 
     <Body>
+      {{set.authid}}
       <div
         class="xl:w-1/2 sm:px-6 lg:px-4 mx-auto my-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
       >
@@ -81,7 +80,7 @@ const getAIAnswer = () => {
         </h3>
 
         <div class="flex justify-center">
-          <Answer
+          <Answer 
             :answerclass="'md:w-4/6 w-full sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg'"
             :question="set.question"
             :authid="set.authid"
@@ -122,8 +121,10 @@ const getAIAnswer = () => {
             class="sm:px-6 lg:px-4 mx-5 py-12 md:w-4/6 w-full"
             :answers="answers"
             :question="set.question.id"
+            :authid="set.authid"
           />
         </div>
+
       </div>
     </Body>
 

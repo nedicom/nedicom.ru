@@ -85,6 +85,13 @@ const submit = () => {
                     Забыли пароль?
                 </Link>
 
+                <Link
+                    :href="route('register')"
+                    class="underline ml-5 text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                    Регистрация
+                </Link>
+
                 <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Войти
                 </PrimaryButton>

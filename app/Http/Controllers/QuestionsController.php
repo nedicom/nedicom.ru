@@ -32,6 +32,10 @@ class QuestionsController extends Controller
     {
         $id = Questions::where('url', '=', $url)->pluck('id')->first();
         $body = Questions::where('url', '=', $url)->pluck('body')->first();
+        $authid = null;
+        if(Auth::user()){
+            $authid = Auth::user()->id;
+        }
         return Inertia::render('Questions/Question', [
             'question' => Questions::where('id', '=', $id)->with('User')->first(),
             'answers' => Answer::where('questions_id', '=', $id)
@@ -39,7 +43,7 @@ class QuestionsController extends Controller
                 ->with('subcomments')
                 ->get(),
             'aianswer' => Inertia::lazy(fn() => OpenAI::Answer($body)),
-            'authid' =>Auth::user()->id,
+            'authid' => $authid,
         ]);
     }
 

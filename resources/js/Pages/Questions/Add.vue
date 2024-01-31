@@ -6,6 +6,7 @@ import MainFooter from "@/Layouts/MainFooter.vue";
 import RadioLawyer from "@/Components/RadioLawyer.vue";
 import SendButton from "@/Components/SendButton.vue";
 import SliderQuestions from "@/Layouts/SliderQuestions.vue";
+import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 import { Inertia } from "@inertiajs/inertia";
 import { reactive } from "vue";
@@ -16,7 +17,7 @@ let form = reactive({
 });
 
 defineProps({
-  lawyers: String,
+  lawyers: "Object",
   SliderQ: Array,
 });
 
@@ -32,7 +33,10 @@ let title = ref("Задать вопрос юристу");
 </script>
 
 <template>
-  <Head title="Задать вопрос юристу" />
+  <Head>
+    <title>Задать вопрос юристу онлайн</title>
+    <meta name="description" content="Лучшие юристы ответят на Ваш вопрос онлайн бесплатно, без регистрации и смс" />
+  </Head>
 
   <MainHeader />
 

@@ -6,7 +6,7 @@ import Tooltip from '@/Components/Tooltip.vue';
 
 defineProps( {
     specdata: Array,
-    userspec: Array,
+    userspec: "String ",
 });
 </script>
 
