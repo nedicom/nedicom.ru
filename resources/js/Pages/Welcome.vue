@@ -2,6 +2,7 @@
 import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Mainbanner from "@/Layouts/Mainbanner.vue";
+import SecondBanner from "@/Layouts/SecondBanner.vue";
 import Testimonials from "@/Layouts/Testimonials.vue";
 import Slider from "@/Layouts/Slider.vue";
 import SliderUslug from "@/Layouts/SliderUslug.vue";
@@ -15,66 +16,70 @@ import { Head } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
 defineProps({
-    flash: Object,
-    uslugislider: Array,
+  flash: Object,
+  uslugislider: Array,
 });
 
 //let screen = window.innerWidth;
-let mainbannerimg = ref("https://nedicom.ru/storage/images/landing/main/1280on600.webp");
+let mainbannerimg = ref(
+  "https://nedicom.ru/storage/images/landing/main/1280on600.webp"
+);
+let secondbannerimg = ref(
+  "https://nedicom.ru/storage/images/landing/main/1280on600.webp"
+);
 /*
-  if(screen > 1024){
+  if(screen < 1024){
       mainbannerimg = ref("/storage/images/landing/main/1280on600.webp");
-    }
-    else{
-      mainbannerimg = ref("/storage/images/landing/main/main600.webp");
+      secondbannerimg = ref("/storage/images/landing/main/1280on600.webp");
     }
   */
 let sldimg = ref([
-    { id: 1, practice_file_path: "/storage/images/landing/main/slider/1.webp" },
-    { id: 2, practice_file_path: "/storage/images/landing/main/slider/2.webp" },
-    { id: 3, practice_file_path: "/storage/images/landing/main/slider/3.webp" },
-    { id: 4, practice_file_path: "/storage/images/landing/main/slider/4.webp" },
+  { id: 1, practice_file_path: "/storage/images/landing/main/slider/1.webp" },
+  { id: 2, practice_file_path: "/storage/images/landing/main/slider/2.webp" },
+  { id: 3, practice_file_path: "/storage/images/landing/main/slider/3.webp" },
+  { id: 4, practice_file_path: "/storage/images/landing/main/slider/4.webp" },
 ]);
 
 let title = ref("Главная");
 let statusonimage = ref("Адвокатский кабинет");
-let nameonimage = ref("Мина");
+let nameonimage = ref("Мина Марк Анатольевич");
 </script>
 
 <template>
-    <FlashMessage :message="flash.message" />
+  <FlashMessage :message="flash.message" />
 
-    <Head title="Адвокатский кабинет Мина" />
+  <Head title="Адвокатский кабинет Мина Марк Анатольевич" />
 
-    <div class="min-h-screen">
-        <MainHeader />
+  <div class="min-h-screen">
+    <MainHeader />
 
-        <Header :ttl="title" />
+    <Header :ttl="title" />
 
-        <Mainbanner
-            :statusonimage="statusonimage"
-            :nameonimage="nameonimage"
-            :mainbannerimg="mainbannerimg"
-        />
+    <Mainbanner :mainbannerimg="mainbannerimg" />
 
-        <Slider :sldimg="sldimg" :sliderheader="'В нашей копилке сотни дел, но каждое новое дело для нас особенное'" />
+    <SliderUslug :uslugislider="uslugislider" />
 
-        <Testimonials />
+    <SecondBanner
+      :statusonimage="statusonimage"
+      :nameonimage="nameonimage"
+      :secondbannerimg="secondbannerimg"
+    />
 
-        <Address />
+    <Slider
+      :sldimg="sldimg"
+      :sliderheader="'Каждая проблема для нас особенная'"
+    />
 
-        <SliderUslug
-            :uslugislider="uslugislider"
-        />
+    <Testimonials />
 
-        <!--<VK />-->
+    <!--<Address />-->
 
-        <MainFooter />
+    <!--<VK />-->
 
-        <Tg />
+    <MainFooter />
 
-        <PopupDialogue />
+    <Tg />
 
-        
-    </div>
+    <PopupDialogue />
+  </div>
 </template>

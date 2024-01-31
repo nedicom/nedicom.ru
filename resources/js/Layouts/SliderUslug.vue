@@ -10,12 +10,12 @@ const props = defineProps({
     uslugislider: Array,
 });
 
-let ModalBtnText = "Записаться на консультацию";
+let ModalBtnText = "на консультацию";
 </script>
 
 <template>
     <h1 class="text-4xl font-semibold text-grey text-center py-10 ">
-        Дела, по которым мы помогаем
+        Дела, по которым работаем
     </h1>
     <div class="py-10 bg-gray-200">
         <Carousel v-bind="settings" :breakpoints="breakpoints">

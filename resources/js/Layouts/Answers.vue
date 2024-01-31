@@ -11,9 +11,9 @@ defineProps({
 </script>
 
 <template>    
-    <div class="grid grid-cols-1 gap-9 divide-y">
+    <div class="grid grid-cols-1 gap-9 divide-y ">
         <!-- comment -->
-        <div v-for="answer in answers" :key="answer.id" class="">
+        <div v-for="answer in answers" :key="answer.id">
             <div
                 class="min-w-full p-6 bg-white max-w-sm flex flex-col"
             >

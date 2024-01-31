@@ -5,9 +5,10 @@ import { reactive } from "vue";
 import AuthRegisterPropose from "@/Components/AuthRegisterPropose.vue";
 
 let set = defineProps({
-    question: String,
+    question: "Object",
     placeholder: String,
     answerid: String,
+    answerclass: String,
 });
 
 let form = reactive({
@@ -45,7 +46,7 @@ let submit = () => {
 </script>
 
 <template>
-    <form v-if="user" @submit.prevent="submit" class="mx-5 lg:px-5">
+    <form v-if="user" @submit.prevent="submit" class="mx-5 lg:px-5" :class="answerclass">
         <textarea
             v-model="form.body"
             @input="onInput"
@@ -61,7 +62,6 @@ let submit = () => {
             <div
                 class="bg-blue-600 h-1 rounded-full"
                 :style="{ width: progresswidth + '%' }"
-                :class="class"
             ></div>
         </div>
         <p class="text-xs text-gray-900 dark:text-white">

@@ -44,12 +44,12 @@ let title = ref("Задать вопрос юристу");
         <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
           <div class="flex flex-col items-center">
             <h1
-              class="text-center mx-5 md:pb-6 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
+              class="text-center mx-5 pb-6 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white"
             >
               Задать вопрос юристу онлайн
             </h1>
 
-            <div class="flex -space-x-2 overflow-hidden md:pb-2">
+            <div class="flex -space-x-2 overflow-hidden pb-6">
               <img
                 v-for="value in lawyers"
                 :key="value"
