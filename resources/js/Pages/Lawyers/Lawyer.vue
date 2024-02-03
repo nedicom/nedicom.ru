@@ -9,6 +9,7 @@ import About from "@/Layouts/About.vue";
 import Address from "@/Layouts/Address.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
 import FlashMessage from "@/Components/FlashMessage.vue";
+import LawyerRating from "@/Components/LawyerRating.vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 import { ref } from "vue";
 
@@ -71,6 +72,9 @@ let title = ref(set.lawyer.name);
             :specializationTwo="specializationTwo"
             :specializationThree="specializationThree"
             :specialization="specialization"
+        />
+
+        <LawyerRating :lawyer="set.lawyer"
         />
 
         <Articles :articles="articles" />

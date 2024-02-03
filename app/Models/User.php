@@ -5,6 +5,7 @@ namespace App\Models;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -78,5 +79,25 @@ class User extends Authenticatable
                     ->orWhere('id', 'like', '%'.$search.'%');
             });
         });
+    }
+
+    public function HasArticles(): HasMany
+    {
+        return $this->HasMany(Article::class, 'userid', 'id');
+    }
+
+    public function HasPractice(): HasMany
+    {
+        return $this->HasMany(Article::class, 'userid', 'id')->where('practice_file_path', '!=', null);
+    }
+
+    public function HasQuestion(): HasMany
+    {
+        return $this->HasMany(Questions::class, 'user_id', 'id');
+    }
+
+    public function HasAnwers(): HasMany
+    {
+        return $this->HasMany(Answer::class, 'users_id', 'id');
     }
 }
