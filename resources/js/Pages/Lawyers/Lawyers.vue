@@ -16,7 +16,7 @@ let title = ref("Юристы");
 <template>
     <Head>
         <title>{{ title }}</title>
-        <meta name="description" :content="Юристы" />
+        <meta name="description" content="Все юристы сайта nedicom.ru на этой странице" />
     </Head>
 
     <MainHeader />

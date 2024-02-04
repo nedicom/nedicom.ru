@@ -4,16 +4,17 @@ import AccordionComment from "@/Components/AccordionComment.vue";
 
 
 defineProps({
-    answers: "Array",
-    question: String,
+    answers: "Object",
+    question: "Number",
+    authid: "Number",
 });
 
 </script>
 
 <template>    
-    <div class="grid grid-cols-1 gap-9 divide-y">
+    <div class="grid grid-cols-1 gap-9 divide-y ">
         <!-- comment -->
-        <div v-for="answer in answers" :key="answer.id" class="">
+        <div v-for="answer in answers" :key="answer.id">
             <div
                 class="min-w-full p-6 bg-white max-w-sm flex flex-col"
             >
@@ -43,7 +44,7 @@ defineProps({
                     {{ answer.body }}
                 </p>
 
-                <AccordionComment :question="question" :answerid="answer.id"/>
+                <AccordionComment :question="question" :answerid="answer.id" :authid="authid"/>
             </div>
 
             <!--subcomments-->
@@ -78,7 +79,7 @@ defineProps({
                         {{ subcomments.pivot.body }}
                     </p>
 
-                    <AccordionComment :question="question" :answerid="answer.id"/>
+                    <AccordionComment :question="question" :answerid="answer.id" :authid="authid"/>
                 </div>
             </div>
 

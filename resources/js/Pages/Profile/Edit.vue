@@ -17,7 +17,7 @@ defineProps({
   imgurl: String,
   islawyer: Number,
   uslugi: Array,
-  userspec: Array,
+  userspec: "String",
   specializationOne: Object,
 });
 </script>

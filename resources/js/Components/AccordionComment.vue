@@ -9,8 +9,9 @@ onMounted(() => {
 });
 
 defineProps({
-    question: String,
-    answerid: String,
+    question: Number,
+    answerid: Number,
+    authid: Number,
 });
 </script>
 
@@ -86,7 +87,8 @@ defineProps({
                     <Answer
                         :question="question"
                         :answerid="answerid"
-                        class="xl:w-4/6 sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg"
+                        :answerclass="'xl:w-4/6 sm:px-6 lg:px-4 mx-5 py-12 bg-white overflow-hidden shadow-sm sm:rounded-lg'"
+                        :authid="authid"
                     />
                 </p>
             </div>

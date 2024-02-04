@@ -22,14 +22,13 @@ defineProps({
   <VButton 
   @click="() => open()"
   class="
-        mx-5
         outline
-        flex justify-center
-        px-5
+        px-3
         py-2
-        text-md
+        mx-3
         font-medium
-        text-center text-white
+        text-center 
+        text-white
         bg-blue-700
         rounded-lg
         focus:ring-4 focus:ring-blue-200

@@ -18,6 +18,7 @@ class MyController extends Controller
             'myAnwers' => Answer::where('users_id', '=', Auth::user()->id)->select('id')->count(),
             'myPractice' => Article::where('userid', '=', Auth::user()->id)->select('id')->count(),
             'myUslugi' => Uslugi::where('user_id', '=', Auth::user()->id)->select('id')->count(),
+            'SliderQ' => Questions::limit(20)->withCount('QuantityAns')->get(),
         ]);
     }
 }

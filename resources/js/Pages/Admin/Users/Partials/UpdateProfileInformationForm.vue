@@ -15,7 +15,7 @@ const props = defineProps({
     islawyer: String,
     uslugi: Array,
     specializationOne: String,
-    userspec: Array,
+    userspec: "String",
 });
 
 const user = usePage().props.value.user;

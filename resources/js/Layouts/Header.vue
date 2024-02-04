@@ -1,52 +1,66 @@
 <script setup>
-import Modal from '@/Components/Modal.vue';
+import Modal from "@/Components/Modal.vue";
 
-let address ="Республика Крым";
-let secondaddress ="город Москва";
-let  phone ="+7 978 8838 978";
-let  secondphone ="+7 985 558 21 70";
+let address = "Крым";
+let secondaddress = "Москва";
+let thirdaddress = "Краснодар";
+let phone = "8 978 8838978";
+let secondphone = "8 985 5582170";
+let thirdphone = "8 978 1453925";
 
 const props = defineProps({
-    ttl: String,
-    address: String,
-    phone: String,
+  ttl: String,
+  address: String,
+  phone: String,
 });
 
-    if(props.address !== undefined){
-        address = props.address;
-        secondaddress = '';
-    }
-    if(props.phone !== undefined){
-        phone = props.phone;
-        secondphone = '';
-    }
 
-let phoneto = "tel:"+phone;
-let secondphoneto = "tel:"+secondphone;
-let ModalBtnText = 'записаться на консультацию';
+let phoneto = "tel:" + phone;
+let secondphoneto = "tel:" + secondphone;
+let thirdphoneto = "tel:" + thirdphone;
+let ModalBtnText = "записаться на консультацию";
 </script>
 
 
 <template>
-    <!-- Page Heading -->
-    <noscript>
-        <div><img src="https://mc.yandex.ru/watch/24900584" style="position:absolute; left:-9999px;"></div>
-    </noscript>
-    <header class="bg-white shadow">
-        <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight grid gap-4 md:grid-cols-3 text-center">
-                <div ><Modal :ModalBtnText="ModalBtnText"/></div>
-                
-                <div class="text-1xl">
-                    <a href="#address" class="md:float-right">{{ address }}</a><br>
-                    <a href="#address" class="md:float-right">{{ secondaddress }}</a>                
-                </div>
-                <div >
-                    <a :href="phoneto" class="md:float-left md:ml-5">{{ phone }} </a><br>
-                    <a v-if="secondphone" :href="secondphoneto" class="md:float-left md:ml-5" >{{ secondphone }}</a>
-                </div>
-                
-            </h2>
+  <!-- Page Heading -->
+  <noscript>
+    <div>
+      <img
+        src="https://mc.yandex.ru/watch/24900584"
+        style="position: absolute; left: -9999px"
+      />
+    </div>
+  </noscript>
+  <header class="bg-white shadow">
+    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+      <h2
+        class="font-semibold text-gray-800 leading-tight grid gap-4 md:grid-cols-2 text-center"
+      >
+        <div class="grid gap-4 md:grid-cols-2">
+          <div class="flex items-center justify-center px-2"><Modal :ModalBtnText="ModalBtnText" /></div>
         </div>
-    </header>
+
+        <div class="flex">
+          <div class="md:text-xl flex-auto">
+            <a :href="phoneto">{{ address }}</a
+            ><br />
+            <a :href="phoneto" class="md:text-xl text-xs">{{ phone }} </a>
+          </div>
+
+          <div class="md:text-xl flex-auto">
+            <a :href="secondphoneto">{{ secondaddress }}</a>
+            <br />
+            <a v-if="secondphone" :href="secondphoneto" class="md:text-xl text-xs">{{ secondphone }}</a>
+          </div>
+
+          <div class="md:text-xl flex-auto">
+            <a :href="thirdphoneto">{{ thirdaddress }}</a
+            ><br />
+            <a v-if="thirdphone" :href="thirdphoneto" class="md:text-xl text-xs">{{ thirdphone }}</a>
+          </div>
+        </div>
+      </h2>
+    </div>
+  </header>
 </template>

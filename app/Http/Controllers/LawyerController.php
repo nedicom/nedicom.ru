@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Inertia\Inertia;
+use App\Helpers\Rating\LawyerRating;
 
 class LawyerController extends Controller
 {
@@ -18,6 +19,10 @@ class LawyerController extends Controller
     }
 
      public function lawyer($id){ 
+        LawyerRating::PostRating();
+        LawyerRating::PracticeRating();
+        LawyerRating::QuestionRating();
+        LawyerRating::AnswerRating();
         //dd(Article::where('userid', $id)->orderBy('updated_at', 'desc')->pluck('header', 'description')->take(3));
         return Inertia::render('Lawyers/Lawyer', [
             'lawyer' => User::where('id', '=', $id)->first(),

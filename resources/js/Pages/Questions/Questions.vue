@@ -3,6 +3,8 @@ import MainHeader from "@/Layouts/MainHeader.vue";
 import Header from "@/Layouts/Header.vue";
 import Body from "@/Layouts/Body.vue";
 import MainFooter from "@/Layouts/MainFooter.vue";
+import PopupDialogue from "@/Layouts/PopupDialogue/PopupDialogue.vue";
+import Tg from "@/Layouts/TG/TeleGram.vue";
 import { ref } from "vue";
 import { Head, Link } from "@inertiajs/inertia-vue3";
 
@@ -70,6 +72,11 @@ let title = ref("Вопросы");
   </Body>
 
   <MainFooter />
+  
+  <MainFooter />
+
+  <Tg />
+
 </template>
 
 <script>

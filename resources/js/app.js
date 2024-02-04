@@ -3,7 +3,7 @@ import '../css/app.css';
 import 'vue-final-modal/style.css';
 
 import { createSSRApp, h } from 'vue'
-import { createInertiaApp, InertiaLinkInertiaLink } from '@inertiajs/inertia-vue3';
+import { createInertiaApp, InertiaLink } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
@@ -20,7 +20,7 @@ createInertiaApp({
         return createSSRApp({ render: () => h(App, props) })
             .use(plugin)
             .use(vfm)
-            .use(InertiaLinkInertiaLink)
+            //.use(InertiaLink)
             .use(ZiggyVue, Ziggy)
             .mount(el);
     },

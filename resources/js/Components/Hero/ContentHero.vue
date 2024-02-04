@@ -30,8 +30,9 @@ defineProps({
               </p>
 
               <div class="flex justify-between">
+                
                 <a v-if="routeurl"
-                  :href="route(routeurl, data.question.url)"
+                  :href="route(routeurl, data.url)"
                   class="text-blue-500 underline dark:text-blue-500 hover:no-underline"
                   >смотреть</a
                 >

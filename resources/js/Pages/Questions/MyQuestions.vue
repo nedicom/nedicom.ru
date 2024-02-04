@@ -45,7 +45,10 @@ const handleDelete = (id, title) => {
 </script>
 
 <template>
-  <Head title="Панель управления" />
+  <Head>
+    <title>Мои вопросы</title>
+    <meta name="description" content="На этой странице храняться вопросы, которые Вы задали" />
+  </Head>
 
   <div class="min-h-screen flex flex-col">
     <MainHeader />

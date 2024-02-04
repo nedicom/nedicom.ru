@@ -5,10 +5,13 @@ import { reactive } from "vue";
 import AuthRegisterPropose from "@/Components/AuthRegisterPropose.vue";
 
 let set = defineProps({
-    question: String,
+    question: "Array",
     placeholder: String,
-    answerid: String,
+    answerid: Number,
+    answerclass: String,
+    authid: "Number",
 });
+
 
 let form = reactive({
     body: "",
@@ -17,22 +20,15 @@ let form = reactive({
     answer_id: set.answerid,
 });
 
-const user = usePage().props.value.auth.user;
-let ownerId;
-if (user == null) {
-    ownerId = 0;
-} else {
-    ownerId = user.id;
+let user = null;
+
+if (set.authid) {
+    user = 1;
 }
 
 let comment = "чтобы дать ответ или оставить комментарий";
 
-let placeholder;
-
-placeholder =
-    set.question.user_id == ownerId
-        ? "Вы можете дополнить свой вопрос, если посчитаете нужным."
-        : "Ваш ответ.";
+let placeholder = "Ответ / Комментарий";
 
 let submit = () => {
     //Inertia.post("/answerpost", form);
@@ -45,12 +41,13 @@ let submit = () => {
 </script>
 
 <template>
-    <form v-if="user" @submit.prevent="submit" class="mx-5 lg:px-5">
+    <form v-if="user" @submit.prevent="submit" class="mx-5 lg:px-5" :class="answerclass">
         <textarea
             v-model="form.body"
             @input="onInput"
             spellcheck="true"
             :maxlength="maxlength"
+            :disabled="!set.authid"
             required
             class="form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
             id=""
@@ -61,7 +58,6 @@ let submit = () => {
             <div
                 class="bg-blue-600 h-1 rounded-full"
                 :style="{ width: progresswidth + '%' }"
-                :class="class"
             ></div>
         </div>
         <p class="text-xs text-gray-900 dark:text-white">
@@ -71,7 +67,9 @@ let submit = () => {
         <div class="text-center">
             <button
                 type="submit"
-                class="my-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
+                :disabled="!set.authid"
+                class="my-5 inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg 
+                focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800"
             >
                 Ответить
             </button>
