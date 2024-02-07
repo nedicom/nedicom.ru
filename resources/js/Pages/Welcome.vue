@@ -18,6 +18,7 @@ import { ref } from "vue";
 defineProps({
   flash: Object,
   uslugislider: Array,
+  practice: Array,
 });
 
 //let screen = window.innerWidth;
@@ -25,7 +26,7 @@ let mainbannerimg = ref(
   "https://nedicom.ru/storage/images/landing/main/1280on600.webp"
 );
 let secondbannerimg = ref(
-  "https://nedicom.ru/storage/images/landing/main/1280on600.webp"
+  "https://nedicom.ru/storage/images/landing/main/second.webp"
 );
 /*
   if(screen < 1024){
@@ -67,6 +68,7 @@ let nameonimage = ref("Мина Марк Анатольевич");
 
     <Slider
       :sldimg="sldimg"
+      :practice="practice"
       :sliderheader="'Каждая проблема для нас особенная'"
     />
 

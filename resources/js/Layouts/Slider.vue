@@ -2,6 +2,7 @@
 defineProps({
     sldimg: Array,
     sliderheader: String,
+    practice: Array,
 });
 </script>
 
@@ -10,15 +11,16 @@ defineProps({
         <h3 class="text-4xl mx-12 font-semibold text-grey text-center py-10">
             {{ sliderheader }}
         </h3>
+        {{practice}}
 
-        <div v-if="sldimg">
+        <div v-if="practice">
             <Carousel
                 v-bind="settings"
                 :breakpoints="breakpoints"
                 :wrapAround="true"
                 :transition="500"
             >
-                <Slide v-for="slide in sldimg" :key="slide.practice_file_path">
+                <Slide v-for="slide in practice" :key="slide.practice_file_path">
                     <div
                         class="carousel__item w-full flex items-center justify-center h-128 bg-cover"
                         :style="{
