@@ -90,13 +90,13 @@ const recaptcha = async () => {
         bg-no-repeat
         bg-md-top
         w-full
-        md:h-screen        
+        h-screen        
         "
         
     :style="{ backgroundImage: `url(${secondbannerimg})`}"
     >
         <div
-            class="grid grid-cols-1 md:justify-items-end content-center py-5 w-full h-full"
+            class="grid grid-cols-1 md:justify-items-end md:content-center content-end py-5 w-full h-full"
            >
 
             <div class="md:w-1/2 md:float-right">

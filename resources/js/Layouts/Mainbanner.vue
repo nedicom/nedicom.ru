@@ -12,7 +12,7 @@ const props = defineProps({
 <template>
   <!-- main banner -->
   <div
-    class="relative overflow-hidden bg-cover bg-transparent bg-no-repeat bg-md-top w-full md:h-screen"
+    class="relative overflow-hidden bg-cover bg-transparent bg-no-repeat bg-md-top w-full h-screen"
     :style="{ backgroundImage: `url(${mainbannerimg})` }"
   >
     <div class="grid grid-cols-1 justify-items-center py-5 w-full h-full">
