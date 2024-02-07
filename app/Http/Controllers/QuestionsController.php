@@ -24,7 +24,7 @@ class QuestionsController extends Controller
     public function myQuestions()
     {
         return Inertia::render('Questions/MyQuestions', [
-            'questions' => Questions::where('user_id', '=', Auth::user()->id)->select('id', 'title', 'body', 'url')->withCount('QuantityAns')->paginate(9),
+            'questions' => Questions::where('user_id', '=', Auth::user()->id)->select('id', 'title', 'body', 'url')->withCount('QuantityAns')->orderBy('updated_at', 'desc')->paginate(9),
         ]);
     }
 
@@ -69,7 +69,7 @@ class QuestionsController extends Controller
     {
         return Inertia::render('Questions/Add', [
             'lawyers' => User::where('lawyer', 1)->inRandomOrder()->get(),
-            'SliderQ' => Questions::limit(20)->withCount('QuantityAns')->get(),
+            'SliderQ' => Questions::limit(20)->withCount('QuantityAns')->orderBy('updated_at', 'desc')->get(),
         ]);
     }
 
