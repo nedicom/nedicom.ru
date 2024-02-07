@@ -11,7 +11,6 @@ defineProps({
         <h3 class="text-4xl mx-12 font-semibold text-grey text-center py-10">
             {{ sliderheader }}
         </h3>
-        {{practice}}
 
         <div v-if="practice">
             <Carousel
